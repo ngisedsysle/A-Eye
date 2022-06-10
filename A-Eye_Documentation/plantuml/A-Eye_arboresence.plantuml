@@ -1,0 +1,84 @@
+@startsalt arbo_zybo
+
+{
+    {T
+        +root
+            ++A-Eye_Communication
+                +++TM
+                    ++++encodageTM.c
+                    ++++encodageTM.h
+                +++TC
+                    ++++decodageTC.c
+                    ++++decodageTC.h
+                +++Server 
+                    ++++tcp_server.c
+                    ++++tcp_server.h
+                +++Interpreteur
+                    ++++interpreteur.c
+                    ++++interpreteur.h
+                +++Circular_buffer
+                    ++++Circular_buffer.c
+                    ++++Circular_buffer.h
+                +++struct_allocation.h
+
+            ++A-Eye_Visor
+                +++json
+                    ++++json.c
+                    ++++json.h
+                +++preprocess
+                    ++++preprocess.c
+                    ++++preprocess.h
+                +++AI.c
+                +++weights.json
+            ++airbus_train_bmp
+                +++pas_bateau
+                +++bateau
+            ++demo.sh
+            ++get_rand_img.py
+            ++IAtoINT (pipe)
+            ++README.md
+            ++temp.csv
+            ++temp.bmp
+    }
+}
+
+@endsalt
+
+@startsalt arbo_PC
+{
+    {T
+    +A-Eye_Controller
+        ++A-Eye_Controller
+            +++A-Eye_Communication
+                ++++client.py
+                ++++encodageTC.py
+                ++++decodagetTM.py
+                ++++pipeClient.py
+            +++StockagePC
+                ++++arborescence.py
+                ++++naming.py
+                ++++stockage.py
+                ++++run_stockage.py
+                ++++test.py
+                ++++README.md                
+            +++config.json
+            +++last_config.json
+            +++ConfigFile.cs
+            +++Controller.cs
+            +++Controller.Designer.cs
+            +++Program.cs
+            +++SubProcess.cs
+            +++[OUTPUT_FOLDER]/Images
+                ++++Année
+                    +++++Mois
+                        ++++++Jour
+                            +++++++Auto
+                                ++++++++A_*annee*_*mois*_*jour*_*heure_*idx*.bmp
+                            +++++++Manual
+                                ++++++++M_*annee*_*mois*_*jour*_*heure*_*idx*.bmp
+        ++A-Eye_Controller.sln
+        ++README.md
+    }
+}
+
+@endsalt

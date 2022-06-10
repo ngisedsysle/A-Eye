@@ -1,0 +1,21 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "docfx.console/2.59.2": {}
+    }
+  },
+  "libraries": {
+    "docfx.console/2.59.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-upRLxndC6nadAnS9ZbKipBub3qdWXCagiH9yKsMhsVQFAASXnikpkpWUmqFGhajwEGImIct/hdStAMwcxjh6yw==",
+      "path": "docfx.console/2.59.2",
+      "hashPath": "docfx.console.2.59.2.nupkg.sha512"
+    }
+  }
+}

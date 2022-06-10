@@ -1,0 +1,105 @@
+@startuml Sequence_mode_auto
+
+skinparam SequenceGroupBodyBackgroundColor #FFFFFF90
+skinparam SequenceMessageAlign reverseDirection
+
+actor user order 1
+
+box "ZYBO" #LightBlue
+    participant tcp_server_rcv as server_rcv order 4
+    participant tcp_server_send as server_send order 5
+    participant interpreteur as int order 6
+    participant demo.sh as script order 7
+    participant process_IA as ia order 8
+    participant preprocess as pr order 9
+end box
+
+box "station sol" #MistyRose
+    participant ihm as ihm order 2
+    participant tcp_client as client order 3
+end box
+
+activate server_rcv
+user -> ihm : Mode auto
+ihm -> client : TC mode auto
+client -> server_rcv : TCP frame
+server_rcv -> int : struct update
+int -> server_send : ACK 
+activate server_send
+server_send -> client : ACK
+deactivate server_send
+client -> ihm : log
+    group while auto
+        int -> script : bash demo.sh
+        activate script 
+        note over script #LightSalmon:  update temp.bmp \n with  random img \n from dataset
+        script -> ia : SIGUSR1
+        deactivate script
+        activate ia 
+        ia -> pr : preprocess()
+        activate pr 
+        note over pr #LightSalmon : update temp.csv 
+        ' pr -> pr : update temp.csv
+        pr -> ia
+        deactivate pr 
+        ia -> int : IAtoINT_pipe(prediction)
+        deactivate ia
+        int -> server_send : process img_f
+        group if (img_f == true)
+            activate server_send
+            server_send -> client : send image
+            deactivate server_send
+        end
+    end
+    client -> ihm : visionneuse
+@enduml
+
+
+
+
+
+@startuml Sequence_IA
+participant IA_shipsnet as shipsnet
+participant demo_sh
+participant get_rand_img_py as rand
+participant BDD 
+participant root_folder
+participant preprocess
+
+activate shipsnet 
+note over shipsnet : init_arch
+note over shipsnet : load_weights
+shipsnet -> shipsnet : wait for SIGUSR1
+activate demo_sh
+group while true
+    group randomise img
+        demo_sh -> rand : launch
+        activate rand
+        rand -> BDD : get rand img
+        rand -> root_folder : put img.bmp
+        rand -> demo_sh : finish
+        deactivate rand
+    end
+
+    demo_sh -> shipsnet : send SIGUSR1
+    deactivate demo_sh
+
+    group preprocess
+        shipsnet -> preprocess : preprocess bmp to csv
+        activate preprocess
+        preprocess -> root_folder : get img.bmp
+        note over preprocess : resize, convert
+        preprocess -> root_folder : put img.csv
+        preprocess -> shipsnet : finish
+        deactivate preprocess
+    end
+
+    group process
+        shipsnet -> root_folder : load img.csv
+        note over shipsnet : rescaling
+        note over shipsnet : process image
+        note over shipsnet : pipe writing predictions
+    end
+end
+deactivate shipsnet
+@enduml 

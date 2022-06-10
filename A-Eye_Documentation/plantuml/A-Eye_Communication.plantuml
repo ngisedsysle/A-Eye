@@ -1,0 +1,124 @@
+@startuml Communication_structures
+
+class main_s
+class cmd_struct
+class chg_mode_struct
+class weight_struct
+class img_struct
+class buf_f_struct
+class circular_buf_t
+
+main_s : char *ack
+main_s : int fifo
+
+cmd_struct : bool start
+cmd_struct : weight_update
+cmd_struct : change_mode
+
+chg_mode_struct : char mode
+chg_mode_struct : bool capture
+
+weight_struct : char *arch
+weight_struct : char *filename
+
+img_struct : bool img_f
+img_struct : bool capture_f
+img_struct : char *addr
+img_struct : int length
+
+buf_f_struct : cbuf_handle_t cbuf
+buf_f_struct : bool new_data_f
+
+circular_buf_t : char *buffer[10]
+circular_buf_t : int head
+circular_buf_t : int tail
+circular_buf_t : int max
+circular_buf_t : bool full
+
+main_s "1" *-- cmd_struct
+main_s "1" *-- chg_mode_struct
+main_s "1" *-- weight_struct
+main_s "1" *-- img_struct
+main_s "1" *-- buf_f_struct
+buf_f_struct "1" *-- circular_buf_t
+
+@enduml 
+
+
+@startuml thr_tcp_rcv
+
+start 
+while (thr_tcp_rcv)
+    :decodeTC;
+    switch (TC)
+    case (10) 
+    : chg_mode = true \n mode = 0;
+    case (11)
+    : chg_mode = true \n mode = 1;
+    case (12)
+    : chg_mode = true \n mode = 2;
+    case (20) 
+    : capture = false \n chg_mode = false;
+    case (21) 
+    : if (chg_mode == 1)
+        capture = true 
+        change_mode = true;
+endswitch
+:interpreteur;
+switch (main_s)
+    case (mode manuel) 
+    : ack "mode manuel";
+    case (mode auto)
+    : ack "mode auto" + ./demo.sh;
+    case (mode vidéo)
+    : ack "mode vidéo";
+    case (capture)
+    : ack "capture" + \n déclenchement capture;
+endswitch
+endwhile
+stop
+@enduml
+
+@startuml thr_tcp_send
+
+start
+while (thr_tcp_send)
+    if (new string) then (<color:blue>true)
+        : send(main_s->ack);
+    else (<color:red>false)
+    endif
+    if (new_auto_img) then (<color:blue>true)
+        :img = imgEncodedTM(temp.bmp);
+        :send(img);
+    else (<color:red>false)
+    endif
+    if (new_manual_img) then (<color:blue>true)
+        :img = imgEncodedTM(temp.bmp);
+        :send(img);
+    else (<color:red>false)
+    endif
+endwhile 
+stop
+@enduml
+
+
+@startuml tcp_server
+skinparam ConditionEndStyle InsideDiamond
+start
+:init structs;
+:init socket;
+:open socket;
+:wait for connection;
+#palegreen:establish connection;
+while (while(1))
+    fork
+        :thr_tcp_rcv;
+    fork again
+        :thr_tcp_send;
+    fork again
+        :thr_pipe;
+    endfork
+endwhile
+stop
+@enduml
+

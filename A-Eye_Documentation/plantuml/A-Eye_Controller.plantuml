@@ -1,0 +1,46 @@
+@startuml A-Eye_Controller_sequence_diagram
+actor user
+participant main 
+participant controller
+participant visionneuse_thr
+participant stockage_thr as stockage
+participant config.json
+participant run_thr
+participant pipe_thr
+participant clientTCP_thr
+participant CommunicationModule
+
+user -> main : launch
+activate main
+main -> run_thr : create
+main -> controller : 
+deactivate main 
+activate controller
+activate run_thr 
+run_thr -> pipe_thr : create
+activate pipe_thr
+run_thr -> clientTCP_thr : create
+activate clientTCP_thr
+note over clientTCP_thr : run client.py
+user -> controller : set config
+controller -> config.json : update
+config.json -> clientTCP_thr : pooling via encodeTC
+clientTCP_thr -> CommunicationModule : TC
+activate CommunicationModule
+CommunicationModule -> clientTCP_thr : TM
+deactivate CommunicationModule
+clientTCP_thr -> pipe_thr : decoded msg
+pipe_thr -> controller : string msg 
+pipe_thr -> stockage : wake
+activate stockage
+pipe_thr -> visionneuse_thr : img
+activate visionneuse_thr
+visionneuse_thr -> controller : display
+deactivate visionneuse_thr
+deactivate stockage 
+controller -> user : display, log, ...
+
+' deactivate controller 
+' deactivate clientTCP_thr 
+' deactivate pipe_thr 
+@enduml

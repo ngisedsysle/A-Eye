@@ -1,0 +1,10 @@
+/*! \mainpage 
+*
+* \section intro_sec Introduction
+* 
+* This is the documentation for the embedded communication module of the ZYNQ IA project
+*
+* \section install Installation
+*
+* use command : <em> git clone https://github.com/GuilhemROLLAND/A-Eye_root.git </em>
+*/

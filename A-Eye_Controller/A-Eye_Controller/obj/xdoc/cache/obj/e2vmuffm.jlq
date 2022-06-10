@@ -1,0 +1,2197 @@
+id: Application PC
+language: CSharp
+name:
+  Default: Application PC
+qualifiedName:
+  Default: Application PC
+type: Assembly
+modifiers: {}
+items:
+- id: AEye
+  commentId: N:AEye
+  language: CSharp
+  name:
+    CSharp: AEye
+    VB: AEye
+  nameWithType:
+    CSharp: AEye
+    VB: AEye
+  qualifiedName:
+    CSharp: AEye
+    VB: AEye
+  type: Namespace
+  assemblies:
+  - Application PC
+  modifiers: {}
+  items:
+  - id: AEye.ConfigFile
+    commentId: T:AEye.ConfigFile
+    language: CSharp
+    name:
+      CSharp: ConfigFile
+      VB: ConfigFile
+    nameWithType:
+      CSharp: ConfigFile
+      VB: ConfigFile
+    qualifiedName:
+      CSharp: AEye.ConfigFile
+      VB: AEye.ConfigFile
+    type: Class
+    assemblies:
+    - Application PC
+    namespace: AEye
+    source:
+      remote:
+        path: A-Eye_Controller/ConfigFile.cs
+        branch: 58fb8a9465f4dec6c39d008f220360524260da98
+        repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+      id: ConfigFile
+      path: ConfigFile.cs
+      startLine: 6
+    summary: "\nStructure for the JSON.\nUse to store the configuration.\n"
+    example: []
+    syntax:
+      content:
+        CSharp: public class ConfigFile
+        VB: Public Class ConfigFile
+    inheritance:
+    - System.Object
+    inheritedMembers:
+    - System.Object.Equals(System.Object)
+    - System.Object.Equals(System.Object,System.Object)
+    - System.Object.GetHashCode
+    - System.Object.GetType
+    - System.Object.MemberwiseClone
+    - System.Object.ReferenceEquals(System.Object,System.Object)
+    - System.Object.ToString
+    modifiers:
+      CSharp:
+      - public
+      - class
+      VB:
+      - Public
+      - Class
+    items:
+    - id: AEye.ConfigFile.#ctor
+      commentId: M:AEye.ConfigFile.#ctor
+      language: CSharp
+      name:
+        CSharp: ConfigFile()
+        VB: ConfigFile()
+      nameWithType:
+        CSharp: ConfigFile.ConfigFile()
+        VB: ConfigFile.ConfigFile()
+      qualifiedName:
+        CSharp: AEye.ConfigFile.ConfigFile()
+        VB: AEye.ConfigFile.ConfigFile()
+      type: Constructor
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: .ctor
+        path: ConfigFile.cs
+        startLine: 11
+      summary: "\nEmpty constructor.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public ConfigFile()
+          VB: Public Sub New
+      overload: AEye.ConfigFile.#ctor*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.ConfigFile.#ctor(AEye.Config,AEye.Weights,AEye.TakePicture)
+      commentId: M:AEye.ConfigFile.#ctor(AEye.Config,AEye.Weights,AEye.TakePicture)
+      language: CSharp
+      name:
+        CSharp: ConfigFile(Config, Weights, TakePicture)
+        VB: ConfigFile(Config, Weights, TakePicture)
+      nameWithType:
+        CSharp: ConfigFile.ConfigFile(Config, Weights, TakePicture)
+        VB: ConfigFile.ConfigFile(Config, Weights, TakePicture)
+      qualifiedName:
+        CSharp: AEye.ConfigFile.ConfigFile(AEye.Config, AEye.Weights, AEye.TakePicture)
+        VB: AEye.ConfigFile.ConfigFile(AEye.Config, AEye.Weights, AEye.TakePicture)
+      type: Constructor
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: .ctor
+        path: ConfigFile.cs
+        startLine: 21
+      summary: "\nFull constructor with nullable value.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public ConfigFile(Config config, Weights weights, TakePicture takePicture)
+          VB: Public Sub New(config As Config, weights As Weights, takePicture As TakePicture)
+        parameters:
+        - id: config
+          type: AEye.Config
+          description: Ref to Config object.
+        - id: weights
+          type: AEye.Weights
+          description: Ref to Weights object.
+        - id: takePicture
+          type: AEye.TakePicture
+          description: Ref to TakePicture object.
+      overload: AEye.ConfigFile.#ctor*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.ConfigFile.Config
+      commentId: P:AEye.ConfigFile.Config
+      language: CSharp
+      name:
+        CSharp: Config
+        VB: Config
+      nameWithType:
+        CSharp: ConfigFile.Config
+        VB: ConfigFile.Config
+      qualifiedName:
+        CSharp: AEye.ConfigFile.Config
+        VB: AEye.ConfigFile.Config
+      type: Property
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: Config
+        path: ConfigFile.cs
+        startLine: 28
+      syntax:
+        content:
+          CSharp: public Config Config { get; set; }
+          VB: Public Property Config As Config
+        parameters: []
+        return:
+          type: AEye.Config
+      overload: AEye.ConfigFile.Config*
+      modifiers:
+        CSharp:
+        - public
+        - get
+        - set
+        VB:
+        - Public
+    - id: AEye.ConfigFile.Weights
+      commentId: P:AEye.ConfigFile.Weights
+      language: CSharp
+      name:
+        CSharp: Weights
+        VB: Weights
+      nameWithType:
+        CSharp: ConfigFile.Weights
+        VB: ConfigFile.Weights
+      qualifiedName:
+        CSharp: AEye.ConfigFile.Weights
+        VB: AEye.ConfigFile.Weights
+      type: Property
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: Weights
+        path: ConfigFile.cs
+        startLine: 29
+      syntax:
+        content:
+          CSharp: public Weights Weights { get; set; }
+          VB: Public Property Weights As Weights
+        parameters: []
+        return:
+          type: AEye.Weights
+      overload: AEye.ConfigFile.Weights*
+      modifiers:
+        CSharp:
+        - public
+        - get
+        - set
+        VB:
+        - Public
+    - id: AEye.ConfigFile.TakePicture
+      commentId: P:AEye.ConfigFile.TakePicture
+      language: CSharp
+      name:
+        CSharp: TakePicture
+        VB: TakePicture
+      nameWithType:
+        CSharp: ConfigFile.TakePicture
+        VB: ConfigFile.TakePicture
+      qualifiedName:
+        CSharp: AEye.ConfigFile.TakePicture
+        VB: AEye.ConfigFile.TakePicture
+      type: Property
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: TakePicture
+        path: ConfigFile.cs
+        startLine: 30
+      syntax:
+        content:
+          CSharp: public TakePicture TakePicture { get; set; }
+          VB: Public Property TakePicture As TakePicture
+        parameters: []
+        return:
+          type: AEye.TakePicture
+      overload: AEye.ConfigFile.TakePicture*
+      modifiers:
+        CSharp:
+        - public
+        - get
+        - set
+        VB:
+        - Public
+  - id: AEye.TakePicture
+    commentId: T:AEye.TakePicture
+    language: CSharp
+    name:
+      CSharp: TakePicture
+      VB: TakePicture
+    nameWithType:
+      CSharp: TakePicture
+      VB: TakePicture
+    qualifiedName:
+      CSharp: AEye.TakePicture
+      VB: AEye.TakePicture
+    type: Class
+    assemblies:
+    - Application PC
+    namespace: AEye
+    source:
+      remote:
+        path: A-Eye_Controller/ConfigFile.cs
+        branch: 58fb8a9465f4dec6c39d008f220360524260da98
+        repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+      id: TakePicture
+      path: ConfigFile.cs
+      startLine: 36
+    summary: "\nStructure to indicate if a manual picture must be taken.\n"
+    example: []
+    syntax:
+      content:
+        CSharp: public class TakePicture
+        VB: Public Class TakePicture
+    inheritance:
+    - System.Object
+    inheritedMembers:
+    - System.Object.Equals(System.Object)
+    - System.Object.Equals(System.Object,System.Object)
+    - System.Object.GetHashCode
+    - System.Object.GetType
+    - System.Object.MemberwiseClone
+    - System.Object.ReferenceEquals(System.Object,System.Object)
+    - System.Object.ToString
+    modifiers:
+      CSharp:
+      - public
+      - class
+      VB:
+      - Public
+      - Class
+    items:
+    - id: AEye.TakePicture.Valid
+      commentId: P:AEye.TakePicture.Valid
+      language: CSharp
+      name:
+        CSharp: Valid
+        VB: Valid
+      nameWithType:
+        CSharp: TakePicture.Valid
+        VB: TakePicture.Valid
+      qualifiedName:
+        CSharp: AEye.TakePicture.Valid
+        VB: AEye.TakePicture.Valid
+      type: Property
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: Valid
+        path: ConfigFile.cs
+        startLine: 41
+      summary: "\nBoolean to indicate the status.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public string Valid { get; set; }
+          VB: Public Property Valid As String
+        parameters: []
+        return:
+          type: System.String
+      overload: AEye.TakePicture.Valid*
+      modifiers:
+        CSharp:
+        - public
+        - get
+        - set
+        VB:
+        - Public
+    - id: AEye.TakePicture.#ctor(System.String)
+      commentId: M:AEye.TakePicture.#ctor(System.String)
+      language: CSharp
+      name:
+        CSharp: TakePicture(String)
+        VB: TakePicture(String)
+      nameWithType:
+        CSharp: TakePicture.TakePicture(String)
+        VB: TakePicture.TakePicture(String)
+      qualifiedName:
+        CSharp: AEye.TakePicture.TakePicture(System.String)
+        VB: AEye.TakePicture.TakePicture(System.String)
+      type: Constructor
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: .ctor
+        path: ConfigFile.cs
+        startLine: 47
+      summary: "\nFull constructor.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public TakePicture(string v)
+          VB: Public Sub New(v As String)
+        parameters:
+        - id: v
+          type: System.String
+          description: Boolean value
+      overload: AEye.TakePicture.#ctor*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.TakePicture.#ctor
+      commentId: M:AEye.TakePicture.#ctor
+      language: CSharp
+      name:
+        CSharp: TakePicture()
+        VB: TakePicture()
+      nameWithType:
+        CSharp: TakePicture.TakePicture()
+        VB: TakePicture.TakePicture()
+      qualifiedName:
+        CSharp: AEye.TakePicture.TakePicture()
+        VB: AEye.TakePicture.TakePicture()
+      type: Constructor
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: .ctor
+        path: ConfigFile.cs
+        startLine: 54
+      summary: "\nEmpty constructor.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public TakePicture()
+          VB: Public Sub New
+      overload: AEye.TakePicture.#ctor*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+  - id: AEye.Weights
+    commentId: T:AEye.Weights
+    language: CSharp
+    name:
+      CSharp: Weights
+      VB: Weights
+    nameWithType:
+      CSharp: Weights
+      VB: Weights
+    qualifiedName:
+      CSharp: AEye.Weights
+      VB: AEye.Weights
+    type: Class
+    assemblies:
+    - Application PC
+    namespace: AEye
+    source:
+      remote:
+        path: A-Eye_Controller/ConfigFile.cs
+        branch: 58fb8a9465f4dec6c39d008f220360524260da98
+        repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+      id: Weights
+      path: ConfigFile.cs
+      startLine: 63
+    summary: "\nStructure to indicate if new weights are available.\n"
+    example: []
+    syntax:
+      content:
+        CSharp: public class Weights
+        VB: Public Class Weights
+    inheritance:
+    - System.Object
+    inheritedMembers:
+    - System.Object.Equals(System.Object)
+    - System.Object.Equals(System.Object,System.Object)
+    - System.Object.GetHashCode
+    - System.Object.GetType
+    - System.Object.MemberwiseClone
+    - System.Object.ReferenceEquals(System.Object,System.Object)
+    - System.Object.ToString
+    modifiers:
+      CSharp:
+      - public
+      - class
+      VB:
+      - Public
+      - Class
+    items:
+    - id: AEye.Weights.Valid
+      commentId: P:AEye.Weights.Valid
+      language: CSharp
+      name:
+        CSharp: Valid
+        VB: Valid
+      nameWithType:
+        CSharp: Weights.Valid
+        VB: Weights.Valid
+      qualifiedName:
+        CSharp: AEye.Weights.Valid
+        VB: AEye.Weights.Valid
+      type: Property
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: Valid
+        path: ConfigFile.cs
+        startLine: 68
+      summary: "\nBoolean to indicate the status.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public string Valid { get; set; }
+          VB: Public Property Valid As String
+        parameters: []
+        return:
+          type: System.String
+      overload: AEye.Weights.Valid*
+      modifiers:
+        CSharp:
+        - public
+        - get
+        - set
+        VB:
+        - Public
+    - id: AEye.Weights.#ctor(System.String)
+      commentId: M:AEye.Weights.#ctor(System.String)
+      language: CSharp
+      name:
+        CSharp: Weights(String)
+        VB: Weights(String)
+      nameWithType:
+        CSharp: Weights.Weights(String)
+        VB: Weights.Weights(String)
+      qualifiedName:
+        CSharp: AEye.Weights.Weights(System.String)
+        VB: AEye.Weights.Weights(System.String)
+      type: Constructor
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: .ctor
+        path: ConfigFile.cs
+        startLine: 73
+      summary: "\nFull constructor.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public Weights(string v)
+          VB: Public Sub New(v As String)
+        parameters:
+        - id: v
+          type: System.String
+          description: Boolean value
+      overload: AEye.Weights.#ctor*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.Weights.#ctor
+      commentId: M:AEye.Weights.#ctor
+      language: CSharp
+      name:
+        CSharp: Weights()
+        VB: Weights()
+      nameWithType:
+        CSharp: Weights.Weights()
+        VB: Weights.Weights()
+      qualifiedName:
+        CSharp: AEye.Weights.Weights()
+        VB: AEye.Weights.Weights()
+      type: Constructor
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: .ctor
+        path: ConfigFile.cs
+        startLine: 80
+      summary: "\nEmpty constructor.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public Weights()
+          VB: Public Sub New
+      overload: AEye.Weights.#ctor*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+  - id: AEye.Config
+    commentId: T:AEye.Config
+    language: CSharp
+    name:
+      CSharp: Config
+      VB: Config
+    nameWithType:
+      CSharp: Config
+      VB: Config
+    qualifiedName:
+      CSharp: AEye.Config
+      VB: AEye.Config
+    type: Class
+    assemblies:
+    - Application PC
+    namespace: AEye
+    source:
+      remote:
+        path: A-Eye_Controller/ConfigFile.cs
+        branch: 58fb8a9465f4dec6c39d008f220360524260da98
+        repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+      id: Config
+      path: ConfigFile.cs
+      startLine: 89
+    summary: "\nConfiguration of the Visor app.\n"
+    example: []
+    syntax:
+      content:
+        CSharp: public class Config
+        VB: Public Class Config
+    inheritance:
+    - System.Object
+    inheritedMembers:
+    - System.Object.Equals(System.Object)
+    - System.Object.Equals(System.Object,System.Object)
+    - System.Object.GetHashCode
+    - System.Object.GetType
+    - System.Object.MemberwiseClone
+    - System.Object.ReferenceEquals(System.Object,System.Object)
+    - System.Object.ToString
+    modifiers:
+      CSharp:
+      - public
+      - class
+      VB:
+      - Public
+      - Class
+    items:
+    - id: AEye.Config.StartStop
+      commentId: P:AEye.Config.StartStop
+      language: CSharp
+      name:
+        CSharp: StartStop
+        VB: StartStop
+      nameWithType:
+        CSharp: Config.StartStop
+        VB: Config.StartStop
+      qualifiedName:
+        CSharp: AEye.Config.StartStop
+        VB: AEye.Config.StartStop
+      type: Property
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: StartStop
+        path: ConfigFile.cs
+        startLine: 94
+      summary: "\nBoolean start / stop.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public string StartStop { get; set; }
+          VB: Public Property StartStop As String
+        parameters: []
+        return:
+          type: System.String
+      overload: AEye.Config.StartStop*
+      modifiers:
+        CSharp:
+        - public
+        - get
+        - set
+        VB:
+        - Public
+    - id: AEye.Config.ModeSelector
+      commentId: P:AEye.Config.ModeSelector
+      language: CSharp
+      name:
+        CSharp: ModeSelector
+        VB: ModeSelector
+      nameWithType:
+        CSharp: Config.ModeSelector
+        VB: Config.ModeSelector
+      qualifiedName:
+        CSharp: AEye.Config.ModeSelector
+        VB: AEye.Config.ModeSelector
+      type: Property
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: ModeSelector
+        path: ConfigFile.cs
+        startLine: 99
+      summary: "\nInteger value to indicate the mode.\nSee documentation.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public string ModeSelector { get; set; }
+          VB: Public Property ModeSelector As String
+        parameters: []
+        return:
+          type: System.String
+      overload: AEye.Config.ModeSelector*
+      modifiers:
+        CSharp:
+        - public
+        - get
+        - set
+        VB:
+        - Public
+    - id: AEye.Config.#ctor(System.String,System.String)
+      commentId: M:AEye.Config.#ctor(System.String,System.String)
+      language: CSharp
+      name:
+        CSharp: Config(String, String)
+        VB: Config(String, String)
+      nameWithType:
+        CSharp: Config.Config(String, String)
+        VB: Config.Config(String, String)
+      qualifiedName:
+        CSharp: AEye.Config.Config(System.String, System.String)
+        VB: AEye.Config.Config(System.String, System.String)
+      type: Constructor
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: .ctor
+        path: ConfigFile.cs
+        startLine: 106
+      summary: "\nFull constructor.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public Config(string checked, string selectedIndex)
+          VB: Public Sub New(checked As String, selectedIndex As String)
+        parameters:
+        - id: checked
+          type: System.String
+          description: Start / Stop string value
+        - id: selectedIndex
+          type: System.String
+          description: Mode as integer string value
+      overload: AEye.Config.#ctor*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.Config.#ctor
+      commentId: M:AEye.Config.#ctor
+      language: CSharp
+      name:
+        CSharp: Config()
+        VB: Config()
+      nameWithType:
+        CSharp: Config.Config()
+        VB: Config.Config()
+      qualifiedName:
+        CSharp: AEye.Config.Config()
+        VB: AEye.Config.Config()
+      type: Constructor
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/ConfigFile.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: .ctor
+        path: ConfigFile.cs
+        startLine: 114
+      summary: "\nEmpty constructor.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public Config()
+          VB: Public Sub New
+      overload: AEye.Config.#ctor*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+  - id: AEye.Controller
+    commentId: T:AEye.Controller
+    language: CSharp
+    name:
+      CSharp: Controller
+      VB: Controller
+    nameWithType:
+      CSharp: Controller
+      VB: Controller
+    qualifiedName:
+      CSharp: AEye.Controller
+      VB: AEye.Controller
+    type: Class
+    assemblies:
+    - Application PC
+    namespace: AEye
+    source:
+      remote:
+        path: A-Eye_Controller/Controller.Designer.cs
+        branch: 58fb8a9465f4dec6c39d008f220360524260da98
+        repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+      id: Controller
+      path: Controller.Designer.cs
+      startLine: 2
+    syntax:
+      content:
+        CSharp: 'public class Controller : Form'
+        VB: >-
+          Public Class Controller
+
+              Inherits Form
+    inheritance:
+    - System.Object
+    modifiers:
+      CSharp:
+      - public
+      - class
+      VB:
+      - Public
+      - Class
+    items:
+    - id: AEye.Controller.#ctor
+      commentId: M:AEye.Controller.#ctor
+      language: CSharp
+      name:
+        CSharp: Controller()
+        VB: Controller()
+      nameWithType:
+        CSharp: Controller.Controller()
+        VB: Controller.Controller()
+      qualifiedName:
+        CSharp: AEye.Controller.Controller()
+        VB: AEye.Controller.Controller()
+      type: Constructor
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/Controller.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: .ctor
+        path: Controller.cs
+        startLine: 19
+      summary: "\nInitialize the component.\nGive selected index an initial value.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public Controller()
+          VB: Public Sub New
+      overload: AEye.Controller.#ctor*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.Controller.SetConfig_Click(System.Object,EventArgs)
+      commentId: M:AEye.Controller.SetConfig_Click(System.Object,EventArgs)
+      language: CSharp
+      name:
+        CSharp: SetConfig_Click(Object, EventArgs)
+        VB: SetConfig_Click(Object, EventArgs)
+      nameWithType:
+        CSharp: Controller.SetConfig_Click(Object, EventArgs)
+        VB: Controller.SetConfig_Click(Object, EventArgs)
+      qualifiedName:
+        CSharp: AEye.Controller.SetConfig_Click(System.Object, EventArgs)
+        VB: AEye.Controller.SetConfig_Click(System.Object, EventArgs)
+      type: Method
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/Controller.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: SetConfig_Click
+        path: Controller.cs
+        startLine: 31
+      summary: "\nWrite the configuration to the config.json.\nGoal is to send it to the board.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void SetConfig_Click(object sender, EventArgs e)
+          VB: Public Sub SetConfig_Click(sender As Object, e As EventArgs)
+        parameters:
+        - id: sender
+          type: System.Object
+          description: ''
+        - id: e
+          type: EventArgs
+          description: ''
+      overload: AEye.Controller.SetConfig_Click*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.Controller.TakePict_btn_Click(System.Object,EventArgs)
+      commentId: M:AEye.Controller.TakePict_btn_Click(System.Object,EventArgs)
+      language: CSharp
+      name:
+        CSharp: TakePict_btn_Click(Object, EventArgs)
+        VB: TakePict_btn_Click(Object, EventArgs)
+      nameWithType:
+        CSharp: Controller.TakePict_btn_Click(Object, EventArgs)
+        VB: Controller.TakePict_btn_Click(Object, EventArgs)
+      qualifiedName:
+        CSharp: AEye.Controller.TakePict_btn_Click(System.Object, EventArgs)
+        VB: AEye.Controller.TakePict_btn_Click(System.Object, EventArgs)
+      type: Method
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/Controller.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: TakePict_btn_Click
+        path: Controller.cs
+        startLine: 63
+      summary: "\nOnly in manual mode.\nAsk the board to take a picture and give it back.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void TakePict_btn_Click(object sender, EventArgs e)
+          VB: Public Sub TakePict_btn_Click(sender As Object, e As EventArgs)
+        parameters:
+        - id: sender
+          type: System.Object
+          description: ''
+        - id: e
+          type: EventArgs
+          description: ''
+      overload: AEye.Controller.TakePict_btn_Click*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.Controller.Ip_btn_Click(System.Object,EventArgs)
+      commentId: M:AEye.Controller.Ip_btn_Click(System.Object,EventArgs)
+      language: CSharp
+      name:
+        CSharp: Ip_btn_Click(Object, EventArgs)
+        VB: Ip_btn_Click(Object, EventArgs)
+      nameWithType:
+        CSharp: Controller.Ip_btn_Click(Object, EventArgs)
+        VB: Controller.Ip_btn_Click(Object, EventArgs)
+      qualifiedName:
+        CSharp: AEye.Controller.Ip_btn_Click(System.Object, EventArgs)
+        VB: AEye.Controller.Ip_btn_Click(System.Object, EventArgs)
+      type: Method
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/Controller.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: Ip_btn_Click
+        path: Controller.cs
+        startLine: 113
+      summary: "\nSet the IP to communicate with the board.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void Ip_btn_Click(object sender, EventArgs e)
+          VB: Public Sub Ip_btn_Click(sender As Object, e As EventArgs)
+        parameters:
+        - id: sender
+          type: System.Object
+          description: ''
+        - id: e
+          type: EventArgs
+          description: ''
+      overload: AEye.Controller.Ip_btn_Click*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.Controller.SelectPict_btn_Click(System.Object,EventArgs)
+      commentId: M:AEye.Controller.SelectPict_btn_Click(System.Object,EventArgs)
+      language: CSharp
+      name:
+        CSharp: SelectPict_btn_Click(Object, EventArgs)
+        VB: SelectPict_btn_Click(Object, EventArgs)
+      nameWithType:
+        CSharp: Controller.SelectPict_btn_Click(Object, EventArgs)
+        VB: Controller.SelectPict_btn_Click(Object, EventArgs)
+      qualifiedName:
+        CSharp: AEye.Controller.SelectPict_btn_Click(System.Object, EventArgs)
+        VB: AEye.Controller.SelectPict_btn_Click(System.Object, EventArgs)
+      type: Method
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/Controller.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: SelectPict_btn_Click
+        path: Controller.cs
+        startLine: 147
+      summary: "\nOpen File Dialog to select the picture to display\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void SelectPict_btn_Click(object sender, EventArgs e)
+          VB: Public Sub SelectPict_btn_Click(sender As Object, e As EventArgs)
+        parameters:
+        - id: sender
+          type: System.Object
+          description: ''
+        - id: e
+          type: EventArgs
+          description: ''
+      overload: AEye.Controller.SelectPict_btn_Click*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.Controller.ViewLog_btn_Click(System.Object,EventArgs)
+      commentId: M:AEye.Controller.ViewLog_btn_Click(System.Object,EventArgs)
+      language: CSharp
+      name:
+        CSharp: ViewLog_btn_Click(Object, EventArgs)
+        VB: ViewLog_btn_Click(Object, EventArgs)
+      nameWithType:
+        CSharp: Controller.ViewLog_btn_Click(Object, EventArgs)
+        VB: Controller.ViewLog_btn_Click(Object, EventArgs)
+      qualifiedName:
+        CSharp: AEye.Controller.ViewLog_btn_Click(System.Object, EventArgs)
+        VB: AEye.Controller.ViewLog_btn_Click(System.Object, EventArgs)
+      type: Method
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/Controller.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: ViewLog_btn_Click
+        path: Controller.cs
+        startLine: 160
+      summary: "\nDisplay the log string in a messageBox.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ViewLog_btn_Click(object sender, EventArgs e)
+          VB: Public Sub ViewLog_btn_Click(sender As Object, e As EventArgs)
+        parameters:
+        - id: sender
+          type: System.Object
+          description: ''
+        - id: e
+          type: EventArgs
+          description: ''
+      overload: AEye.Controller.ViewLog_btn_Click*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.Controller.Refresh_img
+      commentId: M:AEye.Controller.Refresh_img
+      language: CSharp
+      name:
+        CSharp: Refresh_img()
+        VB: Refresh_img()
+      nameWithType:
+        CSharp: Controller.Refresh_img()
+        VB: Controller.Refresh_img()
+      qualifiedName:
+        CSharp: AEye.Controller.Refresh_img()
+        VB: AEye.Controller.Refresh_img()
+      type: Method
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/Controller.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: Refresh_img
+        path: Controller.cs
+        startLine: 168
+      summary: "\nThis method is in charge of displaying the incomming picture.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void Refresh_img()
+          VB: Public Sub Refresh_img
+      overload: AEye.Controller.Refresh_img*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.Controller.Dispose(System.Boolean)
+      commentId: M:AEye.Controller.Dispose(System.Boolean)
+      language: CSharp
+      name:
+        CSharp: Dispose(Boolean)
+        VB: Dispose(Boolean)
+      nameWithType:
+        CSharp: Controller.Dispose(Boolean)
+        VB: Controller.Dispose(Boolean)
+      qualifiedName:
+        CSharp: AEye.Controller.Dispose(System.Boolean)
+        VB: AEye.Controller.Dispose(System.Boolean)
+      type: Method
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/Controller.Designer.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: Dispose
+        path: Controller.Designer.cs
+        startLine: 13
+      summary: "\nClean up any resources being used.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: protected override void Dispose(bool disposing)
+          VB: Protected Overrides Sub Dispose(disposing As Boolean)
+        parameters:
+        - id: disposing
+          type: System.Boolean
+          description: true if managed resources should be disposed; otherwise, false.
+      overload: AEye.Controller.Dispose*
+      modifiers:
+        CSharp:
+        - protected
+        - override
+        VB:
+        - Protected
+        - Overrides
+  - id: AEye.SubProcess
+    commentId: T:AEye.SubProcess
+    language: CSharp
+    name:
+      CSharp: SubProcess
+      VB: SubProcess
+    nameWithType:
+      CSharp: SubProcess
+      VB: SubProcess
+    qualifiedName:
+      CSharp: AEye.SubProcess
+      VB: AEye.SubProcess
+    type: Class
+    assemblies:
+    - Application PC
+    namespace: AEye
+    source:
+      remote:
+        path: A-Eye_Controller/SubProcess.cs
+        branch: 58fb8a9465f4dec6c39d008f220360524260da98
+        repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+      id: SubProcess
+      path: SubProcess.cs
+      startLine: 13
+    summary: "\nClass to store the methods used by thread.\n"
+    example: []
+    syntax:
+      content:
+        CSharp: public class SubProcess
+        VB: Public Class SubProcess
+    inheritance:
+    - System.Object
+    inheritedMembers:
+    - System.Object.Equals(System.Object)
+    - System.Object.Equals(System.Object,System.Object)
+    - System.Object.GetHashCode
+    - System.Object.GetType
+    - System.Object.MemberwiseClone
+    - System.Object.ReferenceEquals(System.Object,System.Object)
+    - System.Object.ToString
+    modifiers:
+      CSharp:
+      - public
+      - class
+      VB:
+      - Public
+      - Class
+    items:
+    - id: AEye.SubProcess.run_cmd(System.String,System.String)
+      commentId: M:AEye.SubProcess.run_cmd(System.String,System.String)
+      language: CSharp
+      name:
+        CSharp: run_cmd(String, String)
+        VB: run_cmd(String, String)
+      nameWithType:
+        CSharp: SubProcess.run_cmd(String, String)
+        VB: SubProcess.run_cmd(String, String)
+      qualifiedName:
+        CSharp: AEye.SubProcess.run_cmd(System.String, System.String)
+        VB: AEye.SubProcess.run_cmd(System.String, System.String)
+      type: Method
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/SubProcess.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: run_cmd
+        path: SubProcess.cs
+        startLine: 20
+      summary: "\nRun a python script and redirect the python output to the log.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void run_cmd(string cmd, string args)
+          VB: Public Sub run_cmd(cmd As String, args As String)
+        parameters:
+        - id: cmd
+          type: System.String
+          description: path to the python script.
+        - id: args
+          type: System.String
+          description: arguments to pass to the script.
+      overload: AEye.SubProcess.run_cmd*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.SubProcess.ClientPythonLaunch
+      commentId: M:AEye.SubProcess.ClientPythonLaunch
+      language: CSharp
+      name:
+        CSharp: ClientPythonLaunch()
+        VB: ClientPythonLaunch()
+      nameWithType:
+        CSharp: SubProcess.ClientPythonLaunch()
+        VB: SubProcess.ClientPythonLaunch()
+      qualifiedName:
+        CSharp: AEye.SubProcess.ClientPythonLaunch()
+        VB: AEye.SubProcess.ClientPythonLaunch()
+      type: Method
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/SubProcess.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: ClientPythonLaunch
+        path: SubProcess.cs
+        startLine: 47
+      summary: "\nMethod to call in a thread.\nThis will start the python client to initialize the connection\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void ClientPythonLaunch()
+          VB: Public Sub ClientPythonLaunch
+      overload: AEye.SubProcess.ClientPythonLaunch*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.SubProcess.PipeServer_Run
+      commentId: M:AEye.SubProcess.PipeServer_Run
+      language: CSharp
+      name:
+        CSharp: PipeServer_Run()
+        VB: PipeServer_Run()
+      nameWithType:
+        CSharp: SubProcess.PipeServer_Run()
+        VB: SubProcess.PipeServer_Run()
+      qualifiedName:
+        CSharp: AEye.SubProcess.PipeServer_Run()
+        VB: AEye.SubProcess.PipeServer_Run()
+      type: Method
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/SubProcess.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: PipeServer_Run
+        path: SubProcess.cs
+        startLine: 62
+      summary: "\nNamed pipe is used to communication between Python and C#.\nThis will initiate the pipe and listen on it.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void PipeServer_Run()
+          VB: Public Sub PipeServer_Run
+      overload: AEye.SubProcess.PipeServer_Run*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.SubProcess.storeManualImg
+      commentId: M:AEye.SubProcess.storeManualImg
+      language: CSharp
+      name:
+        CSharp: storeManualImg()
+        VB: storeManualImg()
+      nameWithType:
+        CSharp: SubProcess.storeManualImg()
+        VB: SubProcess.storeManualImg()
+      qualifiedName:
+        CSharp: AEye.SubProcess.storeManualImg()
+        VB: AEye.SubProcess.storeManualImg()
+      type: Method
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/SubProcess.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: storeManualImg
+        path: SubProcess.cs
+        startLine: 97
+      summary: "\nRun the python script to store the image with the goods arguments &quot;manual&quot;.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void storeManualImg()
+          VB: Public Sub storeManualImg
+      overload: AEye.SubProcess.storeManualImg*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+    - id: AEye.SubProcess.storeAutoImg
+      commentId: M:AEye.SubProcess.storeAutoImg
+      language: CSharp
+      name:
+        CSharp: storeAutoImg()
+        VB: storeAutoImg()
+      nameWithType:
+        CSharp: SubProcess.storeAutoImg()
+        VB: SubProcess.storeAutoImg()
+      qualifiedName:
+        CSharp: AEye.SubProcess.storeAutoImg()
+        VB: AEye.SubProcess.storeAutoImg()
+      type: Method
+      assemblies:
+      - Application PC
+      namespace: AEye
+      source:
+        remote:
+          path: A-Eye_Controller/SubProcess.cs
+          branch: 58fb8a9465f4dec6c39d008f220360524260da98
+          repo: https://github.com/GuilhemROLLAND/A-Eye_Controller.git
+        id: storeAutoImg
+        path: SubProcess.cs
+        startLine: 105
+      summary: "\nRun the python script to store the image with the goods arguments &quot;auto&quot;.\n"
+      example: []
+      syntax:
+        content:
+          CSharp: public void storeAutoImg()
+          VB: Public Sub storeAutoImg
+      overload: AEye.SubProcess.storeAutoImg*
+      modifiers:
+        CSharp:
+        - public
+        VB:
+        - Public
+references:
+  System:
+    name:
+      CSharp:
+      - name: System
+        nameWithType: System
+        qualifiedName: System
+        isExternal: true
+      VB:
+      - name: System
+        nameWithType: System
+        qualifiedName: System
+    isDefinition: true
+    commentId: N:System
+  System.Object:
+    name:
+      CSharp:
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+      VB:
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+    isDefinition: true
+    parent: System
+    commentId: T:System.Object
+  System.Object.Equals(System.Object):
+    name:
+      CSharp:
+      - id: System.Object.Equals(System.Object)
+        name: Equals
+        nameWithType: Object.Equals
+        qualifiedName: System.Object.Equals
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+      VB:
+      - id: System.Object.Equals(System.Object)
+        name: Equals
+        nameWithType: Object.Equals
+        qualifiedName: System.Object.Equals
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: true
+    parent: System.Object
+    commentId: M:System.Object.Equals(System.Object)
+  System.Object.Equals(System.Object,System.Object):
+    name:
+      CSharp:
+      - id: System.Object.Equals(System.Object,System.Object)
+        name: Equals
+        nameWithType: Object.Equals
+        qualifiedName: System.Object.Equals
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+      - name: ', '
+        nameWithType: ', '
+        qualifiedName: ', '
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+      VB:
+      - id: System.Object.Equals(System.Object,System.Object)
+        name: Equals
+        nameWithType: Object.Equals
+        qualifiedName: System.Object.Equals
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+      - name: ', '
+        nameWithType: ', '
+        qualifiedName: ', '
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: true
+    parent: System.Object
+    commentId: M:System.Object.Equals(System.Object,System.Object)
+  System.Object.GetHashCode:
+    name:
+      CSharp:
+      - id: System.Object.GetHashCode
+        name: GetHashCode
+        nameWithType: Object.GetHashCode
+        qualifiedName: System.Object.GetHashCode
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+      VB:
+      - id: System.Object.GetHashCode
+        name: GetHashCode
+        nameWithType: Object.GetHashCode
+        qualifiedName: System.Object.GetHashCode
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: true
+    parent: System.Object
+    commentId: M:System.Object.GetHashCode
+  System.Object.GetType:
+    name:
+      CSharp:
+      - id: System.Object.GetType
+        name: GetType
+        nameWithType: Object.GetType
+        qualifiedName: System.Object.GetType
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+      VB:
+      - id: System.Object.GetType
+        name: GetType
+        nameWithType: Object.GetType
+        qualifiedName: System.Object.GetType
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: true
+    parent: System.Object
+    commentId: M:System.Object.GetType
+  System.Object.MemberwiseClone:
+    name:
+      CSharp:
+      - id: System.Object.MemberwiseClone
+        name: MemberwiseClone
+        nameWithType: Object.MemberwiseClone
+        qualifiedName: System.Object.MemberwiseClone
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+      VB:
+      - id: System.Object.MemberwiseClone
+        name: MemberwiseClone
+        nameWithType: Object.MemberwiseClone
+        qualifiedName: System.Object.MemberwiseClone
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: true
+    parent: System.Object
+    commentId: M:System.Object.MemberwiseClone
+  System.Object.ReferenceEquals(System.Object,System.Object):
+    name:
+      CSharp:
+      - id: System.Object.ReferenceEquals(System.Object,System.Object)
+        name: ReferenceEquals
+        nameWithType: Object.ReferenceEquals
+        qualifiedName: System.Object.ReferenceEquals
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+      - name: ', '
+        nameWithType: ', '
+        qualifiedName: ', '
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+      VB:
+      - id: System.Object.ReferenceEquals(System.Object,System.Object)
+        name: ReferenceEquals
+        nameWithType: Object.ReferenceEquals
+        qualifiedName: System.Object.ReferenceEquals
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+      - name: ', '
+        nameWithType: ', '
+        qualifiedName: ', '
+      - id: System.Object
+        name: Object
+        nameWithType: Object
+        qualifiedName: System.Object
+        isExternal: true
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: true
+    parent: System.Object
+    commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  System.Object.ToString:
+    name:
+      CSharp:
+      - id: System.Object.ToString
+        name: ToString
+        nameWithType: Object.ToString
+        qualifiedName: System.Object.ToString
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+      VB:
+      - id: System.Object.ToString
+        name: ToString
+        nameWithType: Object.ToString
+        qualifiedName: System.Object.ToString
+        isExternal: true
+      - name: (
+        nameWithType: (
+        qualifiedName: (
+      - name: )
+        nameWithType: )
+        qualifiedName: )
+    isDefinition: true
+    parent: System.Object
+    commentId: M:System.Object.ToString
+  AEye.ConfigFile.#ctor*:
+    name:
+      CSharp:
+      - id: AEye.ConfigFile.#ctor*
+        name: ConfigFile
+        nameWithType: ConfigFile.ConfigFile
+        qualifiedName: AEye.ConfigFile.ConfigFile
+      VB:
+      - id: AEye.ConfigFile.#ctor*
+        name: ConfigFile
+        nameWithType: ConfigFile.ConfigFile
+        qualifiedName: AEye.ConfigFile.ConfigFile
+    isDefinition: true
+    commentId: Overload:AEye.ConfigFile.#ctor
+  AEye:
+    name:
+      CSharp:
+      - name: AEye
+        nameWithType: AEye
+        qualifiedName: AEye
+      VB:
+      - name: AEye
+        nameWithType: AEye
+        qualifiedName: AEye
+    isDefinition: true
+    commentId: N:AEye
+  AEye.Config:
+    name:
+      CSharp:
+      - id: AEye.Config
+        name: Config
+        nameWithType: Config
+        qualifiedName: AEye.Config
+      VB:
+      - id: AEye.Config
+        name: Config
+        nameWithType: Config
+        qualifiedName: AEye.Config
+    isDefinition: true
+    parent: AEye
+    commentId: T:AEye.Config
+  AEye.Weights:
+    name:
+      CSharp:
+      - id: AEye.Weights
+        name: Weights
+        nameWithType: Weights
+        qualifiedName: AEye.Weights
+      VB:
+      - id: AEye.Weights
+        name: Weights
+        nameWithType: Weights
+        qualifiedName: AEye.Weights
+    isDefinition: true
+    parent: AEye
+    commentId: T:AEye.Weights
+  AEye.TakePicture:
+    name:
+      CSharp:
+      - id: AEye.TakePicture
+        name: TakePicture
+        nameWithType: TakePicture
+        qualifiedName: AEye.TakePicture
+      VB:
+      - id: AEye.TakePicture
+        name: TakePicture
+        nameWithType: TakePicture
+        qualifiedName: AEye.TakePicture
+    isDefinition: true
+    parent: AEye
+    commentId: T:AEye.TakePicture
+  AEye.ConfigFile.Config*:
+    name:
+      CSharp:
+      - id: AEye.ConfigFile.Config*
+        name: Config
+        nameWithType: ConfigFile.Config
+        qualifiedName: AEye.ConfigFile.Config
+      VB:
+      - id: AEye.ConfigFile.Config*
+        name: Config
+        nameWithType: ConfigFile.Config
+        qualifiedName: AEye.ConfigFile.Config
+    isDefinition: true
+    commentId: Overload:AEye.ConfigFile.Config
+  AEye.ConfigFile.Weights*:
+    name:
+      CSharp:
+      - id: AEye.ConfigFile.Weights*
+        name: Weights
+        nameWithType: ConfigFile.Weights
+        qualifiedName: AEye.ConfigFile.Weights
+      VB:
+      - id: AEye.ConfigFile.Weights*
+        name: Weights
+        nameWithType: ConfigFile.Weights
+        qualifiedName: AEye.ConfigFile.Weights
+    isDefinition: true
+    commentId: Overload:AEye.ConfigFile.Weights
+  AEye.ConfigFile.TakePicture*:
+    name:
+      CSharp:
+      - id: AEye.ConfigFile.TakePicture*
+        name: TakePicture
+        nameWithType: ConfigFile.TakePicture
+        qualifiedName: AEye.ConfigFile.TakePicture
+      VB:
+      - id: AEye.ConfigFile.TakePicture*
+        name: TakePicture
+        nameWithType: ConfigFile.TakePicture
+        qualifiedName: AEye.ConfigFile.TakePicture
+    isDefinition: true
+    commentId: Overload:AEye.ConfigFile.TakePicture
+  AEye.ConfigFile:
+    name:
+      CSharp:
+      - id: AEye.ConfigFile
+        name: ConfigFile
+        nameWithType: ConfigFile
+        qualifiedName: AEye.ConfigFile
+      VB:
+      - id: AEye.ConfigFile
+        name: ConfigFile
+        nameWithType: ConfigFile
+        qualifiedName: AEye.ConfigFile
+    isDefinition: true
+    commentId: T:AEye.ConfigFile
+  System.String:
+    name:
+      CSharp:
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+      VB:
+      - id: System.String
+        name: String
+        nameWithType: String
+        qualifiedName: System.String
+        isExternal: true
+    isDefinition: true
+    parent: System
+    commentId: T:System.String
+  AEye.TakePicture.Valid*:
+    name:
+      CSharp:
+      - id: AEye.TakePicture.Valid*
+        name: Valid
+        nameWithType: TakePicture.Valid
+        qualifiedName: AEye.TakePicture.Valid
+      VB:
+      - id: AEye.TakePicture.Valid*
+        name: Valid
+        nameWithType: TakePicture.Valid
+        qualifiedName: AEye.TakePicture.Valid
+    isDefinition: true
+    commentId: Overload:AEye.TakePicture.Valid
+  AEye.TakePicture.#ctor*:
+    name:
+      CSharp:
+      - id: AEye.TakePicture.#ctor*
+        name: TakePicture
+        nameWithType: TakePicture.TakePicture
+        qualifiedName: AEye.TakePicture.TakePicture
+      VB:
+      - id: AEye.TakePicture.#ctor*
+        name: TakePicture
+        nameWithType: TakePicture.TakePicture
+        qualifiedName: AEye.TakePicture.TakePicture
+    isDefinition: true
+    commentId: Overload:AEye.TakePicture.#ctor
+  AEye.Weights.Valid*:
+    name:
+      CSharp:
+      - id: AEye.Weights.Valid*
+        name: Valid
+        nameWithType: Weights.Valid
+        qualifiedName: AEye.Weights.Valid
+      VB:
+      - id: AEye.Weights.Valid*
+        name: Valid
+        nameWithType: Weights.Valid
+        qualifiedName: AEye.Weights.Valid
+    isDefinition: true
+    commentId: Overload:AEye.Weights.Valid
+  AEye.Weights.#ctor*:
+    name:
+      CSharp:
+      - id: AEye.Weights.#ctor*
+        name: Weights
+        nameWithType: Weights.Weights
+        qualifiedName: AEye.Weights.Weights
+      VB:
+      - id: AEye.Weights.#ctor*
+        name: Weights
+        nameWithType: Weights.Weights
+        qualifiedName: AEye.Weights.Weights
+    isDefinition: true
+    commentId: Overload:AEye.Weights.#ctor
+  AEye.Config.StartStop*:
+    name:
+      CSharp:
+      - id: AEye.Config.StartStop*
+        name: StartStop
+        nameWithType: Config.StartStop
+        qualifiedName: AEye.Config.StartStop
+      VB:
+      - id: AEye.Config.StartStop*
+        name: StartStop
+        nameWithType: Config.StartStop
+        qualifiedName: AEye.Config.StartStop
+    isDefinition: true
+    commentId: Overload:AEye.Config.StartStop
+  AEye.Config.ModeSelector*:
+    name:
+      CSharp:
+      - id: AEye.Config.ModeSelector*
+        name: ModeSelector
+        nameWithType: Config.ModeSelector
+        qualifiedName: AEye.Config.ModeSelector
+      VB:
+      - id: AEye.Config.ModeSelector*
+        name: ModeSelector
+        nameWithType: Config.ModeSelector
+        qualifiedName: AEye.Config.ModeSelector
+    isDefinition: true
+    commentId: Overload:AEye.Config.ModeSelector
+  AEye.Config.#ctor*:
+    name:
+      CSharp:
+      - id: AEye.Config.#ctor*
+        name: Config
+        nameWithType: Config.Config
+        qualifiedName: AEye.Config.Config
+      VB:
+      - id: AEye.Config.#ctor*
+        name: Config
+        nameWithType: Config.Config
+        qualifiedName: AEye.Config.Config
+    isDefinition: true
+    commentId: Overload:AEye.Config.#ctor
+  AEye.Controller.#ctor*:
+    name:
+      CSharp:
+      - id: AEye.Controller.#ctor*
+        name: Controller
+        nameWithType: Controller.Controller
+        qualifiedName: AEye.Controller.Controller
+      VB:
+      - id: AEye.Controller.#ctor*
+        name: Controller
+        nameWithType: Controller.Controller
+        qualifiedName: AEye.Controller.Controller
+    isDefinition: true
+    commentId: Overload:AEye.Controller.#ctor
+  EventArgs:
+    name:
+      CSharp:
+      - id: EventArgs
+        name: EventArgs
+        nameWithType: EventArgs
+        qualifiedName: EventArgs
+        isExternal: true
+      VB:
+      - id: EventArgs
+        name: EventArgs
+        nameWithType: EventArgs
+        qualifiedName: EventArgs
+        isExternal: true
+    isDefinition: true
+  AEye.Controller.SetConfig_Click*:
+    name:
+      CSharp:
+      - id: AEye.Controller.SetConfig_Click*
+        name: SetConfig_Click
+        nameWithType: Controller.SetConfig_Click
+        qualifiedName: AEye.Controller.SetConfig_Click
+      VB:
+      - id: AEye.Controller.SetConfig_Click*
+        name: SetConfig_Click
+        nameWithType: Controller.SetConfig_Click
+        qualifiedName: AEye.Controller.SetConfig_Click
+    isDefinition: true
+    commentId: Overload:AEye.Controller.SetConfig_Click
+  AEye.Controller.TakePict_btn_Click*:
+    name:
+      CSharp:
+      - id: AEye.Controller.TakePict_btn_Click*
+        name: TakePict_btn_Click
+        nameWithType: Controller.TakePict_btn_Click
+        qualifiedName: AEye.Controller.TakePict_btn_Click
+      VB:
+      - id: AEye.Controller.TakePict_btn_Click*
+        name: TakePict_btn_Click
+        nameWithType: Controller.TakePict_btn_Click
+        qualifiedName: AEye.Controller.TakePict_btn_Click
+    isDefinition: true
+    commentId: Overload:AEye.Controller.TakePict_btn_Click
+  AEye.Controller.Ip_btn_Click*:
+    name:
+      CSharp:
+      - id: AEye.Controller.Ip_btn_Click*
+        name: Ip_btn_Click
+        nameWithType: Controller.Ip_btn_Click
+        qualifiedName: AEye.Controller.Ip_btn_Click
+      VB:
+      - id: AEye.Controller.Ip_btn_Click*
+        name: Ip_btn_Click
+        nameWithType: Controller.Ip_btn_Click
+        qualifiedName: AEye.Controller.Ip_btn_Click
+    isDefinition: true
+    commentId: Overload:AEye.Controller.Ip_btn_Click
+  AEye.Controller.SelectPict_btn_Click*:
+    name:
+      CSharp:
+      - id: AEye.Controller.SelectPict_btn_Click*
+        name: SelectPict_btn_Click
+        nameWithType: Controller.SelectPict_btn_Click
+        qualifiedName: AEye.Controller.SelectPict_btn_Click
+      VB:
+      - id: AEye.Controller.SelectPict_btn_Click*
+        name: SelectPict_btn_Click
+        nameWithType: Controller.SelectPict_btn_Click
+        qualifiedName: AEye.Controller.SelectPict_btn_Click
+    isDefinition: true
+    commentId: Overload:AEye.Controller.SelectPict_btn_Click
+  AEye.Controller.ViewLog_btn_Click*:
+    name:
+      CSharp:
+      - id: AEye.Controller.ViewLog_btn_Click*
+        name: ViewLog_btn_Click
+        nameWithType: Controller.ViewLog_btn_Click
+        qualifiedName: AEye.Controller.ViewLog_btn_Click
+      VB:
+      - id: AEye.Controller.ViewLog_btn_Click*
+        name: ViewLog_btn_Click
+        nameWithType: Controller.ViewLog_btn_Click
+        qualifiedName: AEye.Controller.ViewLog_btn_Click
+    isDefinition: true
+    commentId: Overload:AEye.Controller.ViewLog_btn_Click
+  AEye.Controller.Refresh_img*:
+    name:
+      CSharp:
+      - id: AEye.Controller.Refresh_img*
+        name: Refresh_img
+        nameWithType: Controller.Refresh_img
+        qualifiedName: AEye.Controller.Refresh_img
+      VB:
+      - id: AEye.Controller.Refresh_img*
+        name: Refresh_img
+        nameWithType: Controller.Refresh_img
+        qualifiedName: AEye.Controller.Refresh_img
+    isDefinition: true
+    commentId: Overload:AEye.Controller.Refresh_img
+  System.Boolean:
+    name:
+      CSharp:
+      - id: System.Boolean
+        name: Boolean
+        nameWithType: Boolean
+        qualifiedName: System.Boolean
+        isExternal: true
+      VB:
+      - id: System.Boolean
+        name: Boolean
+        nameWithType: Boolean
+        qualifiedName: System.Boolean
+        isExternal: true
+    isDefinition: true
+    parent: System
+    commentId: T:System.Boolean
+  AEye.Controller.Dispose*:
+    name:
+      CSharp:
+      - id: AEye.Controller.Dispose*
+        name: Dispose
+        nameWithType: Controller.Dispose
+        qualifiedName: AEye.Controller.Dispose
+      VB:
+      - id: AEye.Controller.Dispose*
+        name: Dispose
+        nameWithType: Controller.Dispose
+        qualifiedName: AEye.Controller.Dispose
+    isDefinition: true
+    commentId: Overload:AEye.Controller.Dispose
+  AEye.Controller:
+    name:
+      CSharp:
+      - id: AEye.Controller
+        name: Controller
+        nameWithType: Controller
+        qualifiedName: AEye.Controller
+      VB:
+      - id: AEye.Controller
+        name: Controller
+        nameWithType: Controller
+        qualifiedName: AEye.Controller
+    isDefinition: true
+    commentId: T:AEye.Controller
+  AEye.SubProcess.run_cmd*:
+    name:
+      CSharp:
+      - id: AEye.SubProcess.run_cmd*
+        name: run_cmd
+        nameWithType: SubProcess.run_cmd
+        qualifiedName: AEye.SubProcess.run_cmd
+      VB:
+      - id: AEye.SubProcess.run_cmd*
+        name: run_cmd
+        nameWithType: SubProcess.run_cmd
+        qualifiedName: AEye.SubProcess.run_cmd
+    isDefinition: true
+    commentId: Overload:AEye.SubProcess.run_cmd
+  AEye.SubProcess.ClientPythonLaunch*:
+    name:
+      CSharp:
+      - id: AEye.SubProcess.ClientPythonLaunch*
+        name: ClientPythonLaunch
+        nameWithType: SubProcess.ClientPythonLaunch
+        qualifiedName: AEye.SubProcess.ClientPythonLaunch
+      VB:
+      - id: AEye.SubProcess.ClientPythonLaunch*
+        name: ClientPythonLaunch
+        nameWithType: SubProcess.ClientPythonLaunch
+        qualifiedName: AEye.SubProcess.ClientPythonLaunch
+    isDefinition: true
+    commentId: Overload:AEye.SubProcess.ClientPythonLaunch
+  AEye.SubProcess.PipeServer_Run*:
+    name:
+      CSharp:
+      - id: AEye.SubProcess.PipeServer_Run*
+        name: PipeServer_Run
+        nameWithType: SubProcess.PipeServer_Run
+        qualifiedName: AEye.SubProcess.PipeServer_Run
+      VB:
+      - id: AEye.SubProcess.PipeServer_Run*
+        name: PipeServer_Run
+        nameWithType: SubProcess.PipeServer_Run
+        qualifiedName: AEye.SubProcess.PipeServer_Run
+    isDefinition: true
+    commentId: Overload:AEye.SubProcess.PipeServer_Run
+  AEye.SubProcess.storeManualImg*:
+    name:
+      CSharp:
+      - id: AEye.SubProcess.storeManualImg*
+        name: storeManualImg
+        nameWithType: SubProcess.storeManualImg
+        qualifiedName: AEye.SubProcess.storeManualImg
+      VB:
+      - id: AEye.SubProcess.storeManualImg*
+        name: storeManualImg
+        nameWithType: SubProcess.storeManualImg
+        qualifiedName: AEye.SubProcess.storeManualImg
+    isDefinition: true
+    commentId: Overload:AEye.SubProcess.storeManualImg
+  AEye.SubProcess.storeAutoImg*:
+    name:
+      CSharp:
+      - id: AEye.SubProcess.storeAutoImg*
+        name: storeAutoImg
+        nameWithType: SubProcess.storeAutoImg
+        qualifiedName: AEye.SubProcess.storeAutoImg
+      VB:
+      - id: AEye.SubProcess.storeAutoImg*
+        name: storeAutoImg
+        nameWithType: SubProcess.storeAutoImg
+        qualifiedName: AEye.SubProcess.storeAutoImg
+    isDefinition: true
+    commentId: Overload:AEye.SubProcess.storeAutoImg
+  AEye.SubProcess:
+    name:
+      CSharp:
+      - id: AEye.SubProcess
+        name: SubProcess
+        nameWithType: SubProcess
+        qualifiedName: AEye.SubProcess
+      VB:
+      - id: AEye.SubProcess
+        name: SubProcess
+        nameWithType: SubProcess
+        qualifiedName: AEye.SubProcess
+    isDefinition: true
+    commentId: T:AEye.SubProcess

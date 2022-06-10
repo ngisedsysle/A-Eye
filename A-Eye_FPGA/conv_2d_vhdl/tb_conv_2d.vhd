@@ -23,10 +23,10 @@ USE IEEE.FLOAT_PKG.ALL;
 USE WORK.CONV_PKG.ALL;
 ENTITY TB_CONV_2D IS
     GENERIC (
-        G_TB_I_WIDTH : INTEGER := 9;
-        G_TB_I_HEIGHT : INTEGER := 3;
-        G_TB_K_WIDTH : INTEGER := 3;
-        G_TB_K_HEIGHT : INTEGER := 3);
+        G_TB_I_WIDTH : INTEGER := 4;
+        G_TB_I_PROF : INTEGER := 3;
+        G_TB_K_WIDTH : INTEGER := 2;
+        G_TB_K_PROF : INTEGER := 3);
 
 END TB_CONV_2D;
 
@@ -41,26 +41,28 @@ ARCHITECTURE BEHAVIORAL OF TB_CONV_2D IS
             START : IN STD_LOGIC;
             CLK : IN STD_LOGIC;
             RESET : IN STD_LOGIC;
-            KRNL : IN FLOAT32_3D(0 TO 2, 0 TO 2, 0 TO 2);
-            IN_IMG : IN FLOAT32_3D(0 TO 8, 0 TO 8, 0 TO 2);
+            KRNL : IN FLOAT32_3D(0 TO (G_K_WIDTH - 1), 0 TO (G_K_WIDTH - 1), 0 TO (G_K_PROF - 1));
+            IN_IMG : IN FLOAT32_3D(0 TO (G_I_WIDTH - 1), 0 TO (G_I_WIDTH - 1), 0 TO (G_I_PROF - 1));
+
             FINISHED : OUT STD_LOGIC;
-            OUT_IMG : OUT FLOAT32_3D (0 TO 6, 0 TO 6, 0 TO 2));
+            OUT_IMG : OUT FLOAT32_3D (0 TO (G_I_WIDTH - (G_K_WIDTH - 1)), 0 TO (G_I_WIDTH - (G_K_WIDTH - 1)), 0 TO (G_K_PROF - 1)));
     END COMPONENT;
 
     SIGNAL TB_START, TB_RESET, TB_FINISH : STD_LOGIC := '0';
     SIGNAL TB_CLK : STD_LOGIC := '1';
-    SIGNAL TB_OUT_IMG : FLOAT32_3D (0 TO 6, 0 TO 6, 0 TO 2) := (OTHERS => (OTHERS => (OTHERS => TO_FLOAT(0.0))));
-    SIGNAL TB_KRNL : FLOAT32_3D(0 TO 2, 0 TO 2, 0 TO 2) := (OTHERS => (OTHERS => (OTHERS => TO_FLOAT(0.0))));
-    SIGNAL TB_IN_IMG : FLOAT32_3D(0 TO 8, 0 TO 8, 0 TO 2) := (OTHERS => (OTHERS => (OTHERS => TO_FLOAT(0.0))));
+    SIGNAL TB_OUT_IMG : FLOAT32_3D (0 TO (G_TB_I_WIDTH - (G_TB_K_WIDTH - 1)) - 1, 0 TO (G_TB_I_WIDTH - (G_TB_K_WIDTH - 1)) - 1, 0 TO (G_TB_K_PROF - 1)) := (OTHERS => (OTHERS => (OTHERS => TO_FLOAT(0.0))));
+    SIGNAL TB_KRNL : FLOAT32_3D(0 TO (G_TB_K_WIDTH - 1), 0 TO (G_TB_K_WIDTH - 1), 0 TO (G_TB_K_PROF - 1)) := (OTHERS => (OTHERS => (OTHERS => TO_FLOAT(0.0))));
+    SIGNAL TB_IN_IMG : FLOAT32_3D(0 TO (G_TB_I_WIDTH - 1), 0 TO (G_TB_I_WIDTH - 1), 0 TO (G_TB_I_PROF - 1)) := (OTHERS => (OTHERS => (OTHERS => TO_FLOAT(0.0))));
+    SIGNAL COUNT : INTEGER := 0;
 
 BEGIN
 
     DUT_CMP_CONV_2D : CMP_CONV_2D
     GENERIC MAP(
         G_I_WIDTH => G_TB_I_WIDTH,
-        G_I_PROF => G_TB_I_HEIGHT,
+        G_I_PROF => G_TB_I_PROF,
         G_K_WIDTH => G_TB_K_WIDTH,
-        G_K_PROF => G_TB_K_HEIGHT
+        G_K_PROF => G_TB_K_PROF
     )
     PORT MAP(
         START => TB_START,
@@ -79,7 +81,6 @@ BEGIN
     END PROCESS;
 
     COMPUTE : PROCESS (TB_CLK)
-        VARIABLE COUNT : INTEGER := 0;
     BEGIN
         IF (RISING_EDGE(TB_CLK)) THEN
 
@@ -90,8 +91,11 @@ BEGIN
             END IF;
 
             IF (TB_FINISH = '1') THEN
-                TB_RESET <= '0';
-                COUNT := COUNT + 1;
+                IF (TB_RESET = '1') THEN
+                    TB_RESET <= '0';
+                    TB_START <= '0';
+                    COUNT <= COUNT + 1;
+                END IF;
             END IF;
 
             IF (COUNT = 0) THEN

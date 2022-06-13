@@ -47,12 +47,12 @@ The goal of the project was to build a system capable of sorting images with and
 <div style="text-align: justify">  
 
 The target for this system was a ZYNQ processor.
-Our system is divided between a embedded sytem on ZYBO board and an application on a computer.
+Our system is divided between an embedded sytem on ZYBO board and an application on a computer.
 </div>
 
 ### Application
 
-![Application](ihm.jpg)
+![Application](ihm.JPG)
 
 
 
@@ -83,6 +83,7 @@ A convolution IP was developped using VHDL for hardware acceleration.
 - [Gherkin](https://cucumber.io/docs/gherkin/) : test automatisation
 - [CMake](https://cmake.org/) : compiling and building the project
 - [Doxygen](https://doxygen.nl/) : documentation of the project
+- [.NET6](https://docs.microsoft.com/fr-fr/dotnet/core/whats-new/dotnet-6) : Framework used for A-Eye_Controller
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

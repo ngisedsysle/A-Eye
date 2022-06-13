@@ -52,7 +52,7 @@ Our system is divided between an embedded sytem on ZYBO board and an application
 
 ### Application
 
-![Application](ihm.png)
+![Application](ihm.JPG)
 
 
 

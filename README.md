@@ -47,12 +47,12 @@ The goal of the project was to build a system capable of sorting images with and
 <div style="text-align: justify">  
 
 The target for this system was a ZYNQ processor.
-Our system is divided between a embedded sytem on ZYBO board and an application on a computer.
+Our system is divided between an embedded sytem on ZYBO board and an application on a computer.
 </div>
 
 ### Application
 
-![Application](ihm.jpg)
+![Application](ihm.png)
 
 
 

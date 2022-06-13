@@ -165,7 +165,7 @@ namespace AEye
         /// <param name="e"></param>
         public void ViewLog_btn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Program.log);
+            FlexibleMessageBox.Show(Program.log);
         }
 
         /// <summary>

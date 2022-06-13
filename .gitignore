@@ -1,7 +1,9 @@
-A-Eye_Controller/A-Eye_Controller/articles/*
-A-Eye_Controller/A-Eye_Controller/obj/*
-A-Eye_Controller/A-Eye_Controller/build/*
+A-Eye_Controller/A-Eye_Controller/articles
+A-Eye_Controller/A-Eye_Controller/obj
+A-Eye_Controller/A-Eye_Controller/bin
+A-Eye_Controller/A-Eye_Controller/build
 A-Eye_Controller/SpecFlowProject1/obj/*
 A-Eye_Controller/A-Eye_Controller/api
 A-Eye_Controller/A-Eye_Controller/obj
+A-Eye_Controller/.vs
 A-Eye_FPGA/conv_2d_vhdl/sim/*

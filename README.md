@@ -83,6 +83,7 @@ A convolution IP was developped using VHDL for hardware acceleration.
 - [Gherkin](https://cucumber.io/docs/gherkin/) : test automatisation
 - [CMake](https://cmake.org/) : compiling and building the project
 - [Doxygen](https://doxygen.nl/) : documentation of the project
+- [.NET6](https://docs.microsoft.com/fr-fr/dotnet/core/whats-new/dotnet-6) : Framework used for A-Eye_Controller
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

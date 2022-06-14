@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "../Circular_buffer/circular_buffer.h"
+#include <stdio.h>
 
 #ifndef _ENCODAGETM_H
 #define _ENCODAGETM_H

@@ -6,6 +6,7 @@
 <p align="center">
 <em>An awesome project for embedded AI</em>
 </p>
+Developpers : Guilhem ROLLAND and Thomas DU BOISROUVRAY
 This repository contains the documented source for this project.
 
 <!-- TABLE OF CONTENTS -->

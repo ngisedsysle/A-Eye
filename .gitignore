@@ -25,3 +25,6 @@ A-Eye_root/A-Eye_Visor/json
 A-Eye_root/A-Eye_Visor/Makefile
 A-Eye_root/A-Eye_Visor/preprocess
 airbus_train_bmp
+A-Eye_root/temp.bmp
+A-Eye_root/A-Eye_Visor/temp.bmp
+A-Eye_root/temp.csv

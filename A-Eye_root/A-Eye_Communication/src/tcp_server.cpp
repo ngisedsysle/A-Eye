@@ -8,9 +8,36 @@
  * @copyright Copyright (c) 2022
  * 
  */
-
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <thread>	// For sleep
+#include <atomic>
+#include <chrono>
+#include <cstring>
+#include "mqtt/async_client.h"
 #include "tcp_server.h"
 
+extern "C++"
+{
+    using namespace std;
+
+    const string DFLT_SERVER_ADDRESS { "tcp://localhost:1883" };
+
+    const string TOPIC { "test" };
+    const int QOS = 1;
+
+    const char* PAYLOADS[] = {
+        "Hello World!",
+        "Hi there!",
+        "Is anyone listening?",
+        "Someone is always listening.",
+        nullptr
+    };
+    const auto TIMEOUT = std::chrono::seconds(10);
+}
+extern "C"
+{
 #define IMG_LENGTH 921656 /*!<Lenght of a 640*480 bmp image*/
 #define PORT 64000 /*! <Chosen port for the application*/
 struct mainStruct *main_s; /*! <reference to struct_allocation.h*/
@@ -26,8 +53,8 @@ short SocketCreate(void)
 
 void *thread_rcv(void *arg)
 {
-    socket_thr_s *soc = arg;
-    main_s->ack = malloc(100 * sizeof(char));
+    socket_thr_s *soc = (socket_thr_s*) arg;
+    main_s->ack = (char*) malloc(100 * sizeof(char));
     char client_message[200] = {0};
     while (1)
     {
@@ -73,7 +100,7 @@ void *thread_rcv(void *arg)
 void *thread_send(void *arg)
 {
     printf("Pipe opened\n");
-    socket_thr_s *soc = arg;
+    socket_thr_s *soc = (socket_thr_s*) arg;
     while (1)
     {
         // if new data : send new data
@@ -178,36 +205,36 @@ int BindCreatedSocket(int hSocket)
     remote.sin_port = htons(ClientPort); /* Local port */
     iRetval = bind(hSocket, (struct sockaddr *)&remote, sizeof(remote));
     return iRetval;
-}
+}}
 
 int main()
 {
-    if ((main_s = calloc(1,sizeof(mainStruct))) == NULL)
+    if ((main_s = (mainStruct*) calloc(1,sizeof(mainStruct))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->img_s = calloc(1,sizeof(img))) == NULL)
+    if ((main_s->img_s = (img*) calloc(1,sizeof(img))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->cmd_struct = calloc(1,sizeof(cmd))) == NULL)
+    if ((main_s->cmd_struct = (cmd*) calloc(1,sizeof(cmd))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->chg_mode_struct = calloc(1,sizeof(chg_mode))) == NULL)
+    if ((main_s->chg_mode_struct = (chg_mode*) calloc(1,sizeof(chg_mode))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->weight_struct = calloc(1,sizeof(weight_upd))) == NULL)
+    if ((main_s->weight_struct = (weight_upd*) calloc(1,sizeof(weight_upd))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->buf_f_struct = calloc(1,sizeof(circular_buf_t) + sizeof(bool))) == NULL)
+    if ((main_s->buf_f_struct = (buf_f*) calloc(1,sizeof(circular_buf_t) + sizeof(bool))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
@@ -220,7 +247,7 @@ int main()
 
     // Create socket
     socket_thr_s *soc;
-    if ((soc = malloc(sizeof(socket_thr_s))) == NULL)
+    if ((soc = (socket_thr_s*) malloc(sizeof(socket_thr_s))) == NULL)
     {
         printf("erreur allocation memoire\n");
         return -1;

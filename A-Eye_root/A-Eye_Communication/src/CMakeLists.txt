@@ -11,8 +11,14 @@ add_subdirectory(TC)
 add_subdirectory(TM)
 add_subdirectory(Interpreteur)
 
+set(MQTT_LIBRARIES
+    paho-mqttpp3
+    paho-mqtt3as
+    paho-mqtt3c
+    )
+
 set(SRC
-    tcp_server.c
+    mqtt_publish.cpp
     Server/tcp_server.h)
     
 add_executable(server ${SRC})
@@ -27,3 +33,4 @@ target_link_libraries(server tc)
 target_link_libraries(server tm)
 target_link_libraries(server interpreteur)
 target_link_libraries(server pthread)
+target_link_libraries(server ${MQTT_LIBRARIES})

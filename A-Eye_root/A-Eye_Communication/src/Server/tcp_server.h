@@ -20,7 +20,6 @@
 #include<fcntl.h>
 #include "../TC/decodageTC.h"
 #include "../TM/encodageTM.h"
-#include "../struct_allocation.h"
 
 
 #ifndef _TCPSERVER_H

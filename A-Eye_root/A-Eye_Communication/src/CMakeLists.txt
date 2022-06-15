@@ -9,24 +9,21 @@ project(A-Eye_Communication)
 # SUBDIRECTORIES
 add_subdirectory(TC)
 add_subdirectory(TM)
-add_subdirectory(Server)
 add_subdirectory(Interpreteur)
 
-# SOURCE FILES
 set(SRC
-    server.c)
+    tcp_server.c
+    Server/tcp_server.h)
+    
+add_executable(server ${SRC})
 
 # INCLUDE DIRECTORY
-include_directories(Server)
+target_include_directories(server PRIVATE Server)
 
 # EXECUTABLE
-add_executable(server ${SRC}
-    Server/tcp_server.h)
 
 # LIBRARIES TO LINK
-# target_link_libraries(AI json)
 target_link_libraries(server tc)
 target_link_libraries(server tm)
 target_link_libraries(server interpreteur)
-target_link_libraries(server server)
 target_link_libraries(server pthread)

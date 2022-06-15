@@ -13,5 +13,5 @@ add_subdirectory(src)
 
 install(PROGRAMS ${CMAKE_SOURCE_DIR}/src
         DESTINATION bin
-        RENAME ${CMAKE_PROJECT_NAME}-A-Eye_Visor)
+        RENAME ${CMAKE_PROJECT_NAME}-A-Eye_Communication)
 

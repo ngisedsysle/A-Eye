@@ -9,7 +9,7 @@
  * 
  */
 
-#include "../struct_allocation.h"
+#include "struct_allocation.h"
 #include "../TM/encodageTM.h"
 #ifndef _INTERPRETEUR_H
 #define _INTERPRETEUR_H

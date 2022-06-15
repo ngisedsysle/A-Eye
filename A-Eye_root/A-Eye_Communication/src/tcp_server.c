@@ -1,20 +1,19 @@
 /**
  * @file tcp_server.c
  * @author Thomas du Boisrouvray (thomas.duboisrouvray@elsys-design.com)
- * @brief This file implements a tcp server on port 64000 with a thread for sending and a thread for receiving 
+ * @brief This file implements a tcp server on port 64000 with a thread for sending and a thread for receiving
  * @version 0.1
  * @date 2022-05-25
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
 #include "tcp_server.h"
 
-#define IMG_LENGTH 921656 /*!<Lenght of a 640*480 bmp image*/
-#define PORT 64000 /*! <Chosen port for the application*/
+#define IMG_LENGTH 921656  /*!<Lenght of a 640*480 bmp image*/
+#define PORT 64000         /*! <Chosen port for the application*/
 struct mainStruct *main_s; /*! <reference to struct_allocation.h*/
-
 
 short SocketCreate(void)
 {
@@ -36,6 +35,7 @@ void *thread_rcv(void *arg)
         if (recv(soc->sock, client_message, 200, 0) < 0)
         {
             printf("recv failed\n");
+            return NULL;
         }
         else
         {
@@ -115,7 +115,7 @@ void *thread_send(void *arg)
             // Send some data
             printf("Sending image from manual capture ...\n");
             printf("Code op : %d  ||  ", imgTM[0]);
-            printf("Length : %08x\n", (unsigned int) imgTM[1] | (unsigned int) imgTM[2] << 8 | (unsigned int) imgTM[3] << 16 | (unsigned int) imgTM[4] << 24);
+            printf("Length : %08x\n", (unsigned int)imgTM[1] | (unsigned int)imgTM[2] << 8 | (unsigned int)imgTM[3] << 16 | (unsigned int)imgTM[4] << 24);
             if (send(soc->sock, imgTM, main_s->img_s->length + 5, 0) < 0)
             {
                 printf("Send failed\n");
@@ -130,9 +130,9 @@ void *thread_send(void *arg)
 
 void *thread_pred(void *arg)
 {
-    int pred; 
-    
-    while(1)
+    int pred;
+
+    while (1)
     {
         if ((main_s->fifo = open("../IAtoINT", O_RDONLY)) == -1)
         {
@@ -148,7 +148,7 @@ void *thread_pred(void *arg)
         {
             main_s->img_s->img_f = true;
         }
-        else 
+        else
         {
             main_s->img_s->img_f = false;
         }
@@ -180,39 +180,51 @@ int BindCreatedSocket(int hSocket)
     return iRetval;
 }
 
+int client_connection(int socket_desc, struct sockaddr_in *client, int *clientLen)
+{
+    int sock = accept(socket_desc, (struct sockaddr *)client, (socklen_t *)clientLen);
+    if (sock < 0)
+    {
+        perror("accept failed");
+        return -1;
+    }
+    printf("Connection accepted\n");
+    return sock;
+}
+
 int main()
 {
-    if ((main_s = calloc(1,sizeof(mainStruct))) == NULL)
+    if ((main_s = calloc(1, sizeof(mainStruct))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->img_s = calloc(1,sizeof(img))) == NULL)
+    if ((main_s->img_s = calloc(1, sizeof(img))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->cmd_struct = calloc(1,sizeof(cmd))) == NULL)
+    if ((main_s->cmd_struct = calloc(1, sizeof(cmd))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->chg_mode_struct = calloc(1,sizeof(chg_mode))) == NULL)
+    if ((main_s->chg_mode_struct = calloc(1, sizeof(chg_mode))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->weight_struct = calloc(1,sizeof(weight_upd))) == NULL)
+    if ((main_s->weight_struct = calloc(1, sizeof(weight_upd))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->buf_f_struct = calloc(1,sizeof(circular_buf_t) + sizeof(bool))) == NULL)
+    if ((main_s->buf_f_struct = calloc(1, sizeof(circular_buf_t) + sizeof(bool))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    
+
     int socket_desc, sock, clientLen, read_size;
     struct sockaddr_in server, client;
     pthread_t thr_rcv_id, thr_send_id;
@@ -242,24 +254,23 @@ int main()
     printf("bind done\n");
     // Listen
     listen(socket_desc, 3);
-    printf("Waiting for incoming connections...\n");
     clientLen = sizeof(struct sockaddr_in);
     // accept connection from an incoming client
-    sock = accept(socket_desc, (struct sockaddr *)&client, (socklen_t *)&clientLen);
-    if (sock < 0)
-    {
-        perror("accept failed");
-        return -1;
-    }
-    printf("Connection accepted\n");
 
-    //pipe creation
-    soc->sock = sock;
-    soc->socket_desc = socket_desc;
-    pthread_create(&thr_rcv_id, NULL, &thread_rcv, soc);
-    pthread_create(&thr_send_id, NULL, &thread_send, soc);
+    // pipe creation
     pthread_create(&thr_pred, NULL, &thread_pred, NULL);
-    pthread_join(thr_rcv_id, NULL);
+    while (1)
+    {
+        printf("Waiting for incoming connections...\n");
+        sock = client_connection(socket_desc, &client, &clientLen);
+        soc->sock = sock;
+        soc->socket_desc = socket_desc;
+        pthread_create(&thr_rcv_id, NULL, &thread_rcv, soc);
+        pthread_create(&thr_send_id, NULL, &thread_send, soc);
+        pthread_join(thr_rcv_id, NULL);
+        printf("client disconnected\n");
+        pthread_cancel(thr_send_id);
+    }
     pthread_join(thr_send_id, NULL);
     pthread_join(thr_pred, NULL);
     printf("end of main\n");

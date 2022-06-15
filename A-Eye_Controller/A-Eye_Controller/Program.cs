@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Net;
+using System.Text.Json;
 
 namespace AEye
 {
@@ -30,15 +31,39 @@ namespace AEye
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Thread run_thr = new Thread(RunThread);
-            run_thr.Start();
-            Application.Run(controller);
+
+            //DEBUG
             foreach (var process in Process.GetProcessesByName("python"))
             {
                 process.Kill();
             }
+
+            ApplicationConfiguration.Initialize();
+            resetConfig(); 
+            Thread run_thr = new Thread(RunThread);
+            run_thr.Start();
+            Application.Run(controller);
+
+            // Clean spaces
+            Thread.Sleep(3000);
+            foreach (var process in Process.GetProcessesByName("python"))
+            {
+                process.Kill();
+            }
+
             Environment.Exit(0);
+        }
+
+        private static void resetConfig()
+        {
+            // Create empty configuration 
+            ConfigFile conf = new ConfigFile(new Config("true",""), new Weights("false"), new TakePicture("false"));
+
+            // Serialize in Json
+            string jsonString = JsonSerializer.Serialize(conf);
+
+            // Write in file
+            File.WriteAllText("last_config.json", jsonString);
         }
 
         /// <summary>

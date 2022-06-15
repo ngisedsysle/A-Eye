@@ -16,7 +16,7 @@ def writeInPipe(msg):
     else:
         try:
             f = open(r'\\.\pipe\\'+'CSServer', 'w')
-            f.write(msg + "\n")
+            f.write(msg)
         except:
             sleep(1)
             writeInPipe(msg)

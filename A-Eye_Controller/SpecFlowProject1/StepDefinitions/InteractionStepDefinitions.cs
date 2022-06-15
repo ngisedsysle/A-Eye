@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 using TechTalk.SpecFlow;
 
 namespace SpecFlowProject1.StepDefinitions
@@ -6,13 +7,7 @@ namespace SpecFlowProject1.StepDefinitions
     [Binding]
     public class InteractionStepDefinitions
     {
-        private readonly Thread _thread;
-
-        public InteractionStepDefinitions()
-        {
-            _thread = new Thread(AEye.Program.Main);
-            _thread.Start();
-        }
+       
 
 
         [Given(@"the app is connected")]
@@ -45,8 +40,8 @@ namespace SpecFlowProject1.StepDefinitions
 
         private bool logContainStr(string subStr)
         {
-            string ack = AEye.Program.log.Split('\n').Last().ToLower();
-            return ack.Contains(subStr.ToLower());
+            string log = AEye.Program.log.ToLower();
+            return log.Contains(subStr.ToLower());
         }
 
 
@@ -77,8 +72,8 @@ namespace SpecFlowProject1.StepDefinitions
             if (p0.Equals("mode manual"))
             {
                 GivenTheSelectedModeIs(p0);
-                //WhenIClickOn("set config");
-                Thread.Sleep(1000);
+                AEye.Program.controller.SetConfig_Click(new object(), new EventArgs());
+                Thread.Sleep(2000);
             }
             else
             {

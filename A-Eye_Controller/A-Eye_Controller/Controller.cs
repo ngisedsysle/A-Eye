@@ -57,7 +57,16 @@ namespace AEye
             {
                 takePict_btn.Enabled = false;
             }
+        }
 
+        public void setMode(int mode)
+        {
+            mode_cb.SelectedIndex = mode;
+        }
+
+        public Label getStatus()
+        {
+            return this.Status ;
         }
 
         /// <summary>

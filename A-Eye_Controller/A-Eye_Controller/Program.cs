@@ -34,6 +34,10 @@ namespace AEye
             Thread run_thr = new Thread(RunThread);
             run_thr.Start();
             Application.Run(controller);
+            foreach (var process in Process.GetProcessesByName("python"))
+            {
+                process.Kill();
+            }
             Environment.Exit(0);
         }
 

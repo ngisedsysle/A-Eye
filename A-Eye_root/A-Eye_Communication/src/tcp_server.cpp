@@ -1,17 +1,17 @@
 /**
  * @file tcp_server.c
  * @author Thomas du Boisrouvray (thomas.duboisrouvray@elsys-design.com)
- * @brief This file implements a tcp server on port 64000 with a thread for sending and a thread for receiving 
+ * @brief This file implements a tcp server on port 64000 with a thread for sending and a thread for receiving
  * @version 0.1
  * @date 2022-05-25
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 #include <iostream>
 #include <cstdlib>
 #include <string>
-#include <thread>	// For sleep
+#include <thread> // For sleep
 #include <atomic>
 #include <chrono>
 #include <cstring>
@@ -22,232 +22,402 @@ extern "C++"
 {
     using namespace std;
 
-    const string DFLT_SERVER_ADDRESS { "tcp://localhost:1883" };
+    const string DFLT_SERVER_ADDRESS{"tcp://localhost:1883"};
 
-    const string TOPIC { "test" };
+    const string TOPIC{"prediction"};
     const int QOS = 1;
+    const int N_RETRY_ATTEMPTS = 5;
 
-    const char* PAYLOADS[] = {
-        "Hello World!",
-        "Hi there!",
-        "Is anyone listening?",
-        "Someone is always listening.",
-        nullptr
-    };
+    int prediction = 1;
+    string rcv_msg;
+    string topic;
     const auto TIMEOUT = std::chrono::seconds(10);
+
+    class action_listener : public virtual mqtt::iaction_listener
+    {
+        std::string name_;
+
+        void on_failure(const mqtt::token &tok) override
+        {
+            std::cout << name_ << " failure";
+            if (tok.get_message_id() != 0)
+                std::cout << " for token: [" << tok.get_message_id() << "]" << std::endl;
+            std::cout << std::endl;
+        }
+
+        void on_success(const mqtt::token &tok) override
+        {
+            std::cout << name_ << " success";
+            if (tok.get_message_id() != 0)
+                std::cout << " for token: [" << tok.get_message_id() << "]" << std::endl;
+            auto top = tok.get_topics();
+            if (top && !top->empty())
+                std::cout << "\ttoken topic: '" << (*top)[0] << "', ..." << std::endl;
+            std::cout << std::endl;
+        }
+
+    public:
+        action_listener(const std::string &name) : name_(name) {}
+    };
+
+    class callback : public virtual mqtt::callback,
+                     public virtual mqtt::iaction_listener
+    {
+        // Counter for the number of connection retries
+        int nretry_;
+        // The MQTT client
+        mqtt::async_client &cli_;
+        // Options to use if we need to reconnect
+        mqtt::connect_options &connOpts_;
+        // An action listener to display the result of actions.
+        action_listener subListener_;
+
+        // This deomonstrates manually reconnecting to the broker by calling
+        // connect() again. This is a possibility for an application that keeps
+        // a copy of it's original connect_options, or if the app wants to
+        // reconnect with different options.
+        // Another way this can be done manually, if using the same options, is
+        // to just call the async_client::reconnect() method.
+        void reconnect()
+        {
+            std::this_thread::sleep_for(std::chrono::milliseconds(2500));
+            try
+            {
+                cli_.connect(connOpts_, nullptr, *this);
+            }
+            catch (const mqtt::exception &exc)
+            {
+                std::cerr << "Error: " << exc.what() << std::endl;
+                exit(1);
+            }
+        }
+
+        // Re-connection failure
+        void on_failure(const mqtt::token &tok) override
+        {
+            std::cout << "Connection attempt failed" << std::endl;
+            if (++nretry_ > N_RETRY_ATTEMPTS)
+                exit(1);
+            reconnect();
+        }
+
+        // (Re)connection success
+        // Either this or connected() can be used for callbacks.
+        void on_success(const mqtt::token &tok) override {}
+
+        // (Re)connection success
+        void connected(const std::string &cause) override
+        {
+            std::cout << "\nConnection success" << std::endl;
+            std::cout << "\nSubscribing to topic '" << TOPIC << "'\n"
+                      << "\tfor client, using QoS" << QOS << "\n"
+                      << "\nPress Q<Enter> to quit\n"
+                      << std::endl;
+
+            cli_.subscribe(TOPIC, QOS, nullptr, subListener_);
+        }
+
+        // Callback for when the connection is lost.
+        // This will initiate the attempt to manually reconnect.
+        void connection_lost(const std::string &cause) override
+        {
+            std::cout << "\nConnection lost" << std::endl;
+            if (!cause.empty())
+                std::cout << "\tcause: " << cause << std::endl;
+
+            std::cout << "Reconnecting..." << std::endl;
+            nretry_ = 0;
+            reconnect();
+        }
+
+        // Callback for when a message arrives.
+        void message_arrived(mqtt::const_message_ptr msg) override
+        {
+            topic = msg->get_topic();
+            rcv_msg = msg->to_string();
+            if (!topic.compare("prediction"))
+            {
+                prediction =stoi(msg->to_string());
+            }
+        }
+
+        void delivery_complete(mqtt::delivery_token_ptr token) override {}
+
+    public:
+        callback(mqtt::async_client &cli, mqtt::connect_options &connOpts)
+            : nretry_(0), cli_(cli), connOpts_(connOpts), subListener_("Subscription") {}
+    };
+
+    void subscribe(string address)
+    {
+        mqtt::connect_options connOpts;
+        connOpts.set_clean_session(true);
+        mqtt::async_client cli(address, "");
+        // Install the callback(s) before connecting.
+        callback cb(cli, connOpts);
+        cli.set_callback(cb);
+
+        // Start the connection.
+        // When completed, the callback will subscribe to topic.
+
+        try
+        {
+            cli.connect(connOpts, nullptr, cb);
+        }
+        catch (const mqtt::exception &exc)
+        {
+            std::cerr << "\nERROR: Unable to connect to MQTT server: '"
+                      << DFLT_SERVER_ADDRESS << "'" << exc << std::endl;
+        }
+
+        // Disconnect
+        try
+        {
+            cli.disconnect()->wait();
+        }
+        catch (const mqtt::exception &exc)
+        {
+            std::cerr << exc << std::endl;
+        }
+    }
 }
+
 extern "C"
 {
-#define IMG_LENGTH 921656 /*!<Lenght of a 640*480 bmp image*/
-#define PORT 64000 /*! <Chosen port for the application*/
-struct mainStruct *main_s; /*! <reference to struct_allocation.h*/
+#define IMG_LENGTH 921656      /*!<Lenght of a 640*480 bmp image*/
+#define PORT 64000             /*! <Chosen port for the application*/
+    struct mainStruct *main_s; /*! <reference to struct_allocation.h*/
 
-
-short SocketCreate(void)
-{
-    short hSocket;
-    printf("Create the socket\n");
-    hSocket = socket(AF_INET, SOCK_STREAM, 0);
-    return hSocket;
-}
-
-void *thread_rcv(void *arg)
-{
-    socket_thr_s *soc = (socket_thr_s*) arg;
-    main_s->ack = (char*) malloc(100 * sizeof(char));
-    char client_message[200] = {0};
-    while (1)
+    short SocketCreate(void)
     {
-        memset(client_message, 0, sizeof(client_message));
-        // Receive a reply from the client
-        if (recv(soc->sock, client_message, 200, 0) < 0)
-        {
-            printf("recv failed\n");
-        }
-        else
-        {
-            printf("Client reply : %s\n", client_message);
+        short hSocket;
+        printf("Create the socket\n");
+        hSocket = socket(AF_INET, SOCK_STREAM, 0);
+        return hSocket;
+    }
 
-            // if we receieve stop message, we free all buffer and close the connection
-            if (strstr(client_message, "STOP") != 0)
+    void *thread_rcv(void *arg)
+    {
+        socket_thr_s *soc = (socket_thr_s *)arg;
+        main_s->ack = (char *)malloc(100 * sizeof(char));
+        char client_message[200] = {0};
+        while (1)
+        {
+            memset(client_message, 0, sizeof(client_message));
+            // Receive a reply from the client
+            if (recv(soc->sock, client_message, 200, 0) < 0)
             {
-                // freeing memory space
-                circular_buf_free(main_s->buf_f_struct->cbuf);
-                free(main_s->cmd_struct);
-                free(main_s->buf_f_struct);
-                free(main_s->weight_struct);
-                free(main_s->chg_mode_struct);
-                free(main_s);
-                // send end of connection and close socket
-                send(soc->sock, client_message, strlen(client_message), 0);
-                close(soc->socket_desc);
-                return NULL;
+                printf("recv failed\n");
             }
             else
             {
-                // if no code op, no need to call interpreteur
-                if (decodeTC(main_s, client_message) == 0)
-                    printf("Not a TC\n");
-                if (main_s->start_f == false)
+                printf("Client reply : %s\n", client_message);
+
+                // if we receieve stop message, we free all buffer and close the connection
+                if (strstr(client_message, "STOP") != 0)
                 {
-                    main_s->ack = interpreteur(main_s);
+                    // freeing memory space
+                    circular_buf_free(main_s->buf_f_struct->cbuf);
+                    free(main_s->cmd_struct);
+                    free(main_s->buf_f_struct);
+                    free(main_s->weight_struct);
+                    free(main_s->chg_mode_struct);
+                    free(main_s);
+                    // send end of connection and close socket
+                    send(soc->sock, client_message, strlen(client_message), 0);
+                    close(soc->socket_desc);
+                    return NULL;
+                }
+                else
+                {
+                    // if no code op, no need to call interpreteur
+                    if (decodeTC(main_s, client_message) == 0)
+                        printf("Not a TC\n");
+                    if (main_s->start_f == false)
+                    {
+                        main_s->ack = interpreteur(main_s);
+                    }
                 }
             }
         }
     }
-}
 
-void *thread_send(void *arg)
-{
-    printf("Pipe opened\n");
-    socket_thr_s *soc = (socket_thr_s*) arg;
-    while (1)
+    void *thread_send(void *arg)
     {
-        // if new data : send new data
-        if (main_s->buf_f_struct->new_data_f == true)
+        printf("Pipe opened\n");
+        socket_thr_s *soc = (socket_thr_s *)arg;
+        while (1)
         {
-            // Send some data
-            printf("Will be send : \n");
-            printf("Code op : %d  ||  ", main_s->ack[0]);
-            printf("Length : %d  ||  ", main_s->ack[4]);
-            printf("Message : ");
-            for (int i = 5; i < main_s->ack[4] + 5; i++)
-                printf("%c", main_s->ack[i]);
-            printf("\n\n");
-            main_s->buf_f_struct->new_data_f = false;
-            if (send(soc->sock, main_s->ack, main_s->ack[4] + 5, 0) < 0)
+            // if new data : send new data
+            if (main_s->buf_f_struct->new_data_f == true)
             {
-                printf("Send failed\n");
-                return NULL;
+                // Send some data
+                printf("Will be send : \n");
+                printf("Code op : %d  ||  ", main_s->ack[0]);
+                printf("Length : %d  ||  ", main_s->ack[4]);
+                printf("Message : ");
+                for (int i = 5; i < main_s->ack[4] + 5; i++)
+                    printf("%c", main_s->ack[i]);
+                printf("\n\n");
+                main_s->buf_f_struct->new_data_f = false;
+                if (send(soc->sock, main_s->ack, main_s->ack[4] + 5, 0) < 0)
+                {
+                    printf("Send failed\n");
+                    return NULL;
+                }
             }
-        }
-        // if new IMG to send : send the TM
-        if (main_s->img_s->img_f == true)
-        {
-            main_s->img_s->length = IMG_LENGTH;
-            char *imgTM = imgEncodedTM(main_s->img_s->length);
-            // Send some data
-            printf("Sending image from process IA ... \n");
-            if (send(soc->sock, imgTM, main_s->img_s->length + 5, 0) < 0)
+            // if new IMG to send : send the TM
+            if (main_s->img_s->img_f == true)
             {
-                printf("Send failed\n");
-                return NULL;
+                main_s->img_s->length = IMG_LENGTH;
+                char *imgTM = imgEncodedTM(main_s->img_s->length);
+                // Send some data
+                printf("Sending image from process IA ... \n");
+                if (send(soc->sock, imgTM, main_s->img_s->length + 5, 0) < 0)
+                {
+                    printf("Send failed\n");
+                    return NULL;
+                }
+                main_s->img_s->img_f = false;
+                free(imgTM);
             }
-            main_s->img_s->img_f = false;
-            free(imgTM);
-        }
-        if (main_s->img_s->capture_f == true)
-        {
-            char *imgTM = captureManuelle(main_s->img_s->length);
-            // Send some data
-            printf("Sending image from manual capture ...\n");
-            printf("Code op : %d  ||  ", imgTM[0]);
-            printf("Length : %08x\n", (unsigned int) imgTM[1] | (unsigned int) imgTM[2] << 8 | (unsigned int) imgTM[3] << 16 | (unsigned int) imgTM[4] << 24);
-            if (send(soc->sock, imgTM, main_s->img_s->length + 5, 0) < 0)
+            if (main_s->img_s->capture_f == true)
             {
-                printf("Send failed\n");
-                return NULL;
+                char *imgTM = captureManuelle(main_s->img_s->length);
+                // Send some data
+                printf("Sending image from manual capture ...\n");
+                printf("Code op : %d  ||  ", imgTM[0]);
+                printf("Length : %08x\n", (unsigned int)imgTM[1] | (unsigned int)imgTM[2] << 8 | (unsigned int)imgTM[3] << 16 | (unsigned int)imgTM[4] << 24);
+                if (send(soc->sock, imgTM, main_s->img_s->length + 5, 0) < 0)
+                {
+                    printf("Send failed\n");
+                    return NULL;
+                }
+                main_s->img_s->capture_f = false;
+                free(imgTM);
             }
-            main_s->img_s->capture_f = false;
-            free(imgTM);
-        }
-    }
-    close(main_s->fifo);
-}
-
-void *thread_pred(void *arg)
-{
-    int pred; 
-    
-    while(1)
-    {
-        if ((main_s->fifo = open("../IAtoINT", O_RDONLY)) == -1)
-        {
-            printf("erreur d'ouverture du pipe\n");
-            return NULL;
-        }
-        if (read(main_s->fifo, &pred, sizeof(pred)) == -1)
-        {
-            printf("erreur de lecture du pipe\n");
-            return NULL;
-        }
-        if (pred == 0)
-        {
-            main_s->img_s->img_f = true;
-        }
-        else 
-        {
-            main_s->img_s->img_f = false;
-        }
-        if (main_s->chg_mode_struct->mode == 0)
-        {
-            system("bash ../demo.sh");
         }
         close(main_s->fifo);
     }
-}
 
-/**
- * @brief Bind an existing socket to a port and accepting any incoming addr
- *
- * @param hSocket ref to the socket
- * @return int
- */
-int BindCreatedSocket(int hSocket)
-{
-    int iRetval = -1;
-    int ClientPort = PORT;
-    struct sockaddr_in remote = {0};
-    /* Internet address family */
-    remote.sin_family = AF_INET;
-    /* Any incoming interface */
-    remote.sin_addr.s_addr = htonl(INADDR_ANY);
-    remote.sin_port = htons(ClientPort); /* Local port */
-    iRetval = bind(hSocket, (struct sockaddr *)&remote, sizeof(remote));
-    return iRetval;
-}}
+    void *thread_pred(void *arg)
+    {
+        int pred;
+
+        while (1)
+        {
+            if ((main_s->fifo = open("../IAtoINT", O_RDONLY)) == -1)
+            {
+                printf("erreur d'ouverture du pipe\n");
+                return NULL;
+            }
+            if (read(main_s->fifo, &pred, sizeof(pred)) == -1)
+            {
+                printf("erreur de lecture du pipe\n");
+                return NULL;
+            }
+            if (pred == 0)
+            {
+                main_s->img_s->img_f = true;
+            }
+            else
+            {
+                main_s->img_s->img_f = false;
+            }
+            if (main_s->chg_mode_struct->mode == 0)
+            {
+                system("bash ../demo.sh");
+            }
+            close(main_s->fifo);
+        }
+    }
+
+    void *thread_pred_mqtt(void *arg) 
+    {
+        while(1) 
+        {
+            printf("in thread pred mqtt");
+            if (prediction == 0)
+            {
+                main_s->img_s->img_f = true;
+                printf("j'ai ma prediction a 0");
+            }
+            else
+            {
+                main_s->img_s->img_f = false;
+                printf("j'ai ma prediction a 1");
+
+            }
+            if (main_s->chg_mode_struct->mode == 0)
+            {
+                system("bash ../demo.sh");
+            }
+            sleep(1);
+        }
+    }
+
+    /**
+     * @brief Bind an existing socket to a port and accepting any incoming addr
+     *
+     * @param hSocket ref to the socket
+     * @return int
+     */
+    int BindCreatedSocket(int hSocket)
+    {
+        int iRetval = -1;
+        int ClientPort = PORT;
+        struct sockaddr_in remote = {0};
+        /* Internet address family */
+        remote.sin_family = AF_INET;
+        /* Any incoming interface */
+        remote.sin_addr.s_addr = htonl(INADDR_ANY);
+        remote.sin_port = htons(ClientPort); /* Local port */
+        iRetval = bind(hSocket, (struct sockaddr *)&remote, sizeof(remote));
+        return iRetval;
+    }
+}
 
 int main()
 {
-    if ((main_s = (mainStruct*) calloc(1,sizeof(mainStruct))) == NULL)
+    if ((main_s = (mainStruct *)calloc(1, sizeof(mainStruct))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->img_s = (img*) calloc(1,sizeof(img))) == NULL)
+    if ((main_s->img_s = (img *)calloc(1, sizeof(img))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->cmd_struct = (cmd*) calloc(1,sizeof(cmd))) == NULL)
+    if ((main_s->cmd_struct = (cmd *)calloc(1, sizeof(cmd))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->chg_mode_struct = (chg_mode*) calloc(1,sizeof(chg_mode))) == NULL)
+    if ((main_s->chg_mode_struct = (chg_mode *)calloc(1, sizeof(chg_mode))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->weight_struct = (weight_upd*) calloc(1,sizeof(weight_upd))) == NULL)
+    if ((main_s->weight_struct = (weight_upd *)calloc(1, sizeof(weight_upd))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    if ((main_s->buf_f_struct = (buf_f*) calloc(1,sizeof(circular_buf_t) + sizeof(bool))) == NULL)
+    if ((main_s->buf_f_struct = (buf_f *)calloc(1, sizeof(circular_buf_t) + sizeof(bool))) == NULL)
     {
         printf("erreur allocation mémoire\n");
         return -1;
     }
-    
+
     int socket_desc, sock, clientLen, read_size;
     struct sockaddr_in server, client;
     pthread_t thr_rcv_id, thr_send_id;
-    pthread_t thr_pred;
+    pthread_t thr_pred, thr_pred_mqtt;
 
     // Create socket
     socket_thr_s *soc;
-    if ((soc = (socket_thr_s*) malloc(sizeof(socket_thr_s))) == NULL)
+    if ((soc = (socket_thr_s *)malloc(sizeof(socket_thr_s))) == NULL)
     {
         printf("erreur allocation memoire\n");
         return -1;
@@ -280,15 +450,18 @@ int main()
     }
     printf("Connection accepted\n");
 
-    //pipe creation
+    subscribe(DFLT_SERVER_ADDRESS);
+    // pipe creation
     soc->sock = sock;
     soc->socket_desc = socket_desc;
     pthread_create(&thr_rcv_id, NULL, &thread_rcv, soc);
     pthread_create(&thr_send_id, NULL, &thread_send, soc);
     pthread_create(&thr_pred, NULL, &thread_pred, NULL);
+    // pthread_create(&thr_pred_mqtt, NULL, &thread_pred_mqtt, NULL);
     pthread_join(thr_rcv_id, NULL);
     pthread_join(thr_send_id, NULL);
     pthread_join(thr_pred, NULL);
+    // pthread_join(thr_pred_mqtt, NULL);
     printf("end of main\n");
     return 0;
 }

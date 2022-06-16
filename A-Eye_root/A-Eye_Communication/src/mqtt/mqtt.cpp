@@ -1,33 +1,3 @@
-// topic_publish.cpp
-//
-// This is a Paho MQTT C++ client, sample application.
-//
-// It's an example of how to send messages as an MQTT publisher using the
-// C++ asynchronous client interface using a 'topic' object to repeatedly
-// send data to the same topic.
-//
-// The sample demonstrates:
-//  - Connecting to an MQTT server/broker
-//  - Publishing messages
-//  - Use of the 'topic' class
-//
-
-/*******************************************************************************
- * Copyright (c) 2019 Frank Pagliughi <fpagliughi@mindspring.com>
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * and Eclipse Distribution License v1.0 which accompany this distribution.
- *
- * The Eclipse Public License is available at
- *    http://www.eclipse.org/legal/epl-v10.html
- * and the Eclipse Distribution License is available at
- *   http://www.eclipse.org/org/documents/edl-v10.php.
- *
- * Contributors:
- *    Frank Pagliughi - initial implementation and documentation
- *******************************************************************************/
-
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -45,6 +15,9 @@ const string DFLT_SERVER_ADDRESS { "tcp://localhost:1883" };
 const string TOPIC { "test" };
 const int QOS = 1;
 const int	N_RETRY_ATTEMPTS = 5;
+
+string rcv_msg;
+string topic;
 
 const char* PAYLOADS[] = {
 	"Hello World!",
@@ -147,9 +120,8 @@ class callback : public virtual mqtt::callback,
 
 	// Callback for when a message arrives.
 	void message_arrived(mqtt::const_message_ptr msg) override {
-		std::cout << "Message arrived" << std::endl;
-		std::cout << "\ttopic: '" << msg->get_topic() << "'" << std::endl;
-		std::cout << "\tpayload: '" << msg->to_string() << "'\n" << std::endl;
+        topic = msg->get_topic();
+        rcv_msg = msg->to_string();
 	}
 
 	void delivery_complete(mqtt::delivery_token_ptr token) override {}
@@ -159,52 +131,27 @@ public:
 				: nretry_(0), cli_(cli), connOpts_(connOpts), subListener_("Subscription") {}
 };
 
-void publish()
+void publish(string message, string address)
 {
-	string address = DFLT_SERVER_ADDRESS;
-
-	cout << "Initializing for server '" << address << "'..." << endl;
 	mqtt::async_client cli(address, "");
-
-	cout << "  ...OK" << endl;
-
 	try {
-		cout << "\nConnecting..." << endl;
 		cli.connect()->wait();
-		cout << "  ...OK" << endl;
-
-		cout << "\nPublishing messages..." << endl;
-
-		mqtt::topic top(cli, "test", QOS);
+		mqtt::topic top(cli, TOPIC, QOS);
 		mqtt::token_ptr tok;
-
-		size_t i = 0;
-		while (1) {
-			tok = top.publish(PAYLOADS[i++]);
-			sleep(2);
-			if (i > 3)
-			{
-				i = 0;
-			}
-		}
+		tok = top.publish(message);
 		tok->wait();	// Just wait for the last one to complete.
-		cout << "OK" << endl;
 		// Disconnect
-		cout << "\nDisconnecting..." << endl;
 		cli.disconnect()->wait();
-		cout << "  ...OK" << endl;
 	}
 	catch (const mqtt::exception& exc) {
 		cerr << exc << endl;
 	}
-
 }
 
-void subscribe()
+void subscribe(string  address)
 {
 	mqtt::connect_options connOpts;
 	connOpts.set_clean_session(true);
-	string address = DFLT_SERVER_ADDRESS;
 	mqtt::async_client cli(address, "");
 	// Install the callback(s) before connecting.
 	callback cb(cli, connOpts);
@@ -214,7 +161,6 @@ void subscribe()
 	// When completed, the callback will subscribe to topic.
 
 	try {
-		std::cout << "Connecting to the MQTT server..." << std::flush;
 		cli.connect(connOpts, nullptr, cb);
 	}
 	catch (const mqtt::exception& exc) {
@@ -222,30 +168,47 @@ void subscribe()
 			<< DFLT_SERVER_ADDRESS << "'" << exc << std::endl;
 	}
 
-	// Just block till user tells us to quit.
-
-	while (std::tolower(std::cin.get()) != 'q')
-		;
-
+	while(1) {}
 	// Disconnect
-
 	try {
-		std::cout << "\nDisconnecting from the MQTT server..." << std::flush;
 		cli.disconnect()->wait();
-		std::cout << "OK" << std::endl;
 	}
 	catch (const mqtt::exception& exc) {
 		std::cerr << exc << std::endl;
 	}
 }
 
-/////////////////////////////////////////////////////////////////////////////
 
-int main(int argc, char* argv[])
+void t1()
 {
-	thread first(publish);
-	thread second(subscribe);
-	first.join();
-	second.join();
+     while (1) {
+        string s;
+        cin >> s;
+        publish(s, DFLT_SERVER_ADDRESS);
+    }
+}
+void t2()
+{
+    subscribe(DFLT_SERVER_ADDRESS);
+    sleep(1);
+}
+
+void t3() 
+{
+    while(1)
+    {
+        cout << "Last message on topic : " << topic << " is : " << rcv_msg << endl;
+        sleep(1);
+    }
+}
+int main()
+{
+    thread first(t1);
+	// thread second(t2);
+	subscribe(DFLT_SERVER_ADDRESS);
+    thread third(t3);
+    first.join();
+	// second.join();
+    third.join();
  	return 0;
 }

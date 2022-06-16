@@ -18,7 +18,7 @@ set(MQTT_LIBRARIES
     )
 
 set(SRC
-    mqtt_publish.cpp
+    tcp_server.cpp
     Server/tcp_server.h)
     
 add_executable(server ${SRC})

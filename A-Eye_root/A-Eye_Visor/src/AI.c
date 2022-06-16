@@ -4,9 +4,9 @@
  * @brief This code implements a CNN from scratch in C
  * @version 0.1
  * @date 2022-05-31
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
 #include <stdio.h>
@@ -21,24 +21,35 @@
 #include <pthread.h>
 #include <fcntl.h>
 #include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/time.h>
 #include "json/json.h"
 #include "preprocess/preprocess.h"
 
-#define USEDEBUGPARAM 1 /*!<1 default value of params, 0 ask user the value*/
-#define IMPORTARCHFROMJSON 1 /*!<1 if you want to import your arch from a json file, 0 if you want to use preloaded architectures*/
+#define NBROFTHREAD 4         /*! Tell the compilator how many thread can be used*/
+#define USEDEBUGPARAM 1       /*!<1 default value of params, 0 ask user the value*/
+#define IMPORTARCHFROMJSON 1  /*!<1 if you want to import your arch from a json file, 0 if you want to use preloaded architectures*/
 #define IMPORTPARAMFROMJSON 1 /*!<1 if you want to import your weights from a json file, 0 if xavier initialisation*/
-#define LOADDATASET 1 /*!<0 to disable loading of the dataset (time consuming)*/
-#define TESTONONE 1 /*!<1 to use params ideal for one image, else 0*/
-#define FORWARDONLY 1 /*!<1 to disable backprop, else 0*/
-#define WAITFORSIGNAL 1 /*!<1 to wait for SIGUSR1, else 0*/
-#define INFERENCE 1 /*!<1 if you want to work in inference mode, 0 if you want training*/
-#define SAVEVALUES 0 /*!<1 to save every value of the process (used for debug with python), else 0*/
-#define DISPLAYTIME 0 /*!<1 to display time in each AI functions (homemade profiling), else 0*/
+#define LOADDATASET 1         /*!<0 to disable loading of the dataset (time consuming)*/
+#define TESTONONE 1           /*!<1 to use params ideal for one image, else 0*/
+#define FORWARDONLY 1         /*!<1 to disable backprop, else 0*/
+#define WAITFORSIGNAL 1       /*!<1 to wait for SIGUSR1, else 0*/
+#define INFERENCE 1           /*!<1 if you want to work in inference mode, 0 if you want training*/
+#define SAVEVALUES 0          /*!<1 to save every value of the process (used for debug with python), else 0*/
+#define DISPLAYTIME 0         /*!<1 to display time in each AI functions (homemade profiling), else 0*/
 char weights_file[] = "weights_airbus_240_90.json";
 
-#define WIDTH 240 /*!<width of the image (==length)*/
-#define COLORS 3 /*!<number of color rgb*/
+#define WIDTH 240   /*!<width of the image (==length)*/
+#define COLORS 3    /*!<number of color rgb*/
 #define MAXLAYER 20 /*!<max number of layer*/
+
+typedef struct CONVPARAM_S
+{
+    int begin;
+    int end;
+    int idxLayer;
+    int dc;
+} CONVPARAM_S;
 
 int rows = 0;
 // LOADING DATA
@@ -54,6 +65,7 @@ void randomizeValidSet();
 void dataAugment(int img, int r, float sc, float dx, float dy, int p, int hiRes, int loRes, int t);
 void *runBackProp(void *arg);
 void *runForwardProp(void *arg);
+void *runConvEngine(void *arg);
 int backProp(int x, float *ent, int ep);
 int forwardProp(int x, int dp, int train, int lay);
 float ReLU(float x);
@@ -196,8 +208,8 @@ float getValidFloat(float minValue, float maxValue)
 }
 
 /**
- * @brief Check for a linux user signal (SIGUSR1) 
- * 
+ * @brief Check for a linux user signal (SIGUSR1)
+ *
  * @return int linux user signal
  */
 int waitOnSIGUSR1Signal(void)
@@ -566,11 +578,11 @@ int loadTrain(int ct, double validRatio, int sh, float imgScale, float imgBias)
 
 /**
  * @brief Load images from temp.csv file and rescale.
- * 
+ *
  * @param ct Max number of images. If >0, user value, else max set to 1e6
  * @param sh 1 if you want to remove the first line (ex : header), else 0
  * @param removeCol1 1 if you want to remove the first column (ex : labels), else 0
- * @param imgScale Scale for rescaling 
+ * @param imgScale Scale for rescaling
  * @param imgBias Biase for rescaling
  * @return int number of images processed
  */
@@ -708,7 +720,7 @@ int loadTest(int ct, int sh, int removeCol1, float imgScale, float imgBias)
 
 /**
  * @brief Parse the layer from the input str
- * 
+ *
  * @param str input string containing the layer type and parameters in a corresponding format
  * @param x layer number
  */
@@ -836,7 +848,6 @@ void initArch(char *str, int x)
     }
     strcpy(layerNames[x], str);
 }
-
 
 /**********************************************************************/
 /*      INIT NET                                                      */
@@ -1360,9 +1371,9 @@ void *runBackProp(void *arg)
 
 /**
  * @brief Run the forward prop, write pred to pipe IAtoINT and print corresponding information
- * 
+ *
  * @param arg NULL
- * @return void* 
+ * @return void*
  */
 void *runForwardProp(void *arg)
 {
@@ -1380,8 +1391,8 @@ void *runForwardProp(void *arg)
     for (int idxImage = 0; idxImage < validSetSize; idxImage++)
 #endif
     {
-        clock_t start, stop;
-        start = clock();
+        struct timeval stop, start;
+        gettimeofday(&start, NULL);
         int pred;
         if (INFERENCE)
         {
@@ -1398,9 +1409,10 @@ void *runForwardProp(void *arg)
                 return NULL;
             }
             close(fd);
-        } 
-        else pred = forwardProp(validSet[idxImage], 0, 1, 0);
-        stop = clock();
+        }
+        else
+            pred = forwardProp(validSet[idxImage], 0, 1, 0);
+        gettimeofday(&stop, NULL);
         if (pred == -1)
         {
             printf("Test exploded.\n");
@@ -1428,9 +1440,9 @@ void *runForwardProp(void *arg)
             pthread_exit(NULL);
         }
         if (!INFERENCE)
-            printf("Process %d/%d pics (%f sec/pic) with %.2f good predictions\r", idxImage + 1, validSetSize, ((float)(stop - start)) / (float)CLOCKS_PER_SEC, 100.0 * s2 / (idxImage + 1));
+            printf("Process %d/%d pics (%lu usec/pic) with %.2f good predictions\r", idxImage + 1, validSetSize, (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec, 100.0 * s2 / (idxImage + 1));
         else
-            printf("Process %d/%d pics (%f sec/pic) with pred = %d \r", idxImage + 1, testSizeI, ((float)(stop - start)) / (float)CLOCKS_PER_SEC, pred);
+            printf("Process %d/%d pics (%lu usec/pic) with pred = %d \r", idxImage + 1, testSizeI, (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec, pred);
         fflush(stdout);
     }
     printf("\n");
@@ -1627,11 +1639,11 @@ int backProp(int x, float *ent, int ep)
 
 /**
  * @brief Run the forward propagation for the input image and returns the prediction
- * 
- * @param image input image 
+ *
+ * @param image input image
  * @param dp 1 if dropout, else 0
  * @param train 1 if you want to use training dataset, 0 if you want to use test dataset
- * @param lay set to 0 
+ * @param lay set to 0
  * @return int prediction
  */
 int forwardProp(int image, int dp, int train, int lay)
@@ -1791,7 +1803,7 @@ float TanH(float x)
 
 /**
  * @brief Process the fully connected layer
- * 
+ *
  * @param idxLayer number of the layer
  * @param dp dropout ratio
  */
@@ -1838,7 +1850,7 @@ void fully_connected_process(int idxLayer, int dp)
 
 /**
  * @brief Process the convolution layer
- * 
+ *
  * @param idxLayer number of the layer
  * @param dp dropout ratio
  */
@@ -1853,41 +1865,27 @@ void convolution_process(int idxLayer, int dp)
     int dc = 0;
     if (layerPad[idxLayer] == 1)
         dc = layerConv[idxLayer] / 2;
-    for (int iHautOut = 0; iHautOut < layerWidth[idxLayer]; iHautOut++)
-        for (int iLargOut = 0; iLargOut < layerWidth[idxLayer]; iLargOut++)
-            for (int iFilterOut = 0; iFilterOut < layerChan[idxLayer]; iFilterOut++)
-            {
-                sum = 0.0;
-                for (int iHautIn = 0; iHautIn < layerConv[idxLayer]; iHautIn++)
-                    for (int iLargIn = 0; iLargIn < layerConv[idxLayer]; iLargIn++)
-                        for (int iProfIn = 0; iProfIn < layerChan[idxLayer - 1]; iProfIn++)
-                        {
-                            int j3 = iLargOut + iLargIn - dc;
-                            int i3 = iHautOut + iHautIn - dc;
-                            int idxWeights = iFilterOut + iHautIn * layerConv[idxLayer] * layerChan[idxLayer - 1] * layerChan[idxLayer] + iLargIn * layerChan[idxLayer - 1] * layerChan[idxLayer] + iProfIn * layerChan[idxLayer];
-                            float weight = weights[idxLayer][idxWeights];
-                            if (i3 >= 0 && i3 < layerWidth[idxLayer - 1] && j3 >= 0 && j3 < layerWidth[idxLayer - 1])
-                            {
-                                float val = layers[idxLayer - 1][i3 * layerWidth[idxLayer - 1] * layerChan[idxLayer - 1] + j3 * layerChan[idxLayer - 1] + iProfIn];
-                                // printf("val(%d;%d;%d) = %.16f\n", i3, j3, iProfIn, val);
-                                // printf("weight(%d;%d;%d;%d) = %.16f\n", iFilterOut, iHautIn, iLargIn, iProfIn, weight);
-                                sum += val * weight;
-                            }
-                            else
-                            {
-                                sum -= imgBias * weight;
-                            }
-                        }
-                sum += weights[idxLayer][layerConvStep[idxLayer] * layerChan[idxLayer] + iFilterOut];
-                int idx = iHautOut * layerWidth[idxLayer] * layerChan[idxLayer] + iLargOut * layerChan[idxLayer] + iFilterOut;
-                if (activation == 0)
-                    sum = sum;
-                else if (activation == 1)
-                    sum = ReLU(sum);
-                else
-                    sum = TanH(sum);
-                layers[idxLayer][idx] = sum;
-            }
+
+    // Compute the convolution in thread
+    pthread_t id_thr[NBROFTHREAD];
+    struct CONVPARAM_S *params = calloc(NBROFTHREAD, sizeof(*params));
+    for (int idx_thr = 0; idx_thr < NBROFTHREAD; idx_thr++)
+    {
+        params[idx_thr];
+        params[idx_thr].begin = idx_thr * layerWidth[idxLayer] / NBROFTHREAD;
+        params[idx_thr].end = (idx_thr + 1) * layerWidth[idxLayer] / NBROFTHREAD;
+        params[idx_thr].idxLayer = idxLayer;
+        params[idx_thr].dc = dc;
+
+        pthread_create(&id_thr[idx_thr], NULL, runConvEngine, &params[idx_thr]);
+    }
+
+    for (int idx_thr = 0; idx_thr < NBROFTHREAD; idx_thr++)
+    {
+        pthread_join(id_thr[idx_thr], NULL);
+    }
+    free(params);
+
     // APPLY DROPOUT
     if (dropOutRatio > 0.0 && DOconv == 1)
         for (int idx1 = 0; idx1 < layerSizes[idxLayer] * layerChan[idxLayer]; idx1++)
@@ -1907,7 +1905,7 @@ void convolution_process(int idxLayer, int dp)
 
 /**
  * @brief Process the max pooling layer
- * 
+ *
  * @param layer number of the layer
  * @param dp dropout ratio
  */
@@ -1948,4 +1946,47 @@ void pooling_process(int layer, int dp)
         printf("Process pooling %d in %f \n", layer, ((float)(stop - start)) / (float)CLOCKS_PER_SEC);
     }
     return;
+}
+
+void *runConvEngine(void *arg)
+{
+    struct CONVPARAM_S *param = arg;
+    int idxLayer = param->idxLayer;
+    int dc = param->dc;
+    for (int iHautOut = param->begin; iHautOut < param->end; iHautOut++)
+        for (int iLargOut = 0; iLargOut < layerWidth[idxLayer]; iLargOut++)
+            for (int iFilterOut = 0; iFilterOut < layerChan[idxLayer]; iFilterOut++)
+            {
+                float sum = 0.0;
+                for (int iHautIn = 0; iHautIn < layerConv[idxLayer]; iHautIn++)
+                    for (int iLargIn = 0; iLargIn < layerConv[idxLayer]; iLargIn++)
+                        for (int iProfIn = 0; iProfIn < layerChan[idxLayer - 1]; iProfIn++)
+                        {
+                            int j3 = iLargOut + iLargIn - dc;
+                            int i3 = iHautOut + iHautIn - dc;
+                            int idxWeights = iFilterOut + iHautIn * layerConv[idxLayer] * layerChan[idxLayer - 1] * layerChan[idxLayer] + iLargIn * layerChan[idxLayer - 1] * layerChan[idxLayer] + iProfIn * layerChan[idxLayer];
+                            float weight = weights[idxLayer][idxWeights];
+                            if (i3 >= 0 && i3 < layerWidth[idxLayer - 1] && j3 >= 0 && j3 < layerWidth[idxLayer - 1])
+                            {
+                                float val = layers[idxLayer - 1][i3 * layerWidth[idxLayer - 1] * layerChan[idxLayer - 1] + j3 * layerChan[idxLayer - 1] + iProfIn];
+                                // printf("val(%d;%d;%d) = %.16f\n", i3, j3, iProfIn, val);
+                                // printf("weight(%d;%d;%d;%d) = %.16f\n", iFilterOut, iHautIn, iLargIn, iProfIn, weight);
+                                sum += val * weight;
+                            }
+                            else
+                            {
+                                sum -= imgBias * weight;
+                            }
+                        }
+                sum += weights[idxLayer][layerConvStep[idxLayer] * layerChan[idxLayer] + iFilterOut];
+                if (activation == 0)
+                    sum = sum;
+                else if (activation == 1)
+                    sum = ReLU(sum);
+                else
+                    sum = TanH(sum);
+                int idx = iHautOut * layerWidth[idxLayer] * layerChan[idxLayer] + iLargOut * layerChan[idxLayer] + iFilterOut;
+                layers[idxLayer][idx] = sum;
+            }
+    return NULL;
 }

@@ -22,4 +22,5 @@ add_executable(AI ${SRC})
 target_link_libraries(AI json)
 target_link_libraries(AI preprocess)
 target_link_libraries(AI m)
+target_link_libraries(AI pthread)
 

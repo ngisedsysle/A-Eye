@@ -1,6 +1,6 @@
 <!-- PROJECT LOGO -->
 <p align="center">
-  <img src="logo.png" />
+  <img src="./images/logo.png" />
 </p>
 <h3 align="center">A - EYE </h3>
 <p align="center">
@@ -45,7 +45,7 @@ The goal of the project was to build a system capable of sorting images with and
 
 ### Use case
 
-![Schéma use case](use_case.jpg)
+![Schéma use case](./images/use_case.jpg)
 <div style="text-align: justify">  
 
 The target for this system was a ZYNQ processor.
@@ -54,7 +54,7 @@ Our system is divided between an embedded sytem on ZYBO board and an application
 
 ### Application
 
-![Application](ihm.JPG)
+![Application](./images/ihm.JPG)
 
 
 

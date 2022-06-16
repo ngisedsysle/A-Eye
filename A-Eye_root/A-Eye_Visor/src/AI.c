@@ -43,13 +43,15 @@ char weights_file[] = "weights_airbus_240_90.json";
 #define COLORS 3    /*!<number of color rgb*/
 #define MAXLAYER 20 /*!<max number of layer*/
 
-typedef struct CONVPARAM_S
+typedef struct THREADPARAM_S
 {
     int begin;
     int end;
     int idxLayer;
     int dc;
-} CONVPARAM_S;
+    char *layerWeights;
+    char *layerBias;
+} THREADPARAM_S;
 
 int rows = 0;
 // LOADING DATA
@@ -66,6 +68,7 @@ void dataAugment(int img, int r, float sc, float dx, float dy, int p, int hiRes,
 void *runBackProp(void *arg);
 void *runForwardProp(void *arg);
 void *runConvEngine(void *arg);
+void *runFullyLoad(void *arg);
 int backProp(int x, float *ent, int ep);
 int forwardProp(int x, int dp, int train, int lay);
 float ReLU(float x);
@@ -981,22 +984,27 @@ void initNet(int t)
                 idxLayerInFile++;
                 if (layerType[idxLayer] == 0)
                 { // FULLY CONNECTED
-                    for (int idxInput = 0; idxInput < layerSizes[idxLayer - 1] * layerChan[idxLayer - 1]; idxInput++)
+
+                    // MULTITHREADING
+                    int maxIdx = layerSizes[idxLayer - 1] * layerChan[idxLayer - 1];
+                    pthread_t id_thr[NBROFTHREAD];
+                    struct THREADPARAM_S *params = calloc(NBROFTHREAD, sizeof(*params));
+                    for (int idx_thr = 0; idx_thr < NBROFTHREAD; idx_thr++)
                     {
-                        char *Node = get_tab_in_tab(layerWeights, idxInput);
-                        for (int iNeuron = 0; iNeuron < layerSizes[idxLayer]; iNeuron++)
-                        {
-                            float param = get_float_in_string(Node, iNeuron);
-                            int idx = idxInput * layerSizes[idxLayer] + iNeuron;
-                            weights[idxLayer][idx] = param;
-                        }
-                        free(Node);
+                        params[idx_thr].begin = idx_thr * maxIdx / NBROFTHREAD;
+                        params[idx_thr].end = (idx_thr + 1) * maxIdx / NBROFTHREAD;
+                        params[idx_thr].idxLayer = idxLayer;
+                        params[idx_thr].layerWeights = layerWeights;
+                        params[idx_thr].layerBias = layerBias;
+
+                        pthread_create(&id_thr[idx_thr], NULL, runFullyLoad, &params[idx_thr]);
                     }
-                    for (i = 0; i < layerSizes[idxLayer]; i++) // set biases
+
+                    for (int idx_thr = 0; idx_thr < NBROFTHREAD; idx_thr++)
                     {
-                        int idx = layerSizes[idxLayer] * layerSizes[idxLayer - 1] * layerChan[idxLayer - 1] + i;
-                        weights[idxLayer][idx] = get_float_in_string(layerBias, i);
+                        pthread_join(id_thr[idx_thr], NULL);
                     }
+                    free(params);
                 }
                 else if (layerType[idxLayer] == 1)
                 {                                                                    // CONVOLUTION                                                               // CONVOLUTION
@@ -1868,7 +1876,7 @@ void convolution_process(int idxLayer, int dp)
 
     // Compute the convolution in thread
     pthread_t id_thr[NBROFTHREAD];
-    struct CONVPARAM_S *params = calloc(NBROFTHREAD, sizeof(*params));
+    struct THREADPARAM_S *params = calloc(NBROFTHREAD, sizeof(*params));
     for (int idx_thr = 0; idx_thr < NBROFTHREAD; idx_thr++)
     {
         params[idx_thr];
@@ -1950,7 +1958,7 @@ void pooling_process(int layer, int dp)
 
 void *runConvEngine(void *arg)
 {
-    struct CONVPARAM_S *param = arg;
+    struct THREADPARAM_S *param = arg;
     int idxLayer = param->idxLayer;
     int dc = param->dc;
     for (int iHautOut = param->begin; iHautOut < param->end; iHautOut++)
@@ -1989,4 +1997,27 @@ void *runConvEngine(void *arg)
                 layers[idxLayer][idx] = sum;
             }
     return NULL;
+}
+
+void *runFullyLoad(void *arg)
+{
+    struct THREADPARAM_S *param = arg;
+    int idxLayer = param->idxLayer;
+    for (int idxInput = param->begin; idxInput < param->end; idxInput++)
+    {
+        char *Node = get_tab_in_tab(param->layerWeights, idxInput);
+        for (int iNeuron = 0; iNeuron < layerSizes[idxLayer]; iNeuron++)
+        {
+            float param = get_float_in_string(Node, iNeuron);
+            int idx = idxInput * layerSizes[idxLayer] + iNeuron;
+            weights[idxLayer][idx] = param;
+        }
+        free(Node);
+    }
+    for (int i = 0; i < layerSizes[idxLayer]; i++) // set biases
+    {
+        int idx = layerSizes[idxLayer] * layerSizes[idxLayer - 1] * layerChan[idxLayer - 1] + i;
+        weights[idxLayer][idx] = get_float_in_string(param->layerBias, i);
+    }
+    return;
 }

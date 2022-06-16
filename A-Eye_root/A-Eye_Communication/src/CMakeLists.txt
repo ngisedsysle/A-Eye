@@ -20,13 +20,14 @@ set(MQTT_LIBRARIES
 set(SRC
     tcp_server.cpp
     Server/tcp_server.h)
-    
+
+# EXECUTABLE    
 add_executable(server ${SRC})
 
 # INCLUDE DIRECTORY
 target_include_directories(server PRIVATE Server)
 
-# EXECUTABLE
+
 
 # LIBRARIES TO LINK
 target_link_libraries(server tc)

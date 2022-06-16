@@ -2019,5 +2019,5 @@ void *runFullyLoad(void *arg)
         int idx = layerSizes[idxLayer] * layerSizes[idxLayer - 1] * layerChan[idxLayer - 1] + i;
         weights[idxLayer][idx] = get_float_in_string(param->layerBias, i);
     }
-    return;
+    return NULL;
 }

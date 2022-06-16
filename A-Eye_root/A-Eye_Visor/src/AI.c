@@ -26,7 +26,7 @@
 #include "json/json.h"
 #include "preprocess/preprocess.h"
 
-#define NBROFTHREAD 4         /*! Tell the compilator how many thread can be used*/
+#define NBROFTHREAD 4         /*!Tell the compilator how many thread can be used*/
 #define USEDEBUGPARAM 1       /*!<1 default value of params, 0 ask user the value*/
 #define IMPORTARCHFROMJSON 1  /*!<1 if you want to import your arch from a json file, 0 if you want to use preloaded architectures*/
 #define IMPORTPARAMFROMJSON 1 /*!<1 if you want to import your weights from a json file, 0 if xavier initialisation*/
@@ -45,12 +45,12 @@ char weights_file[] = "weights_airbus_240_90.json";
 
 typedef struct THREADPARAM_S
 {
-    int begin;
-    int end;
-    int idxLayer;
-    int dc;
-    char *layerWeights;
-    char *layerBias;
+    int begin;          //Beginning index
+    int end;            //Ending index
+    int idxLayer;       //Layer to work on index
+    int dc;             //Used in convolution
+    char *layerWeights; //Used in loading fully connected parameters
+    char *layerBias;    //Used in loading fully connected parameters
 } THREADPARAM_S;
 
 int rows = 0;
@@ -1956,6 +1956,12 @@ void pooling_process(int layer, int dp)
     return;
 }
 
+/**
+ * @brief Engine to process the convolution
+ * 
+ * @param arg pointer to the parameters structure
+ * @return void* NULL
+ */
 void *runConvEngine(void *arg)
 {
     struct THREADPARAM_S *param = arg;
@@ -1999,6 +2005,12 @@ void *runConvEngine(void *arg)
     return NULL;
 }
 
+/**
+ * @brief Engine to load the fully connected weights and biases
+ * 
+ * @param arg pointer to the parameters structure
+ * @return void* NULL
+ */
 void *runFullyLoad(void *arg)
 {
     struct THREADPARAM_S *param = arg;

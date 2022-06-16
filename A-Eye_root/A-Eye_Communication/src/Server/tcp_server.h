@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2022
  * 
  */
-
+extern "C"{
 #include<stdio.h>
 #include<string.h>
 #include<sys/socket.h>
@@ -74,5 +74,5 @@ void *thread_send(void *arg);
  * @return void* 
  */
 void *thread_pred(void *arg);
-
+}
 #endif

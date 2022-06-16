@@ -28,3 +28,6 @@ airbus_train_bmp
 A-Eye_root/temp.bmp
 A-Eye_root/A-Eye_Visor/temp.bmp
 A-Eye_root/temp.csv
+A-Eye_root/A-Eye_Communication/CMakeFiles/CMakeError.log
+A-Eye_root/.vscode/settings.json
+.vscode/tasks.json

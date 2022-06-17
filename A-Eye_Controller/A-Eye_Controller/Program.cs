@@ -33,7 +33,7 @@ namespace AEye
             // see https://aka.ms/applicationconfiguration.
 
             //DEBUG
-            foreach (var process in Process.GetProcessesByName("python"))
+            foreach (var process in Process.GetProcessesByName("pythonw"))
             {
                 process.Kill();
             }
@@ -46,7 +46,7 @@ namespace AEye
 
             // Clean spaces
             Thread.Sleep(3000);
-            foreach (var process in Process.GetProcessesByName("python"))
+            foreach (var process in Process.GetProcessesByName("pythonw"))
             {
                 process.Kill();
             }

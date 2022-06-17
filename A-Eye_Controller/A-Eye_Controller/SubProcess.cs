@@ -24,24 +24,24 @@ namespace AEye
         public void run_cmd(string cmd, string args)
         {
             ProcessStartInfo start = new ProcessStartInfo();
-            start.FileName = "python.exe";
+            start.FileName = "pythonw.exe";
             start.Arguments = string.Format("{0} {1}", cmd, args);
-            start.UseShellExecute = false;
-            start.RedirectStandardOutput = true;
+            start.UseShellExecute = true;
+            start.RedirectStandardOutput = false;
             Process? process = Process.Start(start);
-            if (process == null)
-            {
-                Program.log += "[ERROR][RUN_CMD] Cannot start " + cmd + " process\n";
-                return;
-            }
-            else
-            {
-                using (StreamReader reader = process.StandardOutput)
-                {
-                    string result = reader.ReadToEnd();
-                    Program.log += "[PYTHON][" + cmd + "] " + result + "\n";
-                }
-            }
+            //if (process == null)
+            //{
+            //    Program.log += "[ERROR][RUN_CMD] Cannot start " + cmd + " process\n";
+            //    return;
+            //}
+            //else
+            //{
+            //    using (StreamReader reader = process.StandardOutput)
+            //    {
+            //        string result = reader.ReadToEnd();
+            //        Program.log += "[PYTHON][" + cmd + "] " + result + "\n";
+            //    }
+            //}
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace AEye
 
         private void ProcessReceivedMessage(string line)
         {
-            Program.log += "[INFO][From Python pipe] " + line + "\n";
+            Program.log += "[INFO][From Python] " + line + "\n";
             if (line.Contains("Image"))
             {
                 Thread disp = new Thread(Program.controller.Refresh_img);

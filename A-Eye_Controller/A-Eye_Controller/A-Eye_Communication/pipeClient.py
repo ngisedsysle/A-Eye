@@ -1,8 +1,17 @@
-## If set to True, no pipe used --> STDOUT
+from asyncio.subprocess import PIPE, STDOUT
+import sys
 from time import sleep
+import paho.mqtt.client as mqtt
+from enum import Enum
 
+## Supported protocol
+class Protocol(Enum):
+    STDOUT_e = 0
+    PIPE_e = 1
+    MQTT_e = 2
 
-DEBUG = False
+## Choose protocol to use
+mode = Protocol.MQTT_e
 
 def writeInPipe(msg):
     """
@@ -11,13 +20,19 @@ def writeInPipe(msg):
     Args:
         msg: the string to write.
     """
-    if DEBUG:
-        print(msg)
-    else:
-        try:
+    try:
+        if mode == Protocol.STDOUT_e:
+            print(msg)
+        elif mode == Protocol.PIPE_e:
             f = open(r'\\.\pipe\\'+'CSServer', 'w')
             f.write(msg)
-        except:
-            sleep(1)
-            writeInPipe(msg)
+        elif mode == Protocol.MQTT_e:
+            mqttc = mqtt.Client()
+            mqttc.connect("localhost")
+            mqttc.publish("toCS", msg)
+        else:
+            sys.exit("Unsupported Protocol in interprocess communication.\n")
+    except:
+        sleep(1)
+        writeInPipe(msg)
     return

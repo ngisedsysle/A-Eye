@@ -8,7 +8,7 @@
 </p>
 Developpers : Guilhem ROLLAND and Thomas DU BOISROUVRAY
 
-This repository contains the documented source for this project.
+This repository contains the documented source code for this project.
 
 <!-- TABLE OF CONTENTS -->
 <details>

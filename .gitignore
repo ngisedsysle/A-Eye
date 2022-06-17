@@ -1,3 +1,4 @@
+**/__pycache__
 **/.vs/
 **/.vscode/
 **/*.cmake
@@ -8,6 +9,7 @@
 **/doc/
 **/obj/
 A-Eye_FPGA/conv_2d_vhdl/sim/
+A-Eye_FPGA/vivado_project
 A-Eye_root/.vscode/settings.json
 A-Eye_root/A-Eye_Communication/Circular_buffer
 A-Eye_root/A-Eye_Communication/Interpreteur
@@ -20,8 +22,7 @@ A-Eye_root/A-Eye_Visor/json
 A-Eye_root/A-Eye_Visor/Makefile
 A-Eye_root/A-Eye_Visor/preprocess
 A-Eye_root/A-Eye_Visor/temp.bmp
+A-Eye_root/A-Eye_Visor/temp.csv
 A-Eye_root/temp.bmp
 A-Eye_root/temp.csv
 airbus_train_bmp
-A-Eye_FPGA/vivado_project
-**/__pycache__

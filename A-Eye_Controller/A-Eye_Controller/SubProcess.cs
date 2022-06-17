@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO.Pipes;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
 
 namespace AEye
 {
@@ -62,34 +65,51 @@ namespace AEye
         /// </summary>
         public void PipeServer_Run()
         {
-            NamedPipeServerStream serverStream = new NamedPipeServerStream("CSServer", PipeDirection.In);
-            string line;
-            while (true)
-            {
-                serverStream.WaitForConnection();
-                StreamReader reader = new StreamReader(serverStream);
-                while ((line = reader.ReadLine()) != null)
-                {
-                    Program.log += "[INFO][From Python pipe] " + line + "\n";
-                    if (line.Contains("Image"))
-                    {
-                        Thread disp = new Thread(Program.controller.Refresh_img);
-                        disp.Start();
-                        if (line.Contains("Manual"))
-                        {
-                            Thread store_thr = new Thread(this.storeManualImg);
-                            store_thr.Start();
-                        }
-                        else
-                        {
-                            Thread store_thr = new Thread(this.storeAutoImg);
-                            store_thr.Start();
+            MqttClient client = new MqttClient("localhost");
+            client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
+            string clientId = Guid.NewGuid().ToString();
+            client.Connect(clientId);
+            client.Subscribe(new string[] { "toCS" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
 
-                        }
-                    }
+            //NamedPipeServerStream serverStream = new NamedPipeServerStream("CSServer", PipeDirection.In);
+            //string line;
+            //while (true)
+            //{
+            //    serverStream.WaitForConnection();
+            //    StreamReader reader = new StreamReader(serverStream);
+            //    while ((line = reader.ReadLine()) != null)
+            //    {
+            //        ProcessReceivedMessage(line);
+            //    }
+            //    serverStream.Disconnect();
+            //}
+        }
+
+        private void ProcessReceivedMessage(string line)
+        {
+            Program.log += "[INFO][From Python pipe] " + line + "\n";
+            if (line.Contains("Image"))
+            {
+                Thread disp = new Thread(Program.controller.Refresh_img);
+                disp.Start();
+                if (line.Contains("Manual"))
+                {
+                    Thread store_thr = new Thread(this.storeManualImg);
+                    store_thr.Start();
                 }
-                serverStream.Disconnect();
+                else
+                {
+                    Thread store_thr = new Thread(this.storeAutoImg);
+                    store_thr.Start();
+
+                }
             }
+        }
+
+        private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+        {
+            string msg = Encoding.ASCII.GetString(e.Message);
+            ProcessReceivedMessage(msg);
         }
 
         /// <summary>

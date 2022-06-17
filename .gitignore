@@ -23,3 +23,5 @@ A-Eye_root/A-Eye_Visor/temp.bmp
 A-Eye_root/temp.bmp
 A-Eye_root/temp.csv
 airbus_train_bmp
+A-Eye_FPGA/vivado_project
+**/__pycache__

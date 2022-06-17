@@ -1,4 +1,4 @@
-#This file is designed to produce the executable for AI
+#This file is designed to produce the executable for server
 
 # MINIMUM VERSION
 cmake_minimum_required( VERSION 2.8 )

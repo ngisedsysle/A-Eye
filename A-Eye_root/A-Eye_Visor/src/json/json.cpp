@@ -4,12 +4,12 @@
  * @brief Usefull functions to deal with json string.
  * @version 0.1
  * @date 2022-05-31
- * 
+ *
  * @copyright Copyright (c) 2022
  * 
  */
 
-#include "json.h"
+#include "json.hpp"
 
 int write_in_file(char *filename, char *buffer)
 {
@@ -57,7 +57,7 @@ int convertFloatToString(float f, char *c)
 
 char *write_float_in_buffer(float *ptrToFloat, int nbrFloat)
 {
-    char *ret = calloc(sizeof(char), 30 * nbrFloat + 1);
+    char *ret = (char*) calloc(sizeof(char), 30 * nbrFloat + 1);
     char *ptrWrite = ret;
     for (int i = 0; i < nbrFloat; i++)
     {
@@ -106,7 +106,7 @@ char *get_str_in_json(char *buffer, char *param)
     int size = 0;
     for (size = 0; *(ptr + size) != '\"'; size++)
         ;
-    char *ret = calloc(size + 1, sizeof(char));
+    char *ret = (char*) calloc(size + 1, sizeof(char));
     memcpy(ret, ptr, size);
     return ret;
 }
@@ -138,7 +138,7 @@ char *get_tab_in_json(char *buffer, char *param)
         }
     };
     size++; // Get ]
-    char *ret = calloc(size + 1, sizeof(char));
+    char *ret = (char*) calloc(size + 1, sizeof(char));
     memcpy(ret, ptr, size);
     *(ret + sizeof(char) * size) = 0;
     return ret;
@@ -158,7 +158,7 @@ char *get_str_in_tab(char *tab, int idx)
         size--;
         tab++; // Skip "
     }
-    char *ret = calloc(size + 1, sizeof(char));
+    char *ret = (char*) calloc(size + 1, sizeof(char));
     memcpy(ret, tab, size);
     *(ret + sizeof(char) * size) = 0;
     return ret;
@@ -184,7 +184,7 @@ char *get_object_in_json(char *buffer, char *param)
         }
     }
     size++; // Get }
-    char *ret = calloc(size + 1, sizeof(char));
+    char *ret = (char*) calloc(size + 1, sizeof(char));
     memcpy(ret, ptr, size);
     return ret;
 }
@@ -217,7 +217,7 @@ char *get_tab_in_tab(char *tab, int idx)
         }
     }
     size++; // Get ]
-    char *ret = calloc(size + 1, sizeof(char));
+    char *ret = (char*) calloc(size + 1, sizeof(char));
     memcpy(ret, tab, size);
     return ret;
 }
@@ -265,7 +265,7 @@ float get_float_in_string(char *str, int idx)
             str += size + 1;
         }
     }
-    char *buff = calloc(size + 1, sizeof(char));
+    char *buff = (char*) calloc(size + 1, sizeof(char));
     memcpy(buff, str, size);
     float val = atof((const char *)buff);
     return val;

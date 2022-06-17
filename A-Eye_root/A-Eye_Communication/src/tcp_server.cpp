@@ -16,171 +16,9 @@
 #include <chrono>
 #include <cstring>
 #include "mqtt/async_client.h"
-#include "tcp_server.h"
+#include "Server/tcp_server.h"
 
-extern "C++"
-{
-    using namespace std;
-
-    const string DFLT_SERVER_ADDRESS{"tcp://localhost:1883"};
-
-    const string TOPIC{"prediction"};
-    const int QOS = 1;
-    const int N_RETRY_ATTEMPTS = 5;
-
-    int prediction = 1;
-    string rcv_msg;
-    string topic;
-    const auto TIMEOUT = std::chrono::seconds(10);
-
-    class action_listener : public virtual mqtt::iaction_listener
-    {
-        std::string name_;
-
-        void on_failure(const mqtt::token &tok) override
-        {
-            std::cout << name_ << " failure";
-            if (tok.get_message_id() != 0)
-                std::cout << " for token: [" << tok.get_message_id() << "]" << std::endl;
-            std::cout << std::endl;
-        }
-
-        void on_success(const mqtt::token &tok) override
-        {
-            std::cout << name_ << " success";
-            if (tok.get_message_id() != 0)
-                std::cout << " for token: [" << tok.get_message_id() << "]" << std::endl;
-            auto top = tok.get_topics();
-            if (top && !top->empty())
-                std::cout << "\ttoken topic: '" << (*top)[0] << "', ..." << std::endl;
-            std::cout << std::endl;
-        }
-
-    public:
-        action_listener(const std::string &name) : name_(name) {}
-    };
-
-    class callback : public virtual mqtt::callback,
-                     public virtual mqtt::iaction_listener
-    {
-        // Counter for the number of connection retries
-        int nretry_;
-        // The MQTT client
-        mqtt::async_client &cli_;
-        // Options to use if we need to reconnect
-        mqtt::connect_options &connOpts_;
-        // An action listener to display the result of actions.
-        action_listener subListener_;
-
-        // This deomonstrates manually reconnecting to the broker by calling
-        // connect() again. This is a possibility for an application that keeps
-        // a copy of it's original connect_options, or if the app wants to
-        // reconnect with different options.
-        // Another way this can be done manually, if using the same options, is
-        // to just call the async_client::reconnect() method.
-        void reconnect()
-        {
-            std::this_thread::sleep_for(std::chrono::milliseconds(2500));
-            try
-            {
-                cli_.connect(connOpts_, nullptr, *this);
-            }
-            catch (const mqtt::exception &exc)
-            {
-                std::cerr << "Error: " << exc.what() << std::endl;
-                exit(1);
-            }
-        }
-
-        // Re-connection failure
-        void on_failure(const mqtt::token &tok) override
-        {
-            std::cout << "Connection attempt failed" << std::endl;
-            if (++nretry_ > N_RETRY_ATTEMPTS)
-                exit(1);
-            reconnect();
-        }
-
-        // (Re)connection success
-        // Either this or connected() can be used for callbacks.
-        void on_success(const mqtt::token &tok) override {}
-
-        // (Re)connection success
-        void connected(const std::string &cause) override
-        {
-            std::cout << "\nConnection success" << std::endl;
-            std::cout << "\nSubscribing to topic '" << TOPIC << "'\n"
-                      << "\tfor client, using QoS" << QOS << "\n"
-                      << "\nPress Q<Enter> to quit\n"
-                      << std::endl;
-
-            cli_.subscribe(TOPIC, QOS, nullptr, subListener_);
-        }
-
-        // Callback for when the connection is lost.
-        // This will initiate the attempt to manually reconnect.
-        void connection_lost(const std::string &cause) override
-        {
-            std::cout << "\nConnection lost" << std::endl;
-            if (!cause.empty())
-                std::cout << "\tcause: " << cause << std::endl;
-
-            std::cout << "Reconnecting..." << std::endl;
-            nretry_ = 0;
-            reconnect();
-        }
-
-        // Callback for when a message arrives.
-        void message_arrived(mqtt::const_message_ptr msg) override
-        {
-            topic = msg->get_topic();
-            rcv_msg = msg->to_string();
-            if (!topic.compare("prediction"))
-            {
-                prediction =stoi(msg->to_string());
-            }
-        }
-
-        void delivery_complete(mqtt::delivery_token_ptr token) override {}
-
-    public:
-        callback(mqtt::async_client &cli, mqtt::connect_options &connOpts)
-            : nretry_(0), cli_(cli), connOpts_(connOpts), subListener_("Subscription") {}
-    };
-
-    void subscribe(string address)
-    {
-        mqtt::connect_options connOpts;
-        connOpts.set_clean_session(true);
-        mqtt::async_client cli(address, "");
-        // Install the callback(s) before connecting.
-        callback cb(cli, connOpts);
-        cli.set_callback(cb);
-
-        // Start the connection.
-        // When completed, the callback will subscribe to topic.
-
-        try
-        {
-            cli.connect(connOpts, nullptr, cb);
-        }
-        catch (const mqtt::exception &exc)
-        {
-            std::cerr << "\nERROR: Unable to connect to MQTT server: '"
-                      << DFLT_SERVER_ADDRESS << "'" << exc << std::endl;
-        }
-
-        // Disconnect
-        try
-        {
-            cli.disconnect()->wait();
-        }
-        catch (const mqtt::exception &exc)
-        {
-            std::cerr << exc << std::endl;
-        }
-    }
-}
+#define COM_MODE 0 // 0 for mqtt, 1 for fifo pipe
 
 extern "C"
 {
@@ -326,33 +164,9 @@ extern "C"
             }
             if (main_s->chg_mode_struct->mode == 0)
             {
-                system("bash ../demo.sh");
+                system("bash ../../demo.sh");
             }
             close(main_s->fifo);
-        }
-    }
-
-    void *thread_pred_mqtt(void *arg) 
-    {
-        while(1) 
-        {
-            printf("in thread pred mqtt");
-            if (prediction == 0)
-            {
-                main_s->img_s->img_f = true;
-                printf("j'ai ma prediction a 0");
-            }
-            else
-            {
-                main_s->img_s->img_f = false;
-                printf("j'ai ma prediction a 1");
-
-            }
-            if (main_s->chg_mode_struct->mode == 0)
-            {
-                system("bash ../demo.sh");
-            }
-            sleep(1);
         }
     }
 
@@ -374,6 +188,175 @@ extern "C"
         remote.sin_port = htons(ClientPort); /* Local port */
         iRetval = bind(hSocket, (struct sockaddr *)&remote, sizeof(remote));
         return iRetval;
+    }
+}
+
+extern "C++"
+{
+    using namespace std;
+
+    const string DFLT_SERVER_ADDRESS{"tcp://localhost:1883"};
+
+    const string TOPIC{"prediction"};
+    const int QOS = 1;
+    const int N_RETRY_ATTEMPTS = 5;
+
+    int prediction = 1;
+    string rcv_msg;
+    string topic;
+    const auto TIMEOUT = std::chrono::seconds(10);
+
+    class action_listener : public virtual mqtt::iaction_listener
+    {
+        std::string name_;
+
+        void on_failure(const mqtt::token &tok) override
+        {
+            std::cout << name_ << " failure";
+            if (tok.get_message_id() != 0)
+                std::cout << " for token: [" << tok.get_message_id() << "]" << std::endl;
+            std::cout << std::endl;
+        }
+
+        void on_success(const mqtt::token &tok) override
+        {
+            cout << "Subscribed to topic : " << TOPIC << endl;
+        }
+
+    public:
+        action_listener(const std::string &name) : name_(name) {}
+    };
+
+    class callback : public virtual mqtt::callback,
+                     public virtual mqtt::iaction_listener
+    {
+        // Counter for the number of connection retries
+        int nretry_;
+        // The MQTT client
+        mqtt::async_client &cli_;
+        // Options to use if we need to reconnect
+        mqtt::connect_options &connOpts_;
+        // An action listener to display the result of actions.
+        action_listener subListener_;
+
+        // This deomonstrates manually reconnecting to the broker by calling
+        // connect() again. This is a possibility for an application that keeps
+        // a copy of it's original connect_options, or if the app wants to
+        // reconnect with different options.
+        // Another way this can be done manually, if using the same options, is
+        // to just call the async_client::reconnect() method.
+        void reconnect()
+        {
+            std::this_thread::sleep_for(std::chrono::milliseconds(2500));
+            try
+            {
+                cli_.connect(connOpts_, nullptr, *this);
+            }
+            catch (const mqtt::exception &exc)
+            {
+                std::cerr << "Error: " << exc.what() << std::endl;
+                exit(1);
+            }
+        }
+
+        // Re-connection failure
+        void on_failure(const mqtt::token &tok) override
+        {
+            std::cout << "Connection attempt failed" << std::endl;
+            if (++nretry_ > N_RETRY_ATTEMPTS)
+                exit(1);
+            reconnect();
+        }
+
+        // (Re)connection success
+        // Either this or connected() can be used for callbacks.
+        void on_success(const mqtt::token &tok) override {}
+
+        // (Re)connection success
+        void connected(const std::string &cause) override
+        {
+            cli_.subscribe(TOPIC, QOS, nullptr, subListener_);
+        }
+
+        // Callback for when the connection is lost.
+        // This will initiate the attempt to manually reconnect.
+        void connection_lost(const std::string &cause) override
+        {
+            std::cout << "\nConnection lost" << std::endl;
+            if (!cause.empty())
+                std::cout << "\tcause: " << cause << std::endl;
+
+            std::cout << "Reconnecting..." << std::endl;
+            nretry_ = 0;
+            reconnect();
+        }
+
+        // Callback for when a message arrives.
+        void message_arrived(mqtt::const_message_ptr msg) override
+        {
+            topic = msg->get_topic();
+            rcv_msg = msg->to_string();
+            if (topic.compare("prediction") == 0)
+            {
+                cout << msg->to_string() << endl;
+                prediction = stoi(msg->to_string());
+                cout << prediction << endl;
+                if (prediction == 0)
+                {
+                    main_s->img_s->img_f = true;
+                }
+                else
+                {
+                    main_s->img_s->img_f = false;
+                }
+                if (main_s->chg_mode_struct->mode == 0)
+                {
+                    system("bash ../../demo.sh");
+                }
+            }
+        }
+
+        void delivery_complete(mqtt::delivery_token_ptr token) override {}
+
+    public:
+        callback(mqtt::async_client &cli, mqtt::connect_options &connOpts)
+            : nretry_(0), cli_(cli), connOpts_(connOpts), subListener_("Subscription") {}
+    };
+
+    void subscribe(string address)
+    {
+        mqtt::connect_options connOpts;
+        connOpts.set_clean_session(true);
+        mqtt::async_client cli(address, "");
+        // Install the callback(s) before connecting.
+        callback cb(cli, connOpts);
+        cli.set_callback(cb);
+
+        // Start the connection.
+        // When completed, the callback will subscribe to topic.
+
+        try
+        {
+            cli.connect(connOpts, nullptr, cb);
+        }
+        catch (const mqtt::exception &exc)
+        {
+            std::cerr << "\nERROR: Unable to connect to MQTT server: '"
+                      << DFLT_SERVER_ADDRESS << "'" << exc << std::endl;
+        }
+
+        while (1)
+        {
+        }
+        // Disconnect
+        try
+        {
+            cli.disconnect()->wait();
+        }
+        catch (const mqtt::exception &exc)
+        {
+            std::cerr << exc << std::endl;
+        }
     }
 }
 
@@ -413,7 +396,7 @@ int main()
     int socket_desc, sock, clientLen, read_size;
     struct sockaddr_in server, client;
     pthread_t thr_rcv_id, thr_send_id;
-    pthread_t thr_pred, thr_pred_mqtt;
+    pthread_t thr_pred;
 
     // Create socket
     socket_thr_s *soc;
@@ -450,18 +433,54 @@ int main()
     }
     printf("Connection accepted\n");
 
-    subscribe(DFLT_SERVER_ADDRESS);
+    mqtt::connect_options connOpts;
+    connOpts.set_clean_session(true);
+    mqtt::async_client cli(DFLT_SERVER_ADDRESS, "");
+    // Install the callback(s) before connecting.
+    callback cb(cli, connOpts);
+    cli.set_callback(cb);
+    // Start the connection.
+    // When completed, the callback will subscribe to topic.
+    try
+    {
+        cli.connect(connOpts, nullptr, cb);
+        cout << "Connected" << endl;
+    }
+    catch (const mqtt::exception &exc)
+    {
+        std::cerr << "\nERROR: Unable to connect to MQTT server: '"
+                  << DFLT_SERVER_ADDRESS << "'" << exc << std::endl;
+    }
     // pipe creation
     soc->sock = sock;
     soc->socket_desc = socket_desc;
     pthread_create(&thr_rcv_id, NULL, &thread_rcv, soc);
     pthread_create(&thr_send_id, NULL, &thread_send, soc);
-    pthread_create(&thr_pred, NULL, &thread_pred, NULL);
-    // pthread_create(&thr_pred_mqtt, NULL, &thread_pred_mqtt, NULL);
+    if (COM_MODE == 0)
+    {
+    }
+    else
+    {
+        pthread_create(&thr_pred, NULL, &thread_pred, NULL);
+    }
     pthread_join(thr_rcv_id, NULL);
     pthread_join(thr_send_id, NULL);
-    pthread_join(thr_pred, NULL);
-    // pthread_join(thr_pred_mqtt, NULL);
+    if (COM_MODE == 0)
+    {
+    }
+    else
+    {
+        pthread_join(thr_pred, NULL);
+    }
+    // Disconnect
+    try
+    {
+        cli.disconnect()->wait();
+    }
+    catch (const mqtt::exception &exc)
+    {
+        std::cerr << exc << std::endl;
+    }
     printf("end of main\n");
     return 0;
 }

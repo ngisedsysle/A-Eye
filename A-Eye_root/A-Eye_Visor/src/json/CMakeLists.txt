@@ -8,11 +8,11 @@ project(libJSON)
 
 # SOURCE FILES
 set(SRC
-    json.c)
+    json.cpp)
 
 # HEADERS FILES
 set(HEADERS
-    json.h)
+    json.hpp)
 
 # CREATING THE LIBRARY
 add_library(json ${SRC} ${HEADERS})

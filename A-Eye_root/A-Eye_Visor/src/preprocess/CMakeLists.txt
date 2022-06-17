@@ -8,11 +8,11 @@ project(libPREPROCESS)
 
 # SOURCE FILES
 set(SRC
-    preprocess.c)
+    preprocess.cpp)
 
 # HEADERS FILES
 set(HEADERS
-    preprocess.h)
+    preprocess.hpp)
 
 # CREATING THE LIBRARY
 add_library(preprocess ${SRC} ${HEADERS})

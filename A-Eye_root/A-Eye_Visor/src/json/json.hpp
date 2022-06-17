@@ -12,7 +12,13 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <string.h>
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <cstring>
+#include <cctype>
+#include <thread>
+#include <chrono>
 
 /**
  * @brief Write in a file the content of the buffer

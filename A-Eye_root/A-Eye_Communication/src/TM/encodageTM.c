@@ -92,7 +92,7 @@ char *imgEncodedTM(int length)
     imgTM[2] = (length >> 16) & 0xFF;
     imgTM[3] = (length >> 8) & 0xFF;
     imgTM[4] = length & 0xFF;
-    imageInTM(&imgTM[5], "../temp.bmp");
+    imageInTM(&imgTM[5], "../../temp.bmp");
     return imgTM;
 }
 
@@ -109,7 +109,7 @@ char *captureManuelle(int length)
     imgTM[2] = (length >> 16) & 0xFF;
     imgTM[3] = (length >> 8) & 0xFF;
     imgTM[4] = length & 0xFF;
-    imageInTM(&imgTM[5], "../temp.bmp");
+    imageInTM(&imgTM[5], "../../temp.bmp");
     return imgTM;
 }
 

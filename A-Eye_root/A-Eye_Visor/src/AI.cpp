@@ -10,8 +10,6 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <signal.h>
 #include <sys/stat.h>
 #include <dirent.h>
@@ -19,11 +17,10 @@
 #include <time.h>
 #include <pthread.h>
 #include <fcntl.h>
-#include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/time.h>
-#include "json/json.h"
-#include "preprocess/preprocess.h"
+#include "json/json.hpp"
+#include "preprocess/preprocess.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -36,7 +33,7 @@
 
 extern "C"
 {
-#define NBROFTHREAD 4         /*! Tell the compilator how many thread can be used*/
+#define NBROFTHREAD 8         /*! Tell the compilator how many thread can be used*/
 #define USEDEBUGPARAM 1       /*!<1 default value of params, 0 ask user the value*/
 #define IMPORTARCHFROMJSON 1  /*!<1 if you want to import your arch from a json file, 0 if you want to use preloaded architectures*/
 #define IMPORTPARAMFROMJSON 1 /*!<1 if you want to import your weights from a json file, 0 if xavier initialisation*/
@@ -47,11 +44,11 @@ extern "C"
 #define INFERENCE 1           /*!<1 if you want to work in inference mode, 0 if you want training*/
 #define SAVEVALUES 0          /*!<1 to save every value of the process (used for debug with python), else 0*/
 #define DISPLAYTIME 0         /*!<1 to display time in each AI functions (homemade profiling), else 0*/
-    char weights_file[] = "weights_airbus_240_90.json";
-
+#define COM_MODE 0  /*!<0 for mqtt communication, 1 for fifo pipe*/
 #define WIDTH 240   /*!<width of the image (==length)*/
 #define COLORS 3    /*!<number of color rgb*/
 #define MAXLAYER 20 /*!<max number of layer*/
+    char weights_file[] = "../weights_airbus_240_90.json";
 
     typedef struct THREADPARAM_S
     {
@@ -68,7 +65,7 @@ extern "C"
     int loadTrain(int ct, double validRatio, int sh, float imgScale, float imgBias);
     int loadTest(int ct, int sh, int rc, float imgScale, float imgBias);
     // INIT-NET
-    void initNet(int t);
+    void initNet(int t, mqtt::topic top);
     void initArch(char *str, int x);
     // NEURAL-NET
     int isDigits(int init);
@@ -76,7 +73,6 @@ extern "C"
     void randomizeValidSet();
     void dataAugment(int img, int r, float sc, float dx, float dy, int p, int hiRes, int loRes, int t);
     void *runBackProp(void *arg);
-    void runForwardProp();
     void *runConvEngine(void *arg);
     void *runFullyLoad(void *arg);
     int backProp(int x, float *ent, int ep);
@@ -93,7 +89,8 @@ extern "C++"
     const string DFLT_SERVER_ADDRESS{"tcp://localhost:1883"};
     const string TOPIC{"prediction"};
     const int QOS = 1;
-    void topic_create(string address)
+    void runForwardProp(mqtt::topic top);
+    mqtt::topic topic_create(string address)
     {
         mqtt::async_client cli(address, "");
         try
@@ -101,27 +98,29 @@ extern "C++"
             cli.connect()->wait();
             mqtt::topic top(cli, TOPIC, QOS);
             mqtt::token_ptr tok;
-            tok->wait(); // Just wait for the last one to complete.
-            // Disconnect
-            cli.disconnect()->wait();
+            cout << "Topic created" << endl;
+            return top;
         }
         catch (const mqtt::exception &exc)
         {
             cerr << exc << endl;
+            exit(-1);
         }
     }
-    void publish(string message, string address)
+    void publish(string message, string address, mqtt::topic top)
     {
-        mqtt::async_client cli(address, "");
         try
         {
+            mqtt::async_client cli(address, "");
+
             cli.connect()->wait();
-            mqtt::topic top(cli, TOPIC, QOS);
+            mqtt::topic top_(cli, TOPIC, QOS);
+            cout << "Topic created" << endl;
             mqtt::token_ptr tok;
-            tok = top.publish(message);
+            char *msg_char = &*message.begin();
+            tok = top_.publish(msg_char);
             tok->wait(); // Just wait for the last one to complete.
             // Disconnect
-            cli.disconnect()->wait();
         }
         catch (const mqtt::exception &exc)
         {
@@ -328,7 +327,8 @@ extern "C"
         printf("Initialized NN=%d with Xavier init scaled=%.3f\n", net, weightScale);
         clock_t start, stop;
         start = clock();
-        initNet(net);
+        mqtt::topic top = topic_create(DFLT_SERVER_ADDRESS);
+        initNet(net, top);
         stop = clock();
         int len = printf("Architecture (%s", layerNames[0]);
         for (int i = 1; i < MAXLAYER; i++)
@@ -454,7 +454,7 @@ extern "C"
                 {
                     if (INFERENCE)
                     {
-                        preprocess("../temp.bmp");
+                        preprocess("../../temp.bmp");
                         printf("Load test Set \n");
                         int test = loadTest(rows, removeHeader, removeCol1, divideBy, subtractBy);
                         printf("Loaded %d rows test, %d features\n", test, testColumns);
@@ -467,7 +467,7 @@ extern "C"
                     }
                 }
                 printf("start processing \n");
-                runForwardProp();
+                runForwardProp(top);
             }
         }
         else
@@ -494,8 +494,6 @@ extern "C"
 
 int main(int argc, char **argv)
 {
-    topic_create(DFLT_SERVER_ADDRESS);
-    // cout << "j'ai bien crée le topic prediction" << endl;
     IA(argc, argv);
 }
 extern "C"
@@ -930,7 +928,7 @@ extern "C"
      *
      * @param t Differents types of architectures
      */
-    void initNet(int t)
+    void initNet(int t, mqtt::topic top)
     {
         // ALLOCATION MEMORY AND INITIALIZE NETWORK WEIGHTS
         int i, idxLayer, same = 1, LL, dd = 9;
@@ -1277,7 +1275,7 @@ extern "C"
         int p, confusion[MAXLAYER][MAXLAYER] = {{0}};
         if (layers[0] == NULL)
         {
-            initNet(1);
+            // initNet(1);
             if (z == 1)
             {
                 printf("Assuming NN=1 with Xavier init scaled=%.3f", weightScale);
@@ -1454,7 +1452,7 @@ extern "C++"
      * @param arg NULL
      * @return void*
      */
-    void runForwardProp()
+    void runForwardProp(mqtt::topic top)
     {
         if (!INFERENCE)
             randomizeValidSet();
@@ -1464,11 +1462,11 @@ extern "C++"
         int confusion[MAXLAYER][MAXLAYER] = {{0}};
         int entSize = 0, accSize = 0, ent2Size = 0, acc2Size = 0;
 
-        #if INFERENCE == 1
+#if INFERENCE == 1
         for (int idxImage = 0; idxImage < testSizeI; idxImage++)
-        #else
+#else
         for (int idxImage = 0; idxImage < validSetSize; idxImage++)
-        #endif
+#endif
         {
             struct timeval stop, start;
             gettimeofday(&start, NULL);
@@ -1476,19 +1474,25 @@ extern "C++"
             if (INFERENCE)
             {
                 pred = forwardProp(idxImage, 0, 0, 0);
-                publish(to_string(pred), DFLT_SERVER_ADDRESS);
-                // int fd;
-                // if ((fd = open("../IAtoINT", O_WRONLY)) == -1)
-                // {
-                //     printf("erreur d'ouverture du pipe\n");
-                //     return NULL;
-                // }
-                // if (write(fd, &pred, sizeof(pred)) == -1)
-                // {
-                //     printf("erreur d'ecriture\n");
-                //     return NULL;
-                // }
-                // close(fd);
+                if (COM_MODE == 0)
+                {
+                    publish(to_string(pred), DFLT_SERVER_ADDRESS, top);
+                }
+                else
+                {
+                    int fd;
+                    if ((fd = open("../IAtoINT", O_WRONLY)) == -1)
+                    {
+                        printf("erreur d'ouverture du pipe\n");
+                        return;
+                    }
+                    if (write(fd, &pred, sizeof(pred)) == -1)
+                    {
+                        printf("erreur d'ecriture\n");
+                        return;
+                    }
+                    close(fd);
+                }
             }
             else
                 pred = forwardProp(validSet[idxImage], 0, 1, 0);

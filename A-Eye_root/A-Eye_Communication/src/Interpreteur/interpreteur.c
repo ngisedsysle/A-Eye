@@ -15,7 +15,7 @@
 
 char *capture()
 {
-    FILE *imageFile = fopen("temp.bmp", "wb");
+    FILE *imageFile = fopen("../../temp.bmp", "wb");
     char *img;
     if ((img = malloc(IMG_LENGTH * sizeof(char))) == NULL)
     {
@@ -64,7 +64,7 @@ char *interpreteur(mainStruct *main_s)
         switch (main_s->chg_mode_struct->mode)
         {
         case 0:
-            system("bash ../demo.sh");
+            system("bash ../../demo.sh");
             bufferMsg = "Process IA running";
             string->length = strlen(bufferMsg);
             if ((string->string = malloc(sizeof(char) * string->length)) == NULL)

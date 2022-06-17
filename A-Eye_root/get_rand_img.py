@@ -28,4 +28,4 @@ files = os.listdir(path)
 file = files[rand]
 file = path + file
 print(file)
-shutil.copy(file, '../temp.bmp')
+shutil.copy(file, '../../temp.bmp')

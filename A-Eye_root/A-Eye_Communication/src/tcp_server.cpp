@@ -134,6 +134,7 @@ extern "C"
                 main_s->img_s->capture_f = false;
                 free(imgTM);
             }
+            usleep(1000);
         }
         close(main_s->fifo);
     }

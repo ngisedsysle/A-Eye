@@ -46,6 +46,7 @@ extern "C"
             if (recv(soc->sock, client_message, 200, 0) < 0)
             {
                 printf("recv failed\n");
+                return NULL;
             }
             else
             {
@@ -361,6 +362,18 @@ extern "C++"
     }
 }
 
+int client_connection(int socket_desc, struct sockaddr_in *client, int *clientLen)
+{
+    int sock = accept(socket_desc, (struct sockaddr *)client, (socklen_t *)clientLen);
+    if (sock < 0)
+    {
+        perror("accept failed");
+        return -1;
+    }
+    printf("Connection accepted\n");
+    return sock;
+}
+
 int main()
 {
     if ((main_s = (mainStruct *)calloc(1, sizeof(mainStruct))) == NULL)
@@ -423,16 +436,7 @@ int main()
     printf("bind done\n");
     // Listen
     listen(socket_desc, 3);
-    printf("Waiting for incoming connections...\n");
     clientLen = sizeof(struct sockaddr_in);
-    // accept connection from an incoming client
-    sock = accept(socket_desc, (struct sockaddr *)&client, (socklen_t *)&clientLen);
-    if (sock < 0)
-    {
-        perror("accept failed");
-        return -1;
-    }
-    printf("Connection accepted\n");
 
     mqtt::connect_options connOpts;
     connOpts.set_clean_session(true);
@@ -445,7 +449,7 @@ int main()
     try
     {
         cli.connect(connOpts, nullptr, cb);
-        cout << "Connected" << endl;
+        cout << "Mqtt Connected" << endl;
     }
     catch (const mqtt::exception &exc)
     {
@@ -453,10 +457,6 @@ int main()
                   << DFLT_SERVER_ADDRESS << "'" << exc << std::endl;
     }
     // pipe creation
-    soc->sock = sock;
-    soc->socket_desc = socket_desc;
-    pthread_create(&thr_rcv_id, NULL, &thread_rcv, soc);
-    pthread_create(&thr_send_id, NULL, &thread_send, soc);
     if (COM_MODE == 0)
     {
     }
@@ -464,6 +464,19 @@ int main()
     {
         pthread_create(&thr_pred, NULL, &thread_pred, NULL);
     }
+    while (1)
+    {
+        printf("Waiting for incoming connections...\n");
+        sock = client_connection(socket_desc, &client, &clientLen);
+        soc->sock = sock;
+        soc->socket_desc = socket_desc;
+        pthread_create(&thr_rcv_id, NULL, &thread_rcv, soc);
+        pthread_create(&thr_send_id, NULL, &thread_send, soc);
+        pthread_join(thr_rcv_id, NULL);
+        printf("client disconnected\n");
+        pthread_cancel(thr_send_id);
+    }
+    
     pthread_join(thr_rcv_id, NULL);
     pthread_join(thr_send_id, NULL);
     if (COM_MODE == 0)

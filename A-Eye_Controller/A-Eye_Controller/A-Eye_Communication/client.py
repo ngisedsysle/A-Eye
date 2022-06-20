@@ -6,6 +6,7 @@ client.py - Main code for sending/receiving TM and TC via TCP socket
 
 import argparse
 from asyncio.windows_events import NULL
+from enum import Enum
 import socket
 import struct
 from ctypes import *
@@ -14,11 +15,16 @@ from time import sleep
 import encodageTC
 import decodageTM
 import pipeClient
-import paho.mqtt.client as mqtt 
+import paho.mqtt.client as mqtt
 import os
 
-COM_MODE = 0 
+## Supported protocol
+class Protocol(Enum):
+    MQTT_e = 0
+    TCP_e = 1
 
+## Choose protocol to use
+mode = Protocol.MQTT_e
 
 
 class client_tcp:
@@ -158,22 +164,35 @@ def main():
     parser.add_argument("-i", "--ip", type=str,
                         required=True, help="take IpV4 format addr")
     parser.add_argument("-p", "--port", type=int,
-                        required=True, help="port of the server")
+                        required=False, help="port of the server")
     args = parser.parse_args()
-    client_tcp.client_init(args.ip, args.port)
-    # Thread receive
-    receiver = Thread(target=client_tcp.tcp_client_receive)
-    receiver.start()
-    # Encodage des TC via pooling sur fichier
-    while(1):
-        sender = Thread(target=client_tcp.tcp_client_send)
-        sender.start()
-        sleep(1)
-    if  (COM_MODE == 0) :
-        client = mqtt.Client("MQTT_client")
-        broker_addr = args.ip
-        client.connect(broker_addr)
-        client.subscribe("A-Eye/toClient", callback_on_TM)
+
+    if  (mode == 0) :
+        pipeClient.writeInPipe("Start MQTT communication...")
+        client = mqtt.Client()
+        client.on_message = callback_on_TM
+        client.connect(args.ip)
+        # Callback to get the TM
+        client.subscribe("A-Eye/toClient",0)
+        # Send the TC
+        while(1):
+            msg = encodageTC.encode_tc()
+            for tc in msg:
+                client.publish("A-Eye/toServer",tc)
+            sleep(0.1)
+    elif (mode == 1):
+        pipeClient.writeInPipe("Start TCP communication...")
+        client_tcp.client_init(args.ip, args.port)
+        # Thread receive
+        receiver = Thread(target=client_tcp.tcp_client_receive)
+        receiver.start()
+        while(1):
+            sender = Thread(target=client.tcp_client_send)
+            sender.start()
+            sleep(.1)
+    else :
+        pipeClient.writeInPipe("Unsupported mode !")
+
 
 if __name__ == "__main__":
     main()

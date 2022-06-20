@@ -14,9 +14,14 @@ from time import sleep
 import encodageTC
 import decodageTM
 import pipeClient
+import paho.mqtt.client as mqtt 
+import os
+
+COM_MODE = 0 
 
 
-class client:
+
+class client_tcp:
     """
     Static main class. Contains the entry functions.
     """
@@ -42,14 +47,14 @@ class client:
         # Connection parameters
         server_addr = (ip, port)
         try:
-            client.s.connect(server_addr)
+            client_tcp.s.connect(server_addr)
             pipeClient.writeInPipe(
                 "Connected to {:s}".format(repr(server_addr)))
         except AttributeError as ae:
             pipeClient.writeInPipe("Error creating the socket: {}".format(ae))
         except socket.error as se:
             pipeClient.writeInPipe("Exception on socket: {}".format(se))
-        return client.s
+        return client_tcp.s
 
     @staticmethod
     def tcp_client_send():
@@ -58,13 +63,13 @@ class client:
         This method get all the TC (using encodage_tc) and send it by the socket.
         """
         msg = encodageTC.encode_tc()
-        if(client.s == NULL):
+        if(client_tcp.s == NULL):
             pipeClient.writeInPipe("Socket not init.")
             return
         # Connected and send msg, wait for ack
         for tc in msg:
             # pipeClient.writeInPipe("send " + tc)
-            client.s.send(tc.encode())
+            client_tcp.s.send(tc.encode())
         # Close connection after ack
 
     @staticmethod
@@ -75,7 +80,7 @@ class client:
         """
         pipeClient.writeInPipe("In thread tcp_client_receive")
         while(1):
-            buff = client.recv_TM(client.s)
+            buff = client_tcp.recv_TM(client_tcp.s)
             if buff:
                 # pipeClient.writeInPipe("received TM, len = " + len(buff))
                 decodageTM.decodeTM(buff)
@@ -121,19 +126,22 @@ class client:
         """
         # Read message length and unpack it into an integer
         TM_header_size = 5
-        raw_TM_header = client.recvall(sock, TM_header_size)
+        raw_TM_header = client_tcp.recvall(sock, TM_header_size)
         if not raw_TM_header:
             return None
         TM_content_size = struct.unpack('>I', raw_TM_header[1:5])[0]
 
         # Read the message data with timeout
         sock.settimeout(3.0)
-        raw_TM_content = client.recvall(sock, TM_content_size)
+        raw_TM_content = client_tcp.recvall(sock, TM_content_size)
         sock.settimeout(None)
         if raw_TM_content == None:
             return None
         
         return raw_TM_header + raw_TM_content
+
+def callback_on_TM(client, userdata, message) :
+    decodageTM.decodeTM(message)
 
 def main():
     """
@@ -152,16 +160,20 @@ def main():
     parser.add_argument("-p", "--port", type=int,
                         required=True, help="port of the server")
     args = parser.parse_args()
-    client.client_init(args.ip, args.port)
+    client_tcp.client_init(args.ip, args.port)
     # Thread receive
-    receiver = Thread(target=client.tcp_client_receive)
+    receiver = Thread(target=client_tcp.tcp_client_receive)
     receiver.start()
     # Encodage des TC via pooling sur fichier
     while(1):
-        sender = Thread(target=client.tcp_client_send)
+        sender = Thread(target=client_tcp.tcp_client_send)
         sender.start()
         sleep(1)
-
+    if  (COM_MODE == 0) :
+        client = mqtt.Client("MQTT_client")
+        broker_addr = args.ip
+        client.connect(broker_addr)
+        client.subscribe("A-Eye/toClient", callback_on_TM)
 
 if __name__ == "__main__":
     main()

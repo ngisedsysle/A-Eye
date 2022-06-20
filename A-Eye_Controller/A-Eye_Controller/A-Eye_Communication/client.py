@@ -14,7 +14,7 @@ from time import sleep
 import encodageTC
 import decodageTM
 import pipeClient
-import paho.mqtt.client as mqtt 
+import paho.mqtt.client as mqtt
 import os
 
 COM_MODE = 0 
@@ -158,22 +158,28 @@ def main():
     parser.add_argument("-i", "--ip", type=str,
                         required=True, help="take IpV4 format addr")
     parser.add_argument("-p", "--port", type=int,
-                        required=True, help="port of the server")
+                        required=False, help="port of the server")
     args = parser.parse_args()
-    client_tcp.client_init(args.ip, args.port)
-    # Thread receive
-    receiver = Thread(target=client_tcp.tcp_client_receive)
-    receiver.start()
-    # Encodage des TC via pooling sur fichier
-    while(1):
-        sender = Thread(target=client_tcp.tcp_client_send)
-        sender.start()
-        sleep(1)
+    # client_tcp.client_init(args.ip, args.port)
+    # # Thread receive
+    # receiver = Thread(target=client_tcp.tcp_client_receive)
+    # receiver.start()
     if  (COM_MODE == 0) :
-        client = mqtt.Client("MQTT_client")
-        broker_addr = args.ip
-        client.connect(broker_addr)
-        client.subscribe("A-Eye/toClient", callback_on_TM)
+        pipeClient.writeInPipe("Start MQTT communication...")
+        client = mqtt.Client()
+        client.on_message = callback_on_TM
+        client.connect(args.ip)
+        pipeClient.writeInPipe("Client connected ! ")
+        # Callback to get the TM
+        client.subscribe("A-Eye/toClient",0)
+        pipeClient.writeInPipe("Subsribed to toClient ! ")
+        # Send the TC
+        while(1):
+            msg = encodageTC.encode_tc()
+            for tc in msg:
+                pipeClient.writeInPipe("send a TC : " + tc)
+                client.publish("A-Eye/toServer",tc)
+            sleep(0.1)
 
 if __name__ == "__main__":
     main()

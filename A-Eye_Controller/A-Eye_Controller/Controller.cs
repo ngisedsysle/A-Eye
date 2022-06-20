@@ -1,8 +1,10 @@
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
 
 namespace AEye
 {
@@ -12,6 +14,10 @@ namespace AEye
         /// Used to know which file to show.
         /// </summary>
         private bool dispSecond = false;
+
+        private int mode = 1; // 0 for JSON, 1 for MQTT
+
+        ConfigFile lastConfig = new ConfigFile(new Config(true.ToString(), false.ToString()), new Weights(), new TakePicture());
 
         public void set_ip_tb(string p0)
         {
@@ -36,17 +42,10 @@ namespace AEye
         /// <param name="e"></param>
         public void SetConfig_Click(object sender, EventArgs e)
         {
-            // Get the current config
-            var config = new ConfigFile(
-                new Config(startStop_cb.Checked.ToString(), mode_cb.SelectedIndex.ToString()),
-                new Weights(false.ToString()),
-                new TakePicture(false.ToString()));
-
-            // Serialize in Json
-            string jsonString = JsonSerializer.Serialize(config);
-
-            // Write in file
-            File.WriteAllText("config.json", jsonString);
+            if (mode == 0)
+                Build_json();
+            else if (mode == 1)
+                SendTCByMQTT();
 
             // Activate button
             if (mode_cb.SelectedIndex == 1)
@@ -59,14 +58,68 @@ namespace AEye
             }
         }
 
-        public void setMode(int mode)
+        private void SendTCByMQTT()
+        {
+            // Get the current config
+            var config = new ConfigFile(
+                new Config(startStop_cb.Checked.ToString(), mode_cb.SelectedIndex.ToString()),
+                new Weights(false.ToString()),
+                new TakePicture(false.ToString()));
+
+            // Compare to the last one 
+            string topic = "A-Eye/toServer"
+            if (!lastConfig.Config.ModeSelector.Equals(config.Config.ModeSelector))
+            {
+                Send_mqtt("1" + mode_cb.SelectedIndex.ToString(), topic);
+            }
+            if (!lastConfig.Config.StartStop.Equals(config.Config.StartStop))
+            {
+                if (config.Config.StartStop == true.ToString())
+                {
+                    Send_mqtt("31", topic);
+                }
+                else
+                {
+                    Send_mqtt("30", topic);
+                }
+            }
+            if (!lastConfig.TakePicture.Valid.Equals(config.TakePicture.Valid))
+            {
+                if (config.TakePicture.Valid == true.ToString())
+                {
+                    Send_mqtt("21", topic);
+                }
+                else
+                {
+                    Send_mqtt("20", topic);
+                }
+            }
+            lastConfig = config;
+        }
+
+        private void Build_json()
+        {
+            // Get the current config
+            var config = new ConfigFile(
+                new Config(startStop_cb.Checked.ToString(), mode_cb.SelectedIndex.ToString()),
+                new Weights(false.ToString()),
+                new TakePicture(false.ToString()));
+
+            // Serialize in Json
+            string jsonString = JsonSerializer.Serialize(config);
+
+            // Write in file
+            File.WriteAllText("config.json", jsonString);
+        }
+
+        public void SetMode(int mode)
         {
             mode_cb.SelectedIndex = mode;
         }
 
         public Label getStatus()
         {
-            return this.Status ;
+            return this.Status;
         }
 
         /// <summary>
@@ -76,6 +129,28 @@ namespace AEye
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void TakePict_btn_Click(object sender, EventArgs e)
+        {
+            if (mode == 0)
+            {
+                Write_json_take_pict();
+            }
+            else if (mode == 1)
+            {
+                string message = "21";
+                string topic = "A-Eye/toServer";
+                Send_mqtt(message, topic);
+            }
+        }
+
+        private static void Send_mqtt(string message, string topic)
+        {
+            MqttClient client = new MqttClient(AEye.Program.Ip);
+            string clientId = Guid.NewGuid().ToString();
+            client.Connect(clientId);
+            client.Publish(topic, Encoding.UTF8.GetBytes(message));
+        }
+
+        private static void Write_json_take_pict()
         {
             // Open the file
             String str;
@@ -196,7 +271,6 @@ namespace AEye
                     File.Copy("temp.bmp", "disp1.bmp", true);
                     visionneuse.Load("disp1.bmp");
                 }
-                
             }
         }
     }

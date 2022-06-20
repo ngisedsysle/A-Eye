@@ -167,27 +167,24 @@ def main():
                         required=False, help="port of the server")
     args = parser.parse_args()
 
-    if  (mode == 0) :
+    if (mode == Protocol.MQTT_e) :
         pipeClient.writeInPipe("Start MQTT communication...")
         client = mqtt.Client()
         client.on_message = callback_on_TM
         client.connect(args.ip)
         # Callback to get the TM
         client.subscribe("A-Eye/toClient",0)
-        # Send the TC
+        # TC is send by C#
         while(1):
-            msg = encodageTC.encode_tc()
-            for tc in msg:
-                client.publish("A-Eye/toServer",tc)
             sleep(0.1)
-    elif (mode == 1):
+    elif (mode == Protocol.TCP_e):
         pipeClient.writeInPipe("Start TCP communication...")
         client_tcp.client_init(args.ip, args.port)
         # Thread receive
         receiver = Thread(target=client_tcp.tcp_client_receive)
         receiver.start()
         while(1):
-            sender = Thread(target=client.tcp_client_send)
+            sender = Thread(target=client_tcp.tcp_client_send)
             sender.start()
             sleep(.1)
     else :

@@ -29,7 +29,8 @@ def writeInPipe(msg):
         elif mode == Protocol.MQTT_e:
             mqttc = mqtt.Client()
             mqttc.connect("localhost")
-            mqttc.publish("toCS", msg)
+            mqttc.publish("A-Eye/toCS", msg, qos=0)
+            mqttc.disconnect()
         else:
             sys.exit("Unsupported Protocol in interprocess communication.\n")
     except:

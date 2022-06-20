@@ -14,6 +14,7 @@
 #include <thread> // For sleep
 #include <atomic>
 #include <chrono>
+#include <iomanip>
 #include <cstring>
 #include "mqtt/async_client.h"
 #include "Server/tcp_server.h"
@@ -136,7 +137,7 @@ extern "C"
             }
             usleep(1000);
         }
-        close(main_s->fifo);
+
     }
 
     void *thread_pred(void *arg)
@@ -240,6 +241,8 @@ extern "C++"
         // An action listener to display the result of actions.
         action_listener subListener_;
 
+        string topic;
+
         // This deomonstrates manually reconnecting to the broker by calling
         // connect() again. This is a possibility for an application that keeps
         // a copy of it's original connect_options, or if the app wants to
@@ -276,7 +279,7 @@ extern "C++"
         // (Re)connection success
         void connected(const std::string &cause) override
         {
-            cli_.subscribe(TOPIC, QOS, nullptr, subListener_);
+            cli_.subscribe(topic, QOS, nullptr, subListener_);
         }
 
         // Callback for when the connection is lost.
@@ -295,6 +298,7 @@ extern "C++"
         // Callback for when a message arrives.
         void message_arrived(mqtt::const_message_ptr msg) override
         {
+            string mem_message("");
             topic = msg->get_topic();
             rcv_msg = msg->to_string();
             if (topic.compare("prediction") == 0)
@@ -315,168 +319,219 @@ extern "C++"
                     system("bash ../../demo.sh");
                 }
             }
+            else if (topic.compare("A-Eye/toServer") == 0)
+            {
+                std::cout << "Client reply : " << rcv_msg << endl;
+                // if we receieve stop message, we free all buffer and close the connection
+                if (rcv_msg.compare("STOP") == 0)
+                {
+                    // freeing memory space
+                    circular_buf_free(main_s->buf_f_struct->cbuf);
+                    free(main_s->cmd_struct);
+                    free(main_s->buf_f_struct);
+                    free(main_s->weight_struct);
+                    free(main_s->chg_mode_struct);
+                    free(main_s);
+                    // send end of connection and close socket
+                    exit(0);
+                }
+                else
+                {
+                    char *client_message = new char[rcv_msg.length() + 1];
+                    strcpy(client_message, rcv_msg.c_str());
+                    if (decodeTC(main_s, client_message) == 0)
+                        std::cout << "Not a TC" << endl;
+                    if (main_s->start_f == false)
+                    {
+                        main_s->ack = interpreteur(main_s);
+                    }
+                }
+            }
         }
 
-        void delivery_complete(mqtt::delivery_token_ptr token) override {}
+        void
+        delivery_complete(mqtt::delivery_token_ptr token) override
+        {
+        }
 
     public:
-        callback(mqtt::async_client &cli, mqtt::connect_options &connOpts)
-            : nretry_(0), cli_(cli), connOpts_(connOpts), subListener_("Subscription") {}
+        callback(mqtt::async_client &cli, mqtt::connect_options &connOpts, string topic)
+            : nretry_(0), cli_(cli), connOpts_(connOpts), subListener_("Subscription"), topic(topic) {}
     };
 
-    void subscribe(string address)
+    void thread_send_mqtt()
     {
-        mqtt::connect_options connOpts;
-        connOpts.set_clean_session(true);
-        mqtt::async_client cli(address, "");
-        // Install the callback(s) before connecting.
-        callback cb(cli, connOpts);
-        cli.set_callback(cb);
-
-        // Start the connection.
-        // When completed, the callback will subscribe to topic.
-
-        try
-        {
-            cli.connect(connOpts, nullptr, cb);
-        }
-        catch (const mqtt::exception &exc)
-        {
-            std::cerr << "\nERROR: Unable to connect to MQTT server: '"
-                      << DFLT_SERVER_ADDRESS << "'" << exc << std::endl;
-        }
+        mqtt::async_client cli_send(DFLT_SERVER_ADDRESS, "");
+        cli_send.connect()->wait();
 
         while (1)
         {
+            // if new data : send new data
+            if (main_s->buf_f_struct->new_data_f == true)
+            {
+                // Send some data
+                cout << "Will be send : " << endl;
+                cout << "Code op : " << hex << main_s->ack[0] << " || "
+                     << "Length :  " << hex << main_s->ack[4] << " || "
+                     << "Message : ";
+                for (int i = 5; i < main_s->ack[4] + 5; i++)
+                    cout << main_s->ack[i];
+                cout << "\n"
+                     << endl;
+                main_s->buf_f_struct->new_data_f = false;
+                cli_send.publish("A-Eye/toClient", main_s->ack, main_s->ack[4] + 5);
+            }
+            // if new IMG to send : send the TM
+            if (main_s->img_s->img_f == true)
+            {
+                main_s->img_s->length = IMG_LENGTH;
+                char *imgTM = imgEncodedTM(main_s->img_s->length);
+                // Send some data
+                printf("Sending image from process IA ... \n");
+                cli_send.publish("A-Eye/toClient", imgTM, main_s->img_s->length + 5);
+                main_s->img_s->img_f = false;
+                free(imgTM);
+            }
+            if (main_s->img_s->capture_f == true)
+            {
+                char *imgTM = captureManuelle(main_s->img_s->length);
+                // Send some data
+                cout << "Sending image from manual capture ..." << endl;
+                cli_send.publish("A-Eye/toClient", imgTM, main_s->img_s->length + 5);
+                main_s->img_s->capture_f = false;
+                free(imgTM);
+            }
+            usleep(1000);
         }
-        // Disconnect
-        try
-        {
-            cli.disconnect()->wait();
-        }
-        catch (const mqtt::exception &exc)
-        {
-            std::cerr << exc << std::endl;
-        }
+        cli_send.disconnect();
     }
 }
-
+using namespace std;
 int main()
 {
     if ((main_s = (mainStruct *)calloc(1, sizeof(mainStruct))) == NULL)
     {
-        printf("erreur allocation mémoire\n");
+        cout << "erreur allocation mémoire" << endl;
         return -1;
     }
     if ((main_s->img_s = (img *)calloc(1, sizeof(img))) == NULL)
     {
-        printf("erreur allocation mémoire\n");
+        cout << "erreur allocation mémoire" << endl;
         return -1;
     }
     if ((main_s->cmd_struct = (cmd *)calloc(1, sizeof(cmd))) == NULL)
     {
-        printf("erreur allocation mémoire\n");
+        cout << "erreur allocation mémoire" << endl;
         return -1;
     }
     if ((main_s->chg_mode_struct = (chg_mode *)calloc(1, sizeof(chg_mode))) == NULL)
     {
-        printf("erreur allocation mémoire\n");
+        cout << "erreur allocation mémoire" << endl;
         return -1;
     }
     if ((main_s->weight_struct = (weight_upd *)calloc(1, sizeof(weight_upd))) == NULL)
     {
-        printf("erreur allocation mémoire\n");
+        cout << "erreur allocation mémoire" << endl;
         return -1;
     }
     if ((main_s->buf_f_struct = (buf_f *)calloc(1, sizeof(circular_buf_t) + sizeof(bool))) == NULL)
     {
-        printf("erreur allocation mémoire\n");
+        cout << "erreur allocation mémoire" << endl;
         return -1;
     }
-
     int socket_desc, sock, clientLen, read_size;
     struct sockaddr_in server, client;
     pthread_t thr_rcv_id, thr_send_id;
     pthread_t thr_pred;
-
-    // Create socket
     socket_thr_s *soc;
-    if ((soc = (socket_thr_s *)malloc(sizeof(socket_thr_s))) == NULL)
+
+    if (COM_MODE != 0)
     {
-        printf("erreur allocation memoire\n");
-        return -1;
+
+        // Create socket
+        
+        if ((soc = (socket_thr_s *)malloc(sizeof(socket_thr_s))) == NULL)
+        {
+            cout << "erreur allocation mémoire" << endl;
+            return -1;
+        }
+        socket_desc = SocketCreate();
+        if (socket_desc == -1)
+        {
+            cout << "Could not create socket" << endl;
+            return -1;
+        }
+        cout << "Socket created" << endl;
+        // Bind
+        if (BindCreatedSocket(socket_desc) < 0)
+        {
+            // print the error message
+            perror("bind failed");
+            return -1;
+        }
+        cout << "bind done" << endl;
+        // Listen
+        listen(socket_desc, 3);
+        cout << "Waiting for incoming connections..." << endl;
+        clientLen = sizeof(struct sockaddr_in);
+        // accept connection from an incoming client
+        sock = accept(socket_desc, (struct sockaddr *)&client, (socklen_t *)&clientLen);
+        if (sock < 0)
+        {
+            perror("accept failed");
+            return -1;
+        }
+        cout << "Connection accepted" << endl;
+        // pipe creation
+        soc->sock = sock;
+        soc->socket_desc = socket_desc;
     }
-    socket_desc = SocketCreate();
-    if (socket_desc == -1)
-    {
-        printf("Could not create socket\n");
-        return -1;
-    }
-    printf("Socket created\n");
-    // Bind
-    if (BindCreatedSocket(socket_desc) < 0)
-    {
-        // print the error message
-        perror("bind failed");
-        return -1;
-    }
-    printf("bind done\n");
-    // Listen
-    listen(socket_desc, 3);
-    printf("Waiting for incoming connections...\n");
-    clientLen = sizeof(struct sockaddr_in);
-    // accept connection from an incoming client
-    sock = accept(socket_desc, (struct sockaddr *)&client, (socklen_t *)&clientLen);
-    if (sock < 0)
-    {
-        perror("accept failed");
-        return -1;
-    }
-    printf("Connection accepted\n");
 
     mqtt::connect_options connOpts;
     connOpts.set_clean_session(true);
-    mqtt::async_client cli(DFLT_SERVER_ADDRESS, "");
+    mqtt::async_client local_client(DFLT_SERVER_ADDRESS, "");
+    mqtt::async_client client_rcv(DFLT_SERVER_ADDRESS, "");
     // Install the callback(s) before connecting.
-    callback cb(cli, connOpts);
-    cli.set_callback(cb);
+    callback cb(local_client, connOpts, "prediction");
+    local_client.set_callback(cb);
+    callback cb_server(client_rcv, connOpts, "A-Eye/toServer");
+    client_rcv.set_callback(cb_server);
     // Start the connection.
     // When completed, the callback will subscribe to topic.
     try
     {
-        cli.connect(connOpts, nullptr, cb);
-        cout << "Connected" << endl;
+        local_client.connect(connOpts, nullptr, cb);
+        cout << "interprocess mqtt connected" << endl;
+        client_rcv.connect(connOpts, nullptr, cb_server);
+        cout << "communication mqtt connected" << endl;
     }
     catch (const mqtt::exception &exc)
     {
         std::cerr << "\nERROR: Unable to connect to MQTT server: '"
                   << DFLT_SERVER_ADDRESS << "'" << exc << std::endl;
     }
-    // pipe creation
-    soc->sock = sock;
-    soc->socket_desc = socket_desc;
-    pthread_create(&thr_rcv_id, NULL, &thread_rcv, soc);
-    pthread_create(&thr_send_id, NULL, &thread_send, soc);
+
     if (COM_MODE == 0)
     {
+        thread thr_send(thread_send_mqtt);
+
+        thr_send.join();
     }
     else
     {
+        pthread_create(&thr_rcv_id, NULL, &thread_rcv, soc);
+        pthread_create(&thr_send_id, NULL, &thread_send, soc);
         pthread_create(&thr_pred, NULL, &thread_pred, NULL);
-    }
-    pthread_join(thr_rcv_id, NULL);
-    pthread_join(thr_send_id, NULL);
-    if (COM_MODE == 0)
-    {
-    }
-    else
-    {
+
+        pthread_join(thr_rcv_id, NULL);
+        pthread_join(thr_send_id, NULL);
         pthread_join(thr_pred, NULL);
     }
     // Disconnect
     try
     {
-        cli.disconnect()->wait();
+        local_client.disconnect()->wait();
+        client_rcv.disconnect()->wait();
     }
     catch (const mqtt::exception &exc)
     {

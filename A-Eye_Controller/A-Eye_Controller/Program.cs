@@ -9,6 +9,7 @@ namespace AEye
     /// </summary>
     public static class Program
     {
+        public static int comMode = 1; // 0 for JSON, 1 for MQTT
         /// <summary>
         /// Store the IP address.
         /// </summary>
@@ -73,10 +74,14 @@ namespace AEye
         static void RunThread()
         {
             SubProcess subProcess = new SubProcess();
-            Thread pipe_thr = new Thread(subProcess.PipeServer_Run);
-            pipe_thr.Start();
-            Thread clientTCP_thr = new Thread(subProcess.ClientPythonLaunch);
-            clientTCP_thr.Start();
+            Thread localCom_thr = new Thread(subProcess.LocalCom_run);
+            localCom_thr.Start();
+
+            if (comMode == 0)
+            {
+                Thread clientTCP_thr = new Thread(subProcess.ClientPythonLaunch);
+                clientTCP_thr.Start();
+            }
             while (true)
             {
                 Thread.Sleep(1000);

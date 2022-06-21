@@ -15,9 +15,9 @@ namespace AEye
         /// </summary>
         private bool dispSecond = false;
 
-        private int mode = 1; // 0 for JSON, 1 for MQTT
-
         ConfigFile lastConfig = new ConfigFile(new Config(true.ToString(), false.ToString()), new Weights(), new TakePicture());
+
+        MqttClient mqttClient;
 
         public void set_ip_tb(string p0)
         {
@@ -42,10 +42,15 @@ namespace AEye
         /// <param name="e"></param>
         public void SetConfig_Click(object sender, EventArgs e)
         {
-            if (mode == 0)
-                Build_json();
-            else if (mode == 1)
+            if (Program.comMode == 0)
+                Build_json_with_actual_config();
+            else if (Program.comMode == 1)
                 SendTCByMQTT();
+            else
+            {
+                Program.log += "Mode not implemented in set config !!!";
+                return;
+            }
 
             // Activate button
             if (mode_cb.SelectedIndex == 1)
@@ -67,7 +72,7 @@ namespace AEye
                 new TakePicture(false.ToString()));
 
             // Compare to the last one 
-            string topic = "A-Eye/toServer"
+            string topic = "A-Eye/toServer";
             if (!lastConfig.Config.ModeSelector.Equals(config.Config.ModeSelector))
             {
                 Send_mqtt("1" + mode_cb.SelectedIndex.ToString(), topic);
@@ -97,7 +102,7 @@ namespace AEye
             lastConfig = config;
         }
 
-        private void Build_json()
+        private void Build_json_with_actual_config()
         {
             // Get the current config
             var config = new ConfigFile(
@@ -130,11 +135,11 @@ namespace AEye
         /// <param name="e"></param>
         public void TakePict_btn_Click(object sender, EventArgs e)
         {
-            if (mode == 0)
+            if (Program.comMode == 0)
             {
                 Write_json_take_pict();
             }
-            else if (mode == 1)
+            else if (Program.comMode == 1)
             {
                 string message = "21";
                 string topic = "A-Eye/toServer";
@@ -212,6 +217,32 @@ namespace AEye
                 return;
             }
 
+            Verify_Ping();
+
+            SetCallback();
+        }
+
+        private void SetCallback()
+        {
+            if (mqttClient.IsConnected)
+            {
+                mqttClient.Disconnect();
+            }
+            mqttClient = new MqttClient(Program.Ip.ToString());
+            mqttClient.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
+            mqttClient.Connect(Guid.NewGuid().ToString());
+            mqttClient.Subscribe(new string[] { "A-Eye/toClient" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
+            Program.log += "[MQTT] Callback set !\n";
+        }
+
+        private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+        {
+            File.WriteAllBytes("A-Eye_Communication/content.msg", e.Message);
+            new SubProcess().run_cmd("A-Eye_Communication/decodageTM.py", "");
+        }
+
+        private void Verify_Ping()
+        {
             var pingSender = new Ping();
             PingReply reply = pingSender.Send(Program.Ip);
             if (reply.Status == IPStatus.Success)

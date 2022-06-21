@@ -63,26 +63,37 @@ namespace AEye
         /// Named pipe is used to communication between Python and C#.
         /// This will initiate the pipe and listen on it.
         /// </summary>
-        public void PipeServer_Run()
+        public void LocalCom_run()
         {
-            MqttClient client = new MqttClient("localhost");
-            client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
-            string clientId = Guid.NewGuid().ToString();
-            client.Connect(clientId);
-            client.Subscribe(new string[] { "A-Eye/toCS" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE});
-
-            //NamedPipeServerStream serverStream = new NamedPipeServerStream("CSServer", PipeDirection.In);
-            //string line;
-            //while (true)
-            //{
-            //    serverStream.WaitForConnection();
-            //    StreamReader reader = new StreamReader(serverStream);
-            //    while ((line = reader.ReadLine()) != null)
-            //    {
-            //        ProcessReceivedMessage(line);
-            //    }
-            //    serverStream.Disconnect();
-            //}
+            if(Program.comMode == 0)
+            {
+                NamedPipeServerStream serverStream = new NamedPipeServerStream("CSServer", PipeDirection.In);
+                string line;
+                while (true)
+                {
+                    serverStream.WaitForConnection();
+                    StreamReader reader = new StreamReader(serverStream);
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        ProcessReceivedMessage(line);
+                    }
+                    serverStream.Disconnect();
+                }
+            }
+            else if (Program.comMode == 1)
+            {
+                MqttClient client = new MqttClient("localhost");
+                client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
+                string clientId = Guid.NewGuid().ToString();
+                client.Connect(clientId);
+                client.Subscribe(new string[] { "A-Eye/toCS" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE});
+                return;
+            }
+            else
+            {
+                Program.log += "Fail in internal communication !!!";
+                return;
+            }
         }
 
         private void ProcessReceivedMessage(string line)

@@ -1,4 +1,4 @@
-import pipeClient
+import localCom
 
 def decodeTM(bArr):
     """
@@ -19,20 +19,28 @@ def decodeTM(bArr):
     bArr = bArr[5:]
     if code == 0x60:
         # String to print
-        pipeClient.writeInPipe("content of TM : "+ bArr.decode())
+        localCom.sendToCs("content of TM : "+ bArr.decode())
     elif code == 0x50:
         # Image
         file = open("temp.bmp", "wb")
         file.write(bArr)
         file.close()
-        pipeClient.writeInPipe("Get New Image in Auto Mode")
+        localCom.sendToCs("Get New Image in Auto Mode")
     elif code == 0x70:
         file = open("temp.bmp", "wb")
         file.write(bArr)
         file.close()
-        pipeClient.writeInPipe("Get New Image in Manual Mode")
+        localCom.sendToCs("Get New Image in Manual Mode")
 
     else:
         # Other
-        pipeClient.writeInPipe("OpCode not implemented in decodageTM")
+        localCom.sendToCs("OpCode not implemented in decodageTM")
     return
+
+def main():
+    file = open('A-Eye_Communication/content.msg', 'rb')
+    msg = file.read()
+    decodeTM(msg)
+
+if __name__ == "__main__":
+    main()

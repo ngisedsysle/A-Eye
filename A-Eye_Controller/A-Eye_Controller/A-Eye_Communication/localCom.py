@@ -13,7 +13,7 @@ class Protocol(Enum):
 ## Choose protocol to use
 mode = Protocol.MQTT_e
 
-def writeInPipe(msg):
+def sendToCs(msg):
     """
     Write the string in the pipe called CSServer, firstly opened by Controller.
     
@@ -29,11 +29,11 @@ def writeInPipe(msg):
         elif mode == Protocol.MQTT_e:
             mqttc = mqtt.Client()
             mqttc.connect("localhost")
-            mqttc.publish("A-Eye/toCS", msg, qos=0)
+            mqttc.publish("A-Eye/toCS", msg, qos=1)
             mqttc.disconnect()
         else:
             sys.exit("Unsupported Protocol in interprocess communication.\n")
     except:
         sleep(1)
-        writeInPipe(msg)
+        sendToCs(msg)
     return

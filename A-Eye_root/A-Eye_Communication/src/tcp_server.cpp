@@ -137,7 +137,6 @@ extern "C"
             }
             usleep(1000);
         }
-
     }
 
     void *thread_pred(void *arg)
@@ -146,7 +145,7 @@ extern "C"
 
         while (1)
         {
-            if ((main_s->fifo = open("../IAtoINT", O_RDONLY)) == -1)
+            if ((main_s->fifo = open("../../IAtoINT", O_RDONLY)) == -1)
             {
                 printf("erreur d'ouverture du pipe\n");
                 return NULL;
@@ -166,7 +165,14 @@ extern "C"
             }
             if (main_s->chg_mode_struct->mode == 0)
             {
-                system("bash ../../demo.sh");
+                if (COM_MODE == 0)
+                {
+                    system("bash ../../demo_mqtt.sh");
+                }
+                else if (COM_MODE == 1)
+                {
+                    system("bash ../../demo.sh");
+                }
             }
             close(main_s->fifo);
         }
@@ -199,13 +205,11 @@ extern "C++"
 
     const string DFLT_SERVER_ADDRESS{"tcp://localhost:1883"};
 
-    const string TOPIC{"prediction"};
     const int QOS = 1;
     const int N_RETRY_ATTEMPTS = 5;
 
     int prediction = 1;
     string rcv_msg;
-    string topic;
     const auto TIMEOUT = std::chrono::seconds(10);
 
     class action_listener : public virtual mqtt::iaction_listener
@@ -220,10 +224,7 @@ extern "C++"
             std::cout << std::endl;
         }
 
-        void on_success(const mqtt::token &tok) override
-        {
-            cout << "Subscribed to topic : " << TOPIC << endl;
-        }
+        void on_success(const mqtt::token &tok) override {}
 
     public:
         action_listener(const std::string &name) : name_(name) {}
@@ -303,9 +304,7 @@ extern "C++"
             rcv_msg = msg->to_string();
             if (topic.compare("prediction") == 0)
             {
-                cout << msg->to_string() << endl;
                 prediction = stoi(msg->to_string());
-                cout << prediction << endl;
                 if (prediction == 0)
                 {
                     main_s->img_s->img_f = true;
@@ -316,7 +315,14 @@ extern "C++"
                 }
                 if (main_s->chg_mode_struct->mode == 0)
                 {
-                    system("bash ../../demo.sh");
+                    if (COM_MODE == 0)
+                    {
+                        system("bash ../../demo_mqtt.sh");
+                    }
+                    else if (COM_MODE == 1)
+                    {
+                        system("bash ../../demo.sh");
+                    }
                 }
             }
             else if (topic.compare("A-Eye/toServer") == 0)
@@ -406,7 +412,9 @@ extern "C++"
         cli_send.disconnect();
     }
 }
+
 using namespace std;
+
 int main()
 {
     if ((main_s = (mainStruct *)calloc(1, sizeof(mainStruct))) == NULL)
@@ -445,11 +453,11 @@ int main()
     pthread_t thr_pred;
     socket_thr_s *soc;
 
-    if (COM_MODE != 0)
+    if (COM_MODE == 1)
     {
 
         // Create socket
-        
+
         if ((soc = (socket_thr_s *)malloc(sizeof(socket_thr_s))) == NULL)
         {
             cout << "erreur allocation mémoire" << endl;
@@ -517,7 +525,7 @@ int main()
 
         thr_send.join();
     }
-    else
+    else if (COM_MODE == 1)
     {
         pthread_create(&thr_rcv_id, NULL, &thread_rcv, soc);
         pthread_create(&thr_send_id, NULL, &thread_send, soc);

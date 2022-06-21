@@ -1,4 +1,4 @@
-# Petalinu From a Vivado Hardware Description File
+# Petalinux From a Vivado Hardware Description File
 Guilhem ROLLAND  
 Thomas DU BOISROUVRAY  
 Elsys Design Rennes  

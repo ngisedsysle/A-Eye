@@ -96,6 +96,10 @@ namespace AEye
             }
         }
 
+        /// <summary>
+        /// Add message to log and launch thread if action has to be done. 
+        /// </summary>
+        /// <param name="line">The message as string.</param>
         private void ProcessReceivedMessage(string line)
         {
             Program.log += "[INFO][From Python] " + line + "\n";
@@ -117,6 +121,11 @@ namespace AEye
             }
         }
 
+        /// <summary>
+        /// When receiving a message, this callback is called to process the message.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             string msg = Encoding.ASCII.GetString(e.Message);

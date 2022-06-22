@@ -15,10 +15,20 @@ namespace AEye
         /// </summary>
         private bool dispSecond = false;
 
+        /// <summary>
+        /// Store lastConfig to compare what has change. 
+        /// </summary>
         ConfigFile lastConfig = new ConfigFile(new Config(true.ToString(), false.ToString()), new Weights(), new TakePicture());
 
+        /// <summary>
+        /// MQTT client to receive communication using callback.
+        /// </summary>
         MqttClient mqttClient;
 
+        /// <summary>
+        /// Set the content of the IP text box.
+        /// </summary>
+        /// <param name="p0">the IP as string</param>
         public void set_ip_tb(string p0)
         {
             ip_tb.Text = p0;
@@ -63,6 +73,10 @@ namespace AEye
             }
         }
 
+        /// <summary>
+        /// Directly send the TC using a mqtt communication.
+        /// This will compare the actual config with the last one, and send corresponding TC.
+        /// </summary>
         private void SendTCByMQTT()
         {
             // Get the current config
@@ -102,6 +116,10 @@ namespace AEye
             lastConfig = config;
         }
 
+
+        /// <summary>
+        /// Write config.json with the actual configuration. 
+        /// </summary>
         private void Build_json_with_actual_config()
         {
             // Get the current config
@@ -117,11 +135,20 @@ namespace AEye
             File.WriteAllText("config.json", jsonString);
         }
 
+        /// <summary>
+        /// Set the mode combobox to the corresponding integer you want. 
+        /// </summary>
+        /// <param name="mode">the mode you want.</param>
         public void SetMode(int mode)
         {
             mode_cb.SelectedIndex = mode;
         }
 
+        /// <summary>
+        /// Get the actual status label.
+        /// For example, connected.
+        /// </summary>
+        /// <returns>the label</returns>
         public Label getStatus()
         {
             return this.Status;
@@ -147,14 +174,22 @@ namespace AEye
             }
         }
 
+        /// <summary>
+        /// Send the message using a MQTT client, on the corresponding topic.
+        /// </summary>
+        /// <param name="message">The message as a string. Ex : "31"</param>
+        /// <param name="topic">The topic as a string. Ex : "A-Eye/toServer"</param>
         private static void Send_mqtt(string message, string topic)
         {
-            MqttClient client = new MqttClient(AEye.Program.Ip);
+            MqttClient client = new MqttClient(Program.Ip.ToString());
             string clientId = Guid.NewGuid().ToString();
             client.Connect(clientId);
             client.Publish(topic, Encoding.UTF8.GetBytes(message));
         }
 
+        /// <summary>
+        /// Modify the actual config.json by setting the field take picture at true.
+        /// </summary>
         private static void Write_json_take_pict()
         {
             // Open the file
@@ -222,6 +257,9 @@ namespace AEye
             SetCallback();
         }
 
+        /// <summary>
+        /// Set the callback for the MQTT client.
+        /// </summary>
         private void SetCallback()
         {
             if (mqttClient.IsConnected)
@@ -235,12 +273,21 @@ namespace AEye
             Program.log += "[MQTT] Callback set !\n";
         }
 
+        /// <summary>
+        /// Launch in callback. 
+        /// Process the received message using python script.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             File.WriteAllBytes("A-Eye_Communication/content.msg", e.Message);
             new SubProcess().run_cmd("A-Eye_Communication/decodageTM.py", "");
         }
 
+        /// <summary>
+        /// Ping the IP to be sure there's something.
+        /// </summary>
         private void Verify_Ping()
         {
             var pingSender = new Ping();

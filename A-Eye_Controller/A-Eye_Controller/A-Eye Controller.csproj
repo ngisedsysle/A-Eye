@@ -55,6 +55,9 @@
     <None Update="A-Eye_Communication\encodageTC.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="A-Eye_Communication\localCom.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="A-Eye_Communication\pipeClient.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -1,0 +1,94 @@
+@startuml initial_22_June
+component conv_2d_padding{
+    caption test
+    portin start_padd
+    portin clk_padd
+    portin reset_padd
+    portin kernel_padd
+    portin in_img_padd
+
+    portout finished_padd
+    portout out_img_padd
+
+    component padding {
+        portin in_img_reduced
+        portout out_img_padded
+    }
+
+    in_img_padd--> in_img_reduced : G_I_WIDTH
+
+    component conv_2d\nENGINE {
+        portin start
+        portin clk
+        portin reset
+        portin kernel
+        portin in_img
+
+        portout finished
+        portout out_img
+    }
+
+    start_padd --> start
+    clk_padd --> clk
+    reset_padd --> reset
+    kernel_padd --> kernel : G_K_WIDTH, \nG_K_PROF
+    out_img_padded --> in_img : G_I_WIDTH + 2
+
+    finished --> finished_padd
+    out_img --> out_img_padd : G_I_WIDTH
+}
+@enduml
+
+@startuml proposal_23_June
+component fifo_pix\n1px*1px*3col*32bits {
+    portin in_pix_fifo
+    portout out_pix_fifo
+}
+component fifo_krnl\n1px*1px*3col*32bits{
+    portin in_krnl_fifo
+    portout out_krnl_fifo
+}
+
+
+component img_builder\n4px*4px*3col*32bits{
+    portin in_pix_build
+    portout out_img_build
+    portout finished_img_build
+}
+out_pix_fifo --> in_pix_build : 1px
+component krnl_builder\n3px*3px*3col*32bits{
+    portin in_krnl_build
+    portout finished_krnl_build
+    portout out_krnl_build
+}
+out_krnl_fifo-->in_krnl_build : 1px
+
+
+component conv_2d\nENGINE\n4px*4px*3col*32bits {
+    portin in_img_conv
+    portin start_img_conv
+    portin clk
+    portin reset
+    portin start_krnl_conv
+    portin kernel_conv
+
+    portout finished_conv
+    portout out_img_conv
+}
+out_img_build --> in_img_conv : 16px
+finished_img_build --> start_img_conv : 1bit
+out_krnl_build --> kernel_conv : 9px
+finished_krnl_build --> start_krnl_conv : 1bit
+
+
+component pooling\n2px*2px*1col*32bits {
+    portin start_pooled 
+    portin in_img_pooled 
+    portout out_img_pooled
+    portout finished_pooled
+}
+finished_conv --> start_pooled : 1bit
+out_img_conv --> in_img_pooled : 2px*2px*1col
+
+legend 1px = 3col*32bits dans le cas de la premiere conv.
+@enduml

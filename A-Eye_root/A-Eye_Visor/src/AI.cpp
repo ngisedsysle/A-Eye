@@ -397,10 +397,6 @@ extern "C++"
                     cout << "Start message received ..." << endl;
 
                 }
-                else if (msg->to_string().compare("stop") == 0)
-                {
-                    start_f = false;
-                }
             }
         }
 
@@ -591,6 +587,7 @@ extern "C"
                 }
                 printf("start processing \n");
                 runForwardProp(top);
+                start_f = false;
             }
         }
         else

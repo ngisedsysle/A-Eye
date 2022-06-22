@@ -95,10 +95,6 @@ char *interpreteur(mainStruct *main_s)
                 string->string = bufferMsg;
                 bufferMsg = stringEncodedTM(string, 4);
                 main_s->buf_f_struct->new_data_f = true;
-                if (COM_MODE == 0)
-                {
-                    system("mosquitto_pub -t toIA -m stop");
-                }
             }
             else
             {
@@ -109,10 +105,6 @@ char *interpreteur(mainStruct *main_s)
                 string->string = bufferMsg;
                 bufferMsg = stringEncodedTM(string, 4);
                 main_s->buf_f_struct->new_data_f = true;
-                if (COM_MODE == 0)
-                {
-                    system("mosquitto_pub -t toIA -m stop");
-                }
             }
             break;
         case 2:
@@ -125,10 +117,6 @@ char *interpreteur(mainStruct *main_s)
             string->string = bufferMsg;
             bufferMsg = stringEncodedTM(string, 4);
             main_s->buf_f_struct->new_data_f = true;
-            if (COM_MODE == 0)
-            {
-                system("mosquitto_pub -t toIA -m stop");
-            }
             break;
         default:
             break;
@@ -146,10 +134,6 @@ char *interpreteur(mainStruct *main_s)
         string->string = bufferMsg;
         bufferMsg = stringEncodedTM(string, 4);
         main_s->buf_f_struct->new_data_f = true;
-        if (COM_MODE == 0)
-        {
-            system("mosquitto_pub -t toIA -m stop");
-        }
     }
     return bufferMsg;
 }

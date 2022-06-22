@@ -299,7 +299,6 @@ extern "C++"
         // Callback for when a message arrives.
         void message_arrived(mqtt::const_message_ptr msg) override
         {
-            string mem_message("");
             topic = msg->get_topic();
             rcv_msg = msg->to_string();
             if (topic.compare("prediction") == 0)

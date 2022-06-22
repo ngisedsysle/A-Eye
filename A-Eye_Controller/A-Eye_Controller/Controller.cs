@@ -42,9 +42,9 @@ namespace AEye
         /// <param name="e"></param>
         public void SetConfig_Click(object sender, EventArgs e)
         {
-            if (Program.comMode == 0)
+            if (Program.comMode == Program.ComMode.JSONxNAMEDPIPE_e)
                 Build_json_with_actual_config();
-            else if (Program.comMode == 1)
+            else if (Program.comMode == Program.ComMode.MQTT_e)
                 SendTCByMQTT();
             else
             {
@@ -135,11 +135,11 @@ namespace AEye
         /// <param name="e"></param>
         public void TakePict_btn_Click(object sender, EventArgs e)
         {
-            if (Program.comMode == 0)
+            if (Program.comMode == Program.ComMode.JSONxNAMEDPIPE_e)
             {
                 Write_json_take_pict();
             }
-            else if (Program.comMode == 1)
+            else if (Program.comMode == Program.ComMode.MQTT_e)
             {
                 string message = "21";
                 string topic = "A-Eye/toServer";

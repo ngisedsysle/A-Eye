@@ -65,7 +65,7 @@ namespace AEye
         /// </summary>
         public void LocalCom_run()
         {
-            if(Program.comMode == 0)
+            if(Program.comMode == Program.ComMode.JSONxNAMEDPIPE_e)
             {
                 NamedPipeServerStream serverStream = new NamedPipeServerStream("CSServer", PipeDirection.In);
                 string line;
@@ -80,7 +80,7 @@ namespace AEye
                     serverStream.Disconnect();
                 }
             }
-            else if (Program.comMode == 1)
+            else if (Program.comMode == Program.ComMode.MQTT_e)
             {
                 MqttClient client = new MqttClient("localhost");
                 client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;

@@ -9,7 +9,13 @@ namespace AEye
     /// </summary>
     public static class Program
     {
-        public static int comMode = 1; // 0 for JSON, 1 for MQTT
+        public enum ComMode
+        {
+            JSONxNAMEDPIPE_e,
+            MQTT_e
+        }
+
+        public static ComMode comMode = ComMode.MQTT_e; // 0 for JSON, 1 for MQTT
         /// <summary>
         /// Store the IP address.
         /// </summary>
@@ -77,7 +83,7 @@ namespace AEye
             Thread localCom_thr = new Thread(subProcess.LocalCom_run);
             localCom_thr.Start();
 
-            if (comMode == 0)
+            if (comMode == ComMode.JSONxNAMEDPIPE_e)
             {
                 Thread clientTCP_thr = new Thread(subProcess.ClientPythonLaunch);
                 clientTCP_thr.Start();

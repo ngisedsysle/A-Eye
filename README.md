@@ -120,9 +120,9 @@ Once you have a fully functionnal petalinux on the board, you may run the instal
 ```bash
 git clone https://github.com/GuilhemROLLAND/A-Eye.git #clone the repository
 ```
-If the board isn't connected to internet, you can clone the repository locally and transfer it to the board using SSH (with winSCP or whatever you want)
+If the board isn't connected to internet, you can clone the repository locally and transfer it to the board using SSH (with winSCP or whatever you want).  
 
-2. Then, you have to put the [dataset](https://drive.google.com/uc?export=download&id=1odGQm0w5xhjG1suTzqstuRMIkoTY4mYx) on the board. This must be place in floder A-Eye, root of the project. 
+2. Then, you have to put the [dataset](https://drive.google.com/uc?export=download&id=1odGQm0w5xhjG1suTzqstuRMIkoTY4mYx) on the board. This must be unzip and place in folder A-Eye, root of the project.  
 
 3. Build the embedded project. From your working directory :
 ```bash

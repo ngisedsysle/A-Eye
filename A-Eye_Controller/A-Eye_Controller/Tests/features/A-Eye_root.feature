@@ -33,7 +33,6 @@ Feature: A-Eye_root
         When I publish "start" on topic "toIA"
         Then I must receive "1" on topic "prediction"
 
-    
     Scenario: take manual picture
         Given the mode is "manual"
         Given the TC means "take picture"

@@ -33,21 +33,21 @@
 
 extern "C"
 {
-#define NBROFTHREAD 4         /*! Tell the compilator how many thread can be used*/
+#define NBROFTHREAD 2         /*! Tell the compilator how many thread can be used*/
 #define USEDEBUGPARAM 1       /*!<1 default value of params, 0 ask user the value*/
 #define IMPORTARCHFROMJSON 1  /*!<1 if you want to import your arch from a json file, 0 if you want to use preloaded architectures*/
 #define IMPORTPARAMFROMJSON 1 /*!<1 if you want to import your weights from a json file, 0 if xavier initialisation*/
 #define LOADDATASET 1         /*!<0 to disable loading of the dataset (time consuming)*/
 #define TESTONONE 1           /*!<1 to use params ideal for one image, else 0*/
 #define FORWARDONLY 1         /*!<1 to disable backprop, else 0*/
-#define WAITFORSIGNAL 1       /*!<1 to wait for SIGUSR1, else 0*/
+#define WAITFORSIGNAL 1       /*!<1 to wait for SIGUSR1, 2 to wait on mqtt, else 0*/
 #define INFERENCE 1           /*!<1 if you want to work in inference mode, 0 if you want training*/
 #define SAVEVALUES 0          /*!<1 to save every value of the process (used for debug with python), else 0*/
 #define DISPLAYTIME 0         /*!<1 to display time in each AI functions (homemade profiling), else 0*/
-#define COM_MODE 0  /*!<0 for mqtt communication, 1 for fifo pipe*/
-#define WIDTH 240   /*!<width of the image (==length)*/
-#define COLORS 3    /*!<number of color rgb*/
-#define MAXLAYER 20 /*!<max number of layer*/
+#define COM_MODE 0            /*!<0 for mqtt communication, 1 for fifo pipe*/
+#define WIDTH 240             /*!<width of the image (==length)*/
+#define COLORS 3              /*!<number of color rgb*/
+#define MAXLAYER 20           /*!<max number of layer*/
     char weights_file[] = "../weights_airbus_240_90.json";
 
     typedef struct THREADPARAM_S
@@ -297,6 +297,120 @@ extern "C"
     }
 }
 
+extern "C++"
+{
+    const int N_RETRY_ATTEMPTS = 5;
+    bool start_f = false;
+
+    class action_listener : public virtual mqtt::iaction_listener
+    {
+        std::string name_;
+
+        void on_failure(const mqtt::token &tok) override
+        {
+            std::cout << name_ << " failure";
+            if (tok.get_message_id() != 0)
+                std::cout << " for token: [" << tok.get_message_id() << "]" << std::endl;
+            std::cout << std::endl;
+        }
+
+        void on_success(const mqtt::token &tok) override {}
+
+    public:
+        action_listener(const std::string &name) : name_(name) {}
+    };
+
+    class callback : public virtual mqtt::callback,
+                     public virtual mqtt::iaction_listener
+    {
+        // Counter for the number of connection retries
+        int nretry_;
+        // The MQTT client
+        mqtt::async_client &cli_;
+        // Options to use if we need to reconnect
+        mqtt::connect_options &connOpts_;
+        // An action listener to display the result of actions.
+        action_listener subListener_;
+
+        string topic;
+
+        // This deomonstrates manually reconnecting to the broker by calling
+        // connect() again. This is a possibility for an application that keeps
+        // a copy of it's original connect_options, or if the app wants to
+        // reconnect with different options.
+        // Another way this can be done manually, if using the same options, is
+        // to just call the async_client::reconnect() method.
+        void reconnect()
+        {
+            std::this_thread::sleep_for(std::chrono::milliseconds(2500));
+            try
+            {
+                cli_.connect(connOpts_, nullptr, *this);
+            }
+            catch (const mqtt::exception &exc)
+            {
+                std::cerr << "Error: " << exc.what() << std::endl;
+                exit(1);
+            }
+        }
+
+        // Re-connection failure
+        void on_failure(const mqtt::token &tok) override
+        {
+            std::cout << "Connection attempt failed" << std::endl;
+            if (++nretry_ > N_RETRY_ATTEMPTS)
+                exit(1);
+            reconnect();
+        }
+
+        // (Re)connection success
+        // Either this or connected() can be used for callbacks.
+        void on_success(const mqtt::token &tok) override {}
+
+        // (Re)connection success
+        void connected(const std::string &cause) override
+        {
+            cli_.subscribe(topic, QOS, nullptr, subListener_);
+        }
+
+        // Callback for when the connection is lost.
+        // This will initiate the attempt to manually reconnect.
+        void connection_lost(const std::string &cause) override
+        {
+            std::cout << "\nConnection lost" << std::endl;
+            if (!cause.empty())
+                std::cout << "\tcause: " << cause << std::endl;
+
+            std::cout << "Reconnecting..." << std::endl;
+            nretry_ = 0;
+            reconnect();
+        }
+
+        // Callback for when a message arrives.
+        void message_arrived(mqtt::const_message_ptr msg) override
+        {
+            if (topic.compare("toIA") == 0)
+            {
+                if (msg->to_string().compare("start") == 0)
+                {
+                    start_f = true;
+                    cout << "Start message received ..." << endl;
+
+                }
+            }
+        }
+
+        void
+        delivery_complete(mqtt::delivery_token_ptr token) override
+        {
+        }
+
+    public:
+        callback(mqtt::async_client &cli, mqtt::connect_options &connOpts, string topic)
+            : nretry_(0), cli_(cli), connOpts_(connOpts), subListener_("Subscription"), topic(topic) {}
+    };
+}
+
 extern "C"
 {
     /**********************************************************************/
@@ -445,9 +559,14 @@ extern "C"
         {
             while (1)
             {
-                if (WAITFORSIGNAL)
+                if (COM_MODE == 1 & WAITFORSIGNAL == 1)
                 {
                     while (waitOnSIGUSR1Signal() != SIGUSR1)
+                        ;
+                }
+                else if (COM_MODE == 0)
+                {
+                    while (start_f == false)
                         ;
                 }
                 if (LOADDATASET)
@@ -468,6 +587,7 @@ extern "C"
                 }
                 printf("start processing \n");
                 runForwardProp(top);
+                start_f = false;
             }
         }
         else
@@ -494,6 +614,20 @@ extern "C"
 
 int main(int argc, char **argv)
 {
+    mqtt::connect_options connOpts;
+    connOpts.set_clean_session(true);
+    mqtt::async_client ia_client(DFLT_SERVER_ADDRESS, "");
+    callback cb(ia_client, connOpts, "toIA");
+    ia_client.set_callback(cb);
+    try
+    {
+        ia_client.connect(connOpts, nullptr, cb);
+    }
+    catch (const mqtt::exception &e)
+    {
+        std::cerr << "\nERROR : Unable to connect to MQTT server: '"
+                  << DFLT_SERVER_ADDRESS << "'" << e << endl;
+    }
     IA(argc, argv);
 }
 extern "C"
@@ -1478,7 +1612,7 @@ extern "C++"
                 {
                     publish(to_string(pred), DFLT_SERVER_ADDRESS, top);
                 }
-                else
+                else if (COM_MODE == 1)
                 {
                     int fd;
                     if ((fd = open("../IAtoINT", O_WRONLY)) == -1)

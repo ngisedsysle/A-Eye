@@ -1,21 +1,21 @@
 # A-Eye_Documentation
-Documentation du projet A-Eye  
-Ce projet permet notamment de collaborer sur les diagrammes UML  
+Documentation for A-Eye project    
+This folder is there to create UML documentation using plantUML.  
 
-## Arborescences
-### A-Eye_root : Code embarqué
+## Tree Structure
+### A-Eye_root : Embedded code
 ![A-Eye_arboresence](./out/plantuml/A-Eye_arboresence/arbo_zybo.png) 
-### A-Eye_Controller : Appli PC windows
+### A-Eye_Controller : Windows app
 ![A-Eye_arboresence](./out/plantuml/A-Eye_arboresence/arbo_PC.png) 
 
 ## A-Eye_Visor
-### Mode Auto
+### Auto mode
 ![A-Eye_Visor](./out/plantuml/A-Eye_Visor/Sequence_mode_auto.png)  
-### Focus on AI (demo mode)
+### Focus on AI 
 ![A-Eye_Visor](./out/plantuml/A-Eye_Visor/Sequence_IA.png)
 
 ## A-Eye_Communication
-### Diagramme de classe des structures
+### Structures diagram
 ![A-Eye_Communication](./out/plantuml/A-Eye_Communication/Communication_structures.png)
 ### Thread receive
 ![A-Eye_Communication](./out/plantuml/A-Eye_Communication/thr_tcp_rcv.png)  

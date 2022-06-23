@@ -3,103 +3,39 @@ from cv2 import FlannBasedMatcher
 import paho.mqtt.client as mqtt
 from behave import *
 import paramiko
+import time
+import paho.mqtt.subscribe as subscribe
 
 tc = ""
 msg_toClient = ""
 msg_toIA = ""
 msg_prediction = ""
-client = mqtt.Client("behave_client")
-broker_addr = "localhost"
-client.connect(broker_addr)
-client.subscribe("toClient", qos = 0)
-client.subscribe("toIA", qos = 0)
-client.subscribe("prediction", qos = 0)
+hostname = ""
 
 def on_message(client, userdata, message):
     print("message received " ,str(message.payload.decode("utf-8")))
 def topic_toClient(client, userdata, message):
     print("message from topic toClient : " ,str(message.payload.decode("utf-8")))
-    msg_toClient = message
+    msg_toClient = str(message.payload.decode("utf-8"))
+    if (msg_toClient[5:] == "Process IA running") :
+        valid = "toClient"
 def topic_toIA(client, userdata, message):
     print("message from topic toIA : " ,str(message.payload.decode("utf-8")))
-    msg_toIA = message
+    msg_toIA = str(message.payload.decode("utf-8"))
 def topic_prediction(client, userdata, message):
     print("message from topic prediction",str(message.payload.decode("utf-8")))
-    msg_prediction = message
+    msg_prediction = str(message.payload.decode("utf-8"))
 
-client.message_callback_add("toClient", topic_toClient) 
-client.message_callback_add("toIA", topic_toIA) 
+client = mqtt.Client("behave_client")
 ##############################################################################
-#                           TEST AUTO MODE
+#                           TEST MODES
 ##############################################################################
 @given(u'the ip is "{ip}"')
 def step_impl(context, ip):
-    # exec(f"./client.py -i {ip} -p 64000")
-    print("TO DO : organiser l'arborescence des Tests")
+    global hostname
+    hostname = f"{ip}"
+    client.connect(hostname)
 
-@given(u'the mode is "mode auto"')
-def step_impl(context):
-    global tc
-    tc = "10"
-
-@when(u'I publish the {msg} on topic "{topic}"')
-def step_impl(context, topic, msg):
-    if (msg == "TC") :
-        print("publishing TC on topic : ", topic)
-        client.publish(topic, tc)
-    elif (msg == "start") :
-        print("publishing start on topic :", topic)
-        client.publish(topic, msg)
-
-@then(u'I must receive "{ack}" on topic "{topic}"')
-def step_impl(context, ack, topic):
-    global msg_toIA
-    global msg_toClient
-    if (topic == "toClient") :
-        if (msg_toClient == ack) :
-            print("Received message is {}, test successfull !".format(msg_toClient))
-            assert True
-        else :
-            print("Received message is {}, test unsuccessfull !".format(msg_toClient))
-            assert False
-    elif (topic == "toIA") :
-        if (msg_toIA == ack) :
-            print("Received message is {}, test successfull !".format(msg_toIA))
-            assert True
-        else :
-            print("Received message is {}, test unsuccessfull !".format(msg_toIA))
-            assert False
-    elif (topic == "prediction") :
-        if (msg_prediction == ack) :
-            print("Received message is {}, test successfull !".format(msg_prediction))
-            assert True
-        else :
-            print("Received message is {}, test unsuccessfull !".format(msg_prediction))
-            assert False
-
-#################################################################################
-#                           TEST AI PROCESSING WITH BOAT
-#################################################################################
-@given(u'The AI is waiting')
-def step_impl(context):
-    print("TO DO : pre-scenario for init AI")
-
-@given(u'I have an image "{label}" boat')
-def step_impl(context, label):
-    ssh = paramiko.SSHClient()
-    ssh.load_host_keys(os.path.expanduser(os.path.join("~", ".ssh", "known_hosts")))
-    ssh.connect(hostname ='192.68.1.21', username = 'root', password = 'root')
-    sftp = ssh.open_sftp()
-    if (label == "with") :
-        sftp.put("/boat.bmp", "home/root/A-Eye_root/A-Eye_Visor/temp.bmp")
-    else :
-        sftp.put("/no_boat.bmp", "home/root/A-Eye_root/A-Eye_Visor/temp.bmp")
-    sftp.close()
-    ssh.close
-
-#################################################################################
-#                           TEST MODES
-#################################################################################
 @given(u'the mode is "{mode}"')
 def step_impl(context, mode):
     global tc
@@ -109,6 +45,95 @@ def step_impl(context, mode):
         tc = "11"
     elif (mode == "video") :
         tc = "12"
+
+@when(u'I publish "{msg}" on topic "{topic}"')
+def step_impl(context, topic, msg):
+    global valid
+    global hostname
+    if (msg == "TC") :
+        client.publish(topic, tc)
+    elif (msg == "start") :
+        client.publish(topic, msg)
+
+@then(u'I must receive "{ack}" on topic "{topic}"')
+def step_impl(context, ack, topic):
+    global hostname
+    global tc
+    global image
+    if (topic == "A-Eye/toClient") :
+        if (ack == "Process IA running") :
+            mode_auto = subscribe.simple(topic, hostname = hostname)
+            client.publish("debug", str(mode_auto.payload)[19:37])
+            client.publish("debug", ack)
+            print(str(mode_auto.payload))
+            assert(str(mode_auto.payload)[19:37] == ack)
+        if (ack == "Mode capture manuelle") :
+            client.publish("debug", "je subscribe")
+            mode_manual = subscribe.simple(topic, hostname = hostname)
+            client.publish("debug", str(mode_manual.payload)[19:40])
+            client.publish("debug", ack)
+            print(str(mode_manual.payload))
+            assert(str(mode_manual.payload)[19:40] == ack)
+        if (ack == "Mode video") :
+            client.publish("debug", "je subscribe")
+            mode_video = subscribe.simple(topic, hostname = hostname)
+            client.publish("debug", str(mode_video.payload)[17:27])
+            client.publish("debug", ack)
+            print(str(mode_video.payload)[17:27])
+            assert(str(mode_video.payload)[17:27] == ack)
+        if (ack == "Capture") :
+            client.publish("debug", "je subscribe")
+            capture = subscribe.simple(topic, hostname = hostname)
+            client.publish("debug", str(capture.payload)[17:27])
+            client.publish("debug", ack)
+            print(str(capture.payload)[19:26])
+            assert(str(capture.payload)[19:26] == ack)
+    elif (topic == "toIA") :
+        toIA = subscribe.simple("toIA", hostname=hostname)
+        client.publish("toIA", "stop")
+        client.publish("A-Eye/toServer", "11")
+        time.sleep(5)
+        assert(str(toIA.payload)[2:7] == ack)
+
+#################################################################################
+#                           TEST AI PROCESSING WITH BOAT
+#################################################################################
+@given(u'The AI is waiting')
+def step_impl(context):
+    time.sleep(5)
+
+@given(u'I have an image "{label}" boat')
+def step_impl(context, label):
+    global hostname
+    ssh = paramiko.SSHClient()
+    ssh.load_system_host_keys()
+    ssh.connect(hostname = hostname, username = 'linux', password = 'zynqia35')
+    sftp = ssh.open_sftp()
+    if (label == "with") :
+        path_boat = os.getcwd()+"\\boat.bmp"
+        # print(path_boat)
+        sftp.put(path_boat, "/home/linux/A-Eye/A-Eye_root/temp.bmp")
+    else :
+        path_no_boat = os.getcwd()+"\\no_boat.bmp"
+        # print(path_no_boat)
+        sftp.put(path_no_boat, "/home/linux/A-Eye/A-Eye_root/temp.bmp")
+    sftp.close()
+    ssh.close
+
+#################################################################################
+#                           TAKE PICTURE
+#################################################################################
+
+@given(u'the TC means "take picture"')
+def step_impl(context):
+    global tc
+    global hostname
+    client.publish("A-Eye/toServer", tc)
+    tc = "21"
+
+@then(u'I must receive the picture')
+def step_impl(context):
+    assert(True)
 
 # #################################################################################
 # #                           TEST TAKE MANUAL PICTURE

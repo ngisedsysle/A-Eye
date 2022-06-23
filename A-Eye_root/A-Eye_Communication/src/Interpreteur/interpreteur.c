@@ -4,14 +4,15 @@
  * @brief This file implements the interpreteur function.
  * @version 0.1
  * @date 2022-05-25
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 
 #include "interpreteur.h"
 
 #define IMG_LENGTH 921656
+#define COM_MODE 0
 
 char *capture()
 {
@@ -64,7 +65,14 @@ char *interpreteur(mainStruct *main_s)
         switch (main_s->chg_mode_struct->mode)
         {
         case 0:
-            system("bash ../../demo.sh");
+            if (COM_MODE == 1)
+            {
+                system("bash ../../demo.sh");
+            }
+            else if (COM_MODE == 0)
+            {
+                system("bash ../../demo_mqtt.sh");
+            }
             bufferMsg = "Process IA running";
             string->length = strlen(bufferMsg);
             if ((string->string = malloc(sizeof(char) * string->length)) == NULL)

@@ -5,9 +5,9 @@ Feature: A-Eye_root
     Scenario: Set in auto mode
         Given the ip is "192.168.1.21"
         Given the mode is "mode auto"
-        When I publish the TC on topic "toServer"
-        Then I must receive "Process IA running" on topic "toClient"
-        Then I must receive "start" on topic "toIA"
+        When I publish the TC on topic "A-Eye/toServer"
+        Then I must receive "Process IA running" on topic "A-Eye/toClient"
+        Then I must receive "start" on topic "A-Eye/toIA"
 
     Scenario: AI processing with boat
         Given The AI is waiting
@@ -28,13 +28,13 @@ Feature: A-Eye_root
             | video  | Mode video            |
         Given the ip is "192.168.1.21"
         Given the mode is "mode"
-        When I publish the TC on topic "toServer"
-        Then I must receive "ack" on topic "toClient"
+        When I publish the TC on topic "A-Eye/toServer"
+        Then I must receive "ack" on topic "A-Eye/toClient"
     
     Scenario: take manual picture
         Given the selected mode is "mode manual"
         Given the TC means "take picture"
-        When I publish the TC on topic "toServer"
+        When I publish the TC on topic "A-Eye/toServer"
         Then I must receive a picture
-        Then I must receive "Capture" on topic "toClient"
+        Then I must receive "Capture" on topic "A-Eye/toClient"
 

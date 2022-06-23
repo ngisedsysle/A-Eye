@@ -1,8 +1,10 @@
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
 
 namespace AEye
 {
@@ -13,6 +15,20 @@ namespace AEye
         /// </summary>
         private bool dispSecond = false;
 
+        /// <summary>
+        /// Store lastConfig to compare what has change. 
+        /// </summary>
+        ConfigFile lastConfig = new ConfigFile(new Config(true.ToString(), false.ToString()), new Weights(), new TakePicture());
+
+        /// <summary>
+        /// MQTT client to receive communication using callback.
+        /// </summary>
+        MqttClient mqttClient;
+
+        /// <summary>
+        /// Set the content of the IP text box.
+        /// </summary>
+        /// <param name="p0">the IP as string</param>
         public void set_ip_tb(string p0)
         {
             ip_tb.Text = p0;
@@ -36,17 +52,15 @@ namespace AEye
         /// <param name="e"></param>
         public void SetConfig_Click(object sender, EventArgs e)
         {
-            // Get the current config
-            var config = new ConfigFile(
-                new Config(startStop_cb.Checked.ToString(), mode_cb.SelectedIndex.ToString()),
-                new Weights(false.ToString()),
-                new TakePicture(false.ToString()));
-
-            // Serialize in Json
-            string jsonString = JsonSerializer.Serialize(config);
-
-            // Write in file
-            File.WriteAllText("config.json", jsonString);
+            if (Program.comMode == Program.ComMode.JSONxNAMEDPIPE_e)
+                Build_json_with_actual_config();
+            else if (Program.comMode == Program.ComMode.MQTT_e)
+                SendTCByMQTT();
+            else
+            {
+                Program.log += "Mode not implemented in set config !!!";
+                return;
+            }
 
             // Activate button
             if (mode_cb.SelectedIndex == 1)
@@ -59,14 +73,85 @@ namespace AEye
             }
         }
 
-        public void setMode(int mode)
+        /// <summary>
+        /// Directly send the TC using a mqtt communication.
+        /// This will compare the actual config with the last one, and send corresponding TC.
+        /// </summary>
+        private void SendTCByMQTT()
+        {
+            // Get the current config
+            var config = new ConfigFile(
+                new Config(startStop_cb.Checked.ToString(), mode_cb.SelectedIndex.ToString()),
+                new Weights(false.ToString()),
+                new TakePicture(false.ToString()));
+
+            // Compare to the last one 
+            string topic = "A-Eye/toServer";
+            if (!lastConfig.Config.ModeSelector.Equals(config.Config.ModeSelector))
+            {
+                Send_mqtt("1" + mode_cb.SelectedIndex.ToString(), topic);
+            }
+            if (!lastConfig.Config.StartStop.Equals(config.Config.StartStop))
+            {
+                if (config.Config.StartStop == true.ToString())
+                {
+                    Send_mqtt("31", topic);
+                }
+                else
+                {
+                    Send_mqtt("30", topic);
+                }
+            }
+            if (!lastConfig.TakePicture.Valid.Equals(config.TakePicture.Valid))
+            {
+                if (config.TakePicture.Valid == true.ToString())
+                {
+                    Send_mqtt("21", topic);
+                }
+                else
+                {
+                    Send_mqtt("20", topic);
+                }
+            }
+            lastConfig = config;
+        }
+
+
+        /// <summary>
+        /// Write config.json with the actual configuration. 
+        /// </summary>
+        private void Build_json_with_actual_config()
+        {
+            // Get the current config
+            var config = new ConfigFile(
+                new Config(startStop_cb.Checked.ToString(), mode_cb.SelectedIndex.ToString()),
+                new Weights(false.ToString()),
+                new TakePicture(false.ToString()));
+
+            // Serialize in Json
+            string jsonString = JsonSerializer.Serialize(config);
+
+            // Write in file
+            File.WriteAllText("config.json", jsonString);
+        }
+
+        /// <summary>
+        /// Set the mode combobox to the corresponding integer you want. 
+        /// </summary>
+        /// <param name="mode">the mode you want.</param>
+        public void SetMode(int mode)
         {
             mode_cb.SelectedIndex = mode;
         }
 
+        /// <summary>
+        /// Get the actual status label.
+        /// For example, connected.
+        /// </summary>
+        /// <returns>the label</returns>
         public Label getStatus()
         {
-            return this.Status ;
+            return this.Status;
         }
 
         /// <summary>
@@ -76,6 +161,36 @@ namespace AEye
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void TakePict_btn_Click(object sender, EventArgs e)
+        {
+            if (Program.comMode == Program.ComMode.JSONxNAMEDPIPE_e)
+            {
+                Write_json_take_pict();
+            }
+            else if (Program.comMode == Program.ComMode.MQTT_e)
+            {
+                string message = "21";
+                string topic = "A-Eye/toServer";
+                Send_mqtt(message, topic);
+            }
+        }
+
+        /// <summary>
+        /// Send the message using a MQTT client, on the corresponding topic.
+        /// </summary>
+        /// <param name="message">The message as a string. Ex : "31"</param>
+        /// <param name="topic">The topic as a string. Ex : "A-Eye/toServer"</param>
+        private static void Send_mqtt(string message, string topic)
+        {
+            MqttClient client = new MqttClient(Program.Ip.ToString());
+            string clientId = Guid.NewGuid().ToString();
+            client.Connect(clientId);
+            client.Publish(topic, Encoding.UTF8.GetBytes(message));
+        }
+
+        /// <summary>
+        /// Modify the actual config.json by setting the field take picture at true.
+        /// </summary>
+        private static void Write_json_take_pict()
         {
             // Open the file
             String str;
@@ -137,6 +252,44 @@ namespace AEye
                 return;
             }
 
+            Verify_Ping();
+
+            SetCallback();
+        }
+
+        /// <summary>
+        /// Set the callback for the MQTT client.
+        /// </summary>
+        private void SetCallback()
+        {
+            if (mqttClient.IsConnected)
+            {
+                mqttClient.Disconnect();
+            }
+            mqttClient = new MqttClient(Program.Ip.ToString());
+            mqttClient.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
+            mqttClient.Connect(Guid.NewGuid().ToString());
+            mqttClient.Subscribe(new string[] { "A-Eye/toClient" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
+            Program.log += "[MQTT] Callback set !\n";
+        }
+
+        /// <summary>
+        /// Launch in callback. 
+        /// Process the received message using python script.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+        {
+            File.WriteAllBytes("A-Eye_Communication/content.msg", e.Message);
+            new SubProcess().run_cmd("A-Eye_Communication/decodageTM.py", "");
+        }
+
+        /// <summary>
+        /// Ping the IP to be sure there's something.
+        /// </summary>
+        private void Verify_Ping()
+        {
             var pingSender = new Ping();
             PingReply reply = pingSender.Send(Program.Ip);
             if (reply.Status == IPStatus.Success)
@@ -196,7 +349,6 @@ namespace AEye
                     File.Copy("temp.bmp", "disp1.bmp", true);
                     visionneuse.Load("disp1.bmp");
                 }
-                
             }
         }
     }

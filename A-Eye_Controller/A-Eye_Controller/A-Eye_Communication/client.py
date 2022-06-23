@@ -6,6 +6,7 @@ client.py - Main code for sending/receiving TM and TC via TCP socket
 
 import argparse
 from asyncio.windows_events import NULL
+from enum import Enum
 import socket
 import struct
 from ctypes import *
@@ -13,10 +14,20 @@ from threading import Thread
 from time import sleep
 import encodageTC
 import decodageTM
-import pipeClient
+import localCom
+import paho.mqtt.client as mqtt
+import os
+
+## Supported protocol
+class Protocol(Enum):
+    MQTT_e = 0
+    TCP_e = 1
+
+## Choose protocol to use
+mode = Protocol.MQTT_e
 
 
-class client:
+class client_tcp:
     """
     Static main class. Contains the entry functions.
     """
@@ -42,14 +53,14 @@ class client:
         # Connection parameters
         server_addr = (ip, port)
         try:
-            client.s.connect(server_addr)
-            pipeClient.writeInPipe(
+            client_tcp.s.connect(server_addr)
+            localCom.sendToCs(
                 "Connected to {:s}".format(repr(server_addr)))
         except AttributeError as ae:
-            pipeClient.writeInPipe("Error creating the socket: {}".format(ae))
+            localCom.sendToCs("Error creating the socket: {}".format(ae))
         except socket.error as se:
-            pipeClient.writeInPipe("Exception on socket: {}".format(se))
-        return client.s
+            localCom.sendToCs("Exception on socket: {}".format(se))
+        return client_tcp.s
 
     @staticmethod
     def tcp_client_send():
@@ -58,13 +69,13 @@ class client:
         This method get all the TC (using encodage_tc) and send it by the socket.
         """
         msg = encodageTC.encode_tc()
-        if(client.s == NULL):
-            pipeClient.writeInPipe("Socket not init.")
+        if(client_tcp.s == NULL):
+            localCom.sendToCs("Socket not init.")
             return
         # Connected and send msg, wait for ack
         for tc in msg:
-            # pipeClient.writeInPipe("send " + tc)
-            client.s.send(tc.encode())
+            # localCom.writeInPipe("send " + tc)
+            client_tcp.s.send(tc.encode())
         # Close connection after ack
 
     @staticmethod
@@ -73,11 +84,11 @@ class client:
         Launch in a thread.
         This method wait for receiving a TM, and then call decodageTM to process it.
         """
-        pipeClient.writeInPipe("In thread tcp_client_receive")
+        localCom.sendToCs("In thread tcp_client_receive")
         while(1):
-            buff = client.recv_TM(client.s)
+            buff = client_tcp.recv_TM(client_tcp.s)
             if buff:
-                # pipeClient.writeInPipe("received TM, len = " + len(buff))
+                # localCom.writeInPipe("received TM, len = " + len(buff))
                 decodageTM.decodeTM(buff)
 
     def recvall(sock, n):
@@ -99,7 +110,7 @@ class client:
             try:
                 packet = sock.recv(n - len(data))
             except:
-                pipeClient.writeInPipe("Time out")
+                localCom.sendToCs("Time out")
                 return None
             finally:
                 if not packet:
@@ -121,19 +132,23 @@ class client:
         """
         # Read message length and unpack it into an integer
         TM_header_size = 5
-        raw_TM_header = client.recvall(sock, TM_header_size)
+        raw_TM_header = client_tcp.recvall(sock, TM_header_size)
         if not raw_TM_header:
             return None
         TM_content_size = struct.unpack('>I', raw_TM_header[1:5])[0]
 
         # Read the message data with timeout
         sock.settimeout(3.0)
-        raw_TM_content = client.recvall(sock, TM_content_size)
+        raw_TM_content = client_tcp.recvall(sock, TM_content_size)
         sock.settimeout(None)
         if raw_TM_content == None:
             return None
         
         return raw_TM_header + raw_TM_content
+
+def callback_on_TM(client, userdata, message) :
+    localCom.sendToCs("In the callback !")
+    decodageTM.decodeTM(message)
 
 def main():
     """
@@ -145,22 +160,38 @@ def main():
     After initializing the connection, the process will run a thread to deal with TM.
     Then, in a loop of 1 second, it will run a new thread to deal with TC.
     """
-    pipeClient.writeInPipe("In python client main...")
+    localCom.sendToCs("In python client main...")
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--ip", type=str,
                         required=True, help="take IpV4 format addr")
     parser.add_argument("-p", "--port", type=int,
-                        required=True, help="port of the server")
+                        required=False, help="port of the server")
     args = parser.parse_args()
-    client.client_init(args.ip, args.port)
-    # Thread receive
-    receiver = Thread(target=client.tcp_client_receive)
-    receiver.start()
-    # Encodage des TC via pooling sur fichier
-    while(1):
-        sender = Thread(target=client.tcp_client_send)
-        sender.start()
-        sleep(1)
+
+    if (mode == Protocol.MQTT_e) :
+        localCom.sendToCs("Start MQTT communication...")
+        client = mqtt.Client()
+        client.on_message = callback_on_TM
+        client.connect(args.ip)
+        # Callback to get the TM
+        client.subscribe("A-Eye/toClient",0)
+        localCom.sendToCs("Callback set !")
+        # TC is send by C#
+        while(1):
+            sleep(.1)
+            # localCom.writeInPipe("Still there...")
+    elif (mode == Protocol.TCP_e):
+        localCom.sendToCs("Start TCP communication...")
+        client_tcp.client_init(args.ip, args.port)
+        # Thread receive
+        receiver = Thread(target=client_tcp.tcp_client_receive)
+        receiver.start()
+        while(1):
+            sender = Thread(target=client_tcp.tcp_client_send)
+            sender.start()
+            sleep(.1)
+    else :
+        localCom.sendToCs("Unsupported mode !")
 
 
 if __name__ == "__main__":

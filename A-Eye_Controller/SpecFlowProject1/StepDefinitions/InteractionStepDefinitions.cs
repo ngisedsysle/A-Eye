@@ -22,15 +22,15 @@ namespace SpecFlowProject1.StepDefinitions
         {
             if (p0.Equals("mode auto"))
             {
-                AEye.Program.controller.setMode(0);
+                AEye.Program.controller.SetMode(0);
             }
             else if (p0.Equals("mode manual"))
             {
-                AEye.Program.controller.setMode(1);
+                AEye.Program.controller.SetMode(1);
             }
             else if (p0.Equals("mode video"))
             {
-                AEye.Program.controller.setMode(2);
+                AEye.Program.controller.SetMode(2);
             }
             else
             {

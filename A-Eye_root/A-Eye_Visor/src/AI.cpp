@@ -33,7 +33,7 @@
 
 extern "C"
 {
-#define NBROFTHREAD 4         /*! Tell the compilator how many thread can be used*/
+#define NBROFTHREAD 2         /*! Tell the compilator how many thread can be used*/
 #define USEDEBUGPARAM 1       /*!<1 default value of params, 0 ask user the value*/
 #define IMPORTARCHFROMJSON 1  /*!<1 if you want to import your arch from a json file, 0 if you want to use preloaded architectures*/
 #define IMPORTPARAMFROMJSON 1 /*!<1 if you want to import your weights from a json file, 0 if xavier initialisation*/

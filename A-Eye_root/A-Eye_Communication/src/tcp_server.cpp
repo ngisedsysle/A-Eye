@@ -371,6 +371,7 @@ extern "C++"
 
         while (1)
         {
+            usleep(200000);
             // if new data : send new data
             if (main_s->buf_f_struct->new_data_f == true)
             {
@@ -406,7 +407,7 @@ extern "C++"
                 main_s->img_s->capture_f = false;
                 free(imgTM);
             }
-            usleep(1000);
+            
         }
         cli_send.disconnect();
     }

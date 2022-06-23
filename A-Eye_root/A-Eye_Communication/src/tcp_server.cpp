@@ -34,6 +34,18 @@ extern "C"
         hSocket = socket(AF_INET, SOCK_STREAM, 0);
         return hSocket;
     }
+  
+    int client_connection(int socket_desc, struct sockaddr_in *client, int *clientLen)
+    {
+        int sock = accept(socket_desc, (struct sockaddr *)client, (socklen_t *)clientLen);
+        if (sock < 0)
+        {
+            perror("accept failed");
+            return -1;
+        }
+        printf("Connection accepted\n");
+        return sock;
+    }
 
     void *thread_rcv(void *arg)
     {
@@ -47,6 +59,7 @@ extern "C"
             if (recv(soc->sock, client_message, 200, 0) < 0)
             {
                 printf("recv failed\n");
+                return NULL;
             }
             else
             {
@@ -414,7 +427,6 @@ extern "C++"
 }
 
 using namespace std;
-
 int main()
 {
     if ((main_s = (mainStruct *)calloc(1, sizeof(mainStruct))) == NULL)
@@ -530,9 +542,27 @@ int main()
         pthread_create(&thr_rcv_id, NULL, &thread_rcv, soc);
         pthread_create(&thr_send_id, NULL, &thread_send, soc);
         pthread_create(&thr_pred, NULL, &thread_pred, NULL);
-
+        while (1)
+        {
+            printf("Waiting for incoming connections...\n");
+            sock = client_connection(socket_desc, &client, &clientLen);
+            soc->sock = sock;
+            soc->socket_desc = socket_desc;
+            pthread_create(&thr_rcv_id, NULL, &thread_rcv, soc);
+            pthread_create(&thr_send_id, NULL, &thread_send, soc);
+            pthread_join(thr_rcv_id, NULL);
+            printf("client disconnected\n");
+            pthread_cancel(thr_send_id);
+        }
         pthread_join(thr_rcv_id, NULL);
         pthread_join(thr_send_id, NULL);
+    }
+    
+    if (COM_MODE == 0)
+    {
+    }
+    else
+    {
         pthread_join(thr_pred, NULL);
     }
     // Disconnect

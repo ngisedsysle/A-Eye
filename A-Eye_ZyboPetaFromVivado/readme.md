@@ -1,4 +1,4 @@
-# Petalinu From a Vivado Hardware Description File
+# Petalinux From a Vivado Hardware Description File
 Guilhem ROLLAND  
 Thomas DU BOISROUVRAY  
 Elsys Design Rennes  
@@ -13,7 +13,7 @@ petalinux-config -c rootfs # Enter rootfs configuration
 petalinux-build # produce image.ub, system.dtb and rootfs files   
 petalinux-package --boot --force --fsbl images/linux/zynq_fsbl.elf --fpga images/linux/*_wrapper.bit --u-boot # produce BOOT.BIN    
 ```
-## Usefull partition's gestion commands
+## Usefull partition's commands
 You must have 2 partitions, one with 500 mo for boot, second for rootfs.   
 https://docs.xilinx.com/v/u/2020.1-English/ug1144-petalinux-tools-reference-guide Appendix H  
 ```bash

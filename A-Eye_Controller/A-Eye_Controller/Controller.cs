@@ -262,9 +262,12 @@ namespace AEye
         /// </summary>
         private void SetCallback()
         {
-            if (mqttClient.IsConnected)
+            if (mqttClient != null)
             {
-                mqttClient.Disconnect();
+                if (mqttClient.IsConnected)
+                {
+                    mqttClient.Disconnect();
+                }
             }
             mqttClient = new MqttClient(Program.Ip.ToString());
             mqttClient.MqttMsgPublishReceived += client_MqttMsgPublishReceived;

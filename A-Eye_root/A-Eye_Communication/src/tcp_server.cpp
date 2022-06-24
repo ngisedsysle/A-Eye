@@ -418,6 +418,7 @@ extern "C++"
                 cout << "Sending image from manual capture ..." << endl;
                 cli_send.publish("A-Eye/toClient", imgTM, main_s->img_s->length + 5);
                 main_s->img_s->capture_f = false;
+                main_s->chg_mode_struct->capture = false;
                 free(imgTM);
             }
             

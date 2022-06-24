@@ -73,7 +73,7 @@ Depending on the current mode, the application will show boat images (if you are
 
 This project was firstly developped for ZYNQ target, and then the system was migrated to a Kria SOM. We used the [ZYBO Z7](https://digilent.com/reference/programmable-logic/zybo-z7/start) board on petalinux for developpment. For the Kria, we are based on a [KV260](https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html).
 
-A convolution IP is developping using VHDL for hardware acceleration.
+A convolution IP is developped using VHDL for hardware acceleration.
 
 #### Software
   
@@ -86,6 +86,7 @@ A convolution IP is developping using VHDL for hardware acceleration.
 - [CMake](https://cmake.org/) : compiling and building the project
 - [Doxygen](https://doxygen.nl/) : documentation of the project
 - [.NET6](https://docs.microsoft.com/fr-fr/dotnet/core/whats-new/dotnet-6) : Framework used for A-Eye_Controller
+- [Jenkins](https://www.jenkins.io/) : continuous integration and test driven developpment
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

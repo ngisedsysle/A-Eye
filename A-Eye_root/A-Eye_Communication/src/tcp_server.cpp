@@ -19,7 +19,8 @@
 #include "mqtt/async_client.h"
 #include "Server/tcp_server.h"
 
-#define COM_MODE 0 // 0 for mqtt, 1 for fifo pipe
+#define COM_MODE 0  // 0 for mqtt, 1 for fifo pipe
+#define LIVE_CAPT 1 // 1 for usb camera, 0 for dataset
 
 extern "C"
 {
@@ -34,7 +35,7 @@ extern "C"
         hSocket = socket(AF_INET, SOCK_STREAM, 0);
         return hSocket;
     }
-  
+
     int client_connection(int socket_desc, struct sockaddr_in *client, int *clientLen)
     {
         int sock = accept(socket_desc, (struct sockaddr *)client, (socklen_t *)clientLen);
@@ -180,7 +181,14 @@ extern "C"
             {
                 if (COM_MODE == 0)
                 {
-                    system("bash ../../demo_mqtt.sh");
+                    if (LIVE_CAPT == 1)
+                    {
+                        system("bash ../../livePict.sh");
+                    }
+                    else
+                    {
+                        system("bash ../../demo_mqtt.sh");
+                    }
                 }
                 else if (COM_MODE == 1)
                 {
@@ -329,7 +337,14 @@ extern "C++"
                 {
                     if (COM_MODE == 0)
                     {
-                        system("bash ../../demo_mqtt.sh");
+                        if (LIVE_CAPT == 1)
+                        {
+                            system("bash ../../livePict.sh");
+                        }
+                        else
+                        {
+                            system("bash ../../demo_mqtt.sh");
+                        }
                     }
                     else if (COM_MODE == 1)
                     {
@@ -421,7 +436,6 @@ extern "C++"
                 main_s->chg_mode_struct->capture = false;
                 free(imgTM);
             }
-            
         }
         cli_send.disconnect();
     }
@@ -558,7 +572,7 @@ int main()
         pthread_join(thr_rcv_id, NULL);
         pthread_join(thr_send_id, NULL);
     }
-    
+
     if (COM_MODE == 0)
     {
     }

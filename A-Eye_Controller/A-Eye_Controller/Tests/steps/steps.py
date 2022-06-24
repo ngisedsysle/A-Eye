@@ -7,24 +7,7 @@ import time
 import paho.mqtt.subscribe as subscribe
 
 tc = ""
-msg_toClient = ""
-msg_toIA = ""
-msg_prediction = ""
 hostname = ""
-
-def on_message(client, userdata, message):
-    print("message received " ,str(message.payload.decode("utf-8")))
-def topic_toClient(client, userdata, message):
-    print("message from topic toClient : " ,str(message.payload.decode("utf-8")))
-    msg_toClient = str(message.payload.decode("utf-8"))
-    if (msg_toClient[5:] == "Process IA running") :
-        valid = "toClient"
-def topic_toIA(client, userdata, message):
-    print("message from topic toIA : " ,str(message.payload.decode("utf-8")))
-    msg_toIA = str(message.payload.decode("utf-8"))
-def topic_prediction(client, userdata, message):
-    print("message from topic prediction",str(message.payload.decode("utf-8")))
-    msg_prediction = str(message.payload.decode("utf-8"))
 
 client = mqtt.Client("behave_client")
 ##############################################################################
@@ -48,7 +31,6 @@ def step_impl(context, mode):
 
 @when(u'I publish "{msg}" on topic "{topic}"')
 def step_impl(context, topic, msg):
-    global valid
     global hostname
     if (msg == "TC") :
         client.publish(topic, tc)
@@ -63,29 +45,29 @@ def step_impl(context, ack, topic):
     if (topic == "A-Eye/toClient") :
         if (ack == "Process IA running") :
             mode_auto = subscribe.simple(topic, hostname = hostname)
-            client.publish("debug", str(mode_auto.payload)[19:37])
-            client.publish("debug", ack)
+            # client.publish("debug", str(mode_auto.payload)[19:37])
+            # client.publish("debug", ack)
             print(str(mode_auto.payload))
             assert(str(mode_auto.payload)[19:37] == ack)
         if (ack == "Mode capture manuelle") :
-            client.publish("debug", "je subscribe")
+            # client.publish("debug", "je subscribe")
             mode_manual = subscribe.simple(topic, hostname = hostname)
-            client.publish("debug", str(mode_manual.payload)[19:40])
-            client.publish("debug", ack)
+            # client.publish("debug", str(mode_manual.payload)[19:40])
+            # client.publish("debug", ack)
             print(str(mode_manual.payload))
             assert(str(mode_manual.payload)[19:40] == ack)
         if (ack == "Mode video") :
-            client.publish("debug", "je subscribe")
+            # client.publish("debug", "je subscribe")
             mode_video = subscribe.simple(topic, hostname = hostname)
-            client.publish("debug", str(mode_video.payload)[17:27])
-            client.publish("debug", ack)
+            # client.publish("debug", str(mode_video.payload)[17:27])
+            # client.publish("debug", ack)
             print(str(mode_video.payload)[17:27])
             assert(str(mode_video.payload)[17:27] == ack)
         if (ack == "Capture") :
-            client.publish("debug", "je subscribe")
+            # client.publish("debug", "je subscribe")
             capture = subscribe.simple(topic, hostname = hostname)
-            client.publish("debug", str(capture.payload)[17:27])
-            client.publish("debug", ack)
+            # client.publish("debug", str(capture.payload)[17:27])
+            # client.publish("debug", ack)
             print(str(capture.payload)[19:26])
             assert(str(capture.payload)[19:26] == ack)
     elif (topic == "toIA") :
@@ -134,25 +116,3 @@ def step_impl(context):
 @then(u'I must receive the picture')
 def step_impl(context):
     assert(True)
-
-# #################################################################################
-# #                           TEST TAKE MANUAL PICTURE
-# #################################################################################
-# @given(u'the selected mode is "mode manual"')
-# def step_impl(context):
-#     raise NotImplementedError(u'STEP: Given the selected mode is "mode manual"')
-
-
-# @given(u'the TC means "take picture"')
-# def step_impl(context):
-#     raise NotImplementedError(u'STEP: Given the TC means "take picture"')
-
-
-# @then(u'I must receive a picture')
-# def step_impl(context):
-#     raise NotImplementedError(u'STEP: Then I must receive a picture')
-
-
-# @then(u'I must receive "Capture" on topic "toClient"')
-# def step_impl(context):
-#     raise NotImplementedError(u'STEP: Then I must receive "Capture" on topic "toClient"')

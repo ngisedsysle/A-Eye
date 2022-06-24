@@ -2,43 +2,46 @@
 
 {
     {T
-        +root
+        +A-Eye_root
             ++A-Eye_Communication
-                +++TM
-                    ++++encodageTM.c
-                    ++++encodageTM.h
-                +++TC
-                    ++++decodageTC.c
-                    ++++decodageTC.h
-                +++Server 
-                    ++++tcp_server.c
-                    ++++tcp_server.h
-                +++Interpreteur
-                    ++++interpreteur.c
-                    ++++interpreteur.h
-                +++Circular_buffer
-                    ++++Circular_buffer.c
-                    ++++Circular_buffer.h
-                +++struct_allocation.h
-
+                +++build
+                +++src
+                    ++++TM
+                        +++++encodageTM.c
+                        +++++encodageTM.h
+                    ++++TC
+                        +++++decodageTC.c
+                        +++++decodageTC.h
+                    ++++Server 
+                        +++++tcp_server.h
+                    ++++Interpreteur
+                        +++++interpreteur.c
+                        +++++interpreteur.h
+                        +++++Circular_buffer
+                            ++++++Circular_buffer.c
+                            ++++++Circular_buffer.h
+                        ++++struct_allocation.h
+                    ++++tcp_server.cpp
             ++A-Eye_Visor
-                +++json
-                    ++++json.c
-                    ++++json.h
-                +++preprocess
-                    ++++preprocess.c
-                    ++++preprocess.h
-                +++AI.c
+                +++build
+                +++src
+                    ++++json
+                        +++++json.cpp
+                        +++++json.hpp
+                    ++++preprocess
+                        +++++preprocess.cpp
+                        +++++preprocess.hpp
+                    ++++AI.cpp
                 +++weights.json
-            ++airbus_train_bmp
-                +++pas_bateau
-                +++bateau
             ++demo.sh
             ++get_rand_img.py
             ++IAtoINT (pipe)
             ++README.md
             ++temp.csv
             ++temp.bmp
+        +airbus_train_bmp
+            ++pas_bateau
+            ++bateau
     }
 }
 
@@ -53,14 +56,26 @@
                 ++++client.py
                 ++++encodageTC.py
                 ++++decodagetTM.py
-                ++++pipeClient.py
+                ++++localCom.py
             +++StockagePC
                 ++++arborescence.py
                 ++++naming.py
                 ++++stockage.py
                 ++++run_stockage.py
                 ++++test.py
-                ++++README.md                
+                ++++README.md
+            +++SpecFlowProject1
+                ++++Features
+                    +++++Connection.feature
+                    +++++Interaction.feature   
+                ++++StepsDefinitions
+                    +++++ConnectionStepDefinition
+                    +++++InteractionStepDefinition
+            +++Tests
+                ++++features
+                    +++++A-Eye_root.feature 
+                ++++steps
+                    +++++steps.py           
             +++config.json
             +++last_config.json
             +++ConfigFile.cs

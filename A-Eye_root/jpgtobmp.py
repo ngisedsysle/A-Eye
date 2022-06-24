@@ -3,7 +3,7 @@ import glob
 import os
 from PIL import Image
 
-path = '.'
+path = '../..'
 
 for file in glob.iglob(os.path.join(path, "temp.jpeg")):
     img = Image.open(file)

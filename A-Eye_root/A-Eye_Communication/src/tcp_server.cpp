@@ -337,7 +337,14 @@ extern "C++"
                 {
                     if (COM_MODE == 0)
                     {
-                        system("bash ../../demo_mqtt.sh");
+                        if (LIVE_CAPT == 1)
+                        {
+                            system("bash ../../livePict.sh");
+                        }
+                        else
+                        {
+                            system("bash ../../demo_mqtt.sh");
+                        }
                     }
                     else if (COM_MODE == 1)
                     {

@@ -268,9 +268,11 @@ namespace AEye
                 return;
             }
 
-            Verify_Ping();
+            if (Verify_Ping())
+            {
+                SetCallback();
+            }
 
-            SetCallback();
         }
 
         /// <summary>
@@ -307,7 +309,7 @@ namespace AEye
         /// <summary>
         /// Ping the IP to be sure there's something.
         /// </summary>
-        private void Verify_Ping()
+        private bool Verify_Ping()
         {
             var pingSender = new Ping();
             PingReply reply = pingSender.Send(Program.Ip);
@@ -316,6 +318,7 @@ namespace AEye
                 //MessageBox.Show("New IP set : " + Program.Ip);
                 Status.Text = "Connected";
                 Status.BackColor = Color.YellowGreen;
+                return true;
             }
             else
             {
@@ -323,6 +326,7 @@ namespace AEye
                 Program.Ip = null;
                 Status.Text = "Wrong IP";
                 Status.BackColor = Color.Red;
+                return false;
             }
         }
 

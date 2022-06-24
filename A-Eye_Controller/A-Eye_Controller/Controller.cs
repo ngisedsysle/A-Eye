@@ -79,41 +79,57 @@ namespace AEye
         /// </summary>
         private void SendTCByMQTT()
         {
-            // Get the current config
-            var config = new ConfigFile(
-                new Config(startStop_cb.Checked.ToString(), mode_cb.SelectedIndex.ToString()),
-                new Weights(false.ToString()),
-                new TakePicture(false.ToString()));
-
-            // Compare to the last one 
             string topic = "A-Eye/toServer";
-            if (!lastConfig.Config.ModeSelector.Equals(config.Config.ModeSelector))
+            if (Program.forceTC)
             {
                 Send_mqtt("1" + mode_cb.SelectedIndex.ToString(), topic);
+                //if (startStop_cb.Checked.ToString() == true.ToString())
+                //{
+                //    Send_mqtt("31", topic);
+                //}
+                //else
+                //{
+                //    Send_mqtt("30", topic);
+                //}
             }
-            if (!lastConfig.Config.StartStop.Equals(config.Config.StartStop))
+            else
             {
-                if (config.Config.StartStop == true.ToString())
+                // Get the current config
+                var config = new ConfigFile(
+                    new Config(startStop_cb.Checked.ToString(), mode_cb.SelectedIndex.ToString()),
+                    new Weights(false.ToString()),
+                    new TakePicture(false.ToString()));
+
+                // Compare to the last one 
+                if (!lastConfig.Config.ModeSelector.Equals(config.Config.ModeSelector))
                 {
-                    Send_mqtt("31", topic);
+                    Send_mqtt("1" + mode_cb.SelectedIndex.ToString(), topic);
                 }
-                else
+                if (!lastConfig.Config.StartStop.Equals(config.Config.StartStop))
                 {
-                    Send_mqtt("30", topic);
+                    if (config.Config.StartStop == true.ToString())
+                    {
+                        Send_mqtt("31", topic);
+                    }
+                    else
+                    {
+                        Send_mqtt("30", topic);
+                    }
                 }
+                if (!lastConfig.TakePicture.Valid.Equals(config.TakePicture.Valid))
+                {
+                    if (config.TakePicture.Valid == true.ToString())
+                    {
+                        Send_mqtt("21", topic);
+                    }
+                    else
+                    {
+                        Send_mqtt("20", topic);
+                    }
+                }
+                lastConfig = config;
             }
-            if (!lastConfig.TakePicture.Valid.Equals(config.TakePicture.Valid))
-            {
-                if (config.TakePicture.Valid == true.ToString())
-                {
-                    Send_mqtt("21", topic);
-                }
-                else
-                {
-                    Send_mqtt("20", topic);
-                }
-            }
-            lastConfig = config;
+            
         }
 
 
@@ -184,7 +200,7 @@ namespace AEye
             MqttClient client = new MqttClient(Program.Ip.ToString());
             string clientId = Guid.NewGuid().ToString();
             client.Connect(clientId);
-            client.Publish(topic, Encoding.UTF8.GetBytes(message));
+            client.Publish(topic, Encoding.UTF8.GetBytes(message), MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE, false);
         }
 
         /// <summary>
@@ -272,7 +288,7 @@ namespace AEye
             mqttClient = new MqttClient(Program.Ip.ToString());
             mqttClient.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
             mqttClient.Connect(Guid.NewGuid().ToString());
-            mqttClient.Subscribe(new string[] { "A-Eye/toClient" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
+            mqttClient.Subscribe(new string[] { "A-Eye/toClient" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
             Program.log += "[MQTT] Callback set !\n";
         }
 

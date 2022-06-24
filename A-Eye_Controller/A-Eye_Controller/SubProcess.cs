@@ -102,7 +102,7 @@ namespace AEye
         /// <param name="line">The message as string.</param>
         private void ProcessReceivedMessage(string line)
         {
-            Program.log += "[INFO][From Python] " + line + "\n";
+            Program.log += "[INFO][From Python Decoder] " + line + "\n";
             if (line.Contains("Image"))
             {
                 Thread disp = new Thread(Program.controller.Refresh_img);

@@ -37,6 +37,12 @@ namespace AEye
         public static ComMode comMode = ComMode.MQTT_e;
 
         /// <summary>
+        /// Force to send TC, even if the previous config was the same.
+        /// Can repeat a TC.
+        /// </summary>
+        public static bool forceTC = true;
+
+        /// <summary>
         /// Store the IP address.
         /// </summary>
         public static IPAddress? Ip;

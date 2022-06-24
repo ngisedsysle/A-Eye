@@ -31,7 +31,7 @@ namespace SpecFlowProject1.StepDefinitions
             else if (p0.Equals("set config"))
             {
                 AEye.Program.controller.SetConfig_Click(new object(), new EventArgs());
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
             }
             else if (p0.Equals("take picture"))
             {

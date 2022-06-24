@@ -41,6 +41,7 @@ namespace SpecFlowProject1.StepDefinitions
         private bool logContainStr(string subStr)
         {
             string log = AEye.Program.log.ToLower();
+            Console.WriteLine(log);
             return log.Contains(subStr.ToLower());
         }
 
@@ -51,6 +52,7 @@ namespace SpecFlowProject1.StepDefinitions
             if (p0.Equals("mode auto"))
             {
                 logContainStr("Process IA running").Should().BeTrue();
+                GivenTheCurrentModeIs("mode manual");
             }
             else if (p0.Equals("mode manual"))
             {
@@ -69,16 +71,10 @@ namespace SpecFlowProject1.StepDefinitions
         [Given(@"the current mode is ""([^""]*)""")]
         public void GivenTheCurrentModeIs(string p0)
         {
-            if (p0.Equals("mode manual"))
-            {
-                GivenTheSelectedModeIs(p0);
-                AEye.Program.controller.SetConfig_Click(new object(), new EventArgs());
-                Thread.Sleep(2000);
-            }
-            else
-            {
-                throw new PendingStepException();
-            }
+            GivenTheSelectedModeIs(p0);
+            AEye.Program.controller.SetConfig_Click(new object(), new EventArgs());
+            Thread.Sleep(3000);
+            
         }
 
         [Then(@"I must receive a picture")]

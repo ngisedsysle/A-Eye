@@ -15,7 +15,6 @@
 #define COM_MODE 0
 #define LIVE_CAPT 1 // 1 for usb camera, 0 for dataset
 
-
 char *capture()
 {
     FILE *imageFile = fopen("../../temp.bmp", "wb");
@@ -93,8 +92,11 @@ char *interpreteur(mainStruct *main_s)
         case 1:
             if (main_s->chg_mode_struct->capture == true)
             {
-                // TO DO :
                 // déclencher une capture manuelle
+                if (LIVE_CAPT == 1)
+                {
+                    system("fswebcam -c ../../webcam.conf\n../../jpgtobmp.py\nrm ../../temp.jpeg");
+                }
                 main_s->img_s->length = IMG_LENGTH;
                 main_s->img_s->capture_f = true;
                 bufferMsg = "Capture";

@@ -13,7 +13,8 @@ ENTITY cmp_multiAdd IS
         in_krn : IN FLOAT32_VECTOR(0 TO (G_NBR_MULT - 1));
         in_clk : IN STD_LOGIC;
         in_reset : IN STD_LOGIC;
-        out_res : OUT float32
+        out_res : OUT float32;
+        out_valid : OUT STD_LOGIC
     );
 END ENTITY;
 
@@ -25,12 +26,14 @@ BEGIN
         IF (rising_edge(in_clk)) THEN
             IF (in_reset = '0') THEN
                 out_res <= to_float(0.0);
+                out_valid <= '0';
             ELSE
                 SUM := TO_FLOAT(0.0);
-                colors : FOR color IN 0 TO G_NBR_MULT-1 LOOP
+                colors : FOR color IN 0 TO G_NBR_MULT - 1 LOOP
                     SUM := SUM + in_img(color) * in_krn(color);
                 END LOOP; -- colors
                 out_res <= SUM;
+                out_valid <= '1';
             END IF;
         END IF;
     END PROCESS;

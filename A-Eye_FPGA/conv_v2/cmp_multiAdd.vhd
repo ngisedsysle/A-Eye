@@ -4,7 +4,7 @@ USE ieee.numeric_std.ALL;
 USE IEEE.FLOAT_PKG.ALL;
 USE WORK.CONV_PKG.ALL;
 
-ENTITY multiAdd IS
+ENTITY cmp_multiAdd IS
     GENERIC (
         G_NBR_MULT : INTEGER := 3
     );
@@ -17,7 +17,7 @@ ENTITY multiAdd IS
     );
 END ENTITY;
 
-ARCHITECTURE rtl OF multiAdd IS
+ARCHITECTURE rtl OF cmp_multiAdd IS
 BEGIN
     PROCESS (in_clk)
         VARIABLE SUM : FLOAT32 := TO_FLOAT(0.0);
@@ -27,7 +27,7 @@ BEGIN
                 out_res <= to_float(0.0);
             ELSE
                 SUM := TO_FLOAT(0.0);
-                colors : FOR color IN 0 TO G_NBR_MULT LOOP
+                colors : FOR color IN 0 TO G_NBR_MULT-1 LOOP
                     SUM := SUM + in_img(color) * in_krn(color);
                 END LOOP; -- colors
                 out_res <= SUM;

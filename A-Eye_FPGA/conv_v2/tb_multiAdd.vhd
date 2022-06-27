@@ -24,14 +24,14 @@ ARCHITECTURE arch OF tb_multiAdd IS
     END COMPONENT;
 
     SIGNAL tb_clk, tb_reset : STD_LOGIC := '0';
-    SIGNAL tb_img : FLOAT32_VECTOR(0 TO G_NBR_MULT-1) := (OTHERS => to_float(0.0));
-    SIGNAL tb_krn : FLOAT32_VECTOR(0 TO G_NBR_MULT-1) := (OTHERS => to_float(0.0));
+    SIGNAL tb_img : FLOAT32_VECTOR(0 TO G_NBR_MULT - 1) := (OTHERS => to_float(0.0));
+    SIGNAL tb_krn : FLOAT32_VECTOR(0 TO G_NBR_MULT - 1) := (OTHERS => to_float(0.0));
     SIGNAL tb_res : float32 := to_float(0.0);
     SIGNAL tb_count : INTEGER := 0;
 
 BEGIN
 
-    cmp_multiadd_inst : cmp_multiAdd
+    DUT_cmp_multiadd : cmp_multiAdd
     GENERIC MAP(
         G_NBR_MULT => G_NBR_MULT
     )
@@ -58,9 +58,12 @@ BEGIN
                 TB_RESET <= '1';
             END IF;
 
-            IF (tb_count > 10) THEN
-                tb_img <= (others => to_float(1.0));
-                tb_krn <= (others => to_float(1.0));
+            IF (tb_count = 11) THEN
+                tb_img <= (OTHERS => to_float(1.0));
+            END IF;
+
+            IF (tb_count = 21) THEN
+                tb_krn <= (OTHERS => to_float(1.0));
             END IF;
 
         END IF;

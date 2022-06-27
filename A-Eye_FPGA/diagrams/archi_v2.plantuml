@@ -1,0 +1,45 @@
+@startuml multiadd
+component multiadd{
+    portin in_img
+    portin in_krn
+    portin in_clk
+    portin in_reset
+
+    portout out_result
+
+    component x_1{
+        portin R_img
+        portin R_krn
+        portout R_res
+    }
+    in_img --> R_img
+    in_krn --> R_krn
+    component x_2{
+        portin G_img
+        portin G_krn
+        portout G_res
+    }
+    in_img --> G_img
+    in_krn --> G_krn
+    component x_3{
+        portin B_img
+        portin B_krn
+        portout B_res
+    }
+    in_img --> B_img
+    in_krn --> B_krn
+
+    component +{
+        portin S_1
+        portin S_2
+        portin S_3
+        portout S_res
+    }
+    R_res --> S_1
+    G_res --> S_2
+    B_res --> S_3
+
+    S_res --> out_result
+}
+
+@enduml

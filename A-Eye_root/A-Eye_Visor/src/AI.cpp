@@ -567,7 +567,9 @@ extern "C"
                 else if (COM_MODE == 0)
                 {
                     while (start_f == false)
-                        ;
+                    {
+                        sleep(0.001);
+                    }
                 }
                 if (LOADDATASET)
                 {

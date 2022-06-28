@@ -31,18 +31,29 @@ namespace SpecFlowProject1.StepDefinitions
             else if (p0.Equals("set config"))
             {
                 AEye.Program.controller.SetConfig_Click(new object(), new EventArgs());
-                Thread.Sleep(3000);
             }
             else if (p0.Equals("take picture"))
             {
                 AEye.Program.controller.TakePict_btn_Click(new object(), new EventArgs());
-                Thread.Sleep(2000);
             }
             else
             {
                 throw new PendingStepException();
             }
         }
+
+        [When(@"I wait for ""([^""]*)"" seconds")]
+        public void WhenIWaitForSeconds(string p0)
+        {
+            Thread.Sleep(int.Parse(p0)*1000);
+        }
+
+        [Given(@"I wait for ""([^""]*)"" seconds")]
+        public void GivenIWaitForSeconds(string p0)
+        {
+            WhenIWaitForSeconds(p0);
+        }
+
 
         [Then(@"I must receive ""([^""]*)""")]
         public void ThenIMustReceive(string p0)

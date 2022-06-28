@@ -83,6 +83,9 @@ namespace SpecFlowProject1.Features
 #line 5
         testRunner.Given("the app is connected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
+#line 6
+        testRunner.Given("I wait for \"3\" seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
@@ -92,7 +95,7 @@ namespace SpecFlowProject1.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set auto mode", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 7
+#line 8
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -115,13 +118,16 @@ namespace SpecFlowProject1.Features
 #line 3
     this.FeatureBackground();
 #line hidden
-#line 8
+#line 9
         testRunner.Given("the selected mode is \"mode auto\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 9
+#line 10
         testRunner.When("I click on \"set config\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 10
+#line 11
+        testRunner.When("I wait for \"3\" seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 12
         testRunner.Then("the system is in \"mode auto\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -135,7 +141,7 @@ namespace SpecFlowProject1.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set manual mode", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 12
+#line 14
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -158,13 +164,16 @@ namespace SpecFlowProject1.Features
 #line 3
     this.FeatureBackground();
 #line hidden
-#line 13
+#line 15
         testRunner.Given("the selected mode is \"mode manual\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 14
+#line 16
         testRunner.When("I click on \"set config\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 15
+#line 17
+        testRunner.When("I wait for \"3\" seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 18
         testRunner.Then("the system is in \"mode manual\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -178,7 +187,7 @@ namespace SpecFlowProject1.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set video mode", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 17
+#line 20
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -201,13 +210,16 @@ namespace SpecFlowProject1.Features
 #line 3
     this.FeatureBackground();
 #line hidden
-#line 18
+#line 21
         testRunner.Given("the selected mode is \"mode video\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 19
+#line 22
         testRunner.When("I click on \"set config\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 20
+#line 23
+        testRunner.When("I wait for \"3\" seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 24
         testRunner.Then("the system is in \"mode video\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -221,7 +233,7 @@ namespace SpecFlowProject1.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("take manual picture", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 22
+#line 26
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -244,13 +256,16 @@ namespace SpecFlowProject1.Features
 #line 3
     this.FeatureBackground();
 #line hidden
-#line 23
+#line 27
         testRunner.Given("the current mode is \"mode manual\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 24
+#line 28
         testRunner.When("I click on \"take picture\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 25
+#line 29
+        testRunner.When("I wait for \"3\" seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 30
         testRunner.Then("I must receive a picture", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

@@ -14,7 +14,6 @@ namespace SpecFlowProject1.StepDefinitions
         public void GivenTheAppIsConnected()
         {
             AEye.Program.controller.Ip_btn_Click(new object(), new EventArgs());
-            Thread.Sleep(2000);
         }
 
         [Given(@"the selected mode is ""([^""]*)""")]
@@ -52,7 +51,6 @@ namespace SpecFlowProject1.StepDefinitions
             if (p0.Equals("mode auto"))
             {
                 logContainStr("Process IA running").Should().BeTrue();
-                GivenTheCurrentModeIs("mode manual");
             }
             else if (p0.Equals("mode manual"))
             {
@@ -74,7 +72,6 @@ namespace SpecFlowProject1.StepDefinitions
             GivenTheSelectedModeIs(p0);
             AEye.Program.controller.SetConfig_Click(new object(), new EventArgs());
             Thread.Sleep(3000);
-            
         }
 
         [Then(@"I must receive a picture")]

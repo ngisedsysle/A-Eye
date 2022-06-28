@@ -18,7 +18,7 @@ ARCHITECTURE tb OF tb_line_proc IS
             G_NBR_PIX : INTEGER := 3
         );
         PORT (
-            in_clk, in_reset : IN STD_LOGIC;
+            in_clk, in_reset, img_valid, krn_valid : IN STD_LOGIC;
             in_img : IN FL32_3X3_2D;
             in_krn : IN FL32_3X3_2D;
             out_res : OUT float32;
@@ -26,7 +26,7 @@ ARCHITECTURE tb OF tb_line_proc IS
         );
     END COMPONENT;
 
-    SIGNAL tb_clk, tb_reset, tb_valid : STD_LOGIC := '0';
+    SIGNAL tb_clk, tb_reset, tb_valid, tb_img_valid, tb_krn_valid : STD_LOGIC := '0';
     SIGNAL tb_img : FL32_3X3_2D := (OTHERS => (OTHERS => to_float(0.0)));
     SIGNAL tb_krn : FL32_3X3_2D := (OTHERS => (OTHERS => to_float(0.0)));
     SIGNAL tb_res : float32 := to_float(0.0);
@@ -40,6 +40,8 @@ BEGIN
     )
     PORT MAP(
         in_clk => tb_clk,
+        img_valid => tb_img_valid,
+        krn_valid => tb_krn_valid,
         in_reset => tb_reset,
         in_img => tb_img,
         in_krn => tb_krn,
@@ -60,6 +62,12 @@ BEGIN
 
             IF (TB_RESET = '0') THEN
                 TB_RESET <= '1';
+                tb_img_valid <= '1';
+                tb_krn_valid <= '1';
+            END IF;
+            IF (tb_count = 3) THEN
+                tb_img_valid <= '0';
+                tb_krn_valid <= '0';
             END IF;
 
             IF (tb_count = 9) THEN
@@ -68,6 +76,12 @@ BEGIN
             IF (tb_count = 11) THEN
                 tb_reset <= '1';
                 tb_img <= (OTHERS => (OTHERS => to_float(1.0)));
+                tb_img_valid <= '1';
+                tb_krn_valid <= '1';
+            END IF;
+            IF (tb_count = 13) THEN
+                tb_img_valid <= '0';
+                tb_krn_valid <= '0';
             END IF;
 
             IF (tb_count = 19) THEN
@@ -76,6 +90,12 @@ BEGIN
             IF (tb_count = 21) THEN
                 tb_reset <= '1';
                 tb_krn <= (OTHERS => (OTHERS => to_float(1.0)));
+                tb_img_valid <= '1';
+                tb_krn_valid <= '1';
+            END IF;
+            IF (tb_count = 23) THEN
+                tb_img_valid <= '0';
+                tb_krn_valid <= '0';
             END IF;
 
         END IF;

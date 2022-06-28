@@ -10,12 +10,23 @@ ENTITY cmp_line_proc IS
         G_NBR_PIX : INTEGER := 3
     );
     PORT (
-        in_clk, in_reset, img_valid, krn_valid : IN STD_LOGIC;
-        in_img : IN FL32_3X3_2D;
-        in_krn : IN FL32_3X3_2D;
+        -- clk and reset
+        in_clk, in_reset : IN STD_LOGIC;
 
-        out_res : OUT float32;
-        out_valid : OUT STD_LOGIC
+        -- image loader
+        img_data : IN FL32_3X3_2D;
+        img_valid : IN STD_LOGIC;
+        img_ready : OUT STD_LOGIC;
+
+        -- kernel loader
+        krn_data : IN FL32_3X3_2D;
+        krn_valid : IN STD_LOGIC;
+        krn_ready : OUT STD_LOGIC;
+
+        -- result
+        res_data : OUT float32;
+        res_valid : OUT STD_LOGIC;
+        res_ready : IN STD_LOGIC
     );
 END cmp_line_proc;
 
@@ -41,8 +52,8 @@ BEGIN
             G_NBR_MULT => G_NBR_COLOR
         )
         PORT MAP(
-            in_img => in_img(0),
-            in_krn => in_krn(0),
+            in_img => img_data(0),
+            in_krn => krn_data(0),
             in_clk => in_clk,
             img_valid => img_valid,
             krn_valid => krn_valid,
@@ -55,8 +66,8 @@ BEGIN
             G_NBR_MULT => G_NBR_COLOR
         )
         PORT MAP(
-            in_img => in_img(1),
-            in_krn => in_krn(1),
+            in_img => img_data(1),
+            in_krn => krn_data(1),
             in_clk => in_clk,
             img_valid => img_valid,
             krn_valid => krn_valid,
@@ -69,8 +80,8 @@ BEGIN
             G_NBR_MULT => G_NBR_COLOR
         )
         PORT MAP(
-            in_img => in_img(2),
-            in_krn => in_krn(2),
+            in_img => img_data(2),
+            in_krn => krn_data(2),
             in_clk => in_clk,
             img_valid => img_valid,
             krn_valid => krn_valid,
@@ -83,12 +94,24 @@ BEGIN
 
     BEGIN
         IF (rising_edge(in_clk)) THEN
-            IF (in_reset = '0') THEN
-                out_res <= to_float(0.0);
-                out_valid <= '0';
-            ELSE
-                out_res <= temp_res_1 + temp_res_2 + temp_res_3;
-                out_valid <= temp_valid_1 AND temp_valid_2 AND temp_valid_3;
+            IF (in_reset = '0') THEN -- reset active
+                res_data <= to_float(0.0);
+                res_valid <= '0';
+                img_ready <= '1';
+                krn_ready <= '1';
+            ELSE -- reset not active
+                
+                IF ((temp_valid_1 AND temp_valid_2 AND temp_valid_3) = '1') THEN
+                    res_data <= temp_res_1 + temp_res_2 + temp_res_3;
+                    res_valid <= '1';
+                    krn_ready <= '1';
+                    img_ready <= '1';
+                ELSE
+                    res_valid <= '0';
+                    krn_ready <= '0';
+                    img_ready <= '0';
+                END IF;
+
             END IF;
         END IF;
     END PROCESS;

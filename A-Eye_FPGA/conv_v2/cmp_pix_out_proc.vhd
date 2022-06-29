@@ -30,6 +30,17 @@ ENTITY cmp_pix_out_proc IS
 END ENTITY;
 
 ARCHITECTURE rtl OF cmp_pix_out_proc IS
+
+    COMPONENT cmp_add_3_clk IS
+        PORT (
+            clk, rst : IN STD_LOGIC;
+            in_data : IN float32;
+            out_data : INOUT float32;
+            in_valid : IN STD_LOGIC;
+            out_valid : OUT STD_LOGIC
+        );
+    END COMPONENT;
+
     COMPONENT axi_fifo IS
         GENERIC (
             ram_depth : NATURAL := 10
@@ -139,33 +150,17 @@ BEGIN
             out_data => temp_krn_data
         );
 
+    cmp_add_3_clk_inst: entity work.cmp_add_3_clk
+      port map (
+        clk       => clk,
+        rst       => rst,
+        in_data   => temp_res_data,
+        out_data  => res_data,
+        in_valid  => temp_res_valid,
+        out_valid => res_valid
+      );
+
     temp_res_ready <= res_ready;
 
-    output_proc : PROCESS (temp_res_valid, clk)
-        variable cnt : INTEGER := 0;
-    BEGIN
-        -- reset
-        IF (rising_edge(clk) AND rst = '0') THEN
-            res_valid <= '0';
-            res_data <= to_float(0.0);
-        END IF;
-        -- main
-        IF (temp_res_valid = '1') THEN
-            -- internal counter
-            cnt := (cnt + 1) MOD 3;
-            -- res_data
-            IF (cnt = 0) THEN
-                res_data <= temp_res_data;
-            ELSE
-                res_data <= temp_res_data + res_data;
-            END IF;
-            -- res_valid
-            IF (cnt = 2) THEN
-                res_valid <= '1';
-            ELSE
-                res_valid <= '0';
-            END IF;
-        END IF;
-    END PROCESS;
-
+    
 END ARCHITECTURE;

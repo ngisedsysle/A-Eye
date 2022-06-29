@@ -30,11 +30,7 @@ This repository contains the documented source code for this project.
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -138,4 +134,30 @@ You can easily build the application and use it !
 
 4.2. TODO Using the installer : Run the installer and launch the app !
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
+## Usage
+
+Here you can find different usage case of our project.
+
+*Receive boat images from a dataset :*
+
+1. Put the dataset on the embedded filesystem. The dataset must be named *"dataset"* and contain two folders, one with boat images named *"bateau"* and the other one without boats named *"pas_bateau"*. You can download an example dataset [here](https://drive.google.com/uc?export=download&id=1odGQm0w5xhjG1suTzqstuRMIkoTY4mYx)
+2. Go to the folder **A-Eye_root/** and run **restart.sh**
+3. On your host machine, run the application
+4. Set the correct IP and set the config as AUTO MODE (don't forget to click on the autoload button)
+5. Watch the boat images displayed on your application :)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Contact
+
+Guilhem ROLLAND - guilhem.rolland@elsys-design.com  
+Embedded developper | [ELSYS DESIGN](https://www.elsys-design.com/fr/)
+
+Thomas DU BOISROUVRAY - thomas.duboisrouvray@elsys-design.com  
+Embedded developper | [ELSYS DESIGN](https://www.elsys-design.com/fr/)
+
+Arnaud DANIEL - Lead tech | [ELSYS DESIGN](https://www.elsys-design.com/fr/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>

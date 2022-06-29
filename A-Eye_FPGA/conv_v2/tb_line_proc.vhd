@@ -56,7 +56,8 @@ ARCHITECTURE tb OF tb_line_proc IS
             IF (v_ready = '1') THEN
                 matrix <= (OTHERS => (OTHERS => to_float(data)));
                 v_valid <= '1';
-            ELSE
+                wait until v_ready = '0';
+            ELSE -- v_ready = 0 
                 v_valid <= '0';
             END IF;
         END IF;
@@ -100,8 +101,6 @@ BEGIN
 
             IF (tb_reset = '0') THEN
                 tb_reset <= '1';
-                tb_img_valid <= '1';
-                tb_krn_valid <= '1';
             END IF;
             -- IF (tb_count = 3) THEN
             --     tb_img_valid <= '0';

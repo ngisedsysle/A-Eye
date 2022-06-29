@@ -100,6 +100,12 @@ BEGIN
                 img_ready <= '1';
                 krn_ready <= '1';
             ELSE -- reset not active
+                if krn_valid = '1' then
+                  krn_ready <= '0';
+                end if;
+                if img_valid = '1' then
+                  img_ready <= '0';
+                end if;
                 
                 IF ((temp_valid_1 AND temp_valid_2 AND temp_valid_3) = '1') THEN
                     res_data <= temp_res_1 + temp_res_2 + temp_res_3;
@@ -108,9 +114,8 @@ BEGIN
                     img_ready <= '1';
                 ELSE
                     res_valid <= '0';
-                    krn_ready <= '0';
-                    img_ready <= '0';
                 END IF;
+
 
             END IF;
         END IF;

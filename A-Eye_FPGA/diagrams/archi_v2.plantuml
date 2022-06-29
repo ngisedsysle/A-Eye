@@ -1,0 +1,86 @@
+@startuml multiadd
+component multiadd{
+    portin in_img
+    portin in_krn
+
+    portout out_result
+
+    component x_1{
+        portin R_img
+        portin R_krn
+        portout R_res
+    }
+    in_img --> R_img
+    in_krn --> R_krn
+    component x_2{
+        portin G_img
+        portin G_krn
+        portout G_res
+    }
+    in_img --> G_img
+    in_krn --> G_krn
+    component x_3{
+        portin B_img
+        portin B_krn
+        portout B_res
+    }
+    in_img --> B_img
+    in_krn --> B_krn
+
+    component +{
+        portin S_1
+        portin S_2
+        portin S_3
+        portout S_res
+    }
+    R_res --> S_1
+    G_res --> S_2
+    B_res --> S_3
+
+    S_res --> out_result
+}
+@enduml
+
+@startuml line_process
+component line_proc{
+    portin img
+    portin krn
+    portout res
+
+    component px1_proc\nmultiadd{
+    portin px1_i
+    portin px1_k
+    portout px1_r
+    }
+    img --> px1_i
+    krn --> px1_k
+
+    component px2_proc\nmultiadd{
+    portin px2_i
+    portin px2_k
+    portout px2_r
+    }
+    img --> px2_i
+    krn --> px2_k
+
+    component px3_proc\nmultiadd{
+    portin px3_i
+    portin px3_k
+    portout px3_r
+    }
+    img --> px3_i
+    krn --> px3_k
+
+    component + {
+        portin i1
+        portin i2
+        portin i3
+        portout add
+    }
+    px1_r --> i1
+    px2_r --> i2
+    px3_r --> i3
+    
+    add --> res
+}
+@enduml

@@ -48,25 +48,25 @@ component line_proc{
     portout res
 
     component px1_proc\nmultiadd{
-    portin px1_i
-    portin px1_k
-    portout px1_r
+        portin px1_i
+        portin px1_k
+        portout px1_r
     }
     img --> px1_i
     krn --> px1_k
 
     component px2_proc\nmultiadd{
-    portin px2_i
-    portin px2_k
-    portout px2_r
+        portin px2_i
+        portin px2_k
+        portout px2_r
     }
     img --> px2_i
     krn --> px2_k
 
     component px3_proc\nmultiadd{
-    portin px3_i
-    portin px3_k
-    portout px3_r
+        portin px3_i
+        portin px3_k
+        portout px3_r
     }
     img --> px3_i
     krn --> px3_k
@@ -80,7 +80,39 @@ component line_proc{
     px1_r --> i1
     px2_r --> i2
     px3_r --> i3
-    
+
     add --> res
+}
+@enduml
+
+@startuml pix_out_proc
+component pix_out_proc{
+    portin PS_img_out
+    portin PS_krn_out
+    portout pix_out
+    component img_fifo{
+        portin PS_img_in
+        portout temp_img_out
+    }
+    PS_img_out --> PS_img_in
+    component krn_fifo{
+        portin PS_krn_in
+        portout temp_krn_out
+    }
+    PS_krn_out --> PS_krn_in
+    component line_proc{
+        portin temp_img_in
+        portin temp_krn_in
+        portout temp_res_out
+    }
+    temp_img_out --> temp_img_in
+    temp_krn_out --> temp_krn_in
+    
+    component adder_3_clk{
+        portin temp_res_in
+        portout temp_pix_out
+    }
+    temp_res_out --> temp_res_in
+    temp_pix_out --> pix_out
 }
 @enduml

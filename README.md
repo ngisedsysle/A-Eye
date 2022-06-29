@@ -30,6 +30,7 @@ This repository contains the documented source code for this project.
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#documentation">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -150,6 +151,20 @@ Here you can find different usage case of our project.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Documentation
+
+An important part of the project is to have a clear an complete documentation associated to the project.  
+You can find a lot of UML documentation in folder A-Eye_Documentation.  
+You can also generate Doyxgen documentation for all source code in the project by following the following steps :
+
+```bash
+sudo apt install doxygen
+git clone https://github.com/GuilhemROLLAND/A-Eye.git
+cd A-Eye
+doxygen ./Doxyfile
+```
+If you're using Windows, you can download the Doyxwizard or use the follwing commands in a WSL shell.
+You can then find the documentation in /doc
 ## Contact
 
 Guilhem ROLLAND - guilhem.rolland@elsys-design.com  

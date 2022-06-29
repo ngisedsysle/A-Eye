@@ -3,7 +3,11 @@ Guilhem ROLLAND
 Thomas DU BOISROUVRAY  
 Elsys Design Rennes  
 ## Project
-Build an IA coded in C on a zybo Z7-20.
+Build a linux using petalinux (based on yocto) for the A-Eye project.
+### Requirements
+The development configuration is :  
+Ubuntu 16.04.3 LTS  
+petalinux-v2017.4  
 ## Usefull petalinux commands
 ```bash
 petalinux-create -t project --template zynq -n petaFromVivado # Create the workspace   

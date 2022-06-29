@@ -16,6 +16,13 @@ Thus, the 3x3x3 convolution works with a block which can process 3x3 float32. Th
 ![cmp_line_process](./diagrams/out/archi_v2/line_process.png)
 #### Memory occupation
 Now, we used 44% of the LUTs.  We need two clock cycles to compute one line of 3 RGB pixels.  
+### Pixel output processing
+#### Principle
+Once we have the previous module, able to compute 3 input pixels, we need to repeat three time the process to compute a 3x3 RGB pixels matrix, to output one monochrome pixel.  
+#### Output system. 
+We have to get three float, to add them, and output the result. Thus is done by this architecture : 
+![Output_pixel_arch](./diagrams/out/archi_v2/adder_3_clk.drawio.png)  
+This is composed by an adder on the data, and a control system based on a counter, maximize by 2.  
 
 ## Documentations v1
 ### What is done

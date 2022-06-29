@@ -14,9 +14,3 @@ Also contains a DOXYFILE that can be used to generate the documentation.
 ### A-Eye_Visor
 Contains all the files to run the AI.
 Also contains a DOXYFILE that can be used to generate the documentation.
-### A-Eye Visor
-This folder contains the c code to run and use the AI functions.  
-### A-Eye Communication
-This folder contains the c code to run the server on the device. This will be used to communicate with the AI Controller.  
-### .vscode (makefile, ...)
-Contains the build and compile configuration.  

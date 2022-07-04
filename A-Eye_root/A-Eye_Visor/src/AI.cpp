@@ -48,7 +48,13 @@ extern "C"
 #define WIDTH 240             /*!<width of the image (==length)*/
 #define COLORS 3              /*!<number of color rgb*/
 #define MAXLAYER 20           /*!<max number of layer*/
+
+#define QUANTIZED 1 /*! Use the quantized model*/
+#if QUANTIZED == 0
     char weights_file[] = "../weights_airbus_240_90.json";
+#else
+    char weights_file[] = "../weights_q_86.json";
+#endif
 
     typedef struct THREADPARAM_S
     {
@@ -78,6 +84,7 @@ extern "C"
     int backProp(int x, float *ent, int ep);
     int forwardProp(int x, int dp, int train, int lay);
     float ReLU(float x);
+    int ReLU_int(int x);
     float TanH(float x);
     void fully_connected_process(int idxLayer, int dp);
     void convolution_process(int idxLayer, int dp);
@@ -130,9 +137,8 @@ extern "C++"
 }
 
 extern "C"
-{ // TRAINING AND VALIDATION DATA
-    float (*trainImages)[WIDTH * WIDTH * COLORS] = 0;
-    float (*trainImages2)[WIDTH * WIDTH * COLORS / 2 / 2] = 0;
+{
+    // TRAINING AND VALIDATION DATA
     int *trainDigits = 0;
     int trainSizeI = 0, extraTrainSizeI = 1000;
     int trainColumns = 0, trainSizeE = 0;
@@ -142,12 +148,24 @@ extern "C"
     int validSetSize = 0;
     float *ents = 0, *ents2 = 0;
     float *accs = 0, *accs2 = 0;
+#if QUANTIZED == 0
+    float (*trainImages)[WIDTH * WIDTH * COLORS] = 0;
+    float (*trainImages2)[WIDTH * WIDTH * COLORS / 2 / 2] = 0;
+#else
+    int (*trainImages)[WIDTH * WIDTH * COLORS] = 0;
+    int (*trainImages2)[WIDTH * WIDTH * COLORS / 2 / 2] = 0;
+#endif
     // TEST DATA
-    float (*testImages)[WIDTH * WIDTH * COLORS] = 0;
-    float (*testImages2)[WIDTH * WIDTH * COLORS / 2 / 2] = 0;
     int *testDigits;
     int testSizeI = 0;
     int testColumns = 0;
+#if QUANTIZED == 0
+    float (*testImages)[WIDTH * WIDTH * COLORS] = 0;
+    float (*testImages2)[WIDTH * WIDTH * COLORS / 2 / 2] = 0;
+#else
+    int (*testImages)[WIDTH * WIDTH * COLORS] = 0;
+    int (*testImages2)[WIDTH * WIDTH * COLORS / 2 / 2] = 0;
+#endif
 
     // NETWORK VARIABLES
     int inited = -1;
@@ -163,11 +181,18 @@ extern "C"
     // NETWORK ACTIVATIONS AND ERRORS
     float prob = 0.0, prob0 = 0.0;
     float prob1 = 0.0, prob2 = 0.0;
-    float *layers[MAXLAYER] = {0};
     int *dropOut[MAXLAYER] = {0};
-    float *weights[MAXLAYER] = {0};
     char *weightsStr;
+#if QUANTIZED == 0
+    float *layers[MAXLAYER] = {0};
+    float *weights[MAXLAYER] = {0};
     float *errors[MAXLAYER] = {0};
+#else
+    int *layers[MAXLAYER] = {0};
+    int *weights[MAXLAYER] = {0};
+    int *errors[MAXLAYER] = {0};
+#endif
+
     // NETWORK ARCHITECTURE
     int numLayers = 0;
     char layerNames[MAXLAYER][20] = {0};
@@ -395,13 +420,11 @@ extern "C++"
                 {
                     start_f = true;
                     cout << "Start message received ..." << endl;
-
                 }
             }
         }
 
-        void
-        delivery_complete(mqtt::delivery_token_ptr token) override
+        void delivery_complete(mqtt::delivery_token_ptr token) override
         {
         }
 
@@ -689,8 +712,13 @@ extern "C"
             free(validSet);
             trainImages = NULL;
         }
+#if QUANTIZED == 0
         trainImages = (float(*)[172800])malloc(WIDTH * WIDTH * COLORS * (lines + extraTrainSizeI) * sizeof(float));
         trainImages2 = (float(*)[43200])malloc(WIDTH * WIDTH * COLORS / 2 / 2 * (lines + extraTrainSizeI) * sizeof(float));
+#else
+        trainImages = (int(*)[172800])malloc(WIDTH * WIDTH * COLORS * (lines + extraTrainSizeI) * sizeof(int));
+        trainImages2 = (int(*)[43200])malloc(WIDTH * WIDTH * COLORS / 2 / 2 * (lines + extraTrainSizeI) * sizeof(int));
+#endif
         trainDigits = (int *)malloc(lines * sizeof(int));
         trainSet = (int *)malloc(lines * sizeof(int));
         validSet = (int *)malloc(lines * sizeof(int));
@@ -718,7 +746,11 @@ extern "C"
             if (data[j] == '\n' || data[j] == '\r')
                 mark = 1;
             data[j] = 0;
+#if QUANTIZED == 0
             d = atof(data + i);
+#else
+            d = atoi(data + i);
+#endif
             if (mark == -1)
             {
                 trainDigits[k] = (int)d;
@@ -726,12 +758,20 @@ extern "C"
             }
             else if (mark == 0)
             {
+#if QUANTIZED == 0
                 trainImages[k][c] = d * (((float)1.) / imgScale) - imgBias;
+#else
+                trainImages[k][c] = d;
+#endif
                 c++;
             }
             if (mark >= 1)
             {
+#if QUANTIZED == 0
                 trainImages[k][c] = d * (((float)1.) / imgScale) - imgBias;
+#else
+                trainImages[k][c] = d;
+#endif
                 if (c >= trainColumns - 1)
                     k++;
                 c = 0;
@@ -839,8 +879,13 @@ extern "C"
             free(testDigits);
             testImages = NULL;
         }
+#if QUANTIZED == 0
         testImages = (float(*)[172800])malloc(WIDTH * WIDTH * COLORS * lines * sizeof(float));
         testImages2 = (float(*)[43200])malloc(WIDTH * WIDTH * COLORS / 2 / 2 * lines * sizeof(float));
+#else
+        testImages = (int(*)[172800])malloc(WIDTH * WIDTH * COLORS * lines * sizeof(float));
+        testImages2 = (int(*)[43200])malloc(WIDTH * WIDTH * COLORS / 2 / 2 * lines * sizeof(float));
+#endif
         testDigits = (int *)malloc(lines * sizeof(int));
         // DECODE COMMA SEPARATED ROWS
         int j = 0, k = 0, c = 0, mark = 0;
@@ -872,19 +917,32 @@ extern "C"
             if (data[j] == '\n' || data[j] == '\r')
                 mark = 1;
             data[j] = 0;
+#if QUANTIZED == 0
             d = atof(data + i);
+#else
+            d = atoi(data + i);
+
+#endif
             if (mark == -1)
             {
                 mark = 0;
             }
             else if (mark == 0)
             {
+#if QUANTIZED == 0
                 testImages[k][c] = d * (((float)1.) / imgScale) - imgBias;
+#else
+                testImages[k][c] = d;
+#endif
                 c++;
             }
             if (mark >= 1)
             {
+#if QUANTIZED == 0
                 testImages[k][c] = d * (((float)1.) / imgScale) - imgBias;
+#else
+                testImages[k][c] = d;
+#endif
                 if (c >= testColumns - 1)
                     k++;
                 c = 0;
@@ -1130,26 +1188,50 @@ extern "C"
         // ALOCATE MEMORY
         if (layers[0] == NULL)
         {
+#if QUANTIZED == 0
             layers[0] = (float *)malloc((layerSizes[0] + 1) * sizeof(float));
             errors[0] = (float *)malloc(layerSizes[0] * sizeof(float));
+#else
+            layers[0] = (int *)malloc((layerSizes[0] + 1) * sizeof(int));
+            errors[0] = (int *)malloc(layerSizes[0] * sizeof(int));
+#endif
             for (i = 1; i < MAXLAYER; i++)
             {
+#if QUANTIZED == 0
                 layers[i] = (float *)malloc((layerSizes[i] * layerChan[i] + 1) * sizeof(float));
-                dropOut[i] = (int *)malloc((layerSizes[i] * layerChan[i] + 1) * sizeof(int));
                 // printf("setting dropOut i=%d to %d\n",i,(layerSizes[i] * layerChan[i] + 1));
                 errors[i] = (float *)malloc((layerSizes[i] * layerChan[i] + 1) * sizeof(float));
+#else
+                layers[i] = (int *)malloc((layerSizes[i] * layerChan[i] + 1) * sizeof(int));
+                // printf("setting dropOut i=%d to %d\n",i,(layerSizes[i] * layerChan[i] + 1));
+                errors[i] = (int *)malloc((layerSizes[i] * layerChan[i] + 1) * sizeof(int));
+#endif
+                dropOut[i] = (int *)malloc((layerSizes[i] * layerChan[i] + 1) * sizeof(int));
+
                 if (layerType[i] == 0) // FULLY CONNECTED
                 {
                     int nbrParam = layerSizes[i] * (layerSizes[i - 1] * layerChan[i - 1] + 1);
+#if QUANTIZED == 0
                     weights[i] = (float *)malloc(nbrParam * sizeof(float));
+#else
+                    weights[i] = (int *)malloc(nbrParam * sizeof(int));
+#endif
                 }
                 else if (layerType[i] == 1) // CONVOLUTION
                 {
                     int nbrParam = (layerConvStep[i] + 1) * layerChan[i];
+#if QUANTIZED == 0
                     weights[i] = (float *)malloc(nbrParam * sizeof(float));
+#else
+                    weights[i] = (int *)malloc(nbrParam * sizeof(int));
+#endif
                 }
                 else if (layerType[i] >= 2) // POOLING (2=max, 3=avg)
+#if QUANTIZED == 0
                     weights[i] = (float *)malloc(sizeof(float));
+#else
+                    weights[i] = (int *)malloc(sizeof(int));
+#endif
             }
         }
         // WEIGHTS AND BIAS
@@ -1209,8 +1291,8 @@ extern "C"
                         free(params);
                     }
                     else if (layerType[idxLayer] == 1)
-                    {                                                                    // CONVOLUTION                                                               // CONVOLUTION
-                        for (int iParam = 0; iParam < layerConvStep[idxLayer]; iParam++) // +1 ??
+                    { // CONVOLUTION
+                        for (int iParam = 0; iParam < layerConvStep[idxLayer]; iParam++)
                         {
                             int profondeur = iParam % (layerChan[idxLayer - 1]);
                             int largeur = (iParam / layerChan[idxLayer - 1]) % layerConv[idxLayer];
@@ -1222,13 +1304,21 @@ extern "C"
                             free(paramLargeur);
                             for (int iFilter = 0; iFilter < layerChan[idxLayer]; iFilter++)
                             {
+#if QUANTIZED == 0
                                 float param = get_float_in_string(paramProf, iFilter);
+#else
+                                int param = get_int_in_string(paramProf, iFilter);
+#endif
                                 weights[idxLayer][iParam * layerChan[idxLayer] + iFilter] = param;
                             }
                             free(paramProf);
                         }
                         for (i = 0; i < layerChan[idxLayer]; i++) // set conv biases
+#if QUANTIZED == 0
                             weights[idxLayer][layerConvStep[idxLayer] * layerChan[idxLayer] + i] = get_float_in_string(layerBias, i);
+#else
+                            weights[idxLayer][layerConvStep[idxLayer] * layerChan[idxLayer] + i] = get_int_in_string(layerBias, i);
+#endif
                     }
                     if (SAVEVALUES)
                     {
@@ -1243,7 +1333,11 @@ extern "C"
                         {
                             nbrParam = (layerConvStep[idxLayer] + 1) * layerChan[idxLayer];
                         }
+#if QUANTIZED == 0
                         write_float_in_file(nameFile, weights[idxLayer], nbrParam);
+#else
+                        write_int_in_file(nameFile, weights[idxLayer], nbrParam);
+#endif
                     }
                     free(layerWeights);
                     free(layerBias);
@@ -1355,8 +1449,14 @@ extern "C"
         float pi = 3.1415926;
         float c = cos(pi * r / 180.0);
         float s = sin(pi * r / 180.0);
+#if QUANTIZED == 0
         float(*trainImagesB)[WIDTH * WIDTH * COLORS] = trainImages;
         float(*trainImages2B)[WIDTH * WIDTH * COLORS / 2 / 2] = trainImages2;
+#else
+        int(*trainImagesB)[WIDTH * WIDTH * COLORS] = trainImages;
+        int(*trainImages2B)[WIDTH * WIDTH * COLORS / 2 / 2] = trainImages2;
+#endif
+
         if (t == 0)
         {
             trainImagesB = testImages;
@@ -1874,7 +1974,13 @@ extern "C"
         // FORWARD PROPAGATION WITH 1 IMAGE
         int idx1, idx2, layer, imax, dc;
         int idx3, idx4, idx5, idx6;
-        float sum, esum, max, rnd, pmax;
+        float rnd;
+#if QUANTIZED == 0
+        float sum, esum, max, pmax;
+#else
+        int sum, esum, max, pmax;
+#endif
+
         int temp, temp2;
         // INPUT LAYER
         if (isDigits(inited) == 1 && layerSizes[MAXLAYER - numLayers] == WIDTH * WIDTH * COLORS / 2 / 2)
@@ -1906,7 +2012,11 @@ extern "C"
         }
         if (SAVEVALUES)
         {
+#if QUANTIZED == 0
             write_float_in_file("save/image_preprocessed_c.json", layers[9], layerSizes[9] * layerChan[9]);
+#else
+            write_int_in_file("save/image_preprocessed_c.json", layers[9], layerSizes[9] * layerChan[9]);
+#endif
         }
 
         // HIDDEN LAYERS
@@ -1953,7 +2063,11 @@ extern "C"
             {
                 char name[30];
                 sprintf(name, "save/layer%d_c.json", layer);
+#if QUANTIZED == 0
                 write_float_in_file(name, layers[layer], layerSizes[layer] * layerChan[layer]);
+#else
+                write_int_in_file(name, layers[layer], layerSizes[layer] * layerChan[layer]);
+#endif
             }
         }
         clock_t start, stop;
@@ -1968,13 +2082,18 @@ extern "C"
             sum = 0.0;
             for (int iIn = 0; iIn < layerSizes[MAXLAYER - 2] + 1; iIn++)
             {
+#if QUANTIZED == 0
                 float val = layers[MAXLAYER - 2][iIn];
                 float weight = weights[MAXLAYER - 1][iIn * (layerSizes[MAXLAYER - 1]) + iOut];
+#else
+                int val = layers[MAXLAYER - 2][iIn];
+                int weight = weights[MAXLAYER - 1][iIn * (layerSizes[MAXLAYER - 1]) + iOut];
+#endif
                 sum += val * weight;
             }
             // Bias
             sum += weights[MAXLAYER - 1][layerSizes[MAXLAYER - 1] * layerSizes[MAXLAYER - 2] + iOut];
-            layers[MAXLAYER - 1][iOut] = exp(sum);
+            layers[MAXLAYER - 1][iOut] = (int)exp(sum);
             if (layers[MAXLAYER - 1][iOut] > 1e30)
                 return -1; // GRADIENTS EXPLODED
             esum += layers[MAXLAYER - 1][iOut];
@@ -1995,7 +2114,11 @@ extern "C"
         prob = layers[MAXLAYER - 1][imax]; // ugly use of global variable :-(
         if (SAVEVALUES)
         {
+#if QUANTIZED == 0
             write_float_in_file("save/layer19_c.json", layers[19], layerSizes[19] * layerChan[19]);
+#else
+            write_int_in_file("save/layer19_c.json", layers[19], layerSizes[19] * layerChan[19]);
+#endif
         }
         if (DISPLAYTIME)
         {
@@ -2019,6 +2142,14 @@ extern "C"
             return 0;
     }
 
+    int ReLU_int(int x)
+    {
+        if (x > 0)
+            return x;
+        else
+            return 0;
+    }
+
     float TanH(float x)
     {
         return 2.0 / (1.0 + exp(-2 * x)) - 1.0;
@@ -2032,7 +2163,12 @@ extern "C"
      */
     void fully_connected_process(int idxLayer, int dp)
     {
+#if QUANTIZED == 0
         float sum;
+#else
+        int sum;
+#endif
+
         clock_t start, stop;
         if (DISPLAYTIME)
         {
@@ -2042,7 +2178,7 @@ extern "C"
         {
             if (dropOutRatio == 0.0 || dp == 0 || DOdense == 0 || dropOut[idxLayer][iOut] == 1)
             {
-                sum = 0.0;
+                sum = 0;
                 for (int iIn = 0; iIn < layerSizes[idxLayer - 1] * layerChan[idxLayer - 1]; iIn++)
                 {
                     int idxWeigth = iIn * layerSizes[idxLayer] + iOut;
@@ -2053,7 +2189,13 @@ extern "C"
                 if (activation == 0)
                     layers[idxLayer][iOut] = sum;
                 else if (activation == 1)
+                {
+#if QUANTIZED == 0
                     layers[idxLayer][iOut] = ReLU(sum);
+#else
+                    layers[idxLayer][iOut] = ReLU_int(sum);
+#endif
+                }
                 else
                     layers[idxLayer][iOut] = TanH(sum);
                 // if (dropOutRatio>0.0 && dp==1) layers[idxLayer][i] = layers[idxLayer][i]  / (1-dropOutRatio);
@@ -2061,7 +2203,7 @@ extern "C"
                     layers[idxLayer][iOut] = layers[idxLayer][iOut] * (1 - dropOutRatio);
             }
             else
-                layers[idxLayer][iOut] = 0.0;
+                layers[idxLayer][iOut] = 0;
         }
         if (DISPLAYTIME)
         {
@@ -2079,7 +2221,11 @@ extern "C"
      */
     void convolution_process(int idxLayer, int dp)
     {
+#if QUANTIZED == 0
         float sum;
+#else
+        int sum;
+#endif
         clock_t start, stop;
         if (DISPLAYTIME)
         {
@@ -2134,7 +2280,11 @@ extern "C"
      */
     void pooling_process(int layer, int dp)
     {
+#if QUANTIZED == 0
         float sum, pmax;
+#else
+        int sum, pmax;
+#endif
         clock_t start, stop;
         if (DISPLAYTIME)
         {
@@ -2180,7 +2330,11 @@ extern "C"
             for (int iLargOut = 0; iLargOut < layerWidth[idxLayer]; iLargOut++)
                 for (int iFilterOut = 0; iFilterOut < layerChan[idxLayer]; iFilterOut++)
                 {
+#if QUANTIZED == 0
                     float sum = 0.0;
+#else
+                    int sum = 0;
+#endif
                     for (int iHautIn = 0; iHautIn < layerConv[idxLayer]; iHautIn++)
                         for (int iLargIn = 0; iLargIn < layerConv[idxLayer]; iLargIn++)
                             for (int iProfIn = 0; iProfIn < layerChan[idxLayer - 1]; iProfIn++)
@@ -2188,10 +2342,19 @@ extern "C"
                                 int j3 = iLargOut + iLargIn - dc;
                                 int i3 = iHautOut + iHautIn - dc;
                                 int idxWeights = iFilterOut + iHautIn * layerConv[idxLayer] * layerChan[idxLayer - 1] * layerChan[idxLayer] + iLargIn * layerChan[idxLayer - 1] * layerChan[idxLayer] + iProfIn * layerChan[idxLayer];
+#if QUANTIZED == 0
                                 float weight = weights[idxLayer][idxWeights];
+#else
+                                int weight = weights[idxLayer][idxWeights];
+#endif
                                 if (i3 >= 0 && i3 < layerWidth[idxLayer - 1] && j3 >= 0 && j3 < layerWidth[idxLayer - 1])
                                 {
+#if QUANTIZED == 0
                                     float val = layers[idxLayer - 1][i3 * layerWidth[idxLayer - 1] * layerChan[idxLayer - 1] + j3 * layerChan[idxLayer - 1] + iProfIn];
+#else
+                                    int val = layers[idxLayer - 1][i3 * layerWidth[idxLayer - 1] * layerChan[idxLayer - 1] + j3 * layerChan[idxLayer - 1] + iProfIn];
+#endif
+
                                     // printf("val(%d;%d;%d) = %.16f\n", i3, j3, iProfIn, val);
                                     // printf("weight(%d;%d;%d;%d) = %.16f\n", iFilterOut, iHautIn, iLargIn, iProfIn, weight);
                                     sum += val * weight;
@@ -2205,7 +2368,12 @@ extern "C"
                     if (activation == 0)
                         sum = sum;
                     else if (activation == 1)
+#if QUANTIZED == 0
                         sum = ReLU(sum);
+#else
+                        sum = ReLU_int(sum);
+#endif
+
                     else
                         sum = TanH(sum);
                     int idx = iHautOut * layerWidth[idxLayer] * layerChan[idxLayer] + iLargOut * layerChan[idxLayer] + iFilterOut;
@@ -2223,7 +2391,11 @@ extern "C"
             char *Node = get_tab_in_tab(param->layerWeights, idxInput);
             for (int iNeuron = 0; iNeuron < layerSizes[idxLayer]; iNeuron++)
             {
+#if QUANTIZED == 0
                 float param = get_float_in_string(Node, iNeuron);
+#else
+                int param = get_int_in_string(Node, iNeuron);
+#endif
                 int idx = idxInput * layerSizes[idxLayer] + iNeuron;
                 weights[idxLayer][idx] = param;
             }
@@ -2232,7 +2404,11 @@ extern "C"
         for (int i = 0; i < layerSizes[idxLayer]; i++) // set biases
         {
             int idx = layerSizes[idxLayer] * layerSizes[idxLayer - 1] * layerChan[idxLayer - 1] + i;
+#if QUANTIZED == 0
             weights[idxLayer][idx] = get_float_in_string(param->layerBias, i);
+#else
+            weights[idxLayer][idx] = get_int_in_string(param->layerBias, i);
+#endif
         }
         return NULL;
     }

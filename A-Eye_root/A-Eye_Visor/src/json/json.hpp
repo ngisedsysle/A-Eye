@@ -76,6 +76,8 @@ char *write_float_in_buffer(float *ptrToFloat, int nbrFloat);
  */
 int write_float_in_file(char *filename, float *ptrToFloat, int nbrFloat);
 
+int write_int_in_file(char *filename, int *ptrToFloat, int nbrFloat);
+
 /**
  * @brief Go forward in the buffer until find a number in string.
  * Do not free the param buffer because pointer reference to something inside.

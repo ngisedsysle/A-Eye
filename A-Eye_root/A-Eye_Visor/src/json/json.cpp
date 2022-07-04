@@ -55,6 +55,12 @@ int convertFloatToString(float f, char *c)
     return size;
 }
 
+int convertIntToString(int i, char *c)
+{
+    int size = sprintf(c, "%d", i);
+    return size;
+}
+
 char *write_float_in_buffer(float *ptrToFloat, int nbrFloat)
 {
     char *ret = (char*) calloc(sizeof(char), 30 * nbrFloat + 1);
@@ -71,9 +77,33 @@ char *write_float_in_buffer(float *ptrToFloat, int nbrFloat)
     return ret;
 }
 
+char *write_int_in_buffer(int *ptrToInt, int nbrInt)
+{
+    char *ret = (char*) calloc(sizeof(char), 30 * nbrInt + 1);
+    char *ptrWrite = ret;
+    for (int i = 0; i < nbrInt; i++)
+    {
+        char c[50];
+        int size = convertIntToString(ptrToInt[i], c);
+        memcpy(ptrWrite, c, size);
+        ptrWrite += size;
+        memcpy(ptrWrite, ",", 1);
+        ptrWrite++;
+    }
+    return ret;
+}
+
 int write_float_in_file(char *filename, float *ptrToFloat, int nbrFloat)
 {
     char *buff = write_float_in_buffer(ptrToFloat, nbrFloat);
+    int ret = write_in_file(filename, buff);
+    free(buff);
+    return ret;
+}
+
+int write_int_in_file(char *filename, int *ptrToInt, int nbrInt)
+{
+    char *buff = write_int_in_buffer(ptrToInt, nbrInt);
     int ret = write_in_file(filename, buff);
     free(buff);
     return ret;

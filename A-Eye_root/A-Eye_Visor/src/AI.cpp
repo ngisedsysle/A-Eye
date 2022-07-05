@@ -33,7 +33,7 @@
 
 extern "C"
 {
-#define NBROFTHREAD 8         /*! Tell the compilator how many thread can be used*/
+#define NBROFTHREAD 1         /*! Tell the compilator how many thread can be used*/
 #define USEDEBUGPARAM 1       /*!<1 default value of params, 0 ask user the value*/
 #define IMPORTARCHFROMJSON 1  /*!<1 if you want to import your arch from a json file, 0 if you want to use preloaded architectures*/
 #define IMPORTPARAMFROMJSON 1 /*!<1 if you want to import your weights from a json file, 0 if xavier initialisation*/
@@ -883,8 +883,8 @@ extern "C"
         testImages = (float(*)[172800])malloc(WIDTH * WIDTH * COLORS * lines * sizeof(float));
         testImages2 = (float(*)[43200])malloc(WIDTH * WIDTH * COLORS / 2 / 2 * lines * sizeof(float));
 #else
-        testImages = (int(*)[172800])malloc(WIDTH * WIDTH * COLORS * lines * sizeof(float));
-        testImages2 = (int(*)[43200])malloc(WIDTH * WIDTH * COLORS / 2 / 2 * lines * sizeof(float));
+        testImages = (int(*)[172800])malloc(WIDTH * WIDTH * COLORS * lines * sizeof(int));
+        testImages2 = (int(*)[43200])malloc(WIDTH * WIDTH * COLORS / 2 / 2 * lines * sizeof(int));
 #endif
         testDigits = (int *)malloc(lines * sizeof(int));
         // DECODE COMMA SEPARATED ROWS
@@ -1746,12 +1746,16 @@ extern "C++"
                 cDigits[trainDigits[validSet[idxImage]]][pred][confusion[trainDigits[validSet[idxImage]]][pred] % maxCD] = validSet[idxImage];
                 confusion[trainDigits[validSet[idxImage]]][pred]++;
             }
+#if QUANTIZED == 0
             if (layers[MAXLAYER - 1][pred] == 0)
             {
                 printf("Test vanished.\n");
                 working = 0;
                 return;
             }
+#else
+#endif
+
             if (!INFERENCE)
                 entropy2 -= log(layers[MAXLAYER - 1][pred]);
             if (working == 0)

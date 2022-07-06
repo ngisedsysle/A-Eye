@@ -92,15 +92,9 @@ BEGIN
     img_proc : data_modif(clk, tb_count, line_img_data, line_img_valid, line_img_ready);
     krn_proc : data_modif(clk, tb_count, line_krn_data, line_krn_valid, line_krn_ready);
 
-    MAIN : PROCESS (clk)
+    main_proc : PROCESS
     BEGIN
-        IF (RISING_EDGE(clk)) THEN
-
-            IF (rst = '0') THEN
-                rst <= '1';
-            END IF;
-
-
-        END IF;
+        WAIT FOR 10 NS;
+        rst <= '1';
     END PROCESS;
 END ARCHITECTURE;

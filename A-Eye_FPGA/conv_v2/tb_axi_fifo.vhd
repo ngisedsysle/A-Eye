@@ -93,21 +93,6 @@ BEGIN
                 in_valid <= '1';
             END IF;
 
-            -- IF (tb_count = 13) THEN
-            --     in_valid <= '0';
-            -- END IF;
-
-            -- IF (tb_count = 21) THEN
-            --     out_ready <= '0';
-            -- END IF;
-            -- IF (tb_count = 23) THEN
-            --     in_valid <= '0';
-            -- END IF;
-
-            -- IF (tb_count = 29) THEN
-            --     out_ready <= '1';
-            -- END IF;
-
         END IF;
     END PROCESS;
 END tb; -- tb

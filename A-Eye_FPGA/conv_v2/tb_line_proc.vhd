@@ -96,45 +96,10 @@ BEGIN
 
     COMPUTE_proc : PROCESS (TB_CLK)
     BEGIN
-
         IF (RISING_EDGE(TB_CLK)) THEN
-
             IF (tb_reset = '0') THEN
                 tb_reset <= '1';
             END IF;
-            -- IF (tb_count = 3) THEN
-            --     tb_img_valid <= '0';
-            --     tb_krn_valid <= '0';
-            -- END IF;
-
-            -- IF (tb_count = 9) THEN
-            --     tb_reset <= '0';
-            -- END IF;
-            -- IF (tb_count = 11) THEN
-            --     tb_reset <= '1';
-            --     tb_img_data <= (OTHERS => (OTHERS => to_float(1.0)));
-            --     tb_img_valid <= '1';
-            --     tb_krn_valid <= '1';
-            -- END IF;
-            -- IF (tb_count = 13) THEN
-            --     tb_img_valid <= '0';
-            --     tb_krn_valid <= '0';
-            -- END IF;
-
-            -- IF (tb_count = 19) THEN
-            --     tb_reset <= '0';
-            -- END IF;
-            -- IF (tb_count = 21) THEN
-            --     tb_reset <= '1';
-            --     tb_krn_data <= (OTHERS => (OTHERS => to_float(1.0)));
-            --     tb_img_valid <= '1';
-            --     tb_krn_valid <= '1';
-            -- END IF;
-            -- IF (tb_count = 23) THEN
-            --     tb_img_valid <= '0';
-            --     tb_krn_valid <= '0';
-            -- END IF;
-
         END IF;
     END PROCESS;
 END tb; -- tb

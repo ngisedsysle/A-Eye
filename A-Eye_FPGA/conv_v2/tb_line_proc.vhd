@@ -5,101 +5,43 @@ USE IEEE.FLOAT_PKG.ALL;
 USE WORK.CONV_PKG.ALL;
 
 ENTITY tb_line_proc IS
-    GENERIC (
-        G_NBR_COLOR : INTEGER := 3;
-        G_NBR_PIX : INTEGER := 3
-    );
 END tb_line_proc;
 
 ARCHITECTURE tb OF tb_line_proc IS
     COMPONENT cmp_line_proc IS
-        GENERIC (
-            G_NBR_COLOR : INTEGER := 3;
-            G_NBR_PIX : INTEGER := 3
-        );
-        PORT (
-            -- clk and reset
-            in_clk, in_reset : IN STD_LOGIC;
-
-            -- image loader
-            img_data : IN FL32_3X3_2D;
-            img_valid : IN STD_LOGIC;
-            img_ready : OUT STD_LOGIC;
-
-            -- kernel loader
-            krn_data : IN FL32_3X3_2D;
-            krn_valid : IN STD_LOGIC;
-            krn_ready : OUT STD_LOGIC;
-
-            -- result
-            res_data : OUT float32;
-            res_valid : OUT STD_LOGIC;
-            res_ready : IN STD_LOGIC
-        );
+    PORT (
+        img_data : IN FL32_3X3_2D;
+        krn_data : IN FL32_3X3_2D;
+        res_data : OUT float32
+    );
     END COMPONENT;
 
-    SIGNAL tb_clk, tb_reset, tb_res_valid, tb_res_ready, tb_img_valid, tb_img_ready, tb_krn_valid, tb_krn_ready : STD_LOGIC := '0';
-    SIGNAL tb_img_data : FL32_3X3_2D := (OTHERS => (OTHERS => to_float(0.0)));
-    SIGNAL tb_krn_data : FL32_3X3_2D := (OTHERS => (OTHERS => to_float(0.0)));
-    SIGNAL tb_res_data : float32 := to_float(0.0);
-    SIGNAL tb_count : INTEGER := 0;
+    signal img_data : FL32_3X3_2D := (others => (others => to_float(0.0)));
+    signal krn_data : FL32_3X3_2D := (others => (others => to_float(0.0)));
+    signal res_data : float32 := to_float(0.0);
 
-    PROCEDURE data_modif(
-        SIGNAL clk : IN STD_LOGIC;
-        data : IN INTEGER;
-        SIGNAL matrix : INOUT FL32_3X3_2D;
-        SIGNAL v_valid : OUT STD_LOGIC;
-        SIGNAL v_ready : IN STD_LOGIC
-    ) IS
-    BEGIN
-        IF (rising_edge(clk)) THEN
-            IF (v_ready = '1') THEN
-                matrix <= (OTHERS => (OTHERS => to_float(data)));
-                v_valid <= '1';
-                wait until v_ready = '0';
-            ELSE -- v_ready = 0 
-                v_valid <= '0';
-            END IF;
-        END IF;
-    END PROCEDURE;
+    signal clk : std_logic := '0';
 
 BEGIN
 
-    DUT_line_proc : cmp_line_proc
-    GENERIC MAP(
-        G_NBR_COLOR => G_NBR_COLOR,
-        G_NBR_PIX => G_NBR_PIX
-    )
-    PORT MAP(
-        in_clk => tb_clk,
-        in_reset => tb_reset,
-        img_data => tb_img_data,
-        img_valid => tb_img_valid,
-        img_ready => tb_img_ready,
-        krn_data => tb_krn_data,
-        krn_valid => tb_krn_valid,
-        krn_ready => tb_krn_ready,
-        res_data => tb_res_data,
-        res_valid => tb_res_valid,
-        res_ready => tb_res_ready
-    );
-
-    img_proc : data_modif(tb_clk, tb_count, tb_img_data, tb_img_valid, tb_img_ready);
-    krn_proc : data_modif(tb_clk, tb_count, tb_krn_data, tb_krn_valid, tb_krn_ready);
+    cmp_line_proc_inst: entity work.cmp_line_proc
+      port map (
+        img_data => img_data,
+        krn_data => krn_data,
+        res_data => res_data
+      );
 
     CLK_proc : PROCESS
     BEGIN
-        tb_count <= tb_count + 1;
-        TB_CLK <= NOT(TB_CLK);
+        clk <= NOT(clk);
         WAIT FOR 5 NS;
     END PROCESS;
 
-    COMPUTE_proc : PROCESS (TB_CLK)
+    main_proc : PROCESS
     BEGIN
-        IF (RISING_EDGE(TB_CLK)) THEN
-            IF (tb_reset = '0') THEN
-                tb_reset <= '1';
-            END IF;
-        END IF;
+        WAIT FOR 28 ns;
+        img_data <= (others => (others => to_float(1.0)));
+        wait for 20 ns;
+        krn_data <= (others => (others => to_float(1.0)));
     END PROCESS;
 END tb; -- tb

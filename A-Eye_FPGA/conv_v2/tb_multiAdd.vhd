@@ -12,61 +12,44 @@ END tb_multiAdd;
 ARCHITECTURE arch OF tb_multiAdd IS
     COMPONENT cmp_multiAdd IS
         GENERIC (
-            G_NBR_MULT : INTEGER
+            G_NBR_MULT : INTEGER := 3
         );
         PORT (
             in_img : IN FLOAT32_VECTOR(0 TO (G_NBR_MULT - 1));
             in_krn : IN FLOAT32_VECTOR(0 TO (G_NBR_MULT - 1));
-            in_clk : IN STD_LOGIC;
-            in_reset : IN STD_LOGIC;
             out_res : OUT float32
         );
     END COMPONENT;
 
-    SIGNAL tb_clk, tb_reset : STD_LOGIC := '0';
-    SIGNAL tb_img : FLOAT32_VECTOR(0 TO G_NBR_MULT - 1) := (OTHERS => to_float(0.0));
-    SIGNAL tb_krn : FLOAT32_VECTOR(0 TO G_NBR_MULT - 1) := (OTHERS => to_float(0.0));
-    SIGNAL tb_res : float32 := to_float(0.0);
-    SIGNAL tb_count : INTEGER := 0;
+    SIGNAL clk : STD_LOGIC := '0';
+    SIGNAL img_data : FLOAT32_VECTOR(0 TO G_NBR_MULT - 1) := (OTHERS => to_float(0.0));
+    SIGNAL krn_data : FLOAT32_VECTOR(0 TO G_NBR_MULT - 1) := (OTHERS => to_float(0.0));
+    SIGNAL res_data : float32 := to_float(0.0);
 
 BEGIN
 
-    DUT_cmp_multiadd : cmp_multiAdd
-    GENERIC MAP(
-        G_NBR_MULT => G_NBR_MULT
-    )
-    PORT MAP(
-        in_img => tb_img,
-        in_krn => tb_krn,
-        in_clk => tb_clk,
-        in_reset => tb_reset,
-        out_res => tb_res
-    );
+    cmp_multiadd_inst : ENTITY work.cmp_multiAdd
+        GENERIC MAP(
+            G_NBR_MULT => G_NBR_MULT
+        )
+        PORT MAP(
+            in_img => img_data,
+            in_krn => krn_data,
+            out_res => res_data
+        );
 
-    CLK : PROCESS
+    CLK_proc : PROCESS
     BEGIN
-        tb_count <= tb_count + 1;
-        TB_CLK <= NOT(TB_CLK);
+        clk <= NOT(clk);
         WAIT FOR 5 NS;
     END PROCESS;
 
-    COMPUTE : PROCESS (TB_CLK)
+    main_proc : PROCESS
     BEGIN
-        IF (RISING_EDGE(TB_CLK)) THEN
-
-            IF (TB_RESET = '0') THEN
-                TB_RESET <= '1';
-            END IF;
-
-            IF (tb_count = 11) THEN
-                tb_img <= (OTHERS => to_float(1.0));
-            END IF;
-
-            IF (tb_count = 21) THEN
-                tb_krn <= (OTHERS => to_float(1.0));
-            END IF;
-
-        END IF;
+        WAIT FOR 12 ns;
+        img_data <= (OTHERS => to_float(1.0));
+        WAIT FOR 50 ns;
+        krn_data <= (OTHERS => to_float(1.0));
     END PROCESS;
 
 END arch; -- arch

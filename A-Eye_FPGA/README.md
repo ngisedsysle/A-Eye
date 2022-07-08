@@ -15,11 +15,11 @@ As shown above, we have spaces left and can parallelize 3 pixels processing. Thi
 Thus, the 3x3x3 convolution works with a block which can process 3x3 float32. The process has to be repeated only 3 times so.  
 ![cmp_line_process](./diagrams/out/archi_v2/line_process.png)
 #### Memory occupation
-Now, we used 44% of the LUTs.  We need two clock cycles to compute one line of 3 RGB pixels.  
+Now, we used 44% of the LUTs.  We need few clock cycles to compute one line of 3 RGB pixels.  
 ### Reconstitution of arrays
 We have noticed that IO are limited on FPGA. That's why we choose to use axi stream protocol to receive and transmit datas. Thus, we use 32 IO to input float32 one by one (plus 2 IO for axi stream protocol), and we have to recompile the array inside the FPGA.  
 ![Reconst](./diagrams/out/archi_v2/reconst.png)  
-With can instantiate two of them, one for image and one for kernel.  
+We can instantiate two of them, one for image and one for kernel.  
 ### Pixel output processing  
 #### Principle  
 Once we have the previous module, able to compute 3 input pixels, we need to repeat three time the process to compute a 3x3 RGB pixels matrix, to output one monochrome pixel.  

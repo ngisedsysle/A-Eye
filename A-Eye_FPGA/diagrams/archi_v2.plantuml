@@ -116,3 +116,40 @@ component pix_out_proc{
     temp_pix_out --> pix_out
 }
 @enduml
+
+@startuml reconst 
+component reconst{
+    portin in_axis
+    portout out_axis
+    component out_build{
+        portin fl32_11_in
+        portin fl32_12_in
+        portin fl32_13_in
+        portin fl32_21_in
+        portin fl32_22_in
+        portin fl32_23_in
+        portin fl32_31_in
+        portin fl32_32_in
+        portin fl32_33_in
+        portout fl32_3x3_out_temp
+    }
+    in_axis --> fl32_11_in : idx=0
+    in_axis --> fl32_12_in : idx=1
+    in_axis --> fl32_13_in : idx=2
+    in_axis --> fl32_21_in : idx=3
+    in_axis --> fl32_22_in : idx=4
+    in_axis --> fl32_23_in : idx=5
+    in_axis --> fl32_31_in : idx=6
+    in_axis --> fl32_32_in : idx=7
+    in_axis --> fl32_33_in : idx=8
+
+    component out_buffer{
+        portin fl32_3x3_in
+        portout fl32_3x3_out
+    }
+    fl32_3x3_out_temp --> fl32_3x3_in : idx = 8
+    fl32_3x3_out --> out_axis : out_ready
+}
+note right of in_axis: Based on fl32 axi stream
+note right of out_axis: Based on fl32_3x3 axi stream
+@enduml

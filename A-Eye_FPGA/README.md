@@ -22,9 +22,9 @@ We have noticed that IO are limited on FPGA. That's why we choose to use axi str
 We can instantiate two of them, one for image and one for kernel.  
 ### Pixel output processing  
 #### Principle  
-Once we have the previous module, able to compute 3 input pixels, we need to repeat three time the process to compute a 3x3 RGB pixels matrix, to output one monochrome pixel.  
+Once we have the previous modules, able to compute 3 input pixels, we need to repeat three time the process to compute a 3x3 RGB pixels matrix, to output one monochrome pixel for one filter.  
 #### Output system  
-We have to get three float, to add them, and output the result. Thus is done by this architecture :  
+We have to get three floats, to add them, and output the result. This is done by this architecture :  
 ![Output_pixel_arch](./diagrams/out/archi_v2/adder_3_clk.drawio.png)  
 This is composed by an adder on the data, and a control system based on a counter, maximize by 2.  
 #### Complete system  

@@ -6,7 +6,7 @@ USE WORK.CONV_PKG.ALL;
 
 ENTITY tb_axi_fifo IS
     GENERIC (
-        ram_depth : NATURAL := 5
+        ram_depth : NATURAL := 12
     );
 END tb_axi_fifo;
 
@@ -23,12 +23,12 @@ ARCHITECTURE tb OF tb_axi_fifo IS
             -- AXI input interface
             in_ready : OUT STD_LOGIC;
             in_valid : IN STD_LOGIC;
-            in_data : IN FL32_3X3_2D;
+            in_data : IN float32;
 
             -- AXI output interface
             out_ready : IN STD_LOGIC;
             out_valid : OUT STD_LOGIC;
-            out_data : OUT FL32_3X3_2D
+            out_data : OUT float32
         );
     END COMPONENT;
 
@@ -37,11 +37,11 @@ ARCHITECTURE tb OF tb_axi_fifo IS
 
     SIGNAL in_ready : STD_LOGIC;
     SIGNAL in_valid : STD_LOGIC := '0';
-    SIGNAL in_data : FL32_3X3_2D := (OTHERS => (OTHERS => to_float(0.0)));
+    SIGNAL in_data : float32 := to_float(0.0);
 
     SIGNAL out_ready : STD_LOGIC := '0';
     SIGNAL out_valid : STD_LOGIC;
-    SIGNAL out_data : FL32_3X3_2D := (OTHERS => (OTHERS => to_float(0.0)));
+    SIGNAL out_data : float32 := to_float(0.0);
     SIGNAL tb_count : INTEGER := 0;
 
 BEGIN
@@ -71,7 +71,7 @@ BEGIN
     COMPUTE : PROCESS (CLK)
     BEGIN
         IF (RISING_EDGE(CLK)) THEN
-            in_data <= (OTHERS => (OTHERS => to_float(tb_count)));
+            in_data <= to_float(tb_count);
 
             IF (rst = '0') THEN
                 rst <= '1';

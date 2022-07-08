@@ -6,7 +6,7 @@ USE WORK.CONV_PKG.ALL;
 
 ENTITY axi_fifo IS
     GENERIC (
-        ram_depth : NATURAL := 10
+        ram_depth : NATURAL := 12
     );
     PORT (
         clk : IN STD_LOGIC;
@@ -15,12 +15,12 @@ ENTITY axi_fifo IS
         -- AXI input interface
         in_ready : OUT STD_LOGIC;
         in_valid : IN STD_LOGIC;
-        in_data : IN FL32_3X3_2D;
+        in_data : IN float32;
 
         -- AXI output interface
         out_ready : IN STD_LOGIC;
         out_valid : OUT STD_LOGIC;
-        out_data : OUT FL32_3X3_2D
+        out_data : OUT float32
     );
 END axi_fifo;
 
@@ -28,7 +28,7 @@ ARCHITECTURE arch OF axi_fifo IS
 
     -- The FIFO is full when the RAM contains ram_depth - 1 elements
     TYPE ram_type IS ARRAY (0 TO ram_depth - 1)
-    OF FL32_3X3_2D;
+    OF float32;
     SIGNAL ram : ram_type;
 
     -- Newest element at head, oldest element at tail

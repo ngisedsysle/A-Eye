@@ -13,14 +13,14 @@ ENTITY axi_fifo IS
         rst : IN STD_LOGIC;
 
         -- AXI input interface
-        in_ready : OUT STD_LOGIC;
-        in_valid : IN STD_LOGIC;
         in_data : IN float32;
+        in_valid : IN STD_LOGIC;
+        in_ready : OUT STD_LOGIC;
 
         -- AXI output interface
-        out_ready : IN STD_LOGIC;
+        out_data : OUT float32;
         out_valid : OUT STD_LOGIC;
-        out_data : OUT float32
+        out_ready : IN STD_LOGIC
     );
 END axi_fifo;
 

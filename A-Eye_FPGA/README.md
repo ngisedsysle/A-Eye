@@ -41,4 +41,4 @@ The proposal for the meetings of 23 June is to load picture and kernel with fifo
 
 ## Troubleshooting
 Vivado simulator is uncompatible with float32, even if float32 are part of IEEE and support in VHDL2008. To simulate, I choose to use questa, which has a version free of charge (starter edition). To do this, you will have to generate a free license of Intel license webpage.  
-To view all signals in questa sim, you have to disable optimisation when launching in command line : vsim work.tb_XXXX.  
+To view all signals in questa sim, you have to disable optimisation when launching in command line : vsim -voptargs=+acc work.tb_XXXX.  

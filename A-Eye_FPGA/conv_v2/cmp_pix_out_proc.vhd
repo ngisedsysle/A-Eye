@@ -5,25 +5,22 @@ USE IEEE.FLOAT_PKG.ALL;
 USE WORK.CONV_PKG.ALL;
 
 ENTITY cmp_pix_out_proc IS
-    GENERIC (
-        G_NBR_OP : INTEGER := 3
-    );
     PORT (
         -- clk reset
         clk, rst : IN STD_LOGIC;
 
         -- from image
-        line_img_data : IN FL32_3X3_2D;
+        line_img_data : IN float32;
         line_img_valid : IN STD_LOGIC;
         line_img_ready : OUT STD_LOGIC;
 
         -- from kernel
-        line_krn_data : IN FL32_3X3_2D;
+        line_krn_data : IN float32;
         line_krn_valid : IN STD_LOGIC;
         line_krn_ready : OUT STD_LOGIC;
 
         -- pixel output axi like
-        res_data : INOUT float32;
+        res_data : OUT float32;
         res_valid : OUT STD_LOGIC;
         res_ready : IN STD_LOGIC
     );
@@ -43,7 +40,7 @@ ARCHITECTURE rtl OF cmp_pix_out_proc IS
 
     COMPONENT axi_fifo IS
         GENERIC (
-            ram_depth : NATURAL := 10
+            ram_depth : NATURAL := 12
         );
         PORT (
             clk : IN STD_LOGIC;
@@ -52,77 +49,69 @@ ARCHITECTURE rtl OF cmp_pix_out_proc IS
             -- AXI input interface
             in_ready : OUT STD_LOGIC;
             in_valid : IN STD_LOGIC;
-            in_data : IN FL32_3X3_2D;
+            in_data : IN float32;
 
             -- AXI output interface
             out_ready : IN STD_LOGIC;
             out_valid : OUT STD_LOGIC;
-            out_data : OUT FL32_3X3_2D
+            out_data : OUT float32
         );
     END COMPONENT;
 
-    COMPONENT cmp_line_proc IS
-        GENERIC (
-            G_NBR_COLOR : INTEGER := 3;
-            G_NBR_PIX : INTEGER := 3
-        );
+    COMPONENT cmp_line_engine IS
         PORT (
-            -- clk and reset
-            in_clk, in_reset : IN STD_LOGIC;
+            clk : IN STD_LOGIC;
+            rst : IN STD_LOGIC;
 
-            -- image loader
-            img_data : IN FL32_3X3_2D;
-            img_valid : IN STD_LOGIC;
-            img_ready : OUT STD_LOGIC;
+            -- image input
+            fifo_img_data : IN float32;
+            fifo_img_valid : IN STD_LOGIC;
+            fifo_img_ready : OUT STD_LOGIC;
 
-            -- kernel loader
-            krn_data : IN FL32_3X3_2D;
-            krn_valid : IN STD_LOGIC;
-            krn_ready : OUT STD_LOGIC;
+            -- kernel input
+            fifo_krn_data : IN float32;
+            fifo_krn_valid : IN STD_LOGIC;
+            fifo_krn_ready : OUT STD_LOGIC;
 
-            -- result
+            -- result output
             res_data : OUT float32;
             res_valid : OUT STD_LOGIC;
             res_ready : IN STD_LOGIC
         );
     END COMPONENT;
 
-    -- image
-    SIGNAL temp_img_data : FL32_3X3_2D;
-    SIGNAL temp_img_ready, temp_img_valid : STD_LOGIC;
+    signal fifo_img_data : float32;
+    signal fifo_img_valid : STD_LOGIC;
+    signal fifo_img_ready : STD_LOGIC;
+    
+    signal fifo_krn_data : float32;
+    signal fifo_krn_valid : STD_LOGIC;
+    signal fifo_krn_ready : STD_LOGIC;
 
-    -- kernel
-    SIGNAL temp_krn_data : FL32_3X3_2D;
-    SIGNAL temp_krn_ready, temp_krn_valid : STD_LOGIC;
-
-    -- out line_proc
-    SIGNAL temp_res_data : float32;
-    SIGNAL temp_res_valid, temp_res_ready : STD_LOGIC;
+    signal tmp_res_data : float32;
+    signal tmp_res_valid : STD_LOGIC;
+    signal tmp_res_ready : STD_LOGIC;
 
 BEGIN
 
-    cmp_line_proc_inst : ENTITY work.cmp_line_proc
-        GENERIC MAP(
-            G_NBR_COLOR => 3,
-            G_NBR_PIX => 3
-        )
+    cmp_line_engine_inst : ENTITY work.cmp_line_engine
         PORT MAP(
-            in_clk => clk,
-            in_reset => rst,
-            img_data => temp_img_data,
-            img_valid => temp_img_valid,
-            img_ready => temp_img_ready,
-            krn_data => temp_krn_data,
-            krn_valid => temp_krn_valid,
-            krn_ready => temp_krn_ready,
-            res_data => temp_res_data,
-            res_valid => temp_res_valid,
-            res_ready => temp_res_ready
+            clk => clk,
+            rst => rst,
+            fifo_img_data => fifo_img_data,
+            fifo_img_valid => fifo_img_valid,
+            fifo_img_ready => fifo_img_ready,
+            fifo_krn_data => fifo_krn_data,
+            fifo_krn_valid => fifo_krn_valid,
+            fifo_krn_ready => fifo_krn_ready,
+            res_data => tmp_res_data,
+            res_valid => tmp_res_valid,
+            res_ready => tmp_res_ready
         );
 
-    img_fifo_inst : axi_fifo
+    img_fifo_inst : ENTITY work.axi_fifo
     GENERIC MAP(
-        ram_depth => 10
+        ram_depth => 12
     )
     PORT MAP(
         clk => clk,
@@ -130,14 +119,14 @@ BEGIN
         in_ready => line_img_ready,
         in_valid => line_img_valid,
         in_data => line_img_data,
-        out_ready => temp_img_ready,
-        out_valid => temp_img_valid,
-        out_data => temp_img_data
+        out_ready => fifo_img_ready,
+        out_valid => fifo_img_valid,
+        out_data => fifo_img_data
     );
 
     krn_fifo_inst : ENTITY work.axi_fifo
         GENERIC MAP(
-            ram_depth => 10
+            ram_depth => 12
         )
         PORT MAP(
             clk => clk,
@@ -145,22 +134,20 @@ BEGIN
             in_ready => line_krn_ready,
             in_valid => line_krn_valid,
             in_data => line_krn_data,
-            out_ready => temp_krn_ready,
-            out_valid => temp_krn_valid,
-            out_data => temp_krn_data
+            out_ready => fifo_krn_ready,
+            out_valid => fifo_krn_valid,
+            out_data => fifo_krn_data
         );
 
-    cmp_add_3_clk_inst: entity work.cmp_add_3_clk
-      port map (
-        clk       => clk,
-        rst       => rst,
-        in_data   => temp_res_data,
-        out_data  => res_data,
-        in_valid  => temp_res_valid,
-        out_valid => res_valid
-      );
+    cmp_add_3_clk_inst : ENTITY work.cmp_add_3_clk
+        PORT MAP(
+            clk => clk,
+            rst => rst,
+            in_data => tmp_res_data,
+            out_data => res_data,
+            in_valid => tmp_res_valid,
+            out_valid => res_valid
+        );
 
-    temp_res_ready <= res_ready;
-
-    
+    tmp_res_ready <= res_ready;
 END ARCHITECTURE;

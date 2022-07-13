@@ -85,6 +85,32 @@ component line_proc{
 }
 @enduml
 
+@startuml line_engine
+component line_engine{
+    portin img_fifo
+    portin krn_fifo
+    portout res_axis
+    component reconst_img{
+        portin img_reconst_in
+        portout img_reconst_out
+    }
+    img_fifo --> img_reconst_in : fl32
+    component reconst_krn{
+        portin krn_reconst_in
+        portout krn_reconst_out
+    }
+    krn_fifo --> krn_reconst_in : fl32
+    component line_proc{
+        portin l_img
+        portin l_krn
+        portout l_res
+    }
+    img_reconst_out --> l_img : fl32_2D
+    krn_reconst_out --> l_krn : fl32_2D
+    l_res --> res_axis : fl32
+}
+@enduml
+
 @startuml pix_out_proc
 component pix_out_proc{
     portin PS_img_out
@@ -94,26 +120,26 @@ component pix_out_proc{
         portin PS_img_in
         portout temp_img_out
     }
-    PS_img_out --> PS_img_in
+    PS_img_out --> PS_img_in : fl32
     component krn_fifo{
         portin PS_krn_in
         portout temp_krn_out
     }
-    PS_krn_out --> PS_krn_in
-    component line_proc{
+    PS_krn_out --> PS_krn_in : fl32
+    component line_engine{
         portin temp_img_in
         portin temp_krn_in
         portout temp_res_out
     }
-    temp_img_out --> temp_img_in
-    temp_krn_out --> temp_krn_in
+    temp_img_out --> temp_img_in : fl32
+    temp_krn_out --> temp_krn_in : fl32
     
     component adder_3_clk{
         portin temp_res_in
         portout temp_pix_out
     }
-    temp_res_out --> temp_res_in
-    temp_pix_out --> pix_out
+    temp_res_out --> temp_res_in : fl32
+    temp_pix_out --> pix_out : fl32
 }
 @enduml
 
@@ -152,4 +178,124 @@ component reconst{
 }
 note right of in_axis: Based on fl32 axi stream
 note right of out_axis: Based on fl32_3x3 axi stream
+@enduml
+
+@startuml wrapper_std_to_fl
+component wrapper_std_to_fl{
+    portin data_in
+    portin valid_in
+    portin ready_in
+
+    portout data_out
+    portout valid_out
+    portout ready_out
+    
+    component std_logic_vector{
+        portin std_in
+        portout std31
+        portout std30
+        portout std29
+        portout std28
+        portout std27
+        portout std26
+        portout std25
+        portout std24
+        portout std23
+        portout std22
+        portout std21
+        portout std20
+        portout std19
+        portout std18
+        portout std17
+        portout std16
+        portout std15
+        portout std14
+        portout std13
+        portout std12
+        portout std11
+        portout std10
+        portout std9
+        portout std8
+        portout std7
+        portout std6
+        portout std5
+        portout std4
+        portout std3
+        portout std2
+        portout std1
+        portout std0
+    }
+    data_in --> std_in
+    component float32{
+        portin fl8
+        portin fl7
+        portin fl6
+        portin fl5
+        portin fl4
+        portin fl3
+        portin fl2
+        portin fl1
+        portin fl0
+        portin fl_1
+        portin fl_2
+        portin fl_3
+        portin fl_4
+        portin fl_5
+        portin fl_6
+        portin fl_7
+        portin fl_8
+        portin fl_9
+        portin fl_10
+        portin fl_11
+        portin fl_12
+        portin fl_13
+        portin fl_14
+        portin fl_15
+        portin fl_16
+        portin fl_17
+        portin fl_18
+        portin fl_19
+        portin fl_20
+        portin fl_21
+        portin fl_22
+        portin fl_23
+        portout fl32_out
+    }
+    std31 --> fl8
+    std30 --> fl7
+    std29 --> fl6
+    std28 --> fl5
+    std27 --> fl4
+    std26 --> fl3
+    std25 --> fl2
+    std24 --> fl1
+    std23 --> fl0
+    std22 --> fl_1
+    std21 --> fl_2
+    std20 --> fl_3
+    std19 --> fl_4
+    std18 --> fl_5
+    std17 --> fl_6
+    std16 --> fl_7
+    std15 --> fl_8
+    std14 --> fl_9
+    std13 --> fl_10
+    std12 --> fl_11
+    std11 --> fl_12
+    std10 --> fl_13
+    std9 --> fl_14
+    std8 --> fl_15
+    std7 --> fl_16
+    std6 --> fl_17
+    std5 --> fl_18
+    std4 --> fl_19
+    std3 --> fl_20
+    std2 --> fl_21
+    std1 --> fl_22
+    std0 --> fl_23
+
+    fl32_out --> data_out
+    valid_in --> valid_out
+    ready_in --> ready_out
+}
 @enduml

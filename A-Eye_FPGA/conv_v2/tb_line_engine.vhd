@@ -95,7 +95,7 @@ BEGIN
     BEGIN
         WAIT FOR 18 ns;
         rst <= '1';
-        WAIT FOR 20 ns;
+        WAIT FOR 300 ns;
         res_ready <= '1';
     END PROCESS;
 

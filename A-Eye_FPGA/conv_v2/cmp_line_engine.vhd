@@ -66,12 +66,14 @@ ARCHITECTURE rtl OF cmp_line_engine IS
     SIGNAL tmp_res_data : float32;
     SIGNAL tmp_res_valid : STD_LOGIC;
 
+    signal just_begin : std_logic;
+
 BEGIN
     cmp_line_proc_inst : ENTITY work.cmp_line_proc
         PORT MAP(
-            img_data => reconst_img_data,
-            krn_data => reconst_krn_data,
-            res_data => res_data
+            img_data => tmp_img_data,
+            krn_data => tmp_krn_data,
+            res_data => tmp_res_data
         );
 
     cmp_reconst_img_inst : ENTITY work.cmp_reconst
@@ -106,14 +108,21 @@ BEGIN
             IF rst = '0' THEN
                 reconst_img_ready <= '0';
                 reconst_krn_ready <= '0';
+                just_begin <= '1';
 
                 tmp_img_data <= (OTHERS => (OTHERS => to_float(0.0)));
                 tmp_img_valid <= '0';
                 tmp_krn_data <= (OTHERS => (OTHERS => to_float(0.0)));
                 tmp_krn_valid <= '0';
-                tmp_res_data <= to_float(0.0);
+                res_data <= to_float(0.0);
                 tmp_res_valid <= '0';
             ELSE
+                IF just_begin = '1' THEN
+                    reconst_img_ready <= '1';
+                    reconst_krn_ready <= '1';
+                    just_begin <= '0';
+                END IF;
+
                 IF tmp_res_valid = '1' THEN
                     tmp_res_valid <= '0';
                 END IF;
@@ -131,6 +140,7 @@ BEGIN
 
                 IF (tmp_img_valid = '1') AND (tmp_krn_valid = '1') AND (res_ready = '1') THEN
                     tmp_res_valid <= '1';
+                    res_data <= tmp_res_data;
                     tmp_img_valid <= '0';
                     tmp_krn_valid <= '0';
                     reconst_img_ready <= '1';

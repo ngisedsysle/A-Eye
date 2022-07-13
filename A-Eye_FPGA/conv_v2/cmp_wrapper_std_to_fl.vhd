@@ -7,18 +7,18 @@ ENTITY cmp_wrapper_std_to_fl IS
     PORT (
         in_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         in_valid : IN STD_LOGIC;
-        in_ready : IN STD_LOGIC;
+        in_ready : OUT STD_LOGIC;
 
         out_data : OUT float32;
         out_valid : OUT STD_LOGIC;
-        out_ready : OUT STD_LOGIC
+        out_ready : IN STD_LOGIC
     );
 END ENTITY;
 
 ARCHITECTURE rtl OF cmp_wrapper_std_to_fl IS
 BEGIN
     out_valid <= in_valid;
-    out_ready <= in_ready;
+    in_ready <= out_ready;
     out_data(8) <= in_data(31);
     out_data(7) <= in_data(30);
     out_data(6) <= in_data(29);

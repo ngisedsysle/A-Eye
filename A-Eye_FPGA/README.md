@@ -1,26 +1,26 @@
 # FPGA part of project A-Eye
-Developpers : Guilhem ROLLAND
-The idea is here to accelerate in hardware the longest operation. Currently, the convolution take about 60 percent of the processing time. That's why we start by accelerating the convolution steps. 
+Developpers : Guilhem ROLLAND  
+The idea is here to accelerate in hardware the longest operation. Currently, the convolution take about 60 percent of the processing time. That's why we start by accelerating the convolution steps.  
 
-## Documentations v2
+## Documentations v2  
 
-### Multiadd
-#### Principle
+### Multiadd  
+#### Principle  
 This block must process a multiplication between two float32, one corresponding to the image, and one to the kernel.  
 This compute is parallelized in three block, one for each channel (in the first convolution, each channel correponds to one color).  
 ![cmp_multiadd](./diagrams/out/archi_v2/multiadd.png)  
-#### Memory occupation
+#### Memory occupation  
 Once synthesized on Vivado for the zybo z7 20, we can see that it will used 13% of LUTs and only 3% of DSPs.  
 
-### Line_process
-#### Principle
+### Line_process  
+#### Principle  
 As shown above, we have spaces left and can parallelize 3 pixels processing engine (multiadd component). This is the goal of the line_process.  
 Thus, the 3x3x3 convolution works with a block which can process 3x3 float32. The process has to be repeated only 3 times so.  
-![cmp_line_process](./diagrams/out/archi_v2/line_process.png)
-#### Memory occupation
+![cmp_line_process](./diagrams/out/archi_v2/line_process.png)  
+#### Memory occupation  
 Now, we used 44% of the LUTs.  We need one clock cycles to compute one line of 3 RGB pixels.  
 
-### Rebuilding the arrays
+### Rebuilding the arrays  
 We have noticed that IO are limited on FPGA. That's why we choose to use axi stream protocol to receive and transmit datas. Thus, we use 32 IO to input float32 one by one (plus 2 IO for axi stream protocol), and we have to recompile the array inside the FPGA.  
 ![Reconst](./diagrams/out/archi_v2/reconst.png)  
 We can now instantiate two of them, one for image and one for kernel.  
@@ -36,16 +36,16 @@ This is composed by an adder on the data, and a control system based on a counte
 The system looks like this :   
 ![conv_system](./diagrams/out/archi_v2/pix_out_proc.png)   
 
-### Wrapper
-#### Introduction 
+### Wrapper  
+#### Introduction  
 To implement the pixel output processing system in a vivado block design, we have to map the float in input and output to std_logic_vector. To do this, we first need to design wrapper, wrapper_fl_to_std for float32 to std_logic_vector(31 downto 0) and wrapper_std_to_fl for std_logic_vector(31 downto 0) to float32.  
-#### std_logic_vector to float32
+#### std_logic_vector to float32  
 In this wrapper, we map on bit of std_logic_vector(31 downto 0) to one bit of float32, also known as float(8 downto -23). We repeat this mapping for each bit. We want to keep valid and ready signal as they were, so just map it.    
 ![wrapper_std_to_fl](./diagrams/out/archi_v2/wrapper_std_to_fl.png)  
-#### float32 to std_logic_vector
+#### float32 to std_logic_vector  
 Here we do the reverse thing as above.   
 
-## Documentations v1
+## Documentations v1  
 ### What has been done
 On the day of 22 June, we dispose of a convolution 2D engine, which is called with padding. Source code are in this git.  
 ![Initial architecture](./diagrams/out/architecture/initial_22_June.png)  

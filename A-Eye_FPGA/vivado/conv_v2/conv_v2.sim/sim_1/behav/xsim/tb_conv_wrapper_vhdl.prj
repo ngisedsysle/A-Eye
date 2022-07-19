@@ -1,0 +1,23 @@
+# compile vhdl design source files
+vhdl2008 xil_defaultlib  \
+"../../../../../../conv_v2/conv_pkg.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../../../../conv_v2/axi_fifo.vhd" \
+"../../../../../../conv_v2/cmp_add_3_clk.vhd" \
+
+vhdl2008 xil_defaultlib  \
+"../../../../../../conv_v2/cmp_multiAdd.vhd" \
+"../../../../../../conv_v2/cmp_line_proc.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../../../../conv_v2/cmp_reconst.vhd" \
+"../../../../../../conv_v2/cmp_line_engine.vhd" \
+"../../../../../../conv_v2/cmp_pix_out_proc.vhd" \
+"../../../../../../conv_v2/cmp_wrapper_fl_to_std.vhd" \
+"../../../../../../conv_v2/cmp_wrapper_std_to_fl.vhd" \
+"../../../../../../conv_v2/cmp_conv_wrapper.vhd" \
+"../../../../../../conv_v2/tb_conv_wrapper.vhd" \
+
+# Do not sort compile order
+nosort

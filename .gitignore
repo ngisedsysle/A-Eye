@@ -9,14 +9,6 @@
 **/doc/
 **/obj/
 **/vitis
-
-**/vivado/conv_v2/.Xil
-**/vivado/conv_v2/conv_v2.cache
-**/vivado/conv_v2/conv_v2.gen
-**/vivado/conv_v2/conv_v2.runs
-**/vivado/conv_v2/conv_v2.ip_user_files
-**/vivado/conv_v2/conv_v2.sim
-
 A-Eye_root/.vscode/settings.json
 A-Eye_root/A-Eye_Communication/Circular_buffer
 A-Eye_root/A-Eye_Communication/Interpreteur

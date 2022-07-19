@@ -1,5 +1,8 @@
 # FPGA part of project A-Eye
 Developpers : Guilhem ROLLAND  
+Versions : Vivado 2022.1, Vitis 2022.1  
+
+## Introduction  
 The idea is here to accelerate in hardware the longest operation. Currently, the convolution take about 60 percent of the processing time. That's why we start by accelerating the convolution steps.  
 
 ## Documentations v2  

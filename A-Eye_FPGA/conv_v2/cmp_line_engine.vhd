@@ -66,7 +66,7 @@ ARCHITECTURE rtl OF cmp_line_engine IS
     SIGNAL tmp_res_data : float32;
     SIGNAL tmp_res_valid : STD_LOGIC;
 
-    signal just_begin : std_logic;
+    SIGNAL just_begin : STD_LOGIC;
 
 BEGIN
     cmp_line_proc_inst : ENTITY work.cmp_line_proc
@@ -126,7 +126,7 @@ BEGIN
                 IF tmp_res_valid = '1' THEN
                     tmp_res_valid <= '0';
                 END IF;
-                
+
                 IF (reconst_img_valid = '1') THEN
                     tmp_img_data <= reconst_img_data;
                     tmp_img_valid <= '1';

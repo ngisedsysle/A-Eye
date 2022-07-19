@@ -2,16 +2,16 @@
 # Vivado v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Wed Jul  6 14:15:29 2022
-# Process ID: 11048
-# Current directory: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent18648 C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vivado_project\conv_v2\conv_v2.xpr
-# Log file: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/vivado.log
-# Journal file: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2\vivado.jou
+# Start of session at: Tue Jul 19 10:33:02 2022
+# Process ID: 20976
+# Current directory: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6848 C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vivado\conv_v2\conv_v2.xpr
+# Log file: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/vivado.log
+# Journal file: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2\vivado.jou
 # Running On: L-C5H16J3, OS: Windows, CPU Frequency: 1805 MHz, CPU Physical cores: 4, Host memory: 16527 MB
 #-----------------------------------------------------------
 start_gui
-open_project C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.xpr
+open_project C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.xpr
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.6 available at C:/Xilinx/Vivado/2022.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.6/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.7 available at C:/Xilinx/Vivado/2022.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.7/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu116:part0:1.4 available at C:/Xilinx/Vivado/2022.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu116/1.4/board.xml as part xcku5p-ffvb676-2-e specified in board_part file is either invalid or not available
@@ -30,58 +30,31 @@ WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 avail
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx/Vivado/2022.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx/Vivado/2022.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx/Vivado/2022.1/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
-INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1'.
+INFO: [Project 1-313] Project file moved from 'C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2' since last save.
 Scanning sources...
 Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/data/ip'.
-open_project: Time (s): cpu = 00:00:19 ; elapsed = 00:00:09 . Memory (MB): peak = 1222.254 ; gain = 0.000
-update_compile_order -fileset sources_1
-synth_design -rtl -rtl_skip_mlo -name rtl_1
-Command: synth_design -rtl -rtl_skip_mlo -name rtl_1
-Starting synth_design
-Using part: xc7z020clg400-1
-Top: cmp_multiAdd
-INFO: [Device 21-403] Loading part xc7z020clg400-1
----------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1965.172 ; gain = 352.391
----------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'cmp_multiAdd' [C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/conv_v2/cmp_multiAdd.vhd:21]
-WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/conv_v2/cmp_multiAdd.vhd:34]
-WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/conv_v2/cmp_multiAdd.vhd:34]
-INFO: [Synth 8-256] done synthesizing module 'cmp_multiAdd' (0#1) [C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/conv_v2/cmp_multiAdd.vhd:21]
----------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2192.074 ; gain = 579.293
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Handling Custom Attributes
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2192.074 ; gain = 579.293
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2192.074 ; gain = 579.293
----------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.073 . Memory (MB): peak = 2192.074 ; gain = 0.000
-INFO: [Project 1-570] Preparing netlist for logic optimization
-
-Processing XDC Constraints
-Initializing timing engine
-Parsing XDC File [C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.srcs/constrs_1/new/zybo.xdc]
-Finished Parsing XDC File [C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.srcs/constrs_1/new/zybo.xdc]
-Completed Processing XDC Constraints
-
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2255.988 ; gain = 0.000
-INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
-
-RTL Elaboration Complete:  : Time (s): cpu = 00:00:22 ; elapsed = 00:00:17 . Memory (MB): peak = 2327.285 ; gain = 714.504
-5 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
-synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2327.285 ; gain = 1105.031
-show_objects -name dsp [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ OTHERS.*.* } ]
-update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-exit
-INFO: [Common 17-206] Exiting Vivado at Wed Jul  6 17:01:14 2022...
+open_project: Time (s): cpu = 00:01:02 ; elapsed = 00:00:55 . Memory (MB): peak = 1231.117 ; gain = 9.570
+set_property source_mgmt_mode None [current_project]
+open_bd_design {C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.srcs/sources_1/bd/design_1/design_1.bd}
+Reading block design file <C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.srcs/sources_1/bd/design_1/design_1.bd>...
+Adding component instance block -- xilinx.com:module_ref:cmp_conv_wrapper:1.0 - cmp_conv_wrapper_0
+CRITICAL WARNING: [filemgmt 56-176] Module references are not supported in manual compile order mode and will be ignored.
+CRITICAL WARNING: [BD 41-1726] Unable to resolve module-source for block '/cmp_conv_wrapper_0'.
+Given inputs for module-source, Top-module name : cmp_conv_wrapper, Module Type : RTL.
+Please review and update or add design-sources to this project to resolve this module-reference.
+Adding component instance block -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - rst_ps7_0_50M
+Adding component instance block -- xilinx.com:ip:axi_mm2s_mapper:1.1 - axi_mm2s_mapper_0
+Adding component instance block -- xilinx.com:ip:smartconnect:1.0 - axi_smc
+Adding component instance block -- xilinx.com:ip:axi_mm2s_mapper:1.1 - axi_mm2s_mapper_1
+Adding component instance block -- xilinx.com:ip:axi_mm2s_mapper:1.1 - axi_mm2s_mapper_2
+Adding component instance block -- xilinx.com:ip:smartconnect:1.0 - smartconnect_0
+Successfully read diagram <design_1> from block design file <C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.srcs/sources_1/bd/design_1/design_1.bd>
+open_bd_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:18 . Memory (MB): peak = 1378.379 ; gain = 123.484
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_mm2s_mapper:1.1 axi_mm2s_mapper_3
+endgroup
+delete_bd_objs [get_bd_cells axi_mm2s_mapper_3]

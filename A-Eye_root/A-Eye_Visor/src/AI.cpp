@@ -48,7 +48,7 @@ extern "C"
 #define WIDTH 240             /*!<width of the image (==length)*/
 #define COLORS 3              /*!<number of color rgb*/
 #define MAXLAYER 20           /*!<max number of layer*/
-    char weights_file[] = "../weights_airbus_240_90.json";
+    char weights_file[] = "../weights_airbus_4krn.json";
 
     typedef struct THREADPARAM_S
     {

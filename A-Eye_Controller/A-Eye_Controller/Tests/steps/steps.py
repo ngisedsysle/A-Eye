@@ -89,7 +89,7 @@ def step_impl(context, label):
     global hostname
     ssh = paramiko.SSHClient()
     ssh.load_system_host_keys()
-    ssh.connect(hostname = hostname, username = 'linux', password = 'zynqia35')
+    ssh.connect(hostname = hostname, username = 'ubuntu', password = 'zynqia35')
     sftp = ssh.open_sftp()
     if (label == "with") :
         path_boat = os.getcwd()+"\\boat.bmp"

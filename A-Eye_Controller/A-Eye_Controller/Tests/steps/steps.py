@@ -94,11 +94,11 @@ def step_impl(context, label):
     if (label == "with") :
         path_boat = os.getcwd()+"\\boat.bmp"
         # print(path_boat)
-        sftp.put(path_boat, "/home/linux/A-Eye/A-Eye_root/temp.bmp")
+        sftp.put(path_boat, "/home/ubuntu/A-Eye/A-Eye_root/temp.bmp")
     else :
         path_no_boat = os.getcwd()+"\\no_boat.bmp"
         # print(path_no_boat)
-        sftp.put(path_no_boat, "/home/linux/A-Eye/A-Eye_root/temp.bmp")
+        sftp.put(path_no_boat, "/home/ubuntu/A-Eye/A-Eye_root/temp.bmp")
     sftp.close()
     ssh.close
 

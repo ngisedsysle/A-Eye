@@ -1,7 +1,7 @@
 Feature: Interaction
 
     Background: Connection
-        Given the ip is "192.168.1.38"
+        Given the ip is "192.168.1.41"
         Given the app is connected
         Given I wait for "3" seconds
 

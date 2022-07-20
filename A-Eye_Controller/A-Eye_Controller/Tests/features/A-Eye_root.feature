@@ -3,20 +3,20 @@ Feature: A-Eye_root
     This file is designed to test the embedded system.
 
     Scenario: Set in auto mode
-        Given the ip is "192.168.1.38"
+        Given the ip is "192.168.1.41"
         Given the mode is "auto"
         When I publish "TC" on topic "A-Eye/toServer"
         Then I must receive "Process IA running" on topic "A-Eye/toClient"
         Then I must receive "start" on topic "toIA"
 
     Scenario: Set mode manual
-        Given the ip is "192.168.1.38"
+        Given the ip is "192.168.1.41"
         Given the mode is "manual"
         When I publish "TC" on topic "A-Eye/toServer"
         Then I must receive "Mode capture manuelle" on topic "A-Eye/toClient"
 
     Scenario: Set mode video
-        Given the ip is "192.168.1.38"
+        Given the ip is "192.168.1.41"
         Given the mode is "video"
         When I publish "TC" on topic "A-Eye/toServer"
         Then I must receive "Mode video" on topic "A-Eye/toClient"

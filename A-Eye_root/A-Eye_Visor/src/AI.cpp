@@ -1635,7 +1635,7 @@ extern "C++"
             gettimeofday(&stop, NULL);
             if (pred == -1)
             {
-                printf("Test exploded.\n");
+                printf("Test exploded in forward prop \n");
                 working = 0;
                 return;
             }
@@ -1913,7 +1913,10 @@ extern "C"
         for (layer = MAXLAYER + 1 - numLayers; layer < MAXLAYER - 1; layer++)
         {
             if (lay != 0 && layer > lay)
+            {
+                printf("lay != 0 && layer > lay \n");
                 return -1;
+            }
             // CALCULATE DROPOUT
             // if (dropOutRatio>0.0) // ALWAYS SET TO 1 TO BE SAFE
             for (int idx = 0; idx < layerSizes[layer] * layerChan[layer]; idx++)
@@ -1975,8 +1978,11 @@ extern "C"
             // Bias
             sum += weights[MAXLAYER - 1][layerSizes[MAXLAYER - 1] * layerSizes[MAXLAYER - 2] + iOut];
             layers[MAXLAYER - 1][iOut] = exp(sum);
-            if (layers[MAXLAYER - 1][iOut] > 1e30)
-                return -1; // GRADIENTS EXPLODED
+            if (layers[MAXLAYER - 1][iOut] > 1e30) 
+            {
+                printf("layers[MAXLAYER - 1][iOut] > 1e30 || sum = %f \n", sum);
+                return -1;
+            } // GRADIENTS EXPLODED 
             esum += layers[MAXLAYER - 1][iOut];
         }
 

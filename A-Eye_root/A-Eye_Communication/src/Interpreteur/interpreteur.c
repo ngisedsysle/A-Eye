@@ -78,6 +78,7 @@ char *interpreteur(mainStruct *main_s)
                     break;
                 case 2 : 
                     system("bash ../../demo_video.sh");
+                    break;
                 }
             }
             else if (COM_MODE == 1)

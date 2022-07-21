@@ -40,7 +40,7 @@ extern "C"
 #define LOADDATASET 1         /*!<0 to disable loading of the dataset (time consuming)*/
 #define TESTONONE 1           /*!<1 to use params ideal for one image, else 0*/
 #define FORWARDONLY 1         /*!<1 to disable backprop, else 0*/
-#define WAITFORSIGNAL 1       /*!<1 to wait for SIGUSR1, 2 to wait on mqtt, else 0*/
+#define WAITFORSIGNAL 2       /*!<1 to wait for SIGUSR1, 2 to wait on mqtt, else 0*/
 #define INFERENCE 1           /*!<1 if you want to work in inference mode, 0 if you want training*/
 #define SAVEVALUES 0          /*!<1 to save every value of the process (used for debug with python), else 0*/
 #define DISPLAYTIME 0         /*!<1 to display time in each AI functions (homemade profiling), else 0*/

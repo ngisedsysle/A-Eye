@@ -156,7 +156,6 @@ extern "C"
     void *thread_pred(void *arg)
     {
         int pred;
-
         while (1)
         {
             if ((main_s->fifo = open("../../IAtoINT", O_RDONLY)) == -1)

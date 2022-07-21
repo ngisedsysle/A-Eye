@@ -152,6 +152,7 @@
             // SetConfig
             // 
             this.SetConfig.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SetConfig.Enabled = false;
             this.SetConfig.Location = new System.Drawing.Point(3, 45);
             this.SetConfig.Name = "SetConfig";
             this.SetConfig.Size = new System.Drawing.Size(255, 36);

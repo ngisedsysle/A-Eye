@@ -271,6 +271,11 @@ namespace AEye
             if (Verify_Ping())
             {
                 SetCallback();
+                SetConfig.Enabled = true;
+            }
+            else
+            {
+                SetConfig.Enabled = false;
             }
 
         }

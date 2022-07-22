@@ -1,0 +1,93 @@
+timestamp=[2022-07-18 14:01:50], mode=WORKBENCH_START, duration=0:00:07.926, duration_ms=7926, data={}
+timestamp=[2022-07-18 14:01:51], mode=WORKBENCH_UI_INIT, duration=0:00:00.662, duration_ms=662, data={editors_count=0, platform_editors_count=0, projects_count=0, platform_projects_count=0, active_platform_editor=false, projects=}
+timestamp=[2022-07-18 14:01:52], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.492, duration_ms=492, data={}
+timestamp=[2022-07-18 14:05:14], mode=PLATFORM_CREATION, duration=0:00:15.024, duration_ms=15024, data={platform_source=dsa, os=standalone, processor=ps7_cortexa9, platform=null}
+timestamp=[2022-07-18 14:06:34], mode=PLATFORM_GENERATION, duration=0:00:50.097, duration_ms=50097, data={name=conv_v2}
+timestamp=[2022-07-18 14:07:51], mode=APP_CREATION, duration=0:00:05.928, duration_ms=5928, data={name=conv_vitis, project_type=sdk, os=standalone, processor=cortex-a9, runtime=C/C++, platform=conv_v2, application_type=application}
+timestamp=[2022-07-18 14:09:11], mode=BUILD, duration=0:00:01.931, duration_ms=1931, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-18 14:12:08], mode=BUILD, duration=0:00:00.533, duration_ms=533, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 09:09:39], mode=WORKBENCH_START, duration=0:00:11.593, duration_ms=11593, data={}
+timestamp=[2022-07-19 09:09:40], mode=WORKBENCH_UI_INIT, duration=0:00:01.410, duration_ms=1410, data={editors_count=8, platform_editors_count=4, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,conv_v2,conv_vitis,conv_vitis_system}
+timestamp=[2022-07-19 09:09:42], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.494, duration_ms=494, data={}
+timestamp=[2022-07-19 09:39:58], mode=BUILD, duration=0:00:00.512, duration_ms=512, data={name=conv_vitis, configuration=Debug, clean_build=true}
+timestamp=[2022-07-19 09:40:01], mode=BUILD, duration=0:00:01.068, duration_ms=1068, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 09:40:13], mode=BUILD, duration=0:00:02.745, duration_ms=2745, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 09:42:27], mode=BUILD, duration=0:00:00.991, duration_ms=991, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 09:42:53], mode=BUILD, duration=0:00:00.876, duration_ms=876, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 09:43:01], mode=BUILD, duration=0:00:02.032, duration_ms=2032, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 09:43:49], mode=BUILD, duration=0:00:02.246, duration_ms=2246, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 09:45:07], mode=BUILD, duration=0:00:00.720, duration_ms=720, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 10:55:08], mode=WORKBENCH_START, duration=0:00:23.712, duration_ms=23712, data={}
+timestamp=[2022-07-19 10:55:10], mode=WORKBENCH_UI_INIT, duration=0:00:02.132, duration_ms=2132, data={editors_count=9, platform_editors_count=5, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,conv_v2,conv_vitis,conv_vitis_system}
+timestamp=[2022-07-19 10:55:14], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:01.187, duration_ms=1187, data={}
+timestamp=[2022-07-19 13:32:33], mode=BUILD, duration=0:00:03.037, duration_ms=3037, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 14:11:58], mode=BUILD, duration=0:00:04.919, duration_ms=4919, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 14:12:01], mode=BUILD, duration=0:00:01.250, duration_ms=1250, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 14:54:05], mode=PLATFORM_GENERATION, duration=0:00:42.270, duration_ms=42270, data={name=conv_v2}
+timestamp=[2022-07-19 15:03:45], mode=BUILD, duration=0:00:05.411, duration_ms=5411, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 15:05:57], mode=BUILD, duration=0:00:04.940, duration_ms=4940, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 15:48:01], mode=PLATFORM_GENERATION, duration=0:00:43.231, duration_ms=43231, data={name=conv_v2}
+timestamp=[2022-07-19 15:48:28], mode=BUILD, duration=0:00:04.690, duration_ms=4690, data={name=conv_vitis, configuration=Debug, clean_build=false}
+timestamp=[2022-07-19 16:24:28], mode=PLATFORM_GENERATION, duration=0:00:40.642, duration_ms=40642, data={name=conv_v2}
+timestamp=[2022-07-19 16:59:56], mode=WORKBENCH_START, duration=0:00:09.110, duration_ms=9110, data={}
+timestamp=[2022-07-19 16:59:57], mode=WORKBENCH_UI_INIT, duration=0:00:01.167, duration_ms=1167, data={editors_count=4, platform_editors_count=3, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,conv_v2,conv_vitis,conv_vitis_system}
+timestamp=[2022-07-19 16:59:58], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.651, duration_ms=651, data={}
+timestamp=[2022-07-19 17:01:17], mode=PLATFORM_GENERATION, duration=0:00:32.968, duration_ms=32968, data={name=conv_v2}
+timestamp=[2022-07-20 09:14:32], mode=WORKBENCH_START, duration=0:00:30.239, duration_ms=30239, data={}
+timestamp=[2022-07-20 09:14:34], mode=WORKBENCH_UI_INIT, duration=0:00:01.669, duration_ms=1669, data={editors_count=4, platform_editors_count=3, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,conv_v2,conv_vitis,conv_vitis_system}
+timestamp=[2022-07-20 09:14:36], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:01.906, duration_ms=1906, data={}
+timestamp=[2022-07-20 13:27:10], mode=WORKBENCH_START, duration=0:00:08.754, duration_ms=8754, data={}
+timestamp=[2022-07-20 13:27:11], mode=WORKBENCH_UI_INIT, duration=0:00:00.925, duration_ms=925, data={editors_count=4, platform_editors_count=3, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,conv_v2,conv_vitis,conv_vitis_system}
+timestamp=[2022-07-20 13:27:12], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.605, duration_ms=605, data={}
+timestamp=[2022-07-20 13:28:09], mode=PLATFORM_CREATION, duration=0:00:19.765, duration_ms=19765, data={platform_source=dsa, os=standalone, processor=ps7_cortexa9, platform=null}
+timestamp=[2022-07-20 13:32:26], mode=PLATFORM_GENERATION, duration=0:00:42.702, duration_ms=42702, data={name=conv_gpio}
+timestamp=[2022-07-20 13:33:17], mode=APP_CREATION, duration=0:00:07.002, duration_ms=7002, data={name=conv_gpio_app, project_type=sdk, os=standalone, processor=cortex-a9, runtime=C/C++, platform=conv_gpio, application_type=application}
+timestamp=[2022-07-20 13:34:20], mode=BUILD, duration=0:00:06.537, duration_ms=6537, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-20 16:07:10], mode=WORKBENCH_START, duration=0:00:08.159, duration_ms=8159, data={}
+timestamp=[2022-07-20 16:07:11], mode=WORKBENCH_UI_INIT, duration=0:00:00.850, duration_ms=850, data={editors_count=4, platform_editors_count=2, projects_count=7, platform_projects_count=2, active_platform_editor=false, projects=RemoteSystemsTempFiles,conv_gpio,conv_gpio_app,conv_gpio_app_system,conv_v2,conv_vitis,conv_vitis_system}
+timestamp=[2022-07-20 16:07:12], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.549, duration_ms=549, data={}
+timestamp=[2022-07-21 09:04:28], mode=WORKBENCH_START, duration=0:00:11.678, duration_ms=11678, data={}
+timestamp=[2022-07-21 09:04:29], mode=WORKBENCH_UI_INIT, duration=0:00:01.112, duration_ms=1112, data={editors_count=4, platform_editors_count=2, projects_count=7, platform_projects_count=2, active_platform_editor=false, projects=RemoteSystemsTempFiles,conv_gpio,conv_gpio_app,conv_gpio_app_system,conv_v2,conv_vitis,conv_vitis_system}
+timestamp=[2022-07-21 09:04:31], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.649, duration_ms=649, data={}
+timestamp=[2022-07-21 09:10:52], mode=PLATFORM_GENERATION, duration=0:00:22.920, duration_ms=22920, data={name=conv_gpio}
+timestamp=[2022-07-21 09:11:02], mode=BUILD, duration=0:00:02.527, duration_ms=2527, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 09:35:30], mode=BUILD, duration=0:00:02.083, duration_ms=2083, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 09:49:18], mode=BUILD, duration=0:00:01.975, duration_ms=1975, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 09:49:27], mode=BUILD, duration=0:00:08.823, duration_ms=8823, data={name=conv_gpio_app_system, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 14:03:16], mode=WORKBENCH_START, duration=0:00:09.784, duration_ms=9784, data={}
+timestamp=[2022-07-21 14:03:17], mode=WORKBENCH_UI_INIT, duration=0:00:01.154, duration_ms=1154, data={editors_count=3, platform_editors_count=2, projects_count=7, platform_projects_count=2, active_platform_editor=false, projects=RemoteSystemsTempFiles,conv_gpio,conv_gpio_app,conv_gpio_app_system,conv_v2,conv_vitis,conv_vitis_system}
+timestamp=[2022-07-21 14:03:18], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.726, duration_ms=726, data={}
+timestamp=[2022-07-21 14:09:28], mode=BUILD, duration=0:00:02.873, duration_ms=2873, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 14:19:49], mode=BUILD, duration=0:00:02.871, duration_ms=2871, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 14:22:41], mode=BUILD, duration=0:00:02.487, duration_ms=2487, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 14:25:01], mode=BUILD, duration=0:00:02.464, duration_ms=2464, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 14:29:36], mode=WORKBENCH_START, duration=0:00:14.268, duration_ms=14268, data={}
+timestamp=[2022-07-21 14:29:37], mode=WORKBENCH_UI_INIT, duration=0:00:01.455, duration_ms=1455, data={editors_count=9, platform_editors_count=8, projects_count=7, platform_projects_count=2, active_platform_editor=false, projects=RemoteSystemsTempFiles,conv_gpio,conv_gpio_app,conv_gpio_app_system,conv_v2,conv_vitis,conv_vitis_system}
+timestamp=[2022-07-21 14:29:39], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.890, duration_ms=890, data={}
+timestamp=[2022-07-21 14:30:05], mode=BUILD, duration=0:00:04.783, duration_ms=4783, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 14:43:04], mode=BUILD, duration=0:00:02.362, duration_ms=2362, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 14:48:32], mode=BUILD, duration=0:00:02.248, duration_ms=2248, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 14:49:03], mode=BUILD, duration=0:00:02.284, duration_ms=2284, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 14:49:37], mode=BUILD, duration=0:00:02.229, duration_ms=2229, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 14:50:11], mode=BUILD, duration=0:00:02.241, duration_ms=2241, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 14:53:05], mode=BUILD, duration=0:00:02.236, duration_ms=2236, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 16:14:35], mode=BUILD, duration=0:00:04.153, duration_ms=4153, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 16:32:05], mode=BUILD, duration=0:00:02.297, duration_ms=2297, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 16:53:57], mode=BUILD, duration=0:00:00.840, duration_ms=840, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 17:00:43], mode=BUILD, duration=0:00:02.747, duration_ms=2747, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 17:04:32], mode=BUILD, duration=0:00:02.366, duration_ms=2366, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-21 17:10:32], mode=BUILD, duration=0:00:02.378, duration_ms=2378, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-22 09:03:34], mode=WORKBENCH_START, duration=0:00:08.656, duration_ms=8656, data={}
+timestamp=[2022-07-22 09:03:34], mode=WORKBENCH_UI_INIT, duration=0:00:00.895, duration_ms=895, data={editors_count=10, platform_editors_count=9, projects_count=7, platform_projects_count=2, active_platform_editor=false, projects=RemoteSystemsTempFiles,conv_gpio,conv_gpio_app,conv_gpio_app_system,conv_v2,conv_vitis,conv_vitis_system}
+timestamp=[2022-07-22 09:03:35], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.567, duration_ms=567, data={}
+timestamp=[2022-07-22 10:54:20], mode=PLATFORM_GENERATION, duration=0:00:20.389, duration_ms=20389, data={name=conv_gpio}
+timestamp=[2022-07-22 11:13:29], mode=BUILD, duration=0:00:06.583, duration_ms=6583, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-22 11:24:33], mode=BUILD, duration=0:00:02.403, duration_ms=2403, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-22 11:30:46], mode=BUILD, duration=0:00:01.152, duration_ms=1152, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-22 11:31:10], mode=BUILD, duration=0:00:01.172, duration_ms=1172, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-22 11:32:10], mode=BUILD, duration=0:00:01.129, duration_ms=1129, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-22 11:32:20], mode=BUILD, duration=0:00:02.229, duration_ms=2229, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-22 11:35:40], mode=BUILD, duration=0:00:02.368, duration_ms=2368, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-22 11:39:24], mode=BUILD, duration=0:00:02.498, duration_ms=2498, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-22 11:41:37], mode=BUILD, duration=0:00:01.232, duration_ms=1232, data={name=conv_gpio_app, configuration=Debug, clean_build=false}
+timestamp=[2022-07-22 11:41:59], mode=BUILD, duration=0:00:02.184, duration_ms=2184, data={name=conv_gpio_app, configuration=Debug, clean_build=false}

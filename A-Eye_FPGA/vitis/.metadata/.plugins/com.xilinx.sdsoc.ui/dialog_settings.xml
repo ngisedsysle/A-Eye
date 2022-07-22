@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="sdx.custom.platform.repository.locations" value="C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vivado_project\conv_v2;C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vitis\conv_v2\export\conv_v2;C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vitis\conv_gpio\export\conv_gpio"/>
+	<item key="sdx.custom.platform.repository.last.directory.dialog.location" value="C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vitis\conv_gpio\export\conv_gpio"/>
+</section>

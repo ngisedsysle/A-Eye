@@ -8,7 +8,6 @@
 **/CMakeFiles
 **/doc/
 **/obj/
-**/vitis
 A-Eye_root/.vscode/settings.json
 A-Eye_root/A-Eye_Communication/Circular_buffer
 A-Eye_root/A-Eye_Communication/Interpreteur

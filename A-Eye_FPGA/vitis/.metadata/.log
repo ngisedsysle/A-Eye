@@ -1,0 +1,1565 @@
+!SESSION 2022-07-22 09:03:21.293 -----------------------------------------------
+eclipse.buildId=2021.2
+java.version=11.0.11
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+This is a continuation of log file C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vitis\.metadata\.bak_0.log
+Created Time: 2022-07-22 11:14:39.559
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:39.559
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:39.560
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:39.573
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:39.574
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Digilent Zybo Z7 210351B40252A" && level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:39.588
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Digilent Zybo Z7 210351B40252A" && level == 0}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:39.589
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:39.590
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:39.591
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:39.606
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:39.607
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:39.682
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:39.683
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:42.689
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:42.703
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:42.710
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:42.711
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:42.723
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:42.724
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B40252A-23727093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:42.747
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B40252A-23727093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:42.750
+!MESSAGE XSCT Command: [fpga -file C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/bitstream/design_1_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.102
+!MESSAGE XSCT command with result: [fpga -file C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/bitstream/design_1_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.128
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.140
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.142
+!MESSAGE XSCT Command: [loadhw -hw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.181
+!MESSAGE XSCT command with result: [loadhw -hw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Result: [null, design_1_wrapper_2]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.185
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.187
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.188
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.200
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.203
+!MESSAGE XSCT Command: [source C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/psinit/ps7_init.tcl], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.210
+!MESSAGE XSCT command with result: [source C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/psinit/ps7_init.tcl], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.211
+!MESSAGE XSCT Command: [ps7_init], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.541
+!MESSAGE XSCT command with result: [ps7_init], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.543
+!MESSAGE XSCT Command: [ps7_post_config], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.559
+!MESSAGE XSCT command with result: [ps7_post_config], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.560
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.570
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.571
+!MESSAGE XSCT Command: [dow C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/Debug/conv_gpio_app.elf], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.806
+!MESSAGE XSCT command with result: [dow C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/Debug/conv_gpio_app.elf], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.807
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.849
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.954
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.976
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:45.977
+!MESSAGE XSCT Command: [con], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:14:46.016
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:24:31.477
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Thread: Worker-29: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:24:31.501
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-29: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:24:31.502
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-29: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:24:31.509
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-29: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2022-07-22 11:24:31.509
+!MESSAGE Generating MD5 hash for file: C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vitis\conv_gpio\export\conv_gpio\sw\conv_gpio\standalone_domain\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:24:31.512
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-29: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:24:31.516
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-29: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:26:04.849
+!MESSAGE XSCT Command: [disconnect tcfchan#3], Thread: Thread-399
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:26:04.854
+!MESSAGE XSCT command with result: [disconnect tcfchan#3], Result: [null, ]. Thread: Thread-399
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.420
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.426
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#4]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.427
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.438
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.439
+!MESSAGE XSCT Command: [version -server], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.441
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2022.1]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.442
+!MESSAGE XSCT Command: [version], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.443
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2022.1.0
+SW Build 303 on 2022-04-13-17:42:48
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.444
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.449
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.450
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.464
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.465
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.471
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.472
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.485
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.486
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.493
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.494
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.507
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.508
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.514
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.515
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.527
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.529
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.535
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.536
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.548
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.549
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.554
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.555
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.567
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.568
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Digilent Zybo Z7 210351B40252A" && level == 0}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.580
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Digilent Zybo Z7 210351B40252A" && level == 0}], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.583
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.585
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.586
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.600
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.601
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.678
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:05.680
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:08.693
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:08.717
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:08.732
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:08.733
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:08.745
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:08.746
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B40252A-23727093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:08.767
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B40252A-23727093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:08.768
+!MESSAGE XSCT Command: [fpga -file C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/bitstream/design_1_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.115
+!MESSAGE XSCT command with result: [fpga -file C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/bitstream/design_1_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.141
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.151
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.152
+!MESSAGE XSCT Command: [loadhw -hw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.189
+!MESSAGE XSCT command with result: [loadhw -hw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Result: [null, design_1_wrapper_2]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.191
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.193
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.197
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.207
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.209
+!MESSAGE XSCT Command: [source C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/psinit/ps7_init.tcl], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.219
+!MESSAGE XSCT command with result: [source C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/psinit/ps7_init.tcl], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.220
+!MESSAGE XSCT Command: [ps7_init], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.583
+!MESSAGE XSCT command with result: [ps7_init], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.584
+!MESSAGE XSCT Command: [ps7_post_config], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.589
+!MESSAGE XSCT command with result: [ps7_post_config], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.590
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.613
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.614
+!MESSAGE XSCT Command: [dow C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/Debug/conv_gpio_app.elf], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.920
+!MESSAGE XSCT command with result: [dow C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/Debug/conv_gpio_app.elf], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.921
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:11.962
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:12.049
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:12.061
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:12.062
+!MESSAGE XSCT Command: [con], Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:27:12.078
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-21: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:30:45.417
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Thread: Worker-25: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:30:45.452
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-25: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:30:45.453
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-25: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:30:45.460
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-25: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2022-07-22 11:30:45.460
+!MESSAGE Generating MD5 hash for file: C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vitis\conv_gpio\export\conv_gpio\sw\conv_gpio\standalone_domain\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:30:45.462
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-25: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:30:45.465
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-25: Build Project
+
+!ENTRY com.xilinx.sdx.core 1 0 2022-07-22 11:30:46.633
+!MESSAGE Build step failed, canceling full build chain.
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:31:09.104
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Thread: Worker-18: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:31:09.111
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-18: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:31:09.112
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-18: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:31:09.118
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-18: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2022-07-22 11:31:09.119
+!MESSAGE Generating MD5 hash for file: C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vitis\conv_gpio\export\conv_gpio\sw\conv_gpio\standalone_domain\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:31:09.120
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-18: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:31:09.123
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-18: Build Project
+
+!ENTRY com.xilinx.sdx.core 1 0 2022-07-22 11:31:10.310
+!MESSAGE Build step failed, canceling full build chain.
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:09.338
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Thread: Worker-32: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:09.361
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-32: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:09.362
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-32: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:09.366
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-32: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2022-07-22 11:32:09.367
+!MESSAGE Generating MD5 hash for file: C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vitis\conv_gpio\export\conv_gpio\sw\conv_gpio\standalone_domain\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:09.371
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-32: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:09.374
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-32: Build Project
+
+!ENTRY com.xilinx.sdx.core 1 0 2022-07-22 11:32:10.514
+!MESSAGE Build step failed, canceling full build chain.
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:18.344
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:18.350
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:18.351
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:18.358
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2022-07-22 11:32:18.359
+!MESSAGE Generating MD5 hash for file: C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vitis\conv_gpio\export\conv_gpio\sw\conv_gpio\standalone_domain\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:18.360
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:18.363
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:36.317
+!MESSAGE XSCT Command: [disconnect tcfchan#4], Thread: Thread-571
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:32:36.321
+!MESSAGE XSCT command with result: [disconnect tcfchan#4], Result: [null, ]. Thread: Thread-571
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.845
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.852
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#5]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.853
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.862
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.863
+!MESSAGE XSCT Command: [version -server], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.865
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2022.1]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.866
+!MESSAGE XSCT Command: [version], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.867
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2022.1.0
+SW Build 303 on 2022-04-13-17:42:48
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.868
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.872
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.873
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.891
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.892
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.898
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.899
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.912
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.913
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.918
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.919
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.931
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.932
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.936
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.937
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.948
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.949
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.954
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.955
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.966
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.972
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.977
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.977
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.989
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:36.989
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Digilent Zybo Z7 210351B40252A" && level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:37.004
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Digilent Zybo Z7 210351B40252A" && level == 0}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:37.005
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:37.007
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:37.008
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:37.023
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:37.024
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:37.110
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:37.111
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:40.126
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:40.139
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:40.152
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:40.153
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:40.164
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:40.165
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B40252A-23727093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:40.186
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B40252A-23727093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:40.187
+!MESSAGE XSCT Command: [fpga -file C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/bitstream/design_1_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.539
+!MESSAGE XSCT command with result: [fpga -file C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/bitstream/design_1_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.567
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.581
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.582
+!MESSAGE XSCT Command: [loadhw -hw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.624
+!MESSAGE XSCT command with result: [loadhw -hw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Result: [null, design_1_wrapper_2]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.625
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.626
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.627
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.640
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.641
+!MESSAGE XSCT Command: [source C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/psinit/ps7_init.tcl], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.650
+!MESSAGE XSCT command with result: [source C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/psinit/ps7_init.tcl], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.651
+!MESSAGE XSCT Command: [ps7_init], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.936
+!MESSAGE XSCT command with result: [ps7_init], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.938
+!MESSAGE XSCT Command: [ps7_post_config], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.955
+!MESSAGE XSCT command with result: [ps7_post_config], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.956
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.964
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:42.965
+!MESSAGE XSCT Command: [dow C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/Debug/conv_gpio_app.elf], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:43.271
+!MESSAGE XSCT command with result: [dow C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/Debug/conv_gpio_app.elf], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:43.272
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:43.325
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:43.439
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:43.457
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:43.458
+!MESSAGE XSCT Command: [con], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:33:43.474
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:35:38.143
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Thread: Worker-29: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:35:38.165
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-29: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:35:38.166
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-29: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:35:38.172
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-29: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2022-07-22 11:35:38.173
+!MESSAGE Generating MD5 hash for file: C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vitis\conv_gpio\export\conv_gpio\sw\conv_gpio\standalone_domain\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:35:38.174
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-29: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:35:38.177
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-29: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:35:55.550
+!MESSAGE XSCT Command: [disconnect tcfchan#5], Thread: Thread-667
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:35:55.555
+!MESSAGE XSCT command with result: [disconnect tcfchan#5], Result: [null, ]. Thread: Thread-667
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.111
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.116
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#6]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.117
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.128
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.129
+!MESSAGE XSCT Command: [version -server], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.130
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2022.1]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.131
+!MESSAGE XSCT Command: [version], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.132
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2022.1.0
+SW Build 303 on 2022-04-13-17:42:48
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.132
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.137
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.137
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.151
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.152
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.157
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.158
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.173
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.174
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.179
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.180
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.193
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.194
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.199
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.200
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.213
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.214
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.219
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.220
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.233
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.234
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.239
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.240
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.255
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.255
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Digilent Zybo Z7 210351B40252A" && level == 0}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.271
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Digilent Zybo Z7 210351B40252A" && level == 0}], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.272
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.273
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.274
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.290
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.291
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.367
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:56.368
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:59.384
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:59.393
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:59.400
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:59.401
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:59.414
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:59.415
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B40252A-23727093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:59.441
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B40252A-23727093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:36:59.442
+!MESSAGE XSCT Command: [fpga -file C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/bitstream/design_1_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:01.783
+!MESSAGE XSCT command with result: [fpga -file C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/bitstream/design_1_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:01.801
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:01.809
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:01.810
+!MESSAGE XSCT Command: [loadhw -hw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:01.826
+!MESSAGE XSCT command with result: [loadhw -hw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Result: [null, design_1_wrapper_2]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:01.827
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:01.829
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:01.831
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:01.843
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:01.844
+!MESSAGE XSCT Command: [source C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/psinit/ps7_init.tcl], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:01.852
+!MESSAGE XSCT command with result: [source C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/psinit/ps7_init.tcl], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:01.853
+!MESSAGE XSCT Command: [ps7_init], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:02.256
+!MESSAGE XSCT command with result: [ps7_init], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:02.257
+!MESSAGE XSCT Command: [ps7_post_config], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:02.264
+!MESSAGE XSCT command with result: [ps7_post_config], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:02.266
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:02.289
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:02.290
+!MESSAGE XSCT Command: [dow C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/Debug/conv_gpio_app.elf], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:02.500
+!MESSAGE XSCT command with result: [dow C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/Debug/conv_gpio_app.elf], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:02.501
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:02.543
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:02.631
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:02.648
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:02.649
+!MESSAGE XSCT Command: [con], Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:37:02.667
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-18: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:39:21.603
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Thread: Worker-21: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:39:21.629
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-21: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:39:21.630
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-21: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:39:21.635
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-21: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2022-07-22 11:39:21.636
+!MESSAGE Generating MD5 hash for file: C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vitis\conv_gpio\export\conv_gpio\sw\conv_gpio\standalone_domain\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:39:21.637
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-21: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:39:21.641
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-21: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:39:28.743
+!MESSAGE XSCT Command: [disconnect tcfchan#6], Thread: Thread-758
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:39:28.747
+!MESSAGE XSCT command with result: [disconnect tcfchan#6], Result: [null, ]. Thread: Thread-758
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.257
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.261
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#7]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.262
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.273
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.274
+!MESSAGE XSCT Command: [version -server], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.275
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2022.1]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.276
+!MESSAGE XSCT Command: [version], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.277
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2022.1.0
+SW Build 303 on 2022-04-13-17:42:48
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.277
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.282
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.282
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.294
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.295
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.300
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.301
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.314
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.315
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.320
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.321
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.337
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.338
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.343
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.344
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.356
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.356
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.361
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.362
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.374
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.375
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.380
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.380
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.393
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.394
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Digilent Zybo Z7 210351B40252A" && level == 0}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.406
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Digilent Zybo Z7 210351B40252A" && level == 0}], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.406
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.408
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.409
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.422
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.422
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.492
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:29.493
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:32.509
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:32.521
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:32.527
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:32.528
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:32.540
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:32.541
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B40252A-23727093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:32.563
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B40252A-23727093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:32.564
+!MESSAGE XSCT Command: [fpga -file C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/bitstream/design_1_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:34.907
+!MESSAGE XSCT command with result: [fpga -file C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/bitstream/design_1_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:34.934
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:34.950
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:34.951
+!MESSAGE XSCT Command: [loadhw -hw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:34.986
+!MESSAGE XSCT command with result: [loadhw -hw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Result: [null, design_1_wrapper_2]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:34.987
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:34.989
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:34.992
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.002
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.003
+!MESSAGE XSCT Command: [source C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/psinit/ps7_init.tcl], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.012
+!MESSAGE XSCT command with result: [source C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/psinit/ps7_init.tcl], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.013
+!MESSAGE XSCT Command: [ps7_init], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.406
+!MESSAGE XSCT command with result: [ps7_init], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.408
+!MESSAGE XSCT Command: [ps7_post_config], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.413
+!MESSAGE XSCT command with result: [ps7_post_config], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.414
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.420
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.421
+!MESSAGE XSCT Command: [dow C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/Debug/conv_gpio_app.elf], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.735
+!MESSAGE XSCT command with result: [dow C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/Debug/conv_gpio_app.elf], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.736
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.774
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.870
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.886
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.887
+!MESSAGE XSCT Command: [con], Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:40:35.915
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-30: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:41:36.588
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Thread: Worker-18: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:41:36.615
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-18: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:41:36.616
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-18: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:41:36.647
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-18: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2022-07-22 11:41:36.648
+!MESSAGE Generating MD5 hash for file: C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vitis\conv_gpio\export\conv_gpio\sw\conv_gpio\standalone_domain\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:41:36.649
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-18: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:41:36.653
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-18: Build Project
+
+!ENTRY com.xilinx.sdx.core 1 0 2022-07-22 11:41:37.896
+!MESSAGE Build step failed, canceling full build chain.
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:41:57.458
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Thread: Worker-33: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:41:57.464
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-33: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:41:57.464
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-33: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:41:57.469
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, {"procname": "ps7_cortexa9_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-33: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2022-07-22 11:41:57.470
+!MESSAGE Generating MD5 hash for file: C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vitis\conv_gpio\export\conv_gpio\sw\conv_gpio\standalone_domain\system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:41:57.472
+!MESSAGE XSCT Command: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Thread: Worker-33: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:41:57.476
+!MESSAGE XSCT command with result: [::hsi::utils::closesw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-33: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:42:02.719
+!MESSAGE XSCT Command: [disconnect tcfchan#7], Thread: Thread-847
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:42:02.738
+!MESSAGE XSCT command with result: [disconnect tcfchan#7], Result: [null, ]. Thread: Thread-847
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.349
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.354
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#8]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.355
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.365
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.366
+!MESSAGE XSCT Command: [version -server], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.367
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2022.1]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.367
+!MESSAGE XSCT Command: [version], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.368
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2022.1.0
+SW Build 303 on 2022-04-13-17:42:48
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.369
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.374
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.375
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.387
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.388
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.393
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.393
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.406
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.406
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.411
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.412
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.426
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.426
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.432
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.432
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.444
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.445
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.449
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.450
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.462
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.463
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.468
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.468
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.480
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.481
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "Digilent Zybo Z7 210351B40252A" && level == 0}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.493
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "Digilent Zybo Z7 210351B40252A" && level == 0}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.494
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.495
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.496
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.510
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.511
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.591
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:03.592
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:06.603
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:06.612
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:06.618
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* Digilent Zybo Z7 210351B40252A]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:06.618
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:06.631
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==1}], Result: [null,      2  arm_dap (idcode 4ba00477 irlen 4)
+     3  xc7z020 (idcode 23727093 irlen 6 fpga)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:06.632
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B40252A-23727093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:06.654
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B40252A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B40252A-23727093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:06.655
+!MESSAGE XSCT Command: [fpga -file C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/bitstream/design_1_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:08.990
+!MESSAGE XSCT command with result: [fpga -file C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/bitstream/design_1_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.018
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.033
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.034
+!MESSAGE XSCT Command: [loadhw -hw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.064
+!MESSAGE XSCT command with result: [loadhw -hw C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs], Result: [null, design_1_wrapper_2]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.065
+!MESSAGE XSCT Command: [configparams force-mem-access 1], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.067
+!MESSAGE XSCT command with result: [configparams force-mem-access 1], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.068
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~"APU*"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.081
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~"APU*"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.084
+!MESSAGE XSCT Command: [source C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/psinit/ps7_init.tcl], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.091
+!MESSAGE XSCT command with result: [source C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/_ide/psinit/ps7_init.tcl], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.092
+!MESSAGE XSCT Command: [ps7_init], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.394
+!MESSAGE XSCT command with result: [ps7_init], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.395
+!MESSAGE XSCT Command: [ps7_post_config], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.419
+!MESSAGE XSCT command with result: [ps7_post_config], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.420
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.428
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.429
+!MESSAGE XSCT Command: [dow C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/Debug/conv_gpio_app.elf], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.733
+!MESSAGE XSCT command with result: [dow C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app/Debug/conv_gpio_app.elf], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.734
+!MESSAGE XSCT Command: [configparams force-mem-access 0], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.773
+!MESSAGE XSCT command with result: [configparams force-mem-access 0], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.865
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*A9*#0"}], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.880
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*A9*#0"}], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.880
+!MESSAGE XSCT Command: [con], Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:43:09.911
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-25: Launching SystemDebugger_conv_gpio_app_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:48:11.565
+!MESSAGE XSCT Command: [disconnect tcfchan#8], Thread: Thread-929
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-07-22 11:48:11.570
+!MESSAGE XSCT command with result: [disconnect tcfchan#8], Result: [null, ]. Thread: Thread-929

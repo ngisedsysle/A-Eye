@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="conv_gpio_app" location="C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio_app" platform="C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/conv_gpio.xpfm" platformUID="xilinx:zybo-z7-20::0.0(custom)" systemProject="conv_gpio_app_system" sysConfig="conv_gpio" runtime="C/C++" cpu="standalone_domain" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="6e748d9a465100fbb7b9a816802f3001">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.736073197">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.566200270" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="peripheral_tests"/>
+</sdkproject:SdkProject>

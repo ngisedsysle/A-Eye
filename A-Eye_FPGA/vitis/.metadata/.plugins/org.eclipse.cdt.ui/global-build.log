@@ -1,0 +1,24 @@
+Nothing to build in platform 'conv_gpio'
+
+11:41:57 **** Incremental Build of configuration Debug for project conv_gpio_app ****
+make all 
+make --no-print-directory pre-build
+a9-linaro-pre-build-step
+' '
+make --no-print-directory main-build
+'Building file: ../src/testperiph.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/testperiph.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/bspinclude/include -MMD -MP -MF"src/testperiph.d" -MT"src/testperiph.o" -o "src/testperiph.o" "../src/testperiph.c"
+'Finished building: ../src/testperiph.c'
+' '
+'Building target: conv_gpio_app.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LC:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vitis/conv_gpio/export/conv_gpio/sw/conv_gpio/standalone_domain/bsplib/lib -o "conv_gpio_app.elf"  ./src/testperiph.o ./src/xdevcfg_selftest_example.o ./src/xdmaps_example_w_intr.o ./src/xgpio_tapp_example.o ./src/xqspips_selftest_example.o ./src/xscugic_tapp_example.o ./src/xscutimer_intr_example.o ./src/xscutimer_polled_example.o ./src/xscuwdt_intr_example.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: conv_gpio_app.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size conv_gpio_app.elf  |tee "conv_gpio_app.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83759	   3604	  33664	 121027	  1d8c3	conv_gpio_app.elf
+'Finished building: conv_gpio_app.elf.size'
+' '

@@ -5,7 +5,7 @@ Versions : Vivado 2022.1, Vitis 2022.1
 ## Introduction  
 The idea is here to accelerate in hardware the longest operation. Currently, the convolution take about 60 percent of the processing time. That's why we start by accelerating the convolution steps.  
 
-## Documentations v2  
+## Documentations v2 - Component  
 
 ### Multiadd  
 #### Principle  
@@ -49,6 +49,27 @@ In this wrapper, we map one bit of std_logic_vector(31 downto 0) to one bit of f
 #### float32 to std_logic_vector  
 Here we do the reverse thing as above.   
 
+## Communication protocol, based on AXI stream principle. 
+To exchange data between two vhdl IP, we choose to use our own protocol.  
+### Signals
+It is based on three signals, when A want to send B some data :  
+- *data* : from A to B : transport the data. In our system, this is mainly of type float32, or one of its subtypes.
+- *valid* : from A to B : tell B that the data has to be taken on every cycle valid is high. This is based on std_logic.
+- *ready* : from B to A : tell to A that B is ready to get data on the next cycle. 
+### Example
+- On reset, all signals are low.  
+- When B is ready to get data, it sets *ready* to high for a number of clock cycles equals to the number of max data it can take.  
+- **For each clock cycle**, if A see that *ready* is high, A pushes data on *data* and set *valid* to high.  
+- B must save as much data as there are cycle times where *valid* is high.  
+
+Comment : *data* can be set before *valid* is high. But it's only when *valid* is high that *data* has to be captured. 
+![com_protocol_example](./diagrams/out/archi_v2/com_protocol_example.png)
+  
+
+  
+
+
+
 ## Documentations v1  
 ### What has been done
 On the day of 22 June, we dispose of a convolution 2D engine, which is called with padding. Source code are in this git.  
@@ -56,8 +77,8 @@ On the day of 22 June, we dispose of a convolution 2D engine, which is called wi
 ### Proposal for 23 June
 The proposal for the meetings of 23 June is to load picture and kernel with fifo and builder, process the convolution in order to produce a 2 by 2 matrix, and apply pooling on it.  
 ![Proposal 23 June](./diagrams/out/architecture/proposal_23_June.png)  
-### Conclusion
-We have to design components one by one. Thus, we switch to v2, and v1 is deserted.    
+### Conclusion on v1
+We have to design components one by one. Indeed, one component able to process one picture cannot be implemented on a FPGA. Thus, we switch to v2, and v1 is deserted.    
 
 ## Troubleshooting
 Vivado simulator is uncompatible with float32, even if float32 are part of IEEE and support in VHDL2008. To simulate, I choose to use questa, which has a version free of charge (starter edition). To do this, you will have to generate a free license of Intel license webpage.  

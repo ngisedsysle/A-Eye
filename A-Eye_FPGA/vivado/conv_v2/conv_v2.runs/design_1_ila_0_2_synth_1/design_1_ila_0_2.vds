@@ -1,0 +1,16 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Wed Jul 20 09:34:39 2022
+# Process ID: 20244
+# Current directory: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.runs/design_1_ila_0_2_synth_1
+# Command line: vivado.exe -log design_1_ila_0_2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_ila_0_2.tcl
+# Log file: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.runs/design_1_ila_0_2_synth_1/design_1_ila_0_2.vds
+# Journal file: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.runs/design_1_ila_0_2_synth_1\vivado.jou
+# Running On: L-C5H16J3, OS: Windows, CPU Frequency: 1805 MHz, CPU Physical cores: 4, Host memory: 16527 MB
+#-----------------------------------------------------------
+source design_1_ila_0_2.tcl -notrace
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP design_1_ila_0_2, cache-ID = 91e29828639d2775.
+config_ip_cache: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1374.766 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Jul 20 09:34:57 2022...

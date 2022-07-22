@@ -1,0 +1,20 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Tue Jul 19 10:33:02 2022
+# Process ID: 20976
+# Current directory: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6848 C:\Users\rolland\Documents\GIT\A-Eye\A-Eye_FPGA\vivado\conv_v2\conv_v2.xpr
+# Log file: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/vivado.log
+# Journal file: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2\vivado.jou
+# Running On: L-C5H16J3, OS: Windows, CPU Frequency: 1805 MHz, CPU Physical cores: 4, Host memory: 16527 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.xpr
+set_property source_mgmt_mode None [current_project]
+open_bd_design {C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.srcs/sources_1/bd/design_1/design_1.bd}
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_mm2s_mapper:1.1 axi_mm2s_mapper_3
+endgroup
+delete_bd_objs [get_bd_cells axi_mm2s_mapper_3]

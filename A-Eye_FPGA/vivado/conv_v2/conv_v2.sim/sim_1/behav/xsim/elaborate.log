@@ -1,8 +1,0 @@
-Vivado Simulator v2022.1
-Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2022.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip -L xpm --snapshot tb_conv_wrapper_behav xil_defaultlib.tb_conv_wrapper -log elaborate.log 
-Using 2 slave threads.
-Starting static elaboration
-Completed static elaboration
-Starting simulation data flow analysis
-ERROR: [XSIM 43-3294] Signal EXCEPTION_ACCESS_VIOLATION received.

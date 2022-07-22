@@ -11,14 +11,17 @@
       "validated": "true"
     },
     "design_tree": {
-      "cmp_conv_wrapper_0": "",
       "processing_system7_0": "",
       "rst_ps7_0_50M": "",
-      "axi_mm2s_mapper_0": "",
       "axi_smc": "",
-      "axi_mm2s_mapper_1": "",
-      "axi_mm2s_mapper_2": "",
-      "smartconnect_0": ""
+      "axi_mm2s_mapper_krn": "",
+      "axi_mm2s_mapper_res": "",
+      "smartconnect_0": "",
+      "ila_img_s": "",
+      "cmp_conv_wrapper_0": "",
+      "axi_mm2s_mapper_img": "",
+      "ila_res_s": "",
+      "ila_krn_s": ""
     },
     "interface_ports": {
       "DDR": {
@@ -89,80 +92,6 @@
       }
     },
     "components": {
-      "cmp_conv_wrapper_0": {
-        "vlnv": "xilinx.com:module_ref:cmp_conv_wrapper:1.0",
-        "xci_name": "design_1_cmp_conv_wrapper_0_0",
-        "xci_path": "ip\\design_1_cmp_conv_wrapper_0_0\\design_1_cmp_conv_wrapper_0_0.xci",
-        "inst_hier_path": "cmp_conv_wrapper_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "cmp_conv_wrapper",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "50000000",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "design_1_processing_system7_0_2_FCLK_CLK0",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "const_prop"
-              }
-            }
-          },
-          "line_img_data": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "line_img_valid": {
-            "direction": "I"
-          },
-          "line_img_ready": {
-            "direction": "O"
-          },
-          "line_krn_data": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "line_krn_valid": {
-            "direction": "I"
-          },
-          "line_krn_ready": {
-            "direction": "O"
-          },
-          "res_data": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "res_valid": {
-            "direction": "O"
-          },
-          "res_ready": {
-            "direction": "I"
-          }
-        }
-      },
       "processing_system7_0": {
         "vlnv": "xilinx.com:ip:processing_system7:5.5",
         "xci_name": "design_1_processing_system7_0_2",
@@ -1316,20 +1245,6 @@
         "xci_path": "ip\\design_1_rst_ps7_0_50M_1\\design_1_rst_ps7_0_50M_1.xci",
         "inst_hier_path": "rst_ps7_0_50M"
       },
-      "axi_mm2s_mapper_0": {
-        "vlnv": "xilinx.com:ip:axi_mm2s_mapper:1.1",
-        "xci_name": "design_1_axi_mm2s_mapper_0_1",
-        "xci_path": "ip\\design_1_axi_mm2s_mapper_0_1\\design_1_axi_mm2s_mapper_0_1.xci",
-        "inst_hier_path": "axi_mm2s_mapper_0",
-        "parameters": {
-          "INTERFACES": {
-            "value": "S_AXI"
-          },
-          "TDATA_NUM_BYTES": {
-            "value": "4"
-          }
-        }
-      },
       "axi_smc": {
         "vlnv": "xilinx.com:ip:smartconnect:1.0",
         "xci_name": "design_1_axi_smc_1",
@@ -1425,11 +1340,11 @@
           }
         }
       },
-      "axi_mm2s_mapper_1": {
+      "axi_mm2s_mapper_krn": {
         "vlnv": "xilinx.com:ip:axi_mm2s_mapper:1.1",
         "xci_name": "design_1_axi_mm2s_mapper_1_1",
         "xci_path": "ip\\design_1_axi_mm2s_mapper_1_1\\design_1_axi_mm2s_mapper_1_1.xci",
-        "inst_hier_path": "axi_mm2s_mapper_1",
+        "inst_hier_path": "axi_mm2s_mapper_krn",
         "parameters": {
           "INTERFACES": {
             "value": "S_AXI"
@@ -1439,11 +1354,11 @@
           }
         }
       },
-      "axi_mm2s_mapper_2": {
+      "axi_mm2s_mapper_res": {
         "vlnv": "xilinx.com:ip:axi_mm2s_mapper:1.1",
         "xci_name": "design_1_axi_mm2s_mapper_2_1",
         "xci_path": "ip\\design_1_axi_mm2s_mapper_2_1\\design_1_axi_mm2s_mapper_2_1.xci",
-        "inst_hier_path": "axi_mm2s_mapper_2",
+        "inst_hier_path": "axi_mm2s_mapper_res",
         "parameters": {
           "INTERFACES": {
             "value": "M_AXI"
@@ -1537,25 +1452,176 @@
             }
           }
         }
+      },
+      "ila_img_s": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "xci_name": "design_1_ila_0_0",
+        "xci_path": "ip\\design_1_ila_0_0\\design_1_ila_0_0.xci",
+        "inst_hier_path": "ila_img_s",
+        "parameters": {
+          "C_ENABLE_ILA_AXI_MON": {
+            "value": "false"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "3"
+          },
+          "C_PROBE0_WIDTH": {
+            "value": "32"
+          },
+          "C_SLOT_0_AXI_PROTOCOL": {
+            "value": "AXI4S"
+          }
+        }
+      },
+      "cmp_conv_wrapper_0": {
+        "vlnv": "xilinx.com:module_ref:cmp_conv_wrapper:1.0",
+        "xci_name": "design_1_cmp_conv_wrapper_0_0",
+        "xci_path": "ip\\design_1_cmp_conv_wrapper_0_0\\design_1_cmp_conv_wrapper_0_0.xci",
+        "inst_hier_path": "cmp_conv_wrapper_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "cmp_conv_wrapper",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "50000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_processing_system7_0_2_FCLK_CLK0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "const_prop"
+              }
+            }
+          },
+          "line_img_data": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "line_img_valid": {
+            "direction": "I"
+          },
+          "line_img_ready": {
+            "direction": "O"
+          },
+          "line_krn_data": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "line_krn_valid": {
+            "direction": "I"
+          },
+          "line_krn_ready": {
+            "direction": "O"
+          },
+          "res_data": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "res_valid": {
+            "direction": "O"
+          },
+          "res_ready": {
+            "direction": "I"
+          }
+        }
+      },
+      "axi_mm2s_mapper_img": {
+        "vlnv": "xilinx.com:ip:axi_mm2s_mapper:1.1",
+        "xci_name": "design_1_axi_mm2s_mapper_0_1",
+        "xci_path": "ip\\design_1_axi_mm2s_mapper_0_1\\design_1_axi_mm2s_mapper_0_1.xci",
+        "inst_hier_path": "axi_mm2s_mapper_img",
+        "parameters": {
+          "INTERFACES": {
+            "value": "S_AXI"
+          },
+          "TDATA_NUM_BYTES": {
+            "value": "4"
+          }
+        }
+      },
+      "ila_res_s": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "xci_name": "design_1_ila_0_2",
+        "xci_path": "ip\\design_1_ila_0_2\\design_1_ila_0_2.xci",
+        "inst_hier_path": "ila_res_s",
+        "parameters": {
+          "C_ENABLE_ILA_AXI_MON": {
+            "value": "false"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "3"
+          },
+          "C_PROBE0_WIDTH": {
+            "value": "32"
+          }
+        }
+      },
+      "ila_krn_s": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "xci_name": "design_1_ila_0_3",
+        "xci_path": "ip\\design_1_ila_0_3\\design_1_ila_0_3.xci",
+        "inst_hier_path": "ila_krn_s",
+        "parameters": {
+          "C_ENABLE_ILA_AXI_MON": {
+            "value": "false"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "3"
+          },
+          "C_PROBE0_WIDTH": {
+            "value": "32"
+          }
+        }
       }
     },
     "interface_nets": {
       "axi_mm2s_mapper_2_M_AXI": {
         "interface_ports": [
           "smartconnect_0/S00_AXI",
-          "axi_mm2s_mapper_2/M_AXI"
+          "axi_mm2s_mapper_res/M_AXI"
         ]
       },
       "axi_smc_M00_AXI": {
         "interface_ports": [
           "axi_smc/M00_AXI",
-          "axi_mm2s_mapper_0/S_AXI"
+          "axi_mm2s_mapper_img/S_AXI"
         ]
       },
       "axi_smc_M01_AXI": {
         "interface_ports": [
           "axi_smc/M01_AXI",
-          "axi_mm2s_mapper_1/S_AXI"
+          "axi_mm2s_mapper_krn/S_AXI"
         ]
       },
       "processing_system7_0_DDR": {
@@ -1586,70 +1652,75 @@
     "nets": {
       "axi_mm2s_mapper_0_m_axis_tdata": {
         "ports": [
-          "axi_mm2s_mapper_0/m_axis_tdata",
-          "cmp_conv_wrapper_0/line_img_data"
+          "axi_smc/M00_AXI_wdata",
+          "cmp_conv_wrapper_0/line_img_data",
+          "ila_img_s/probe0"
         ]
       },
       "axi_mm2s_mapper_0_m_axis_tvalid": {
         "ports": [
-          "axi_mm2s_mapper_0/m_axis_tvalid",
-          "cmp_conv_wrapper_0/line_img_valid"
+          "axi_smc/M00_AXI_wvalid",
+          "cmp_conv_wrapper_0/line_img_valid",
+          "ila_img_s/probe1"
         ]
       },
-      "axi_mm2s_mapper_1_m_axis_tdata": {
+      "axi_smc_M01_AXI_wdata": {
         "ports": [
-          "axi_mm2s_mapper_1/m_axis_tdata",
-          "cmp_conv_wrapper_0/line_krn_data"
+          "axi_smc/M01_AXI_wdata",
+          "cmp_conv_wrapper_0/line_krn_data",
+          "ila_krn_s/probe0"
         ]
       },
-      "axi_mm2s_mapper_1_m_axis_tvalid": {
+      "axi_smc_M01_AXI_wvalid": {
         "ports": [
-          "axi_mm2s_mapper_1/m_axis_tvalid",
-          "cmp_conv_wrapper_0/line_krn_valid"
-        ]
-      },
-      "axi_mm2s_mapper_2_s_axis_tready": {
-        "ports": [
-          "axi_mm2s_mapper_2/s_axis_tready",
-          "cmp_conv_wrapper_0/res_ready"
+          "axi_smc/M01_AXI_wvalid",
+          "cmp_conv_wrapper_0/line_krn_valid",
+          "ila_krn_s/probe1"
         ]
       },
       "cmp_conv_wrapper_0_line_img_ready": {
         "ports": [
           "cmp_conv_wrapper_0/line_img_ready",
-          "axi_mm2s_mapper_0/m_axis_tready"
+          "ila_img_s/probe2",
+          "axi_smc/M00_AXI_wready"
         ]
       },
       "cmp_conv_wrapper_0_line_krn_ready": {
         "ports": [
           "cmp_conv_wrapper_0/line_krn_ready",
-          "axi_mm2s_mapper_1/m_axis_tready"
+          "axi_smc/M01_AXI_wready",
+          "ila_krn_s/probe2"
         ]
       },
       "cmp_conv_wrapper_0_res_data": {
         "ports": [
           "cmp_conv_wrapper_0/res_data",
-          "axi_mm2s_mapper_2/s_axis_tdata"
+          "smartconnect_0/S00_AXI_wdata",
+          "ila_res_s/probe0"
         ]
       },
       "cmp_conv_wrapper_0_res_valid": {
         "ports": [
           "cmp_conv_wrapper_0/res_valid",
-          "axi_mm2s_mapper_2/s_axis_tvalid"
+          "smartconnect_0/S00_AXI_wvalid",
+          "ila_res_s/probe1"
         ]
       },
       "processing_system7_0_FCLK_CLK0": {
         "ports": [
           "processing_system7_0/FCLK_CLK0",
-          "cmp_conv_wrapper_0/clk",
           "rst_ps7_0_50M/slowest_sync_clk",
           "processing_system7_0/M_AXI_GP0_ACLK",
           "axi_smc/aclk",
-          "axi_mm2s_mapper_0/aclk",
-          "axi_mm2s_mapper_1/aclk",
+          "axi_mm2s_mapper_krn/aclk",
           "processing_system7_0/S_AXI_GP0_ACLK",
           "smartconnect_0/aclk",
-          "axi_mm2s_mapper_2/aclk"
+          "axi_mm2s_mapper_res/aclk",
+          "ila_img_s/clk",
+          "cmp_conv_wrapper_0/clk",
+          "axi_mm2s_mapper_img/aclk",
+          "ila_res_s/clk",
+          "ila_krn_s/clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -1661,10 +1732,18 @@
       "rst_ps7_0_50M_peripheral_aresetn": {
         "ports": [
           "rst_ps7_0_50M/peripheral_aresetn",
-          "cmp_conv_wrapper_0/rst",
-          "axi_mm2s_mapper_0/aresetn",
           "axi_smc/aresetn",
-          "axi_mm2s_mapper_1/aresetn"
+          "axi_mm2s_mapper_krn/aresetn",
+          "cmp_conv_wrapper_0/rst",
+          "axi_mm2s_mapper_res/aresetn",
+          "axi_mm2s_mapper_img/aresetn"
+        ]
+      },
+      "smartconnect_0_S00_AXI_wready": {
+        "ports": [
+          "smartconnect_0/S00_AXI_wready",
+          "cmp_conv_wrapper_0/res_ready",
+          "ila_res_s/probe2"
         ]
       }
     },
@@ -1674,12 +1753,12 @@
           "Data": {
             "segments": {
               "SEG_axi_mm2s_mapper_0_Reg": {
-                "address_block": "/axi_mm2s_mapper_0/S_AXI/Reg",
+                "address_block": "/axi_mm2s_mapper_img/S_AXI/Reg",
                 "offset": "0x43C00000",
                 "range": "64K"
               },
               "SEG_axi_mm2s_mapper_1_Reg": {
-                "address_block": "/axi_mm2s_mapper_1/S_AXI/Reg",
+                "address_block": "/axi_mm2s_mapper_krn/S_AXI/Reg",
                 "offset": "0x43C10000",
                 "range": "64K"
               }
@@ -1687,7 +1766,7 @@
           }
         }
       },
-      "/axi_mm2s_mapper_2": {
+      "/axi_mm2s_mapper_res": {
         "address_spaces": {
           "Bridge": {
             "segments": {

@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.runs/synth_1/design_1_wrapper.tcl"
+  variable script "C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.runs/synth_1/design_1_wrapper.tcl"
   variable category "vivado_synth"
 }
 
@@ -77,63 +77,75 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.cache/wt [current_project]
-set_property parent.project_path C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.cache/wt [current_project]
+set_property parent.project_path C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part_repo_paths {C:/Users/rolland/AppData/Roaming/Xilinx/Vivado/2021.2/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part digilentinc.com:zybo-z7-20:part0:1.0 [current_project]
-set_property ip_output_repo c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.cache/ip [current_project]
+set_property ip_output_repo c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_vhdl -library xil_defaultlib c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/hdl/design_1_wrapper.vhd
-add_files C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.srcs/sources_1/bd/design_1/design_1.bd
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_2/design_1_processing_system7_0_2.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_50M_1/design_1_rst_ps7_0_50M_1_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_50M_1/design_1_rst_ps7_0_50M_1.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_50M_1/design_1_rst_ps7_0_50M_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_mm2s_mapper_0_1/design_1_axi_mm2s_mapper_0_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_1/bd_6f02_psr_aclk_0_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_1/bd_6f02_psr_aclk_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_2/bd_6f02_arsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_3/bd_6f02_rsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_4/bd_6f02_awsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_5/bd_6f02_wsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_6/bd_6f02_bsw_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_10/bd_6f02_s00a2s_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_11/bd_6f02_sarn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_12/bd_6f02_srn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_13/bd_6f02_sawn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_14/bd_6f02_swn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_15/bd_6f02_sbn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_16/bd_6f02_m00s2a_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_17/bd_6f02_m00arn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_18/bd_6f02_m00rn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_19/bd_6f02_m00awn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_20/bd_6f02_m00wn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_21/bd_6f02_m00bn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_23/bd_6f02_m01s2a_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_24/bd_6f02_m01arn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_25/bd_6f02_m01rn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_26/bd_6f02_m01awn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_27/bd_6f02_m01wn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_28/bd_6f02_m01bn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_mm2s_mapper_1_1/design_1_axi_mm2s_mapper_1_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_mm2s_mapper_2_1/design_1_axi_mm2s_mapper_2_1_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_1/bd_48ac_psr_aclk_0_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_1/bd_48ac_psr_aclk_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_5/bd_48ac_s00a2s_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_6/bd_48ac_sarn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_7/bd_48ac_srn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_8/bd_48ac_sawn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_9/bd_48ac_swn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_10/bd_48ac_sbn_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_11/bd_48ac_m00s2a_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/design_1_ooc.xdc]
+read_vhdl -library xil_defaultlib C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/hdl/design_1_wrapper.vhd
+add_files C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.srcs/sources_1/bd/design_1/design_1.bd
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_2/design_1_processing_system7_0_2.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_50M_1/design_1_rst_ps7_0_50M_1_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_50M_1/design_1_rst_ps7_0_50M_1.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_50M_1/design_1_rst_ps7_0_50M_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_mm2s_mapper_0_1/design_1_axi_mm2s_mapper_0_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_1/bd_6f02_psr_aclk_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_1/bd_6f02_psr_aclk_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_2/bd_6f02_arsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_3/bd_6f02_rsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_4/bd_6f02_awsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_5/bd_6f02_wsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_6/bd_6f02_bsw_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_10/bd_6f02_s00a2s_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_11/bd_6f02_sarn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_12/bd_6f02_srn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_13/bd_6f02_sawn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_14/bd_6f02_swn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_15/bd_6f02_sbn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_16/bd_6f02_m00s2a_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_17/bd_6f02_m00arn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_18/bd_6f02_m00rn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_19/bd_6f02_m00awn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_20/bd_6f02_m00wn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_21/bd_6f02_m00bn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_23/bd_6f02_m01s2a_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_24/bd_6f02_m01arn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_25/bd_6f02_m01rn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_26/bd_6f02_m01awn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_27/bd_6f02_m01wn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/bd_0/ip/ip_28/bd_6f02_m01bn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_mm2s_mapper_1_1/design_1_axi_mm2s_mapper_1_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_mm2s_mapper_2_1/design_1_axi_mm2s_mapper_2_1_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_1/bd_48ac_psr_aclk_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_1/bd_48ac_psr_aclk_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_5/bd_48ac_s00a2s_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_6/bd_48ac_sarn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_7/bd_48ac_srn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_8/bd_48ac_sawn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_9/bd_48ac_swn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_10/bd_48ac_sbn_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/bd_0/ip/ip_11/bd_48ac_m00s2a_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_smartconnect_0_0/ooc.xdc]
+set_property used_in_synthesis false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_ila_0_0/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_ila_0_0/design_1_ila_0_0_ooc.xdc]
+set_property used_in_synthesis false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_ila_0_2/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_ila_0_2/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_ila_0_2/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_ila_0_2/design_1_ila_0_2_ooc.xdc]
+set_property used_in_synthesis false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_ila_0_3/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_ila_0_3/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_ila_0_3/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_ila_0_3/design_1_ila_0_3_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/design_1_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -144,14 +156,14 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.srcs/constrs_1/new/zybo.xdc
-set_property used_in_implementation false [get_files C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.srcs/constrs_1/new/zybo.xdc]
+read_xdc C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.srcs/constrs_1/new/zybo.xdc
+set_property used_in_implementation false [get_files C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.srcs/constrs_1/new/zybo.xdc]
 
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.srcs/utils_1/imports/synth_1/cmp_multiAdd.dcp
+read_checkpoint -auto_incremental -incremental C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.srcs/utils_1/imports/synth_1/cmp_multiAdd.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

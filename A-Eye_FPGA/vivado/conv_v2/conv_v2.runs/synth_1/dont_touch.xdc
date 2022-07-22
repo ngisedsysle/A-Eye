@@ -6,9 +6,6 @@
 # Block Designs: bd/design_1/design_1.bd
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1 || ORIG_REF_NAME==design_1} -quiet] -quiet
 
-# IP: bd/design_1/ip/design_1_cmp_conv_wrapper_0_0/design_1_cmp_conv_wrapper_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_cmp_conv_wrapper_0_0 || ORIG_REF_NAME==design_1_cmp_conv_wrapper_0_0} -quiet] -quiet
-
 # IP: bd/design_1/ip/design_1_processing_system7_0_2/design_1_processing_system7_0_2.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_processing_system7_0_2 || ORIG_REF_NAME==design_1_processing_system7_0_2} -quiet] -quiet
 
@@ -30,4 +27,16 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_ax
 # IP: bd/design_1/ip/design_1_smartconnect_0_0/design_1_smartconnect_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_smartconnect_0_0 || ORIG_REF_NAME==design_1_smartconnect_0_0} -quiet] -quiet
 
-# XDC: c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/design_1_ooc.xdc
+# IP: bd/design_1/ip/design_1_ila_0_0/design_1_ila_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_ila_0_0 || ORIG_REF_NAME==design_1_ila_0_0} -quiet] -quiet
+
+# IP: bd/design_1/ip/design_1_cmp_conv_wrapper_0_0/design_1_cmp_conv_wrapper_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_cmp_conv_wrapper_0_0 || ORIG_REF_NAME==design_1_cmp_conv_wrapper_0_0} -quiet] -quiet
+
+# IP: bd/design_1/ip/design_1_ila_0_2/design_1_ila_0_2.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_ila_0_2 || ORIG_REF_NAME==design_1_ila_0_2} -quiet] -quiet
+
+# IP: bd/design_1/ip/design_1_ila_0_3/design_1_ila_0_3.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_ila_0_3 || ORIG_REF_NAME==design_1_ila_0_3} -quiet] -quiet
+
+# XDC: c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/design_1_ooc.xdc

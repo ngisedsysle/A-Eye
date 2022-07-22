@@ -2,21 +2,19 @@
 # Vivado v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Mon Jul 18 13:47:57 2022
-# Process ID: 19104
-# Current directory: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.runs/design_1_cmp_conv_wrapper_0_0_synth_1
+# Start of session at: Tue Jul 19 14:19:08 2022
+# Process ID: 8032
+# Current directory: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.runs/design_1_cmp_conv_wrapper_0_0_synth_1
 # Command line: vivado.exe -log design_1_cmp_conv_wrapper_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_cmp_conv_wrapper_0_0.tcl
-# Log file: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.runs/design_1_cmp_conv_wrapper_0_0_synth_1/design_1_cmp_conv_wrapper_0_0.vds
-# Journal file: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.runs/design_1_cmp_conv_wrapper_0_0_synth_1\vivado.jou
+# Log file: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.runs/design_1_cmp_conv_wrapper_0_0_synth_1/design_1_cmp_conv_wrapper_0_0.vds
+# Journal file: C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.runs/design_1_cmp_conv_wrapper_0_0_synth_1\vivado.jou
 # Running On: L-C5H16J3, OS: Windows, CPU Frequency: 1805 MHz, CPU Physical cores: 4, Host memory: 16527 MB
 #-----------------------------------------------------------
 source design_1_cmp_conv_wrapper_0_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1374.711 ; gain = 0.000
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1374.340 ; gain = 0.000
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.1/data/ip'.
-WARNING: [IP_Flow 19-4995] The host OS only allows 260 characters in a normal path. The IP cache path is more than 80 characters. If you experience issues with IP caching, please consider changing the IP cache to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. 
-Current IP cache path is c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.cache/ip 
 Command: synth_design -top design_1_cmp_conv_wrapper_0_0 -part xc7z020clg400-1 -incremental_mode off -mode out_of_context
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
@@ -24,13 +22,13 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg400-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 17720
+INFO: [Synth 8-7075] Helper process launched with PID 16840
 WARNING: [Synth 8-9501] generate block is allowed only inside loop and conditional generate in SystemVerilog mode [C:/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:4023]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1374.711 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1374.340 ; gain = 0.000
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'design_1_cmp_conv_wrapper_0_0' [c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_cmp_conv_wrapper_0_0/synth/design_1_cmp_conv_wrapper_0_0.vhd:72]
-INFO: [Synth 8-3491] module 'cmp_conv_wrapper' declared at 'C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/conv_v2/cmp_conv_wrapper.vhd:6' bound to instance 'U0' of component 'cmp_conv_wrapper' [c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_cmp_conv_wrapper_0_0/synth/design_1_cmp_conv_wrapper_0_0.vhd:105]
+INFO: [Synth 8-638] synthesizing module 'design_1_cmp_conv_wrapper_0_0' [c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_cmp_conv_wrapper_0_0/synth/design_1_cmp_conv_wrapper_0_0.vhd:72]
+INFO: [Synth 8-3491] module 'cmp_conv_wrapper' declared at 'C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/conv_v2/cmp_conv_wrapper.vhd:6' bound to instance 'U0' of component 'cmp_conv_wrapper' [c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_cmp_conv_wrapper_0_0/synth/design_1_cmp_conv_wrapper_0_0.vhd:105]
 INFO: [Synth 8-638] synthesizing module 'cmp_conv_wrapper' [C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/conv_v2/cmp_conv_wrapper.vhd:29]
 INFO: [Synth 8-638] synthesizing module 'cmp_pix_out_proc' [C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/conv_v2/cmp_pix_out_proc.vhd:29]
 INFO: [Synth 8-638] synthesizing module 'cmp_line_engine' [C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/conv_v2/cmp_line_engine.vhd:28]
@@ -57,7 +55,7 @@ INFO: [Synth 8-256] done synthesizing module 'cmp_wrapper_fl_to_std' (0#1) [C:/U
 INFO: [Synth 8-638] synthesizing module 'cmp_wrapper_std_to_fl' [C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/conv_v2/cmp_wrapper_std_to_fl.vhd:18]
 INFO: [Synth 8-256] done synthesizing module 'cmp_wrapper_std_to_fl' (0#1) [C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/conv_v2/cmp_wrapper_std_to_fl.vhd:18]
 INFO: [Synth 8-256] done synthesizing module 'cmp_conv_wrapper' (0#1) [C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/conv_v2/cmp_conv_wrapper.vhd:29]
-INFO: [Synth 8-256] done synthesizing module 'design_1_cmp_conv_wrapper_0_0' (0#1) [c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_cmp_conv_wrapper_0_0/synth/design_1_cmp_conv_wrapper_0_0.vhd:72]
+INFO: [Synth 8-256] done synthesizing module 'design_1_cmp_conv_wrapper_0_0' (0#1) [c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_cmp_conv_wrapper_0_0/synth/design_1_cmp_conv_wrapper_0_0.vhd:72]
 WARNING: [Synth 8-5856] 3D RAM out_buffer_reg  for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  out_buffer_reg 
 WARNING: [Synth 8-5856] 3D RAM builder_reg  for this pattern/configuration is not supported. This will most likely be implemented in registers
@@ -68,48 +66,48 @@ WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/S
 WARNING: [Synth 8-5856] 3D RAM tmp_krn_data_reg  for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-10225] Potential Runtime issue for 3D-RAM or RAM from Record/Structs for RAM  tmp_krn_data_reg 
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 1537.160 ; gain = 162.449
+Finished RTL Elaboration : Time (s): cpu = 00:00:39 ; elapsed = 00:00:41 . Memory (MB): peak = 1535.789 ; gain = 161.449
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 1537.160 ; gain = 162.449
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 1535.789 ; gain = 161.449
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 1537.160 ; gain = 162.449
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 1535.789 ; gain = 161.449
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.510 . Memory (MB): peak = 1537.160 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.686 . Memory (MB): peak = 1535.789 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1626.520 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1626.766 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.309 . Memory (MB): peak = 1628.047 ; gain = 1.527
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.244 . Memory (MB): peak = 1628.504 ; gain = 1.738
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:46 ; elapsed = 00:00:45 . Memory (MB): peak = 1628.047 ; gain = 253.336
+Finished Constraint Validation : Time (s): cpu = 00:01:05 ; elapsed = 00:01:05 . Memory (MB): peak = 1628.504 ; gain = 254.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:46 ; elapsed = 00:00:45 . Memory (MB): peak = 1628.047 ; gain = 253.336
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:05 ; elapsed = 00:01:05 . Memory (MB): peak = 1628.504 ; gain = 254.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:46 ; elapsed = 00:00:45 . Memory (MB): peak = 1628.047 ; gain = 253.336
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:05 ; elapsed = 00:01:05 . Memory (MB): peak = 1628.504 ; gain = 254.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:00 ; elapsed = 00:00:59 . Memory (MB): peak = 1628.047 ; gain = 253.336
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:22 ; elapsed = 00:01:23 . Memory (MB): peak = 1628.504 ; gain = 254.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -282,7 +280,7 @@ INFO: [Synth 8-3886] merging instance 'cmp_add_3_clk_inst/cnt_reg[4]' (FDRE) to 
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cmp_add_3_clk_inst/\cnt_reg[3] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (cmp_add_3_clk_inst/\cnt_reg[2] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:33 ; elapsed = 00:03:19 . Memory (MB): peak = 1628.047 ; gain = 253.336
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:03:06 ; elapsed = 00:03:59 . Memory (MB): peak = 1628.504 ; gain = 254.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -318,13 +316,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:45 ; elapsed = 00:03:30 . Memory (MB): peak = 1628.047 ; gain = 253.336
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:03:19 ; elapsed = 00:04:12 . Memory (MB): peak = 1628.504 ; gain = 254.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:45 ; elapsed = 00:03:30 . Memory (MB): peak = 1628.047 ; gain = 253.336
+Finished Timing Optimization : Time (s): cpu = 00:03:19 ; elapsed = 00:04:12 . Memory (MB): peak = 1628.504 ; gain = 254.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -346,7 +344,7 @@ Start Technology Mapping
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:57 ; elapsed = 00:03:43 . Memory (MB): peak = 1662.191 ; gain = 287.480
+Finished Technology Mapping : Time (s): cpu = 00:03:32 ; elapsed = 00:04:25 . Memory (MB): peak = 1655.910 ; gain = 281.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -364,37 +362,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:03:06 ; elapsed = 00:03:52 . Memory (MB): peak = 1671.277 ; gain = 296.566
+Finished IO Insertion : Time (s): cpu = 00:03:39 ; elapsed = 00:04:33 . Memory (MB): peak = 1664.008 ; gain = 289.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:03:06 ; elapsed = 00:03:52 . Memory (MB): peak = 1671.277 ; gain = 296.566
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:39 ; elapsed = 00:04:33 . Memory (MB): peak = 1664.008 ; gain = 289.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:10 ; elapsed = 00:03:56 . Memory (MB): peak = 1671.277 ; gain = 296.566
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:44 ; elapsed = 00:04:38 . Memory (MB): peak = 1664.008 ; gain = 289.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:03:11 ; elapsed = 00:03:57 . Memory (MB): peak = 1671.277 ; gain = 296.566
+Finished Renaming Generated Ports : Time (s): cpu = 00:03:45 ; elapsed = 00:04:39 . Memory (MB): peak = 1664.008 ; gain = 289.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:03:12 ; elapsed = 00:03:58 . Memory (MB): peak = 1671.277 ; gain = 296.566
+Finished Handling Custom Attributes : Time (s): cpu = 00:03:46 ; elapsed = 00:04:40 . Memory (MB): peak = 1664.008 ; gain = 289.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:03:12 ; elapsed = 00:03:58 . Memory (MB): peak = 1671.277 ; gain = 296.566
+Finished Renaming Generated Nets : Time (s): cpu = 00:03:46 ; elapsed = 00:04:40 . Memory (MB): peak = 1664.008 ; gain = 289.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -451,18 +449,18 @@ Report Cell Usage:
 |14    |FDSE     |     1|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:03:13 ; elapsed = 00:03:59 . Memory (MB): peak = 1671.277 ; gain = 296.566
+Finished Writing Synthesis Report : Time (s): cpu = 00:03:46 ; elapsed = 00:04:40 . Memory (MB): peak = 1664.008 ; gain = 289.668
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:02:35 ; elapsed = 00:03:52 . Memory (MB): peak = 1671.277 ; gain = 205.680
-Synthesis Optimization Complete : Time (s): cpu = 00:03:13 ; elapsed = 00:04:00 . Memory (MB): peak = 1671.277 ; gain = 296.566
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:53 ; elapsed = 00:04:30 . Memory (MB): peak = 1664.008 ; gain = 196.953
+Synthesis Optimization Complete : Time (s): cpu = 00:03:47 ; elapsed = 00:04:41 . Memory (MB): peak = 1664.008 ; gain = 289.668
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.745 . Memory (MB): peak = 1686.410 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.769 . Memory (MB): peak = 1680.719 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 3362 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 1694.652 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1696.641 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 14 instances were transformed.
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 10 instances
@@ -470,15 +468,18 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 
 Synth Design complete, checksum: aa00512b
 INFO: [Common 17-83] Releasing license: Synthesis
-127 Infos, 18 Warnings, 0 Critical Warnings and 0 Errors encountered.
+127 Infos, 17 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:03:28 ; elapsed = 00:04:25 . Memory (MB): peak = 1694.652 ; gain = 319.941
-INFO: [Common 17-1381] The checkpoint 'C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.runs/design_1_cmp_conv_wrapper_0_0_synth_1/design_1_cmp_conv_wrapper_0_0.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:08 ; elapsed = 00:00:05 . Memory (MB): peak = 1694.652 ; gain = 0.000
-write_vhdl: Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1694.652 ; gain = 0.000
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_cmp_conv_wrapper_0_0, cache-ID = 40f522509d7f0a6e
+synth_design: Time (s): cpu = 00:04:03 ; elapsed = 00:05:07 . Memory (MB): peak = 1696.641 ; gain = 322.301
+INFO: [Common 17-1381] The checkpoint 'C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.runs/design_1_cmp_conv_wrapper_0_0_synth_1/design_1_cmp_conv_wrapper_0_0.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 1696.641 ; gain = 0.000
+write_verilog: Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 1696.641 ; gain = 0.000
+write_vhdl: Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1696.641 ; gain = 0.000
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_cmp_conv_wrapper_0_0, cache-ID = 46f7cee6be295fee
 INFO: [Coretcl 2-1174] Renamed 12 cell refs.
-INFO: [Common 17-1381] The checkpoint 'C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.runs/design_1_cmp_conv_wrapper_0_0_synth_1/design_1_cmp_conv_wrapper_0_0.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.runs/design_1_cmp_conv_wrapper_0_0_synth_1/design_1_cmp_conv_wrapper_0_0.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 1696.641 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file design_1_cmp_conv_wrapper_0_0_utilization_synth.rpt -pb design_1_cmp_conv_wrapper_0_0_utilization_synth.pb
-write_vhdl: Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1694.652 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Mon Jul 18 13:53:39 2022...
+write_verilog: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1696.641 ; gain = 0.000
+write_vhdl: Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1696.641 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Tue Jul 19 14:26:17 2022...

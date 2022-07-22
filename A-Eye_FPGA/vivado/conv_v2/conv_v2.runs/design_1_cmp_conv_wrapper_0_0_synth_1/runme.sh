@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.runs/design_1_cmp_conv_wrapper_0_0_synth_1'
+HD_PWD='C:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado/conv_v2/conv_v2.runs/design_1_cmp_conv_wrapper_0_0_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

@@ -1,10 +1,10 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-// Date        : Mon Jul 18 13:53:13 2022
+// Date        : Mon Jul 18 13:53:06 2022
 // Host        : L-C5H16J3 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               c:/Users/rolland/Documents/GIT/A-Eye/A-Eye_FPGA/vivado_project/conv_v2/conv_v2.gen/sources_1/bd/design_1/ip/design_1_axi_smc_1/design_1_axi_smc_1_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top design_1_axi_smc_1 -prefix
+//               design_1_axi_smc_1_ design_1_axi_smc_1_stub.v
 // Design      : design_1_axi_smc_1
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg400-1

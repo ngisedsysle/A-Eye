@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date         : Mon Jul 18 13:54:43 2022
+| Date         : Wed Jul 20 09:35:54 2022
 | Host         : L-C5H16J3 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
 | Design       : design_1_wrapper
@@ -179,6 +179,9 @@ Table of Contents
 | design_1_smartconnect_0_0       |    1 |
 | design_1_rst_ps7_0_50M_1        |    1 |
 | design_1_processing_system7_0_2 |    1 |
+| design_1_ila_0_3                |    1 |
+| design_1_ila_0_2                |    1 |
+| design_1_ila_0_0                |    1 |
 | design_1_cmp_conv_wrapper_0_0   |    1 |
 | design_1_axi_smc_1              |    1 |
 | design_1_axi_mm2s_mapper_2_1    |    1 |

@@ -101,7 +101,7 @@ namespace SpecFlowProject1.Features
             {
                 this.ScenarioStart();
 #line 4
-        testRunner.Given("the ip is \"192.168.1.38\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.Given("the ip is \"192.168.1.41\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 5
         testRunner.When("I click on \"set ip\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

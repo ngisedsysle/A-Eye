@@ -7,7 +7,7 @@ namespace SpecFlowProject1.StepDefinitions
     [Binding]
     public class InteractionStepDefinitions
     {
-       
+        int timeout_sec = 10;
 
 
         [Given(@"the app is connected")]
@@ -39,9 +39,18 @@ namespace SpecFlowProject1.StepDefinitions
 
         private bool logContainStr(string subStr)
         {
-            string log = AEye.Program.log.ToLower();
-            Console.WriteLine(log);
-            return log.Contains(subStr.ToLower());
+            DateTime start = DateTime.Now;
+            do
+            {
+                Thread.Sleep(100);
+                string log = AEye.Program.log.ToLower();
+                if (log.Contains(subStr.ToLower()))
+                {
+                    return true;
+                }
+            } while (DateTime.Now.Subtract(start).TotalSeconds < timeout_sec);
+            Console.WriteLine(AEye.Program.log.ToLower());
+            return false;
         }
 
 

@@ -86,7 +86,7 @@ namespace AEye
                 client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
                 string clientId = Guid.NewGuid().ToString();
                 client.Connect(clientId);
-                client.Subscribe(new string[] { "A-Eye/toCS" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE});
+                client.Subscribe(new string[] { "A-Eye/toCS" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE});
                 return;
             }
             else

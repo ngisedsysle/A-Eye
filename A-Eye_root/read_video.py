@@ -1,44 +1,45 @@
-from http import client
 import ffmpeg
-import sys
 import numpy as np
 from PIL import Image
 from matplotlib import pyplot as plt
 import paho.mqtt.client as mqtt
 import time
+from threading import Thread
+import tkinter as tk
+from tkVideoPlayer import TkinterVideo
+import vlc
+
+media = vlc.MediaPlayer()
+mini_media = vlc.Media("../../../gstudio_singapour.avi")
+media.set_media(mini_media)
+def time_loop() :
+    global media
+    length = media.get_length()/1000
+    if length == 0 :
+        length = 77
+    while(1) :
+        time.sleep(length)
+        media.set_time(0)
+def video_player() :
+    global media
+    media.play()
 
 def on_disconnect(client, userdata,rc=0):
     client.loop_stop()
 
-probe = ffmpeg.probe('../../../gstudio.avi')
-video_info = next(s for s in probe['streams'] if s['codec_type'] == 'video')
-width = int(video_info['width'])
-height = int(video_info['height'])
-num_frames = int(video_info['nb_frames'])
-
-out, err = (
-    ffmpeg
-    .input('../../../gstudio.avi')
-    .output('pipe:', format='rawvideo', pix_fmt='rgb24')
-    .run(quiet=True)
-)
+video_thread = Thread(target=video_player)
+video_thread.start()
+loop_thread = Thread(target=time_loop)
+loop_thread.start()
 init = time.time()
 
 def callback(client, userdata, message) :
     if ((message.payload.decode("utf-8")).__eq__("stop")) :
         client.disconnect()
     if ((message.payload.decode("utf-8")).__eq__("start")) :
-        global init
-        stop = time.time()
-        video = (
-            np
-            .frombuffer(out, np.uint8)
-            .reshape([-1, height, width, 3])
-        )
-        if (int((stop-init)*30) > num_frames) :
-            init = time.time()
-        im = Image.fromarray(video[int((stop-init)*30) ,:,:,:])
-        im.save("../../temp.bmp")
+        global media_player
+        media.video_take_snapshot(0, "../../temp.jpg", 0,0)
+        Image.open("../../temp.jpg").save("../../temp.bmp")
         client_send = mqtt.Client(client_id="videoCom", clean_session=True)
         client_send.connect('localhost', port=1883)
         client_send.publish('toIA', 'start')

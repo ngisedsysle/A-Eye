@@ -1,5 +1,4 @@
 from datetime import date, datetime, timedelta
-from time import time
 import arborescence
 import naming 
 import stockage

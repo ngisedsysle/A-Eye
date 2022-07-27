@@ -1,5 +1,5 @@
-# Stockage PC
-L'objectif de ce script python est d'enregistrer l'image proprement sur le disque dur. Notament vis à vis de l'arborescence et du nommage.  
+# Stockage PC  
+The idea of these scripts is to store picture in the good place on hard drive. Thus include tree and naming.  
 
-## Entrées  
-Les données qui pourront être présentes en entrée seront le nom et chemin de l'image, la date (précision à la seconde), et le type de prise (A ou M).  
+## Input  
+Datas from input are name, path, date (from seconds) and type (A for auto, M for manual).  

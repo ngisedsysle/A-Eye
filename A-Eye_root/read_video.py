@@ -42,6 +42,8 @@ def callback(client, userdata, message) :
     client_send.publish('toIA', 'start')
     client_send.disconnect()
 
+media.video_take_snapshot(0, "../../temp.jpg", 0,0)
+Image.open("../../temp.jpg").save("../../temp.bmp")
 client_mqtt = mqtt.Client(client_id="videoClient", clean_session=True)
 client_mqtt.on_message = callback
 client_mqtt.connect('localhost', port=1883)

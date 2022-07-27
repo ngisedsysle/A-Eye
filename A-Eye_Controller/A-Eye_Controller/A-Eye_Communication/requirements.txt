@@ -1,0 +1,2 @@
+deepdiff==5.8.1
+paho_mqtt==1.6.1

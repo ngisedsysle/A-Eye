@@ -365,17 +365,24 @@ namespace AEye
         {
             if (auto_cb.Checked)
             {
-                if (dispSecond)
+                try
                 {
-                    dispSecond = false;
-                    File.Copy("temp.bmp", "disp2.bmp", true);
-                    visionneuse.Load("disp2.bmp");
+                    if (dispSecond)
+                    {
+                        dispSecond = false;
+                        File.Copy("temp.bmp", "disp2.bmp", true);
+                        visionneuse.Load("disp2.bmp");
+                    }
+                    else
+                    {
+                        dispSecond = true;
+                        File.Copy("temp.bmp", "disp1.bmp", true);
+                        visionneuse.Load("disp1.bmp");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    dispSecond = true;
-                    File.Copy("temp.bmp", "disp1.bmp", true);
-                    visionneuse.Load("disp1.bmp");
+                    Program.log += "Exception in Refresh_img : " + ex.Message + "\n";
                 }
             }
         }

@@ -48,7 +48,6 @@ client_mqtt = mqtt.Client(client_id="videoClient", clean_session=True)
 client_mqtt.on_message = callback
 client_mqtt.connect('localhost', port=1883)
 client_mqtt.subscribe('A-Eye/videoCom', 0)
-client_mqtt.publish('toIA', 'start')
 client_mqtt.loop_forever()
 
 

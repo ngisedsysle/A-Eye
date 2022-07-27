@@ -77,7 +77,7 @@ char *interpreteur(mainStruct *main_s)
                     system("bash ../../livePict.sh");
                     break;
                 case 2 : 
-                    system("bash ../../demo_video.sh");
+                    system("bash ../../comVideo.sh");
                     break;
                 }
             }

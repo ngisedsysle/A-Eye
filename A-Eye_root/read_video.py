@@ -32,13 +32,15 @@ def callback(client, userdata, message) :
     if ((message.payload.decode("utf-8")).__eq__("stop")) :
         client.disconnect()
     if ((message.payload.decode("utf-8")).__eq__("start")) :
-        global media_player
         media.video_take_snapshot(0, "../../temp.jpg", 0,0)
         Image.open("../../temp.jpg").save("../../temp.bmp")
-        client_send = mqtt.Client(client_id="videoCom", clean_session=True)
-        client_send.connect('localhost', port=1883)
-        client_send.publish('toIA', 'start')
-        client_send.disconnect()
+    if ((message.payload.decode("utf-8")).__eq__("manual")) :
+        media.video_take_snapshot(0, "../../temp.jpg", 0,0)
+        Image.open("../../temp.jpg").save("../../temp.bmp")
+    client_send = mqtt.Client(client_id="videoCom", clean_session=True)
+    client_send.connect('localhost', port=1883)
+    client_send.publish('toIA', 'start')
+    client_send.disconnect()
 
 media.video_take_snapshot(0, "../../temp.jpg", 0,0)
 Image.open("../../temp.jpg").save("../../temp.bmp")

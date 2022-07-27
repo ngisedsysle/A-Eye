@@ -101,6 +101,10 @@ char *interpreteur(mainStruct *main_s)
                 {
                     system("fswebcam -c ../../webcam.conf\n../../jpgtobmp.py\nrm ../../temp.jpeg");
                 }
+                if (LIVE_CAPT == 2)
+                {
+                    system("bash ../../manualCapt.sh");
+                }
                 main_s->img_s->length = IMG_LENGTH;
                 main_s->img_s->capture_f = true;
                 bufferMsg = "Capture";

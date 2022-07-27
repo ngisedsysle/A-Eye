@@ -16,7 +16,6 @@ import encodageTC
 import decodageTM
 import localCom
 import paho.mqtt.client as mqtt
-import os
 
 ## Supported protocol
 class Protocol(Enum):

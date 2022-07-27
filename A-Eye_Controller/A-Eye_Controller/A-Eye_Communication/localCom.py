@@ -1,4 +1,3 @@
-from asyncio.subprocess import PIPE, STDOUT
 import sys
 from time import sleep
 import paho.mqtt.client as mqtt

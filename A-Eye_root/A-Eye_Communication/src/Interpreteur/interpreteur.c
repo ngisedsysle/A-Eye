@@ -13,7 +13,7 @@
 
 #define IMG_LENGTH 921656
 #define COM_MODE 0
-#define LIVE_CAPT 1 // 1 for usb camera, 0 for dataset
+#define LIVE_CAPT 2 // 2 for live video, 1 for usb camera pictures, 0 for dataset, 
 
 char *capture()
 {
@@ -68,13 +68,17 @@ char *interpreteur(mainStruct *main_s)
         case 0:
             if (COM_MODE == 0)
             {
-                if (LIVE_CAPT == 1)
+                switch(LIVE_CAPT)
                 {
-                    system("bash ../../livePict.sh");
-                }
-                else
-                {
+                case 0 :
                     system("bash ../../demo_mqtt.sh");
+                    break;
+                case 1 :
+                    system("bash ../../livePict.sh");
+                    break;
+                case 2 : 
+                    system("bash ../../comVideo.sh");
+                    break;
                 }
             }
             else if (COM_MODE == 1)
@@ -96,6 +100,10 @@ char *interpreteur(mainStruct *main_s)
                 if (LIVE_CAPT == 1)
                 {
                     system("fswebcam -c ../../webcam.conf\n../../jpgtobmp.py\nrm ../../temp.jpeg");
+                }
+                if (LIVE_CAPT == 2)
+                {
+                    system("bash ../../manualCapt.sh");
                 }
                 main_s->img_s->length = IMG_LENGTH;
                 main_s->img_s->capture_f = true;

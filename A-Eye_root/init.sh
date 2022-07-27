@@ -1,4 +1,5 @@
 #!/bin/bash
+./demo_video.sh
 mkfifo IAtoINT
 cd A-Eye_Visor/
 mkdir -p build

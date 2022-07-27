@@ -20,7 +20,7 @@
 #include "Server/tcp_server.h"
 
 #define COM_MODE 0  // 0 for mqtt, 1 for fifo pipe
-#define LIVE_CAPT 1 // 1 for usb camera, 0 for dataset
+#define LIVE_CAPT 2 // 2 for video processing, 1 for usb camera, 0 for dataset
 
 extern "C"
 {
@@ -156,7 +156,6 @@ extern "C"
     void *thread_pred(void *arg)
     {
         int pred;
-
         while (1)
         {
             if ((main_s->fifo = open("../../IAtoINT", O_RDONLY)) == -1)
@@ -181,13 +180,17 @@ extern "C"
             {
                 if (COM_MODE == 0)
                 {
-                    if (LIVE_CAPT == 1)
+                    switch(LIVE_CAPT)
                     {
-                        system("bash ../../livePict.sh");
-                    }
-                    else
-                    {
-                        system("bash ../../demo_mqtt.sh");
+                        case 0 :
+                            system("bash ../../demo_mqtt.sh");
+                            break;
+                        case 1 :
+                            system("bash ../../livePict.sh");
+                            break;
+                        case 2 :
+                            system("bash ../../comVideo.sh");
+                            break;
                     }
                 }
                 else if (COM_MODE == 1)
@@ -337,13 +340,17 @@ extern "C++"
                 {
                     if (COM_MODE == 0)
                     {
-                        if (LIVE_CAPT == 1)
+                        switch(LIVE_CAPT)
                         {
-                            system("bash ../../livePict.sh");
-                        }
-                        else
-                        {
-                            system("bash ../../demo_mqtt.sh");
+                            case 0 :
+                                system("bash ../../demo_mqtt.sh");
+                                break;
+                            case 1 :
+                                system("bash ../../livePict.sh");
+                                break;
+                            case 2 :
+                                system("bash ../../comVideo.sh");
+                                break;
                         }
                     }
                     else if (COM_MODE == 1)

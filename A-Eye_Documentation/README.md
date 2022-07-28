@@ -2,12 +2,6 @@
 Documentation for A-Eye project    
 This folder is there to create UML documentation using plantUML.  
 
-## Tree Structure
-### A-Eye_root : Embedded code
-![A-Eye_arboresence](./out/plantuml/A-Eye_arboresence/arbo_zybo.png) 
-### A-Eye_Controller : Windows app
-![A-Eye_arboresence](./out/plantuml/A-Eye_arboresence/arbo_PC.png) 
-
 ## A-Eye_Visor
 ### Auto mode
 ![A-Eye_Visor](./out/plantuml/A-Eye_Visor/Sequence_mode_auto.png)  

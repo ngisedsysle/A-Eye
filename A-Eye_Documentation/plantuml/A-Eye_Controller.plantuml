@@ -1,46 +1,69 @@
 @startuml A-Eye_Controller_sequence_diagram
 actor user
-participant main 
+participant main
 participant controller
 participant visionneuse_thr
 participant stockage_thr as stockage
 participant config.json
 participant run_thr
-participant pipe_thr
+participant localCom_thr
 participant clientTCP_thr
 participant CommunicationModule
+participant brokerLocal
+participant decodeTM
+participant clientMQTT
+participant brokerKria
 
 user -> main : launch
 activate main
+group if JSON_USE
+    main -> config.json : reset
+end
 main -> run_thr : create
-main -> controller : 
-deactivate main 
+main -> controller : run
+deactivate main
 activate controller
-activate run_thr 
-run_thr -> pipe_thr : create
-activate pipe_thr
-run_thr -> clientTCP_thr : create
-activate clientTCP_thr
-note over clientTCP_thr : run client.py
-user -> controller : set config
-controller -> config.json : update
-config.json -> clientTCP_thr : pooling via encodeTC
-clientTCP_thr -> CommunicationModule : TC
-activate CommunicationModule
-CommunicationModule -> clientTCP_thr : TM
-deactivate CommunicationModule
-clientTCP_thr -> pipe_thr : decoded msg
-pipe_thr -> controller : string msg 
-pipe_thr -> stockage : wake
+activate run_thr
+run_thr -> localCom_thr : create
+activate localCom_thr
+group if JSON_USE
+    run_thr -> clientTCP_thr : create
+    activate clientTCP_thr
+    note over clientTCP_thr : run client.py
+    user -> controller : set config
+    controller -> config.json : update
+    config.json -> clientTCP_thr : pooling via encodeTC
+    clientTCP_thr -> CommunicationModule : TC
+    activate CommunicationModule
+    CommunicationModule -> clientTCP_thr : TM
+    deactivate CommunicationModule
+    clientTCP_thr -> localCom_thr : decoded msg
+end
+group else if MQTT_USE
+    localCom_thr -> clientMQTT : set callback
+    activate clientMQTT
+    user -> controller : set config
+    controller -> clientMQTT : build TC
+    clientMQTT -> brokerKria : send TC
+    brokerKria -> clientMQTT : callback TM
+    clientMQTT -> decodeTM : process TM
+    activate decodeTM
+    decodeTM -> brokerLocal : decoded msg
+    deactivate decodeTM
+    brokerLocal -> localCom_thr : callback msg
+end
+localCom_thr -> controller : string msg
+localCom_thr -> stockage : wake
 activate stockage
-pipe_thr -> visionneuse_thr : img
+localCom_thr -> visionneuse_thr : img
 activate visionneuse_thr
 visionneuse_thr -> controller : display
 deactivate visionneuse_thr
-deactivate stockage 
+deactivate stockage
 controller -> user : display, log, ...
+deactivate clientTCP_thr
 
-' deactivate controller 
-' deactivate clientTCP_thr 
-' deactivate pipe_thr 
+' deactivate controller
+' deactivate clientTCP_thr
+' deactivate localCom_thr
 @enduml

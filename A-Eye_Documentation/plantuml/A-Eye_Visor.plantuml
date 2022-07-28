@@ -6,23 +6,23 @@ skinparam SequenceMessageAlign reverseDirection
 actor user order 1
 
 box "ZYBO" #LightBlue
-    participant tcp_server_rcv as server_rcv order 4
-    participant tcp_server_send as server_send order 5
+    participant thr_server_rcv as server_rcv order 4
+    participant thr_server_send as server_send order 5
     participant interpreteur as int order 6
     participant demo.sh as script order 7
-    participant process_IA as ia order 8
+    participant process_AI as AI order 8
     participant preprocess as pr order 9
 end box
 
 box "station sol" #MistyRose
     participant ihm as ihm order 2
-    participant tcp_client as client order 3
+    participant client as client order 3
 end box
 
 activate server_rcv
 user -> ihm : Mode auto
 ihm -> client : TC mode auto
-client -> server_rcv : TCP frame
+client -> server_rcv : TC
 server_rcv -> int : struct update
 int -> server_send : ACK 
 activate server_send
@@ -32,18 +32,18 @@ client -> ihm : log
     group while auto
         int -> script : bash demo.sh
         activate script 
-        note over script #LightSalmon:  update temp.bmp \n with  random img \n from dataset
-        script -> ia : SIGUSR1
+        note over script #LightSalmon:  update temp.bmp \n (script dependant)
+        script -> AI : "start"\n (COM_MODE dependant)
         deactivate script
-        activate ia 
-        ia -> pr : preprocess()
+        activate AI 
+        AI -> pr : preprocess()
         activate pr 
         note over pr #LightSalmon : update temp.csv 
         ' pr -> pr : update temp.csv
-        pr -> ia
+        pr -> AI
         deactivate pr 
-        ia -> int : IAtoINT_pipe(prediction)
-        deactivate ia
+        AI -> int : prediction\n (COM_MODE dependant)
+        deactivate AI
         int -> server_send : process img_f
         group if (img_f == true)
             activate server_send
@@ -59,47 +59,47 @@ client -> ihm : log
 
 
 @startuml Sequence_IA
-participant IA_shipsnet as shipsnet
+participant AI
 participant demo_sh
 participant get_rand_img_py as rand
-participant BDD 
+participant img_generator 
 participant root_folder
 participant preprocess
 
-activate shipsnet 
-note over shipsnet : init_arch
-note over shipsnet : load_weights
-shipsnet -> shipsnet : wait for SIGUSR1
+activate AI 
+note over AI : init_arch
+note over AI : load_weights
+AI -> AI : wait for signal \n (COM_MODE dependant)
 activate demo_sh
 group while true
     group randomise img
         demo_sh -> rand : launch
         activate rand
-        rand -> BDD : get rand img
-        rand -> root_folder : put img.bmp
+        rand -> img_generator : get img
+        rand -> root_folder : put temp.bmp
         rand -> demo_sh : finish
         deactivate rand
     end
 
-    demo_sh -> shipsnet : send SIGUSR1
+    demo_sh -> AI : send signal \n (COM_MODE dependant)
     deactivate demo_sh
 
     group preprocess
-        shipsnet -> preprocess : preprocess bmp to csv
+        AI -> preprocess : preprocess
         activate preprocess
-        preprocess -> root_folder : get img.bmp
+        preprocess -> root_folder : get temp.bmp
         note over preprocess : resize, convert
-        preprocess -> root_folder : put img.csv
-        preprocess -> shipsnet : finish
+        preprocess -> root_folder : put temp.csv
+        preprocess -> AI : finish
         deactivate preprocess
     end
 
     group process
-        shipsnet -> root_folder : load img.csv
-        note over shipsnet : rescaling
-        note over shipsnet : process image
-        note over shipsnet : pipe writing predictions
+        AI -> root_folder : load temp.csv
+        note over AI : rescaling
+        note over AI : process image
+        note over AI : return prediction \n (COM_MODE dependant)
     end
 end
-deactivate shipsnet
+deactivate AI
 @enduml 

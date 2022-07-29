@@ -34,7 +34,7 @@ We can now instantiate two of them, one for image and one for kernel.
 Once we have the previous modules, able to compute 3 RGB pixels, we need to repeat three time the process to compute a 3x3 RGB pixels matrix, to output one monochrome pixel for one filter.  
 #### Output system  
 We have to get three floats, to add them, and output the result. This is done by this architecture :  
-![Output_pixel_arch](./diagrams/out/archi_v2/adder_3_clk.drawio.png)  
+![Output_pixel_arch](./diagrams/out/archi_v2/adder_3_clk.png)  
 This is composed by an adder on the data, and a control system based on a counter, maximize by 2.  
 #### Complete pixel output processing system  
 The system looks like this :   

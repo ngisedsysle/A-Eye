@@ -69,7 +69,8 @@ Comment : *data* can be set before *valid* is high. But it's only when *valid* i
 To improve data transfer, we choose to implement DMA. The system is described by the following diagram.  
 ![DMA_Architecture](./diagrams/out/archi_v2/DMA%20data%20transfert%20for%20convolution.png)  
   
-
+Let's do a little focus on the Fifo BRAM and the Conv IP. Because of the use of AXI Stream Fifo IP, the conversion to float32 must be after the fifo (because it works with std_logic_vector). The architecture is as follows :  
+![Conv Architecture with AXI stream Fifo IP](./diagrams/out/archi_v2/archi_conv_axi_fifo.png) 
 
 
 ## Documentations v1  

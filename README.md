@@ -1,39 +1,14 @@
+# A-Eye project, by Elsys DESIGN
 <!-- PROJECT LOGO -->
 <p align="center">
   <img src="./images/logo.png" />
 </p>
-<h3 align="center">A - EYE </h3>
 <p align="center">
 <em>An awesome project for embedded AI</em>
 </p>
 Developpers : Guilhem ROLLAND and Thomas DU BOISROUVRAY
 
 This repository contains the documented source code for this project.
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#use-case">Use case</a></li>
-        <li><a href="#application">Application</a></li>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#documentation">Usage</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -87,11 +62,6 @@ A convolution IP is developped using VHDL for hardware acceleration.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Generate documentation of the code
-
-To generate html webpages about source code documentation, we advise you to use [Doxygen](https://doxygen.nl/) and load in the doxywizard the doxyfile located in the root folder of the project. You will then find index.html in the generated folder "doc".
-
-
 ## Getting Started
 
 ### Prerequisites 
@@ -128,12 +98,10 @@ cd A_Eye/A_Eye_root/
 ./restart
 ```
 
-4. Once the embedded part is running, you can interract with using A-Eye_Controller. 
-  
-4.1. Using Visual Studio : You have to get Visual studio for c# (winforms, .net6). Then, run the .sln in A-Eye_Controller folder. 
-You can easily build the application and use it !
+4. Once the embedded part is running, you can interract with using A-Eye_Controller.  
+Using Visual Studio : You have to get Visual studio for c# (winforms, .net6). Then, run the .sln in A-Eye_Controller folder.  
+You can easily build the application and use it !  
 
-4.2. TODO Using the installer : Run the installer and launch the app !
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -151,11 +119,15 @@ Here you can find different usage case of our project.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Documentation
 
+
+## Documentation
+### Introduction 
 An important part of the project is to have a clear an complete documentation associated to the project.  
 You can find a lot of UML documentation in folder A-Eye_Documentation.  
-You can also generate Doyxgen documentation for all source code in the project by following the following steps :
+
+### On ubuntu
+You can also generate Doxygen documentation for all source code in the project by following these steps :
 
 ```bash
 sudo apt install doxygen
@@ -163,15 +135,48 @@ git clone https://github.com/GuilhemROLLAND/A-Eye.git
 cd A-Eye
 doxygen ./Doxyfile
 ```
-If you're using Windows, you can download the Doyxwizard or use the follwing commands in a WSL shell.
-You can then find the documentation in /doc
+
+### On windows
+To generate html webpages about source code documentation, we advise you to use [Doxygen](https://doxygen.nl/) and load in the doxywizard the doxyfile located in the root folder of the project. You will then find index.html in the generated folder "doc". Otherwise, you can run the above command from linux in a WSL invite.  
+
+<p align="right">(<a href="#top">back to top</a>)</p>  
+
+## Performances
+
+| Platform | AI Architecture | Software Architecture | Processing time (s) | Loading time (min) |
+| -------- | --------------- | --------------------- | ------------------- | ------------------ |
+| Zybo     | arch_1          | monothread            | 50                  | 10                 |
+| Kria     | arch_1          | monothread            | 35                  | 7                  |
+| Kria     | arch_1          | multithread           | 10                  | 3                  |
+| Kria     | arch_2          | multithread           | 3                   | 3                  |
+| Kria     | arch_3          | multithread           | 1.3                 | 3                  |
+
+### Architectures description
+- arch_1 : [\"57600\", \"C3:32:1\", \"P2\", \"C3:32:1\", \"P2\", \"C3:32:1\", \"P2\", \"C3:32:1\", \"P2\", \"32\", \"2\"] with 91 % accuracy  
+- arch_2 : [\"57600\", \"C3:8:1\", \"P2\", \"C3:16:1\", \"P2\", \"C3:32:1\", \"P2\", \"C3:32:1\", \"P2\", \"32\", \"2\"] with 89 % accuracy  
+- arch_3 : [\"57600\", \"C3:4:1\", \"P2\", \"C3:8:1\", \"P2\", \"C3:32:1\", \"P2\", \"C3:32:1\", \"P2\", \"32\", \"2\"] with 89 % accuracy  
+
+### Comments 
+Loading time : Time to load weights and biais from a json file.  
+Processing time : Time needed to process one RGB bmp picture of 640x480 pixels.  
+When multithreadings, we need all the CPU performance (400%) to achieve these times. Thus, in the demo using vlc video rendering, which consumes 150% of the performance, we can only achieve 2.5 seconds of processing time. Multithreading is used in loading parameters and in convolutionnal processing.  
+Server use less than 50% on peak.  
+
+<p align="right">(<a href="#top">back to top</a>)</p>  
+
 ## Contact
 
-Guilhem ROLLAND - guilhem.rolland@elsys-design.com  
-Embedded developper | [ELSYS DESIGN](https://www.elsys-design.com/fr/)
+Guilhem ROLLAND - guilhem.rolland@elsys-design.com   
+Embedded developper | [ELSYS DESIGN](https://www.elsys-design.com/fr/)  
 
-Thomas DU BOISROUVRAY - thomas.duboisrouvray@elsys-design.com  
-Embedded developper | [ELSYS DESIGN](https://www.elsys-design.com/fr/)
+Thomas DU BOISROUVRAY - thomas.duboisrouvray@elsys-design.com   
+Embedded developper | [ELSYS DESIGN](https://www.elsys-design.com/fr/)  
+
+Clément LEROY - clement.leroy@elsys-design.com  
+FPGA developper | [ELSYS DESIGN](https://www.elsys-design.com/fr/)  
+
+Noémie ROLLAND - noemie.rolland@elsys-design.com   
+FPGA developper | [ELSYS DESIGN](https://www.elsys-design.com/fr/)  
 
 Arnaud DANIEL - Lead tech | [ELSYS DESIGN](https://www.elsys-design.com/fr/)
 

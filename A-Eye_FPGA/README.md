@@ -5,7 +5,7 @@ Versions : Vivado 2022.1, Vitis 2022.1
 ## Introduction  
 The idea is here to accelerate in hardware the longest operation. Currently, the convolution take about 60 percent of the processing time. That's why we start by accelerating the convolution steps.  
 
-## Documentations v2 - Component  
+## Documentations v2 - Components  
 
 ### Multiadd  
 #### Principle  
@@ -65,7 +65,9 @@ It is based on three signals, when A want to send B some data :
 Comment : *data* can be set before *valid* is high. But it's only when *valid* is high that *data* has to be captured. 
 ![com_protocol_example](./diagrams/out/archi_v2/com_protocol_example.png)
   
-
+## DMA architecture  
+To improve data transfer, we choose to implement DMA. The system is described by the following diagram.  
+![DMA_Architecture](./diagrams/out/archi_v2/DMA%20data%20transfert%20for%20convolution.png)  
   
 
 

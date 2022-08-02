@@ -1,0 +1,40 @@
+@startuml Video_processing
+
+actor User
+box "GROUND STATION" #MistyRose
+participant IHM 
+participant Encoding
+participant Decoding
+participant ClientCs
+end box
+box "EMBEDDED" #LightBlue
+participant Server
+participant video
+participant AI
+end box
+
+activate video
+activate Server
+activate IHM
+activate ClientCs
+User -> IHM : Auto Mode
+IHM -> Encoding
+Encoding -> ClientCs : TC
+ClientCs -> Server : TC on "toServer"
+group while Auto Mode
+Server -> video : screenshot on "videoCom"
+note over video #LightSalmon:  Takes screenshot of video
+video -> AI : start on "toIA"
+activate AI
+note over AI #LightSalmon:  Process 1 image
+AI -> Server : prediction on "pred"
+deactivate AI
+group if (pred == 0)
+Server -> ClientCs : TM on "toClient"
+end
+end
+ClientCs -> Decoding : TM
+Decoding -> IHM 
+IHM -> User : Display boat image
+
+@endluml

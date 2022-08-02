@@ -21,7 +21,7 @@ The goal of the project was to build a system capable of sorting images with and
 <div style="text-align: justify">  
 
 The target for this system was a ZYNQ processor.
-Our system is divided between an embedded sytem on ZYBO board and an application on a computer.
+Our system is divided between an embedded sytem on a Zynq board and an application on a computer.
 </div>
 
 ### Application
@@ -43,7 +43,7 @@ Depending on the current mode, the application will show boat images (if you are
 
 #### Hardware
 
-This project was firstly developped for ZYNQ target, and then the system was migrated to a Kria SOM. We used the [ZYBO Z7](https://digilent.com/reference/programmable-logic/zybo-z7/start) board on petalinux for developpment. For the Kria, we are based on a [KV260](https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html).
+This project was firstly developped for ZYNQ target, and then the system was migrated to a Kria SOM. We used the [ZYBO Z7](https://digilent.com/reference/programmable-logic/zybo-z7/start) board on petalinux (DEPRECATED) for developpment. For the Kria, we are based on a [KV260](https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html).
 
 A convolution IP is developped using VHDL for hardware acceleration.
 
@@ -66,9 +66,9 @@ A convolution IP is developped using VHDL for hardware acceleration.
 
 ### Prerequisites 
 
-Before anything, you need to set up your board. This can be done by creating and flashing a petalinux, or on the Kria, by using the [Ubuntu](https://ubuntu.com/download/amd-xilinx) provided.
+Before anything, you need to set up your board. This can be done by creating and flashing a petalinux (DEPRECATED), or on the Kria, by using the [Ubuntu 20.04](https://ubuntu.com/download/amd-xilinx) provided.
 
-For petalinux, please refer to this [user guide](https://docs.xilinx.com/r/en-US/ug1144-petalinux-tools-reference-guide). Here are the most important commands :
+For petalinux (DEPRECATED), please refer to this [user guide](https://docs.xilinx.com/r/en-US/ug1144-petalinux-tools-reference-guide). Here are the most important commands :
 
 ```bash
 petalinux-create -t project --template zynq -n petaFromVivado # Create the workspace   
@@ -80,7 +80,7 @@ petalinux-package --boot --force --fsbl images/linux/zynq_fsbl.elf --fpga images
 ```
 
 Then, partitionned the SD card and copy the file as mentionned in the user guide above.   
-Once you have a fully functionnal petalinux on the board, you may run the installation.
+Once you have a fully functionnal OS on the board, you may run the installation.
 
 ### Install and run the A-Eye app
 

@@ -1,1 +1,1 @@
-& 'C:\Program Files\draw.io\draw.io.exe' -x '.\drawio\mqtt.drawio' -f png -o out/drawio
+& 'C:\Program Files\draw.io\draw.io.exe' -x --transparent '.\drawio\mqtt.drawio' -f png -o out/drawio

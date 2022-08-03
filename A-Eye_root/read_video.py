@@ -5,8 +5,7 @@ from threading import Thread
 import vlc
 
 media = vlc.MediaPlayer()
-mini_media = vlc.Media("../gstudio_singapour.avi")
-media.set_media(mini_media)
+
 def time_loop() :
     global media
     length = media.get_length()/1000
@@ -22,12 +21,6 @@ def video_player() :
 def on_disconnect(client, userdata,rc=0):
     client.loop_stop()
 
-video_thread = Thread(target=video_player)
-video_thread.start()
-loop_thread = Thread(target=time_loop)
-loop_thread.start()
-init = time.time()
-
 def callback(client, userdata, message) :
     if ((message.payload.decode("utf-8")).__eq__("stop")) :
         client.disconnect()
@@ -41,6 +34,16 @@ def callback(client, userdata, message) :
     if ((message.payload.decode("utf-8")).__eq__("manual")) :
         media.video_take_snapshot(0, "./temp.jpg", 0,0)
         Image.open("./temp.jpg").save("./temp.bmp")
+
+
+# Start main
+mini_media = vlc.Media("../gstudio_singapour.avi")
+media.set_media(mini_media)
+
+video_thread = Thread(target=video_player)
+video_thread.start()
+loop_thread = Thread(target=time_loop)
+loop_thread.start()
 
 media.video_take_snapshot(0, "./temp.jpg", 0,0)
 Image.open("./temp.jpg").save("./temp.bmp")

@@ -5,7 +5,23 @@ Versions : Vivado 2022.1, Vitis 2022.1
 ## Introduction  
 The idea is here to accelerate in hardware the longest operation. Currently, the convolution take about 60 percent of the processing time. That's why we start by accelerating the convolution steps.  
 
-## Documentations v2 - Components  
+## Documentations v2-AXI4-S - Components  
+
+## Communication protocol : AXI4-Stream 
+To exchange data between two vhdl IP, we choose to use the AXI4-Stream protocol.  
+### Signals
+It is based on three signals, when A want to send B some data :  
+- *data* : from A to B : transport the data. In our system, this is mainly of type float32, or one of its subtypes. The data is transmitted to B only when valid AND ready are high.
+- *valid* : from A to B : tell B that the data is valid and can be taken on the next clock cycle. This is based on std_logic.
+- *ready* : from B to A : tell to A that B is ready to get data on the next clock cycle. 
+### Example
+- On reset, all signals are low.  
+- When B is ready to get data, it sets *ready* to high.
+- **For each clock cycle**, if *valid* is high and A see that *ready* is high too, A pushes *data* on output (B input).  
+- B must save as much data as there are cycle times where *valid* and *ready* are high.  
+
+Comment : *data* can be set before *valid* is high. But it's only when *valid* is high that *data* has to be captured. *valid* has to stay high until *ready* goes high, if not, the valid data will not be transmitted to B. 
+![AXI4-S protocol](./diagrams/out/archi_v2/AXI4-S.png)
 
 ### Multiadd  
 #### Principle  
@@ -28,6 +44,9 @@ Now, we used 44% of the LUTs.  We need one clock cycle to compute one line of 3 
 We have noticed that IO are limited on FPGA. That's why we choose to use axi stream protocol to receive and transmit datas. Thus, we use 32 IO to input float32 one by one (plus 2 IO for axi stream protocol), and we have to recompile the array inside the FPGA.  
 ![Reconst](./diagrams/out/archi_v2/reconst.png)  
 We can now instantiate two of them, one for image and one for kernel.  
+Here is a chronogram to explain what happen :
+![Reconst chronogram](./diagrams/out/archi_v2/reconst_chrono.png)  
+
 
 ### Pixel output processing  
 #### Principle  
@@ -36,6 +55,10 @@ Once we have the previous modules, able to compute 3 RGB pixels, we need to repe
 We have to get three floats, to add them, and output the result. This is done by this architecture :  
 ![Output_pixel_arch](./diagrams/out/archi_v2/adder_3_clk.png)  
 This is composed by an adder on the data, and a control system based on a counter, maximize by 2.  
+Here is a chronogram to explain what happen :
+![Add3clk chronogram](./diagrams/out/archi_v2/add3clk_chrono.png)  
+
+
 #### Complete pixel output processing system  
 The system looks like this :   
 ![conv_system](./diagrams/out/archi_v2/pix_out_proc.png)   
@@ -49,22 +72,7 @@ In this wrapper, we map one bit of std_logic_vector(31 downto 0) to one bit of f
 #### float32 to std_logic_vector  
 Here we do the reverse thing as above.   
 
-## Communication protocol, based on AXI stream principle. 
-To exchange data between two vhdl IP, we choose to use our own protocol.  
-### Signals
-It is based on three signals, when A want to send B some data :  
-- *data* : from A to B : transport the data. In our system, this is mainly of type float32, or one of its subtypes.
-- *valid* : from A to B : tell B that the data has to be taken on every cycle valid is high. This is based on std_logic.
-- *ready* : from B to A : tell to A that B is ready to get data on the next cycle. 
-### Example
-- On reset, all signals are low.  
-- When B is ready to get data, it sets *ready* to high for a number of clock cycles equals to the number of max data it can take.  
-- **For each clock cycle**, if A see that *ready* is high, A pushes data on *data* and set *valid* to high.  
-- B must save as much data as there are cycle times where *valid* is high.  
 
-Comment : *data* can be set before *valid* is high. But it's only when *valid* is high that *data* has to be captured. 
-![com_protocol_example](./diagrams/out/archi_v2/com_protocol_example.png)
-  
 ## DMA architecture  
 To improve data transfer, we choose to implement DMA. The system is described by the following diagram.  
 ![DMA_Architecture](./diagrams/out/archi_v2/DMA%20data%20transfert%20for%20convolution.png)  

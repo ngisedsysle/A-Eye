@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Mon Sep  5 13:48:18 2022
+# Process ID: 29056
+# Current directory: D:/A-Eye/A-Eye_FPGA/vivado/conv_v3/conv_v3.runs/axis_data_fifo_0_synth_1
+# Command line: vivado.exe -log axis_data_fifo_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source axis_data_fifo_0.tcl
+# Log file: D:/A-Eye/A-Eye_FPGA/vivado/conv_v3/conv_v3.runs/axis_data_fifo_0_synth_1/axis_data_fifo_0.vds
+# Journal file: D:/A-Eye/A-Eye_FPGA/vivado/conv_v3/conv_v3.runs/axis_data_fifo_0_synth_1\vivado.jou
+# Running On: D-GSYQB33, OS: Windows, CPU Frequency: 3000 MHz, CPU Physical cores: 8, Host memory: 16951 MB
+#-----------------------------------------------------------
+source axis_data_fifo_0.tcl -notrace

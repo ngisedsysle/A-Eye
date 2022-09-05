@@ -1,0 +1,1761 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Mon Sep  5 13:53:43 2022
+| Host         : D-GSYQB33 running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -max_paths 10 -report_unconstrained -file conv_wrapper_timing_summary_routed.rpt -pb conv_wrapper_timing_summary_routed.pb -rpx conv_wrapper_timing_summary_routed.rpx -warn_on_violation
+| Design       : conv_wrapper
+| Device       : 7z020-clg400
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+Rule       Severity          Description                  Violations  
+---------  ----------------  ---------------------------  ----------  
+TIMING-17  Critical Warning  Non-clocked sequential cell  914         
+DPIR-1     Warning           Asynchronous driver check    405         
+SYNTH-10   Warning           Wide multiplier              12          
+
+Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (914)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (2801)
+5. checking no_input_delay (68)
+6. checking no_output_delay (35)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (914)
+--------------------------
+ There are 914 register/latch pins with no clock driven by root clock pin: clk (HIGH)
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (2801)
+---------------------------------------------------
+ There are 2801 pins that are not constrained for maximum delay. (HIGH)
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (68)
+-------------------------------
+ There are 68 input ports with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (35)
+--------------------------------
+ There are 35 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+        inf        0.000                      0                 2839          inf        0.000                      0                 2839           NA           NA                      NA                    NA  
+
+
+All user specified timing constraints are met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| User Ignored Path Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)                                    
+
+
+------------------------------------------------------------------------------------------------
+| Unconstrained Path Table
+| ------------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)                                    
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  
+
+Max Delay             3 Endpoints
+Min Delay             3 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 rst_n
+                            (input port)
+  Destination:            res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        4.706ns  (logic 1.179ns (25.058%)  route 3.527ns (74.942%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    V13                                               0.000     0.000 f  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+    V13                  IBUF (Prop_ibuf_I_O)         1.055     1.055 f  rst_n_IBUF_inst/O
+                         net (fo=4, routed)           3.034     4.089    res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/s_aresetn
+    SLICE_X106Y47        LUT1 (Prop_lut1_I0_O)        0.124     4.213 r  res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst_i_1/O
+                         net (fo=1, routed)           0.492     4.706    res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/src_rst
+    SLICE_X107Y47        FDRE                                         r  res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 rst_n
+                            (input port)
+  Destination:            krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        3.523ns  (logic 1.179ns (33.467%)  route 2.344ns (66.533%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    V13                                               0.000     0.000 f  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+    V13                  IBUF (Prop_ibuf_I_O)         1.055     1.055 f  rst_n_IBUF_inst/O
+                         net (fo=4, routed)           2.344     3.399    krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/s_aresetn
+    SLICE_X111Y51        LUT1 (Prop_lut1_I0_O)        0.124     3.523 r  krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst_i_1/O
+                         net (fo=1, routed)           0.000     3.523    krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/src_rst
+    SLICE_X111Y51        FDRE                                         r  krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 rst_n
+                            (input port)
+  Destination:            img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        3.352ns  (logic 1.179ns (35.175%)  route 2.173ns (64.825%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    V13                                               0.000     0.000 f  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+    V13                  IBUF (Prop_ibuf_I_O)         1.055     1.055 f  rst_n_IBUF_inst/O
+                         net (fo=4, routed)           1.478     2.533    img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/s_aresetn
+    SLICE_X110Y84        LUT1 (Prop_lut1_I0_O)        0.124     2.657 r  img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst_i_1/O
+                         net (fo=1, routed)           0.695     3.352    img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/src_rst
+    SLICE_X110Y84        FDRE                                         r  img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 rst_n
+                            (input port)
+  Destination:            img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        1.144ns  (logic 0.328ns (28.675%)  route 0.816ns (71.325%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    V13                                               0.000     0.000 f  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+    V13                  IBUF (Prop_ibuf_I_O)         0.283     0.283 f  rst_n_IBUF_inst/O
+                         net (fo=4, routed)           0.587     0.870    img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/s_aresetn
+    SLICE_X110Y84        LUT1 (Prop_lut1_I0_O)        0.045     0.915 r  img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst_i_1/O
+                         net (fo=1, routed)           0.229     1.144    img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/src_rst
+    SLICE_X110Y84        FDRE                                         r  img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 rst_n
+                            (input port)
+  Destination:            krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        1.270ns  (logic 0.328ns (25.828%)  route 0.942ns (74.172%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    V13                                               0.000     0.000 f  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+    V13                  IBUF (Prop_ibuf_I_O)         0.283     0.283 f  rst_n_IBUF_inst/O
+                         net (fo=4, routed)           0.942     1.225    krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/s_aresetn
+    SLICE_X111Y51        LUT1 (Prop_lut1_I0_O)        0.045     1.270 r  krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst_i_1/O
+                         net (fo=1, routed)           0.000     1.270    krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/src_rst
+    SLICE_X111Y51        FDRE                                         r  krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 rst_n
+                            (input port)
+  Destination:            res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        1.694ns  (logic 0.328ns (19.372%)  route 1.366ns (80.628%))
+  Logic Levels:           2  (IBUF=1 LUT1=1)
+  Timing Exception:       False Path
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    V13                                               0.000     0.000 f  rst_n (IN)
+                         net (fo=0)                   0.000     0.000    rst_n
+    V13                  IBUF (Prop_ibuf_I_O)         0.283     0.283 f  rst_n_IBUF_inst/O
+                         net (fo=4, routed)           1.210     1.493    res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/s_aresetn
+    SLICE_X106Y47        LUT1 (Prop_lut1_I0_O)        0.045     1.538 r  res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst_i_1/O
+                         net (fo=1, routed)           0.155     1.694    res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/src_rst
+    SLICE_X107Y47        FDRE                                         r  res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  
+
+Max Delay          2836 Endpoints
+Min Delay          2836 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[2][2][5]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        37.836ns  (logic 10.903ns (28.817%)  route 26.933ns (71.183%))
+  Logic Levels:           42  (CARRY4=25 FDCE=1 LUT1=1 LUT2=1 LUT3=4 LUT4=4 LUT5=2 LUT6=4)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X96Y64         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+    SLICE_X96Y64         FDCE (Prop_fdce_C_Q)         0.518     0.518 f  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/Q
+                         net (fo=56, routed)          3.696     4.214    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[0]
+    SLICE_X83Y65         LUT1 (Prop_lut1_I0_O)        0.153     4.367 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287/O
+                         net (fo=1, routed)           0.479     4.846    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287_n_0
+    SLICE_X85Y65         CARRY4 (Prop_carry4_CYINIT_O[3])
+                                                      0.845     5.691 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170/O[3]
+                         net (fo=12, routed)          3.173     8.864    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170_n_4
+    SLICE_X90Y60         LUT3 (Prop_lut3_I0_O)        0.306     9.170 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_259/O
+                         net (fo=34, routed)          1.696    10.866    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[4]
+    SLICE_X86Y56         LUT6 (Prop_lut6_I5_O)        0.124    10.990 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252/O
+                         net (fo=20, routed)          1.296    12.286    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252_n_0
+    SLICE_X85Y57         LUT6 (Prop_lut6_I1_O)        0.124    12.410 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833/O
+                         net (fo=1, routed)           0.000    12.410    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833_n_0
+    SLICE_X85Y57         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    12.808 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755/CO[3]
+                         net (fo=1, routed)           0.000    12.808    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755_n_0
+    SLICE_X85Y58         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    12.922 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695/CO[3]
+                         net (fo=1, routed)           0.000    12.922    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695_n_0
+    SLICE_X85Y59         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.036 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602/CO[3]
+                         net (fo=1, routed)           0.000    13.036    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602_n_0
+    SLICE_X85Y60         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.150 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486/CO[3]
+                         net (fo=1, routed)           0.000    13.150    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486_n_0
+    SLICE_X85Y61         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    13.389 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_385/O[2]
+                         net (fo=2, routed)           0.955    14.344    pix_out_proc_inst_n_123
+    SLICE_X87Y61         LUT3 (Prop_lut3_I0_O)        0.330    14.674 r  builder[0][2][31]_i_272/O
+                         net (fo=2, routed)           0.897    15.571    builder[0][2][31]_i_272_n_0
+    SLICE_X87Y61         LUT4 (Prop_lut4_I3_O)        0.326    15.897 r  builder[0][2][31]_i_276/O
+                         net (fo=1, routed)           0.000    15.897    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_121_1[1]
+    SLICE_X87Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    16.447 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132/CO[3]
+                         net (fo=1, routed)           0.000    16.447    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132_n_0
+    SLICE_X87Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.561 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128/CO[3]
+                         net (fo=1, routed)           0.000    16.561    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128_n_0
+    SLICE_X87Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.675 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203/CO[3]
+                         net (fo=1, routed)           0.000    16.675    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203_n_0
+    SLICE_X87Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    16.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283/O[0]
+                         net (fo=2, routed)           1.315    18.211    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283_n_7
+    SLICE_X91Y65         LUT3 (Prop_lut3_I1_O)        0.327    18.538 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156/O
+                         net (fo=2, routed)           1.094    19.632    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156_n_0
+    SLICE_X91Y65         LUT4 (Prop_lut4_I3_O)        0.326    19.958 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160/O
+                         net (fo=1, routed)           0.000    19.958    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160_n_0
+    SLICE_X91Y65         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    20.508 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65/CO[3]
+                         net (fo=1, routed)           0.000    20.508    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65_n_0
+    SLICE_X91Y66         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.622 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63/CO[3]
+                         net (fo=1, routed)           0.000    20.622    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63_n_0
+    SLICE_X91Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.736 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66/CO[3]
+                         net (fo=1, routed)           0.000    20.736    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66_n_0
+    SLICE_X91Y68         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    21.049 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76/O[3]
+                         net (fo=6, routed)           1.802    22.851    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76_n_4
+    SLICE_X89Y70         LUT2 (Prop_lut2_I0_O)        0.306    23.157 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340/O
+                         net (fo=1, routed)           0.000    23.157    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340_n_0
+    SLICE_X89Y70         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    23.555 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210/CO[3]
+                         net (fo=1, routed)           0.000    23.555    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210_n_0
+    SLICE_X89Y71         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    23.794 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107/O[2]
+                         net (fo=3, routed)           0.800    24.595    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107_n_5
+    SLICE_X86Y71         LUT4 (Prop_lut4_I0_O)        0.302    24.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216/O
+                         net (fo=1, routed)           0.628    25.524    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216_n_0
+    SLICE_X84Y70         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385    25.909 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111/CO[3]
+                         net (fo=1, routed)           0.000    25.909    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111_n_0
+    SLICE_X84Y71         CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228    26.137 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46/CO[2]
+                         net (fo=1, routed)           0.449    26.586    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46_n_1
+    SLICE_X86Y72         LUT5 (Prop_lut5_I4_O)        0.313    26.899 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14/O
+                         net (fo=51, routed)          2.011    28.910    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14_n_0
+    SLICE_X92Y65         LUT3 (Prop_lut3_I1_O)        0.124    29.034 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91/O
+                         net (fo=1, routed)           0.379    29.413    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91_n_0
+    SLICE_X93Y66         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    29.993 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39/CO[3]
+                         net (fo=1, routed)           0.000    29.993    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39_n_0
+    SLICE_X93Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.107 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61/CO[3]
+                         net (fo=1, routed)           0.000    30.107    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61_n_0
+    SLICE_X93Y68         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.221 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60/CO[3]
+                         net (fo=1, routed)           0.000    30.221    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60_n_0
+    SLICE_X93Y69         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.335 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62/CO[3]
+                         net (fo=1, routed)           0.000    30.335    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62_n_0
+    SLICE_X93Y70         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.449 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75/CO[3]
+                         net (fo=1, routed)           0.000    30.449    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75_n_0
+    SLICE_X93Y71         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.563 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35/CO[3]
+                         net (fo=1, routed)           0.000    30.563    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35_n_0
+    SLICE_X93Y72         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    30.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_89/O[1]
+                         net (fo=1, routed)           0.648    31.545    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][0]2[26]
+    SLICE_X91Y72         LUT5 (Prop_lut5_I4_O)        0.303    31.848 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37/O
+                         net (fo=1, routed)           0.796    32.644    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37_n_0
+    SLICE_X91Y73         LUT4 (Prop_lut4_I0_O)        0.124    32.768 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10/O
+                         net (fo=1, routed)           0.574    33.342    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10_n_0
+    SLICE_X91Y72         LUT6 (Prop_lut6_I5_O)        0.124    33.466 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2/O
+                         net (fo=96, routed)          3.087    36.553    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2_n_0
+    SLICE_X100Y51        LUT6 (Prop_lut6_I2_O)        0.124    36.677 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[2][2][5]_i_1/O
+                         net (fo=2, routed)           1.159    37.836    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[2][2]_0[5]
+    SLICE_X95Y46         FDCE                                         r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[2][2][5]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[1][2][1]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        37.818ns  (logic 10.903ns (28.830%)  route 26.915ns (71.170%))
+  Logic Levels:           42  (CARRY4=25 FDCE=1 LUT1=1 LUT2=1 LUT3=4 LUT4=4 LUT5=2 LUT6=4)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X96Y64         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+    SLICE_X96Y64         FDCE (Prop_fdce_C_Q)         0.518     0.518 f  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/Q
+                         net (fo=56, routed)          3.696     4.214    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[0]
+    SLICE_X83Y65         LUT1 (Prop_lut1_I0_O)        0.153     4.367 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287/O
+                         net (fo=1, routed)           0.479     4.846    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287_n_0
+    SLICE_X85Y65         CARRY4 (Prop_carry4_CYINIT_O[3])
+                                                      0.845     5.691 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170/O[3]
+                         net (fo=12, routed)          3.173     8.864    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170_n_4
+    SLICE_X90Y60         LUT3 (Prop_lut3_I0_O)        0.306     9.170 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_259/O
+                         net (fo=34, routed)          1.696    10.866    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[4]
+    SLICE_X86Y56         LUT6 (Prop_lut6_I5_O)        0.124    10.990 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252/O
+                         net (fo=20, routed)          1.296    12.286    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252_n_0
+    SLICE_X85Y57         LUT6 (Prop_lut6_I1_O)        0.124    12.410 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833/O
+                         net (fo=1, routed)           0.000    12.410    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833_n_0
+    SLICE_X85Y57         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    12.808 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755/CO[3]
+                         net (fo=1, routed)           0.000    12.808    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755_n_0
+    SLICE_X85Y58         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    12.922 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695/CO[3]
+                         net (fo=1, routed)           0.000    12.922    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695_n_0
+    SLICE_X85Y59         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.036 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602/CO[3]
+                         net (fo=1, routed)           0.000    13.036    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602_n_0
+    SLICE_X85Y60         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.150 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486/CO[3]
+                         net (fo=1, routed)           0.000    13.150    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486_n_0
+    SLICE_X85Y61         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    13.389 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_385/O[2]
+                         net (fo=2, routed)           0.955    14.344    pix_out_proc_inst_n_123
+    SLICE_X87Y61         LUT3 (Prop_lut3_I0_O)        0.330    14.674 r  builder[0][2][31]_i_272/O
+                         net (fo=2, routed)           0.897    15.571    builder[0][2][31]_i_272_n_0
+    SLICE_X87Y61         LUT4 (Prop_lut4_I3_O)        0.326    15.897 r  builder[0][2][31]_i_276/O
+                         net (fo=1, routed)           0.000    15.897    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_121_1[1]
+    SLICE_X87Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    16.447 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132/CO[3]
+                         net (fo=1, routed)           0.000    16.447    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132_n_0
+    SLICE_X87Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.561 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128/CO[3]
+                         net (fo=1, routed)           0.000    16.561    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128_n_0
+    SLICE_X87Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.675 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203/CO[3]
+                         net (fo=1, routed)           0.000    16.675    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203_n_0
+    SLICE_X87Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    16.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283/O[0]
+                         net (fo=2, routed)           1.315    18.211    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283_n_7
+    SLICE_X91Y65         LUT3 (Prop_lut3_I1_O)        0.327    18.538 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156/O
+                         net (fo=2, routed)           1.094    19.632    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156_n_0
+    SLICE_X91Y65         LUT4 (Prop_lut4_I3_O)        0.326    19.958 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160/O
+                         net (fo=1, routed)           0.000    19.958    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160_n_0
+    SLICE_X91Y65         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    20.508 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65/CO[3]
+                         net (fo=1, routed)           0.000    20.508    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65_n_0
+    SLICE_X91Y66         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.622 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63/CO[3]
+                         net (fo=1, routed)           0.000    20.622    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63_n_0
+    SLICE_X91Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.736 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66/CO[3]
+                         net (fo=1, routed)           0.000    20.736    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66_n_0
+    SLICE_X91Y68         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    21.049 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76/O[3]
+                         net (fo=6, routed)           1.802    22.851    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76_n_4
+    SLICE_X89Y70         LUT2 (Prop_lut2_I0_O)        0.306    23.157 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340/O
+                         net (fo=1, routed)           0.000    23.157    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340_n_0
+    SLICE_X89Y70         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    23.555 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210/CO[3]
+                         net (fo=1, routed)           0.000    23.555    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210_n_0
+    SLICE_X89Y71         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    23.794 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107/O[2]
+                         net (fo=3, routed)           0.800    24.595    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107_n_5
+    SLICE_X86Y71         LUT4 (Prop_lut4_I0_O)        0.302    24.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216/O
+                         net (fo=1, routed)           0.628    25.524    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216_n_0
+    SLICE_X84Y70         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385    25.909 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111/CO[3]
+                         net (fo=1, routed)           0.000    25.909    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111_n_0
+    SLICE_X84Y71         CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228    26.137 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46/CO[2]
+                         net (fo=1, routed)           0.449    26.586    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46_n_1
+    SLICE_X86Y72         LUT5 (Prop_lut5_I4_O)        0.313    26.899 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14/O
+                         net (fo=51, routed)          2.011    28.910    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14_n_0
+    SLICE_X92Y65         LUT3 (Prop_lut3_I1_O)        0.124    29.034 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91/O
+                         net (fo=1, routed)           0.379    29.413    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91_n_0
+    SLICE_X93Y66         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    29.993 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39/CO[3]
+                         net (fo=1, routed)           0.000    29.993    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39_n_0
+    SLICE_X93Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.107 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61/CO[3]
+                         net (fo=1, routed)           0.000    30.107    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61_n_0
+    SLICE_X93Y68         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.221 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60/CO[3]
+                         net (fo=1, routed)           0.000    30.221    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60_n_0
+    SLICE_X93Y69         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.335 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62/CO[3]
+                         net (fo=1, routed)           0.000    30.335    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62_n_0
+    SLICE_X93Y70         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.449 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75/CO[3]
+                         net (fo=1, routed)           0.000    30.449    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75_n_0
+    SLICE_X93Y71         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.563 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35/CO[3]
+                         net (fo=1, routed)           0.000    30.563    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35_n_0
+    SLICE_X93Y72         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    30.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_89/O[1]
+                         net (fo=1, routed)           0.648    31.545    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][0]2[26]
+    SLICE_X91Y72         LUT5 (Prop_lut5_I4_O)        0.303    31.848 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37/O
+                         net (fo=1, routed)           0.796    32.644    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37_n_0
+    SLICE_X91Y73         LUT4 (Prop_lut4_I0_O)        0.124    32.768 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10/O
+                         net (fo=1, routed)           0.574    33.342    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10_n_0
+    SLICE_X91Y72         LUT6 (Prop_lut6_I5_O)        0.124    33.466 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2/O
+                         net (fo=96, routed)          3.216    36.682    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2_n_0
+    SLICE_X99Y48         LUT6 (Prop_lut6_I2_O)        0.124    36.806 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[1][2][1]_i_1/O
+                         net (fo=2, routed)           1.012    37.818    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[1][2]_1[1]
+    SLICE_X101Y48        FDCE                                         r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[1][2][1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][1]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        37.796ns  (logic 10.903ns (28.847%)  route 26.893ns (71.153%))
+  Logic Levels:           42  (CARRY4=25 FDCE=1 LUT1=1 LUT2=1 LUT3=4 LUT4=4 LUT5=2 LUT6=4)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X96Y64         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+    SLICE_X96Y64         FDCE (Prop_fdce_C_Q)         0.518     0.518 f  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/Q
+                         net (fo=56, routed)          3.696     4.214    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[0]
+    SLICE_X83Y65         LUT1 (Prop_lut1_I0_O)        0.153     4.367 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287/O
+                         net (fo=1, routed)           0.479     4.846    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287_n_0
+    SLICE_X85Y65         CARRY4 (Prop_carry4_CYINIT_O[3])
+                                                      0.845     5.691 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170/O[3]
+                         net (fo=12, routed)          3.173     8.864    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170_n_4
+    SLICE_X90Y60         LUT3 (Prop_lut3_I0_O)        0.306     9.170 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_259/O
+                         net (fo=34, routed)          1.696    10.866    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[4]
+    SLICE_X86Y56         LUT6 (Prop_lut6_I5_O)        0.124    10.990 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252/O
+                         net (fo=20, routed)          1.296    12.286    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252_n_0
+    SLICE_X85Y57         LUT6 (Prop_lut6_I1_O)        0.124    12.410 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833/O
+                         net (fo=1, routed)           0.000    12.410    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833_n_0
+    SLICE_X85Y57         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    12.808 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755/CO[3]
+                         net (fo=1, routed)           0.000    12.808    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755_n_0
+    SLICE_X85Y58         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    12.922 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695/CO[3]
+                         net (fo=1, routed)           0.000    12.922    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695_n_0
+    SLICE_X85Y59         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.036 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602/CO[3]
+                         net (fo=1, routed)           0.000    13.036    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602_n_0
+    SLICE_X85Y60         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.150 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486/CO[3]
+                         net (fo=1, routed)           0.000    13.150    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486_n_0
+    SLICE_X85Y61         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    13.389 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_385/O[2]
+                         net (fo=2, routed)           0.955    14.344    pix_out_proc_inst_n_123
+    SLICE_X87Y61         LUT3 (Prop_lut3_I0_O)        0.330    14.674 r  builder[0][2][31]_i_272/O
+                         net (fo=2, routed)           0.897    15.571    builder[0][2][31]_i_272_n_0
+    SLICE_X87Y61         LUT4 (Prop_lut4_I3_O)        0.326    15.897 r  builder[0][2][31]_i_276/O
+                         net (fo=1, routed)           0.000    15.897    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_121_1[1]
+    SLICE_X87Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    16.447 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132/CO[3]
+                         net (fo=1, routed)           0.000    16.447    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132_n_0
+    SLICE_X87Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.561 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128/CO[3]
+                         net (fo=1, routed)           0.000    16.561    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128_n_0
+    SLICE_X87Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.675 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203/CO[3]
+                         net (fo=1, routed)           0.000    16.675    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203_n_0
+    SLICE_X87Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    16.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283/O[0]
+                         net (fo=2, routed)           1.315    18.211    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283_n_7
+    SLICE_X91Y65         LUT3 (Prop_lut3_I1_O)        0.327    18.538 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156/O
+                         net (fo=2, routed)           1.094    19.632    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156_n_0
+    SLICE_X91Y65         LUT4 (Prop_lut4_I3_O)        0.326    19.958 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160/O
+                         net (fo=1, routed)           0.000    19.958    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160_n_0
+    SLICE_X91Y65         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    20.508 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65/CO[3]
+                         net (fo=1, routed)           0.000    20.508    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65_n_0
+    SLICE_X91Y66         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.622 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63/CO[3]
+                         net (fo=1, routed)           0.000    20.622    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63_n_0
+    SLICE_X91Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.736 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66/CO[3]
+                         net (fo=1, routed)           0.000    20.736    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66_n_0
+    SLICE_X91Y68         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    21.049 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76/O[3]
+                         net (fo=6, routed)           1.802    22.851    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76_n_4
+    SLICE_X89Y70         LUT2 (Prop_lut2_I0_O)        0.306    23.157 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340/O
+                         net (fo=1, routed)           0.000    23.157    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340_n_0
+    SLICE_X89Y70         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    23.555 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210/CO[3]
+                         net (fo=1, routed)           0.000    23.555    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210_n_0
+    SLICE_X89Y71         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    23.794 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107/O[2]
+                         net (fo=3, routed)           0.800    24.595    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107_n_5
+    SLICE_X86Y71         LUT4 (Prop_lut4_I0_O)        0.302    24.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216/O
+                         net (fo=1, routed)           0.628    25.524    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216_n_0
+    SLICE_X84Y70         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385    25.909 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111/CO[3]
+                         net (fo=1, routed)           0.000    25.909    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111_n_0
+    SLICE_X84Y71         CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228    26.137 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46/CO[2]
+                         net (fo=1, routed)           0.449    26.586    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46_n_1
+    SLICE_X86Y72         LUT5 (Prop_lut5_I4_O)        0.313    26.899 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14/O
+                         net (fo=51, routed)          2.011    28.910    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14_n_0
+    SLICE_X92Y65         LUT3 (Prop_lut3_I1_O)        0.124    29.034 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91/O
+                         net (fo=1, routed)           0.379    29.413    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91_n_0
+    SLICE_X93Y66         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    29.993 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39/CO[3]
+                         net (fo=1, routed)           0.000    29.993    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39_n_0
+    SLICE_X93Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.107 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61/CO[3]
+                         net (fo=1, routed)           0.000    30.107    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61_n_0
+    SLICE_X93Y68         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.221 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60/CO[3]
+                         net (fo=1, routed)           0.000    30.221    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60_n_0
+    SLICE_X93Y69         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.335 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62/CO[3]
+                         net (fo=1, routed)           0.000    30.335    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62_n_0
+    SLICE_X93Y70         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.449 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75/CO[3]
+                         net (fo=1, routed)           0.000    30.449    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75_n_0
+    SLICE_X93Y71         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.563 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35/CO[3]
+                         net (fo=1, routed)           0.000    30.563    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35_n_0
+    SLICE_X93Y72         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    30.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_89/O[1]
+                         net (fo=1, routed)           0.648    31.545    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][0]2[26]
+    SLICE_X91Y72         LUT5 (Prop_lut5_I4_O)        0.303    31.848 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37/O
+                         net (fo=1, routed)           0.796    32.644    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37_n_0
+    SLICE_X91Y73         LUT4 (Prop_lut4_I0_O)        0.124    32.768 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10/O
+                         net (fo=1, routed)           0.574    33.342    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10_n_0
+    SLICE_X91Y72         LUT6 (Prop_lut6_I5_O)        0.124    33.466 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2/O
+                         net (fo=96, routed)          3.216    36.682    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2_n_0
+    SLICE_X99Y48         LUT6 (Prop_lut6_I2_O)        0.124    36.806 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[1][2][1]_i_1/O
+                         net (fo=2, routed)           0.990    37.796    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[1][2]_1[1]
+    SLICE_X100Y50        FDCE                                         r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][10]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        37.629ns  (logic 10.341ns (27.481%)  route 27.288ns (72.519%))
+  Logic Levels:           38  (CARRY4=22 FDCE=1 LUT1=1 LUT2=1 LUT3=4 LUT4=3 LUT5=2 LUT6=4)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X96Y64         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+    SLICE_X96Y64         FDCE (Prop_fdce_C_Q)         0.518     0.518 f  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/Q
+                         net (fo=56, routed)          3.696     4.214    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[0]
+    SLICE_X83Y65         LUT1 (Prop_lut1_I0_O)        0.153     4.367 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287/O
+                         net (fo=1, routed)           0.479     4.846    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287_n_0
+    SLICE_X85Y65         CARRY4 (Prop_carry4_CYINIT_O[3])
+                                                      0.845     5.691 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170/O[3]
+                         net (fo=12, routed)          3.173     8.864    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170_n_4
+    SLICE_X90Y60         LUT3 (Prop_lut3_I0_O)        0.306     9.170 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_259/O
+                         net (fo=34, routed)          1.696    10.866    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[4]
+    SLICE_X86Y56         LUT6 (Prop_lut6_I5_O)        0.124    10.990 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252/O
+                         net (fo=20, routed)          1.296    12.286    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252_n_0
+    SLICE_X85Y57         LUT6 (Prop_lut6_I1_O)        0.124    12.410 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833/O
+                         net (fo=1, routed)           0.000    12.410    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833_n_0
+    SLICE_X85Y57         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    12.808 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755/CO[3]
+                         net (fo=1, routed)           0.000    12.808    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755_n_0
+    SLICE_X85Y58         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    12.922 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695/CO[3]
+                         net (fo=1, routed)           0.000    12.922    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695_n_0
+    SLICE_X85Y59         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.036 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602/CO[3]
+                         net (fo=1, routed)           0.000    13.036    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602_n_0
+    SLICE_X85Y60         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.150 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486/CO[3]
+                         net (fo=1, routed)           0.000    13.150    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486_n_0
+    SLICE_X85Y61         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    13.389 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_385/O[2]
+                         net (fo=2, routed)           0.955    14.344    pix_out_proc_inst_n_123
+    SLICE_X87Y61         LUT3 (Prop_lut3_I0_O)        0.330    14.674 r  builder[0][2][31]_i_272/O
+                         net (fo=2, routed)           0.897    15.571    builder[0][2][31]_i_272_n_0
+    SLICE_X87Y61         LUT4 (Prop_lut4_I3_O)        0.326    15.897 r  builder[0][2][31]_i_276/O
+                         net (fo=1, routed)           0.000    15.897    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_121_1[1]
+    SLICE_X87Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    16.447 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132/CO[3]
+                         net (fo=1, routed)           0.000    16.447    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132_n_0
+    SLICE_X87Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.561 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128/CO[3]
+                         net (fo=1, routed)           0.000    16.561    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128_n_0
+    SLICE_X87Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.675 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203/CO[3]
+                         net (fo=1, routed)           0.000    16.675    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203_n_0
+    SLICE_X87Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    16.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283/O[0]
+                         net (fo=2, routed)           1.315    18.211    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283_n_7
+    SLICE_X91Y65         LUT3 (Prop_lut3_I1_O)        0.327    18.538 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156/O
+                         net (fo=2, routed)           1.094    19.632    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156_n_0
+    SLICE_X91Y65         LUT4 (Prop_lut4_I3_O)        0.326    19.958 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160/O
+                         net (fo=1, routed)           0.000    19.958    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160_n_0
+    SLICE_X91Y65         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    20.508 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65/CO[3]
+                         net (fo=1, routed)           0.000    20.508    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65_n_0
+    SLICE_X91Y66         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.622 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63/CO[3]
+                         net (fo=1, routed)           0.000    20.622    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63_n_0
+    SLICE_X91Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.736 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66/CO[3]
+                         net (fo=1, routed)           0.000    20.736    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66_n_0
+    SLICE_X91Y68         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    21.049 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76/O[3]
+                         net (fo=6, routed)           1.802    22.851    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76_n_4
+    SLICE_X89Y70         LUT2 (Prop_lut2_I0_O)        0.306    23.157 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340/O
+                         net (fo=1, routed)           0.000    23.157    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340_n_0
+    SLICE_X89Y70         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    23.555 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210/CO[3]
+                         net (fo=1, routed)           0.000    23.555    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210_n_0
+    SLICE_X89Y71         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    23.794 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107/O[2]
+                         net (fo=3, routed)           0.800    24.595    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107_n_5
+    SLICE_X86Y71         LUT4 (Prop_lut4_I0_O)        0.302    24.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216/O
+                         net (fo=1, routed)           0.628    25.524    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216_n_0
+    SLICE_X84Y70         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385    25.909 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111/CO[3]
+                         net (fo=1, routed)           0.000    25.909    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111_n_0
+    SLICE_X84Y71         CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228    26.137 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46/CO[2]
+                         net (fo=1, routed)           0.449    26.586    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46_n_1
+    SLICE_X86Y72         LUT5 (Prop_lut5_I4_O)        0.313    26.899 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14/O
+                         net (fo=51, routed)          2.011    28.910    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14_n_0
+    SLICE_X92Y65         LUT3 (Prop_lut3_I1_O)        0.124    29.034 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91/O
+                         net (fo=1, routed)           0.379    29.413    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91_n_0
+    SLICE_X93Y66         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    29.993 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39/CO[3]
+                         net (fo=1, routed)           0.000    29.993    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39_n_0
+    SLICE_X93Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.107 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61/CO[3]
+                         net (fo=1, routed)           0.000    30.107    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61_n_0
+    SLICE_X93Y68         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.221 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60/CO[3]
+                         net (fo=1, routed)           0.000    30.221    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60_n_0
+    SLICE_X93Y69         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    30.460 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62/O[2]
+                         net (fo=1, routed)           0.949    31.408    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][0]2[15]
+    SLICE_X94Y69         LUT5 (Prop_lut5_I1_O)        0.302    31.710 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_18/O
+                         net (fo=1, routed)           0.796    32.506    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_18_n_0
+    SLICE_X94Y68         LUT6 (Prop_lut6_I1_O)        0.124    32.630 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_4/O
+                         net (fo=96, routed)          3.924    36.554    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_4_n_0
+    SLICE_X100Y48        LUT6 (Prop_lut6_I4_O)        0.124    36.678 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[1][2][10]_i_1/O
+                         net (fo=2, routed)           0.951    37.629    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[1][2]_1[10]
+    SLICE_X101Y52        FDCE                                         r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][10]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[1][2][10]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        37.567ns  (logic 10.341ns (27.526%)  route 27.226ns (72.474%))
+  Logic Levels:           38  (CARRY4=22 FDCE=1 LUT1=1 LUT2=1 LUT3=4 LUT4=3 LUT5=2 LUT6=4)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X96Y64         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+    SLICE_X96Y64         FDCE (Prop_fdce_C_Q)         0.518     0.518 f  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/Q
+                         net (fo=56, routed)          3.696     4.214    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[0]
+    SLICE_X83Y65         LUT1 (Prop_lut1_I0_O)        0.153     4.367 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287/O
+                         net (fo=1, routed)           0.479     4.846    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287_n_0
+    SLICE_X85Y65         CARRY4 (Prop_carry4_CYINIT_O[3])
+                                                      0.845     5.691 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170/O[3]
+                         net (fo=12, routed)          3.173     8.864    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170_n_4
+    SLICE_X90Y60         LUT3 (Prop_lut3_I0_O)        0.306     9.170 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_259/O
+                         net (fo=34, routed)          1.696    10.866    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[4]
+    SLICE_X86Y56         LUT6 (Prop_lut6_I5_O)        0.124    10.990 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252/O
+                         net (fo=20, routed)          1.296    12.286    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252_n_0
+    SLICE_X85Y57         LUT6 (Prop_lut6_I1_O)        0.124    12.410 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833/O
+                         net (fo=1, routed)           0.000    12.410    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833_n_0
+    SLICE_X85Y57         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    12.808 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755/CO[3]
+                         net (fo=1, routed)           0.000    12.808    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755_n_0
+    SLICE_X85Y58         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    12.922 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695/CO[3]
+                         net (fo=1, routed)           0.000    12.922    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695_n_0
+    SLICE_X85Y59         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.036 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602/CO[3]
+                         net (fo=1, routed)           0.000    13.036    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602_n_0
+    SLICE_X85Y60         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.150 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486/CO[3]
+                         net (fo=1, routed)           0.000    13.150    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486_n_0
+    SLICE_X85Y61         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    13.389 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_385/O[2]
+                         net (fo=2, routed)           0.955    14.344    pix_out_proc_inst_n_123
+    SLICE_X87Y61         LUT3 (Prop_lut3_I0_O)        0.330    14.674 r  builder[0][2][31]_i_272/O
+                         net (fo=2, routed)           0.897    15.571    builder[0][2][31]_i_272_n_0
+    SLICE_X87Y61         LUT4 (Prop_lut4_I3_O)        0.326    15.897 r  builder[0][2][31]_i_276/O
+                         net (fo=1, routed)           0.000    15.897    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_121_1[1]
+    SLICE_X87Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    16.447 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132/CO[3]
+                         net (fo=1, routed)           0.000    16.447    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132_n_0
+    SLICE_X87Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.561 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128/CO[3]
+                         net (fo=1, routed)           0.000    16.561    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128_n_0
+    SLICE_X87Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.675 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203/CO[3]
+                         net (fo=1, routed)           0.000    16.675    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203_n_0
+    SLICE_X87Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    16.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283/O[0]
+                         net (fo=2, routed)           1.315    18.211    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283_n_7
+    SLICE_X91Y65         LUT3 (Prop_lut3_I1_O)        0.327    18.538 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156/O
+                         net (fo=2, routed)           1.094    19.632    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156_n_0
+    SLICE_X91Y65         LUT4 (Prop_lut4_I3_O)        0.326    19.958 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160/O
+                         net (fo=1, routed)           0.000    19.958    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160_n_0
+    SLICE_X91Y65         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    20.508 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65/CO[3]
+                         net (fo=1, routed)           0.000    20.508    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65_n_0
+    SLICE_X91Y66         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.622 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63/CO[3]
+                         net (fo=1, routed)           0.000    20.622    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63_n_0
+    SLICE_X91Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.736 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66/CO[3]
+                         net (fo=1, routed)           0.000    20.736    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66_n_0
+    SLICE_X91Y68         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    21.049 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76/O[3]
+                         net (fo=6, routed)           1.802    22.851    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76_n_4
+    SLICE_X89Y70         LUT2 (Prop_lut2_I0_O)        0.306    23.157 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340/O
+                         net (fo=1, routed)           0.000    23.157    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340_n_0
+    SLICE_X89Y70         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    23.555 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210/CO[3]
+                         net (fo=1, routed)           0.000    23.555    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210_n_0
+    SLICE_X89Y71         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    23.794 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107/O[2]
+                         net (fo=3, routed)           0.800    24.595    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107_n_5
+    SLICE_X86Y71         LUT4 (Prop_lut4_I0_O)        0.302    24.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216/O
+                         net (fo=1, routed)           0.628    25.524    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216_n_0
+    SLICE_X84Y70         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385    25.909 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111/CO[3]
+                         net (fo=1, routed)           0.000    25.909    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111_n_0
+    SLICE_X84Y71         CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228    26.137 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46/CO[2]
+                         net (fo=1, routed)           0.449    26.586    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46_n_1
+    SLICE_X86Y72         LUT5 (Prop_lut5_I4_O)        0.313    26.899 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14/O
+                         net (fo=51, routed)          2.011    28.910    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14_n_0
+    SLICE_X92Y65         LUT3 (Prop_lut3_I1_O)        0.124    29.034 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91/O
+                         net (fo=1, routed)           0.379    29.413    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91_n_0
+    SLICE_X93Y66         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    29.993 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39/CO[3]
+                         net (fo=1, routed)           0.000    29.993    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39_n_0
+    SLICE_X93Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.107 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61/CO[3]
+                         net (fo=1, routed)           0.000    30.107    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61_n_0
+    SLICE_X93Y68         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.221 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60/CO[3]
+                         net (fo=1, routed)           0.000    30.221    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60_n_0
+    SLICE_X93Y69         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    30.460 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62/O[2]
+                         net (fo=1, routed)           0.949    31.408    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][0]2[15]
+    SLICE_X94Y69         LUT5 (Prop_lut5_I1_O)        0.302    31.710 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_18/O
+                         net (fo=1, routed)           0.796    32.506    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_18_n_0
+    SLICE_X94Y68         LUT6 (Prop_lut6_I1_O)        0.124    32.630 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_4/O
+                         net (fo=96, routed)          3.924    36.554    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_4_n_0
+    SLICE_X100Y48        LUT6 (Prop_lut6_I4_O)        0.124    36.678 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[1][2][10]_i_1/O
+                         net (fo=2, routed)           0.889    37.567    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[1][2]_1[10]
+    SLICE_X101Y48        FDCE                                         r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[1][2][10]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[2][2][7]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        37.492ns  (logic 10.903ns (29.081%)  route 26.589ns (70.919%))
+  Logic Levels:           42  (CARRY4=25 FDCE=1 LUT1=1 LUT2=1 LUT3=4 LUT4=4 LUT5=2 LUT6=4)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X96Y64         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+    SLICE_X96Y64         FDCE (Prop_fdce_C_Q)         0.518     0.518 f  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/Q
+                         net (fo=56, routed)          3.696     4.214    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[0]
+    SLICE_X83Y65         LUT1 (Prop_lut1_I0_O)        0.153     4.367 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287/O
+                         net (fo=1, routed)           0.479     4.846    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287_n_0
+    SLICE_X85Y65         CARRY4 (Prop_carry4_CYINIT_O[3])
+                                                      0.845     5.691 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170/O[3]
+                         net (fo=12, routed)          3.173     8.864    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170_n_4
+    SLICE_X90Y60         LUT3 (Prop_lut3_I0_O)        0.306     9.170 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_259/O
+                         net (fo=34, routed)          1.696    10.866    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[4]
+    SLICE_X86Y56         LUT6 (Prop_lut6_I5_O)        0.124    10.990 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252/O
+                         net (fo=20, routed)          1.296    12.286    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252_n_0
+    SLICE_X85Y57         LUT6 (Prop_lut6_I1_O)        0.124    12.410 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833/O
+                         net (fo=1, routed)           0.000    12.410    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833_n_0
+    SLICE_X85Y57         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    12.808 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755/CO[3]
+                         net (fo=1, routed)           0.000    12.808    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755_n_0
+    SLICE_X85Y58         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    12.922 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695/CO[3]
+                         net (fo=1, routed)           0.000    12.922    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695_n_0
+    SLICE_X85Y59         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.036 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602/CO[3]
+                         net (fo=1, routed)           0.000    13.036    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602_n_0
+    SLICE_X85Y60         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.150 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486/CO[3]
+                         net (fo=1, routed)           0.000    13.150    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486_n_0
+    SLICE_X85Y61         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    13.389 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_385/O[2]
+                         net (fo=2, routed)           0.955    14.344    pix_out_proc_inst_n_123
+    SLICE_X87Y61         LUT3 (Prop_lut3_I0_O)        0.330    14.674 r  builder[0][2][31]_i_272/O
+                         net (fo=2, routed)           0.897    15.571    builder[0][2][31]_i_272_n_0
+    SLICE_X87Y61         LUT4 (Prop_lut4_I3_O)        0.326    15.897 r  builder[0][2][31]_i_276/O
+                         net (fo=1, routed)           0.000    15.897    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_121_1[1]
+    SLICE_X87Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    16.447 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132/CO[3]
+                         net (fo=1, routed)           0.000    16.447    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132_n_0
+    SLICE_X87Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.561 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128/CO[3]
+                         net (fo=1, routed)           0.000    16.561    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128_n_0
+    SLICE_X87Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.675 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203/CO[3]
+                         net (fo=1, routed)           0.000    16.675    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203_n_0
+    SLICE_X87Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    16.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283/O[0]
+                         net (fo=2, routed)           1.315    18.211    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283_n_7
+    SLICE_X91Y65         LUT3 (Prop_lut3_I1_O)        0.327    18.538 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156/O
+                         net (fo=2, routed)           1.094    19.632    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156_n_0
+    SLICE_X91Y65         LUT4 (Prop_lut4_I3_O)        0.326    19.958 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160/O
+                         net (fo=1, routed)           0.000    19.958    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160_n_0
+    SLICE_X91Y65         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    20.508 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65/CO[3]
+                         net (fo=1, routed)           0.000    20.508    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65_n_0
+    SLICE_X91Y66         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.622 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63/CO[3]
+                         net (fo=1, routed)           0.000    20.622    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63_n_0
+    SLICE_X91Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.736 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66/CO[3]
+                         net (fo=1, routed)           0.000    20.736    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66_n_0
+    SLICE_X91Y68         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    21.049 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76/O[3]
+                         net (fo=6, routed)           1.802    22.851    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76_n_4
+    SLICE_X89Y70         LUT2 (Prop_lut2_I0_O)        0.306    23.157 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340/O
+                         net (fo=1, routed)           0.000    23.157    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340_n_0
+    SLICE_X89Y70         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    23.555 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210/CO[3]
+                         net (fo=1, routed)           0.000    23.555    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210_n_0
+    SLICE_X89Y71         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    23.794 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107/O[2]
+                         net (fo=3, routed)           0.800    24.595    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107_n_5
+    SLICE_X86Y71         LUT4 (Prop_lut4_I0_O)        0.302    24.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216/O
+                         net (fo=1, routed)           0.628    25.524    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216_n_0
+    SLICE_X84Y70         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385    25.909 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111/CO[3]
+                         net (fo=1, routed)           0.000    25.909    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111_n_0
+    SLICE_X84Y71         CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228    26.137 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46/CO[2]
+                         net (fo=1, routed)           0.449    26.586    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46_n_1
+    SLICE_X86Y72         LUT5 (Prop_lut5_I4_O)        0.313    26.899 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14/O
+                         net (fo=51, routed)          2.011    28.910    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14_n_0
+    SLICE_X92Y65         LUT3 (Prop_lut3_I1_O)        0.124    29.034 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91/O
+                         net (fo=1, routed)           0.379    29.413    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91_n_0
+    SLICE_X93Y66         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    29.993 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39/CO[3]
+                         net (fo=1, routed)           0.000    29.993    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39_n_0
+    SLICE_X93Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.107 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61/CO[3]
+                         net (fo=1, routed)           0.000    30.107    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61_n_0
+    SLICE_X93Y68         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.221 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60/CO[3]
+                         net (fo=1, routed)           0.000    30.221    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60_n_0
+    SLICE_X93Y69         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.335 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62/CO[3]
+                         net (fo=1, routed)           0.000    30.335    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62_n_0
+    SLICE_X93Y70         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.449 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75/CO[3]
+                         net (fo=1, routed)           0.000    30.449    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75_n_0
+    SLICE_X93Y71         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.563 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35/CO[3]
+                         net (fo=1, routed)           0.000    30.563    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35_n_0
+    SLICE_X93Y72         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    30.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_89/O[1]
+                         net (fo=1, routed)           0.648    31.545    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][0]2[26]
+    SLICE_X91Y72         LUT5 (Prop_lut5_I4_O)        0.303    31.848 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37/O
+                         net (fo=1, routed)           0.796    32.644    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37_n_0
+    SLICE_X91Y73         LUT4 (Prop_lut4_I0_O)        0.124    32.768 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10/O
+                         net (fo=1, routed)           0.574    33.342    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10_n_0
+    SLICE_X91Y72         LUT6 (Prop_lut6_I5_O)        0.124    33.466 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2/O
+                         net (fo=96, routed)          2.950    36.416    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2_n_0
+    SLICE_X100Y46        LUT6 (Prop_lut6_I2_O)        0.124    36.540 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[2][2][7]_i_1/O
+                         net (fo=2, routed)           0.952    37.492    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[2][2]_0[7]
+    SLICE_X95Y46         FDCE                                         r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[2][2][7]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][5]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        37.485ns  (logic 10.903ns (29.086%)  route 26.582ns (70.914%))
+  Logic Levels:           42  (CARRY4=25 FDCE=1 LUT1=1 LUT2=1 LUT3=4 LUT4=4 LUT5=2 LUT6=4)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X96Y64         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+    SLICE_X96Y64         FDCE (Prop_fdce_C_Q)         0.518     0.518 f  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/Q
+                         net (fo=56, routed)          3.696     4.214    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[0]
+    SLICE_X83Y65         LUT1 (Prop_lut1_I0_O)        0.153     4.367 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287/O
+                         net (fo=1, routed)           0.479     4.846    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287_n_0
+    SLICE_X85Y65         CARRY4 (Prop_carry4_CYINIT_O[3])
+                                                      0.845     5.691 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170/O[3]
+                         net (fo=12, routed)          3.173     8.864    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170_n_4
+    SLICE_X90Y60         LUT3 (Prop_lut3_I0_O)        0.306     9.170 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_259/O
+                         net (fo=34, routed)          1.696    10.866    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[4]
+    SLICE_X86Y56         LUT6 (Prop_lut6_I5_O)        0.124    10.990 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252/O
+                         net (fo=20, routed)          1.296    12.286    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252_n_0
+    SLICE_X85Y57         LUT6 (Prop_lut6_I1_O)        0.124    12.410 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833/O
+                         net (fo=1, routed)           0.000    12.410    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833_n_0
+    SLICE_X85Y57         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    12.808 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755/CO[3]
+                         net (fo=1, routed)           0.000    12.808    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755_n_0
+    SLICE_X85Y58         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    12.922 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695/CO[3]
+                         net (fo=1, routed)           0.000    12.922    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695_n_0
+    SLICE_X85Y59         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.036 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602/CO[3]
+                         net (fo=1, routed)           0.000    13.036    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602_n_0
+    SLICE_X85Y60         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.150 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486/CO[3]
+                         net (fo=1, routed)           0.000    13.150    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486_n_0
+    SLICE_X85Y61         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    13.389 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_385/O[2]
+                         net (fo=2, routed)           0.955    14.344    pix_out_proc_inst_n_123
+    SLICE_X87Y61         LUT3 (Prop_lut3_I0_O)        0.330    14.674 r  builder[0][2][31]_i_272/O
+                         net (fo=2, routed)           0.897    15.571    builder[0][2][31]_i_272_n_0
+    SLICE_X87Y61         LUT4 (Prop_lut4_I3_O)        0.326    15.897 r  builder[0][2][31]_i_276/O
+                         net (fo=1, routed)           0.000    15.897    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_121_1[1]
+    SLICE_X87Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    16.447 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132/CO[3]
+                         net (fo=1, routed)           0.000    16.447    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132_n_0
+    SLICE_X87Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.561 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128/CO[3]
+                         net (fo=1, routed)           0.000    16.561    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128_n_0
+    SLICE_X87Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.675 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203/CO[3]
+                         net (fo=1, routed)           0.000    16.675    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203_n_0
+    SLICE_X87Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    16.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283/O[0]
+                         net (fo=2, routed)           1.315    18.211    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283_n_7
+    SLICE_X91Y65         LUT3 (Prop_lut3_I1_O)        0.327    18.538 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156/O
+                         net (fo=2, routed)           1.094    19.632    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156_n_0
+    SLICE_X91Y65         LUT4 (Prop_lut4_I3_O)        0.326    19.958 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160/O
+                         net (fo=1, routed)           0.000    19.958    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160_n_0
+    SLICE_X91Y65         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    20.508 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65/CO[3]
+                         net (fo=1, routed)           0.000    20.508    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65_n_0
+    SLICE_X91Y66         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.622 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63/CO[3]
+                         net (fo=1, routed)           0.000    20.622    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63_n_0
+    SLICE_X91Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.736 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66/CO[3]
+                         net (fo=1, routed)           0.000    20.736    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66_n_0
+    SLICE_X91Y68         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    21.049 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76/O[3]
+                         net (fo=6, routed)           1.802    22.851    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76_n_4
+    SLICE_X89Y70         LUT2 (Prop_lut2_I0_O)        0.306    23.157 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340/O
+                         net (fo=1, routed)           0.000    23.157    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340_n_0
+    SLICE_X89Y70         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    23.555 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210/CO[3]
+                         net (fo=1, routed)           0.000    23.555    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210_n_0
+    SLICE_X89Y71         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    23.794 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107/O[2]
+                         net (fo=3, routed)           0.800    24.595    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107_n_5
+    SLICE_X86Y71         LUT4 (Prop_lut4_I0_O)        0.302    24.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216/O
+                         net (fo=1, routed)           0.628    25.524    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216_n_0
+    SLICE_X84Y70         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385    25.909 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111/CO[3]
+                         net (fo=1, routed)           0.000    25.909    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111_n_0
+    SLICE_X84Y71         CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228    26.137 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46/CO[2]
+                         net (fo=1, routed)           0.449    26.586    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46_n_1
+    SLICE_X86Y72         LUT5 (Prop_lut5_I4_O)        0.313    26.899 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14/O
+                         net (fo=51, routed)          2.011    28.910    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14_n_0
+    SLICE_X92Y65         LUT3 (Prop_lut3_I1_O)        0.124    29.034 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91/O
+                         net (fo=1, routed)           0.379    29.413    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91_n_0
+    SLICE_X93Y66         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    29.993 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39/CO[3]
+                         net (fo=1, routed)           0.000    29.993    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39_n_0
+    SLICE_X93Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.107 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61/CO[3]
+                         net (fo=1, routed)           0.000    30.107    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61_n_0
+    SLICE_X93Y68         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.221 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60/CO[3]
+                         net (fo=1, routed)           0.000    30.221    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60_n_0
+    SLICE_X93Y69         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.335 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62/CO[3]
+                         net (fo=1, routed)           0.000    30.335    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62_n_0
+    SLICE_X93Y70         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.449 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75/CO[3]
+                         net (fo=1, routed)           0.000    30.449    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75_n_0
+    SLICE_X93Y71         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.563 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35/CO[3]
+                         net (fo=1, routed)           0.000    30.563    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35_n_0
+    SLICE_X93Y72         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    30.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_89/O[1]
+                         net (fo=1, routed)           0.648    31.545    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][0]2[26]
+    SLICE_X91Y72         LUT5 (Prop_lut5_I4_O)        0.303    31.848 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37/O
+                         net (fo=1, routed)           0.796    32.644    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37_n_0
+    SLICE_X91Y73         LUT4 (Prop_lut4_I0_O)        0.124    32.768 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10/O
+                         net (fo=1, routed)           0.574    33.342    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10_n_0
+    SLICE_X91Y72         LUT6 (Prop_lut6_I5_O)        0.124    33.466 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2/O
+                         net (fo=96, routed)          3.073    36.539    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2_n_0
+    SLICE_X100Y51        LUT6 (Prop_lut6_I2_O)        0.124    36.663 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[1][2][5]_i_1/O
+                         net (fo=2, routed)           0.822    37.485    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[1][2]_1[5]
+    SLICE_X101Y52        FDCE                                         r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][5]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_krn_inst/index_reg[2]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        37.439ns  (logic 11.080ns (29.595%)  route 26.359ns (70.405%))
+  Logic Levels:           40  (CARRY4=23 FDCE=1 LUT1=1 LUT2=1 LUT3=4 LUT4=3 LUT5=2 LUT6=5)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X99Y63         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/index_reg[2]/C
+    SLICE_X99Y63         FDCE (Prop_fdce_C_Q)         0.419     0.419 f  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/index_reg[2]/Q
+                         net (fo=49, routed)          2.734     3.153    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/index_reg_n_0_[2]
+    SLICE_X102Y65        LUT1 (Prop_lut1_I0_O)        0.299     3.452 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_290__0/O
+                         net (fo=1, routed)           0.000     3.452    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_290__0_n_0
+    SLICE_X102Y65        CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     3.985 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_170__0/CO[3]
+                         net (fo=1, routed)           0.000     3.985    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_170__0_n_0
+    SLICE_X102Y66        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     4.102 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_370__0/CO[3]
+                         net (fo=1, routed)           0.000     4.102    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_370__0_n_0
+    SLICE_X102Y67        CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315     4.417 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_368__0/O[3]
+                         net (fo=13, routed)          2.282     6.698    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_368__0_n_4
+    SLICE_X102Y57        LUT3 (Prop_lut3_I0_O)        0.331     7.029 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_452__0/O
+                         net (fo=20, routed)          1.380     8.410    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/p_0_in__0[12]
+    SLICE_X105Y66        LUT6 (Prop_lut6_I3_O)        0.328     8.738 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_407__0/O
+                         net (fo=16, routed)          1.842    10.580    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_407__0_n_0
+    SLICE_X108Y59        LUT6 (Prop_lut6_I1_O)        0.124    10.704 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_608__0/O
+                         net (fo=1, routed)           0.000    10.704    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_608__0_n_0
+    SLICE_X108Y59        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    11.217 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_486__0/CO[3]
+                         net (fo=1, routed)           0.000    11.217    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_486__0_n_0
+    SLICE_X108Y60        CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    11.540 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_385__0/O[1]
+                         net (fo=2, routed)           1.102    12.642    pix_out_proc_inst_n_302
+    SLICE_X107Y59        LUT3 (Prop_lut3_I0_O)        0.331    12.973 r  builder[0][2][31]_i_273__0/O
+                         net (fo=2, routed)           0.766    13.739    builder[0][2][31]_i_273__0_n_0
+    SLICE_X107Y60        LUT4 (Prop_lut4_I3_O)        0.332    14.071 r  builder[0][2][31]_i_277__0/O
+                         net (fo=1, routed)           0.000    14.071    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_121__0_1[0]
+    SLICE_X107Y60        CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.532    14.603 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_132__0/CO[3]
+                         net (fo=1, routed)           0.000    14.603    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_132__0_n_0
+    SLICE_X107Y61        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    14.717 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_128__0/CO[3]
+                         net (fo=1, routed)           0.000    14.717    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_128__0_n_0
+    SLICE_X107Y62        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    14.831 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_203__0/CO[3]
+                         net (fo=1, routed)           0.000    14.831    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_203__0_n_0
+    SLICE_X107Y63        CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    15.053 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_283__0/O[0]
+                         net (fo=2, routed)           0.949    16.002    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_283__0_n_7
+    SLICE_X111Y63        LUT3 (Prop_lut3_I1_O)        0.327    16.329 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_156__0/O
+                         net (fo=2, routed)           0.668    16.997    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_156__0_n_0
+    SLICE_X111Y63        LUT4 (Prop_lut4_I3_O)        0.326    17.323 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_160__0/O
+                         net (fo=1, routed)           0.000    17.323    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_160__0_n_0
+    SLICE_X111Y63        CARRY4 (Prop_carry4_S[1]_O[2])
+                                                      0.580    17.903 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_65__0/O[2]
+                         net (fo=6, routed)           1.980    19.883    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_65__0_n_5
+    SLICE_X112Y57        LUT2 (Prop_lut2_I1_O)        0.302    20.185 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_742__0/O
+                         net (fo=1, routed)           0.000    20.185    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_742__0_n_0
+    SLICE_X112Y57        CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    20.561 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_673__0/CO[3]
+                         net (fo=1, routed)           0.000    20.561    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_673__0_n_0
+    SLICE_X112Y58        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    20.678 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_578__0/CO[3]
+                         net (fo=1, routed)           0.000    20.678    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_578__0_n_0
+    SLICE_X112Y59        CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315    20.993 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_462__0/O[3]
+                         net (fo=3, routed)           1.818    22.811    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_462__0_n_4
+    SLICE_X108Y66        LUT4 (Prop_lut4_I0_O)        0.307    23.118 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_471__0/O
+                         net (fo=1, routed)           0.668    23.786    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_471__0_n_0
+    SLICE_X109Y63        CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.526    24.312 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_343__0/CO[3]
+                         net (fo=1, routed)           0.000    24.312    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_343__0_n_0
+    SLICE_X109Y64        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    24.426 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_215__0/CO[3]
+                         net (fo=1, routed)           0.000    24.426    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_215__0_n_0
+    SLICE_X109Y65        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    24.540 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_111__0/CO[3]
+                         net (fo=1, routed)           0.000    24.540    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_111__0_n_0
+    SLICE_X109Y66        CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228    24.768 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_46__0/CO[2]
+                         net (fo=1, routed)           0.667    25.434    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_46__0_n_1
+    SLICE_X108Y67        LUT5 (Prop_lut5_I4_O)        0.313    25.747 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_14__0/O
+                         net (fo=51, routed)          1.426    27.174    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_14__0_n_0
+    SLICE_X113Y58        LUT3 (Prop_lut3_I1_O)        0.124    27.298 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_91__0/O
+                         net (fo=1, routed)           0.860    28.158    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_91__0_n_0
+    SLICE_X112Y64        CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.595    28.753 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_39__0/CO[3]
+                         net (fo=1, routed)           0.000    28.753    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_39__0_n_0
+    SLICE_X112Y65        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.870 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_61__0/CO[3]
+                         net (fo=1, routed)           0.000    28.870    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_61__0_n_0
+    SLICE_X112Y66        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    28.987 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_60__0/CO[3]
+                         net (fo=1, routed)           0.000    28.987    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_60__0_n_0
+    SLICE_X112Y67        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    29.104 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_62__0/CO[3]
+                         net (fo=1, routed)           0.000    29.104    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_62__0_n_0
+    SLICE_X112Y68        CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    29.221 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_75__0/CO[3]
+                         net (fo=1, routed)           0.000    29.221    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_75__0_n_0
+    SLICE_X112Y69        CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323    29.544 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]_i_35__0/O[1]
+                         net (fo=1, routed)           0.950    30.494    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][0]2[22]
+    SLICE_X113Y71        LUT5 (Prop_lut5_I0_O)        0.306    30.800 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_27__0/O
+                         net (fo=1, routed)           0.799    31.599    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_27__0_n_0
+    SLICE_X113Y70        LUT6 (Prop_lut6_I1_O)        0.124    31.723 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_7__0/O
+                         net (fo=1, routed)           0.709    32.432    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_7__0_n_0
+    SLICE_X111Y70        LUT6 (Prop_lut6_I2_O)        0.124    32.556 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_2__0/O
+                         net (fo=96, routed)          3.771    36.327    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_2__0_n_0
+    SLICE_X99Y62         LUT6 (Prop_lut6_I2_O)        0.124    36.451 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder[0][2][31]_i_1__0/O
+                         net (fo=2, routed)           0.988    37.439    pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2]_5[31]
+    SLICE_X101Y62        FDCE                                         r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/builder_reg[0][2][31]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][7]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        37.396ns  (logic 10.903ns (29.156%)  route 26.493ns (70.844%))
+  Logic Levels:           42  (CARRY4=25 FDCE=1 LUT1=1 LUT2=1 LUT3=4 LUT4=4 LUT5=2 LUT6=4)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X96Y64         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+    SLICE_X96Y64         FDCE (Prop_fdce_C_Q)         0.518     0.518 f  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/Q
+                         net (fo=56, routed)          3.696     4.214    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[0]
+    SLICE_X83Y65         LUT1 (Prop_lut1_I0_O)        0.153     4.367 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287/O
+                         net (fo=1, routed)           0.479     4.846    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287_n_0
+    SLICE_X85Y65         CARRY4 (Prop_carry4_CYINIT_O[3])
+                                                      0.845     5.691 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170/O[3]
+                         net (fo=12, routed)          3.173     8.864    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170_n_4
+    SLICE_X90Y60         LUT3 (Prop_lut3_I0_O)        0.306     9.170 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_259/O
+                         net (fo=34, routed)          1.696    10.866    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[4]
+    SLICE_X86Y56         LUT6 (Prop_lut6_I5_O)        0.124    10.990 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252/O
+                         net (fo=20, routed)          1.296    12.286    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252_n_0
+    SLICE_X85Y57         LUT6 (Prop_lut6_I1_O)        0.124    12.410 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833/O
+                         net (fo=1, routed)           0.000    12.410    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833_n_0
+    SLICE_X85Y57         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    12.808 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755/CO[3]
+                         net (fo=1, routed)           0.000    12.808    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755_n_0
+    SLICE_X85Y58         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    12.922 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695/CO[3]
+                         net (fo=1, routed)           0.000    12.922    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695_n_0
+    SLICE_X85Y59         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.036 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602/CO[3]
+                         net (fo=1, routed)           0.000    13.036    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602_n_0
+    SLICE_X85Y60         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.150 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486/CO[3]
+                         net (fo=1, routed)           0.000    13.150    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486_n_0
+    SLICE_X85Y61         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    13.389 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_385/O[2]
+                         net (fo=2, routed)           0.955    14.344    pix_out_proc_inst_n_123
+    SLICE_X87Y61         LUT3 (Prop_lut3_I0_O)        0.330    14.674 r  builder[0][2][31]_i_272/O
+                         net (fo=2, routed)           0.897    15.571    builder[0][2][31]_i_272_n_0
+    SLICE_X87Y61         LUT4 (Prop_lut4_I3_O)        0.326    15.897 r  builder[0][2][31]_i_276/O
+                         net (fo=1, routed)           0.000    15.897    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_121_1[1]
+    SLICE_X87Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    16.447 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132/CO[3]
+                         net (fo=1, routed)           0.000    16.447    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132_n_0
+    SLICE_X87Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.561 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128/CO[3]
+                         net (fo=1, routed)           0.000    16.561    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128_n_0
+    SLICE_X87Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.675 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203/CO[3]
+                         net (fo=1, routed)           0.000    16.675    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203_n_0
+    SLICE_X87Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    16.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283/O[0]
+                         net (fo=2, routed)           1.315    18.211    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283_n_7
+    SLICE_X91Y65         LUT3 (Prop_lut3_I1_O)        0.327    18.538 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156/O
+                         net (fo=2, routed)           1.094    19.632    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156_n_0
+    SLICE_X91Y65         LUT4 (Prop_lut4_I3_O)        0.326    19.958 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160/O
+                         net (fo=1, routed)           0.000    19.958    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160_n_0
+    SLICE_X91Y65         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    20.508 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65/CO[3]
+                         net (fo=1, routed)           0.000    20.508    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65_n_0
+    SLICE_X91Y66         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.622 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63/CO[3]
+                         net (fo=1, routed)           0.000    20.622    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63_n_0
+    SLICE_X91Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.736 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66/CO[3]
+                         net (fo=1, routed)           0.000    20.736    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66_n_0
+    SLICE_X91Y68         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    21.049 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76/O[3]
+                         net (fo=6, routed)           1.802    22.851    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76_n_4
+    SLICE_X89Y70         LUT2 (Prop_lut2_I0_O)        0.306    23.157 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340/O
+                         net (fo=1, routed)           0.000    23.157    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340_n_0
+    SLICE_X89Y70         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    23.555 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210/CO[3]
+                         net (fo=1, routed)           0.000    23.555    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210_n_0
+    SLICE_X89Y71         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    23.794 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107/O[2]
+                         net (fo=3, routed)           0.800    24.595    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107_n_5
+    SLICE_X86Y71         LUT4 (Prop_lut4_I0_O)        0.302    24.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216/O
+                         net (fo=1, routed)           0.628    25.524    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216_n_0
+    SLICE_X84Y70         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385    25.909 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111/CO[3]
+                         net (fo=1, routed)           0.000    25.909    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111_n_0
+    SLICE_X84Y71         CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228    26.137 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46/CO[2]
+                         net (fo=1, routed)           0.449    26.586    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46_n_1
+    SLICE_X86Y72         LUT5 (Prop_lut5_I4_O)        0.313    26.899 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14/O
+                         net (fo=51, routed)          2.011    28.910    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14_n_0
+    SLICE_X92Y65         LUT3 (Prop_lut3_I1_O)        0.124    29.034 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91/O
+                         net (fo=1, routed)           0.379    29.413    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91_n_0
+    SLICE_X93Y66         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    29.993 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39/CO[3]
+                         net (fo=1, routed)           0.000    29.993    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39_n_0
+    SLICE_X93Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.107 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61/CO[3]
+                         net (fo=1, routed)           0.000    30.107    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61_n_0
+    SLICE_X93Y68         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.221 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60/CO[3]
+                         net (fo=1, routed)           0.000    30.221    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60_n_0
+    SLICE_X93Y69         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.335 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62/CO[3]
+                         net (fo=1, routed)           0.000    30.335    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62_n_0
+    SLICE_X93Y70         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.449 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75/CO[3]
+                         net (fo=1, routed)           0.000    30.449    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75_n_0
+    SLICE_X93Y71         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.563 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35/CO[3]
+                         net (fo=1, routed)           0.000    30.563    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35_n_0
+    SLICE_X93Y72         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    30.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_89/O[1]
+                         net (fo=1, routed)           0.648    31.545    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][0]2[26]
+    SLICE_X91Y72         LUT5 (Prop_lut5_I4_O)        0.303    31.848 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37/O
+                         net (fo=1, routed)           0.796    32.644    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37_n_0
+    SLICE_X91Y73         LUT4 (Prop_lut4_I0_O)        0.124    32.768 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10/O
+                         net (fo=1, routed)           0.574    33.342    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10_n_0
+    SLICE_X91Y72         LUT6 (Prop_lut6_I5_O)        0.124    33.466 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2/O
+                         net (fo=96, routed)          3.218    36.684    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2_n_0
+    SLICE_X99Y48         LUT6 (Prop_lut6_I2_O)        0.124    36.808 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[1][2][7]_i_1/O
+                         net (fo=2, routed)           0.588    37.396    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[1][2]_1[7]
+    SLICE_X101Y49        FDCE                                         r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][7]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[1][2][5]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        37.331ns  (logic 10.903ns (29.206%)  route 26.428ns (70.794%))
+  Logic Levels:           42  (CARRY4=25 FDCE=1 LUT1=1 LUT2=1 LUT3=4 LUT4=4 LUT5=2 LUT6=4)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X96Y64         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/C
+    SLICE_X96Y64         FDCE (Prop_fdce_C_Q)         0.518     0.518 f  pix_out_proc_inst/line_engine_inst/reconst_img_inst/index_reg[0]/Q
+                         net (fo=56, routed)          3.696     4.214    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[0]
+    SLICE_X83Y65         LUT1 (Prop_lut1_I0_O)        0.153     4.367 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287/O
+                         net (fo=1, routed)           0.479     4.846    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_287_n_0
+    SLICE_X85Y65         CARRY4 (Prop_carry4_CYINIT_O[3])
+                                                      0.845     5.691 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170/O[3]
+                         net (fo=12, routed)          3.173     8.864    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_170_n_4
+    SLICE_X90Y60         LUT3 (Prop_lut3_I0_O)        0.306     9.170 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_259/O
+                         net (fo=34, routed)          1.696    10.866    pix_out_proc_inst/line_engine_inst/reconst_img_inst/p_0_in[4]
+    SLICE_X86Y56         LUT6 (Prop_lut6_I5_O)        0.124    10.990 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252/O
+                         net (fo=20, routed)          1.296    12.286    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_252_n_0
+    SLICE_X85Y57         LUT6 (Prop_lut6_I1_O)        0.124    12.410 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833/O
+                         net (fo=1, routed)           0.000    12.410    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_833_n_0
+    SLICE_X85Y57         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    12.808 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755/CO[3]
+                         net (fo=1, routed)           0.000    12.808    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_755_n_0
+    SLICE_X85Y58         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    12.922 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695/CO[3]
+                         net (fo=1, routed)           0.000    12.922    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_695_n_0
+    SLICE_X85Y59         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.036 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602/CO[3]
+                         net (fo=1, routed)           0.000    13.036    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_602_n_0
+    SLICE_X85Y60         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    13.150 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486/CO[3]
+                         net (fo=1, routed)           0.000    13.150    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_486_n_0
+    SLICE_X85Y61         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    13.389 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_385/O[2]
+                         net (fo=2, routed)           0.955    14.344    pix_out_proc_inst_n_123
+    SLICE_X87Y61         LUT3 (Prop_lut3_I0_O)        0.330    14.674 r  builder[0][2][31]_i_272/O
+                         net (fo=2, routed)           0.897    15.571    builder[0][2][31]_i_272_n_0
+    SLICE_X87Y61         LUT4 (Prop_lut4_I3_O)        0.326    15.897 r  builder[0][2][31]_i_276/O
+                         net (fo=1, routed)           0.000    15.897    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_121_1[1]
+    SLICE_X87Y61         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    16.447 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132/CO[3]
+                         net (fo=1, routed)           0.000    16.447    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_132_n_0
+    SLICE_X87Y62         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.561 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128/CO[3]
+                         net (fo=1, routed)           0.000    16.561    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_128_n_0
+    SLICE_X87Y63         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    16.675 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203/CO[3]
+                         net (fo=1, routed)           0.000    16.675    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_203_n_0
+    SLICE_X87Y64         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222    16.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283/O[0]
+                         net (fo=2, routed)           1.315    18.211    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_283_n_7
+    SLICE_X91Y65         LUT3 (Prop_lut3_I1_O)        0.327    18.538 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156/O
+                         net (fo=2, routed)           1.094    19.632    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_156_n_0
+    SLICE_X91Y65         LUT4 (Prop_lut4_I3_O)        0.326    19.958 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160/O
+                         net (fo=1, routed)           0.000    19.958    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_160_n_0
+    SLICE_X91Y65         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550    20.508 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65/CO[3]
+                         net (fo=1, routed)           0.000    20.508    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_65_n_0
+    SLICE_X91Y66         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.622 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63/CO[3]
+                         net (fo=1, routed)           0.000    20.622    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_63_n_0
+    SLICE_X91Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    20.736 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66/CO[3]
+                         net (fo=1, routed)           0.000    20.736    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_66_n_0
+    SLICE_X91Y68         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313    21.049 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76/O[3]
+                         net (fo=6, routed)           1.802    22.851    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_76_n_4
+    SLICE_X89Y70         LUT2 (Prop_lut2_I0_O)        0.306    23.157 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340/O
+                         net (fo=1, routed)           0.000    23.157    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_340_n_0
+    SLICE_X89Y70         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398    23.555 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210/CO[3]
+                         net (fo=1, routed)           0.000    23.555    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_210_n_0
+    SLICE_X89Y71         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239    23.794 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107/O[2]
+                         net (fo=3, routed)           0.800    24.595    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_107_n_5
+    SLICE_X86Y71         LUT4 (Prop_lut4_I0_O)        0.302    24.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216/O
+                         net (fo=1, routed)           0.628    25.524    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_216_n_0
+    SLICE_X84Y70         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.385    25.909 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111/CO[3]
+                         net (fo=1, routed)           0.000    25.909    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_111_n_0
+    SLICE_X84Y71         CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228    26.137 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46/CO[2]
+                         net (fo=1, routed)           0.449    26.586    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_46_n_1
+    SLICE_X86Y72         LUT5 (Prop_lut5_I4_O)        0.313    26.899 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14/O
+                         net (fo=51, routed)          2.011    28.910    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_14_n_0
+    SLICE_X92Y65         LUT3 (Prop_lut3_I1_O)        0.124    29.034 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91/O
+                         net (fo=1, routed)           0.379    29.413    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_91_n_0
+    SLICE_X93Y66         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580    29.993 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39/CO[3]
+                         net (fo=1, routed)           0.000    29.993    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_39_n_0
+    SLICE_X93Y67         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.107 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61/CO[3]
+                         net (fo=1, routed)           0.000    30.107    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_61_n_0
+    SLICE_X93Y68         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.221 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60/CO[3]
+                         net (fo=1, routed)           0.000    30.221    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_60_n_0
+    SLICE_X93Y69         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.335 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62/CO[3]
+                         net (fo=1, routed)           0.000    30.335    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_62_n_0
+    SLICE_X93Y70         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.449 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75/CO[3]
+                         net (fo=1, routed)           0.000    30.449    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_75_n_0
+    SLICE_X93Y71         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    30.563 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35/CO[3]
+                         net (fo=1, routed)           0.000    30.563    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_35_n_0
+    SLICE_X93Y72         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    30.897 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][2][31]_i_89/O[1]
+                         net (fo=1, routed)           0.648    31.545    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[0][0]2[26]
+    SLICE_X91Y72         LUT5 (Prop_lut5_I4_O)        0.303    31.848 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37/O
+                         net (fo=1, routed)           0.796    32.644    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_37_n_0
+    SLICE_X91Y73         LUT4 (Prop_lut4_I0_O)        0.124    32.768 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10/O
+                         net (fo=1, routed)           0.574    33.342    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_10_n_0
+    SLICE_X91Y72         LUT6 (Prop_lut6_I5_O)        0.124    33.466 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2/O
+                         net (fo=96, routed)          3.073    36.539    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[0][2][31]_i_2_n_0
+    SLICE_X100Y51        LUT6 (Prop_lut6_I2_O)        0.124    36.663 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder[1][2][5]_i_1/O
+                         net (fo=2, routed)           0.668    37.331    pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[1][2]_1[5]
+    SLICE_X101Y51        FDCE                                         r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/builder_reg[1][2][5]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.197ns  (logic 0.141ns (71.611%)  route 0.056ns (28.389%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X111Y51        FDRE                         0.000     0.000 r  krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/C
+    SLICE_X111Y51        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/Q
+                         net (fo=1, routed)           0.056     0.197    krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff[0]
+    SLICE_X111Y51        FDRE                                         r  krn_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.197ns  (logic 0.141ns (71.611%)  route 0.056ns (28.389%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X107Y47        FDRE                         0.000     0.000 r  res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/C
+    SLICE_X107Y47        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/Q
+                         net (fo=1, routed)           0.056     0.197    res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff[0]
+    SLICE_X107Y47        FDRE                                         r  res_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.206ns  (logic 0.141ns (68.336%)  route 0.065ns (31.664%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X110Y84        FDRE                         0.000     0.000 r  img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/C
+    SLICE_X110Y84        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[0]/Q
+                         net (fo=1, routed)           0.065     0.206    img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff[0]
+    SLICE_X110Y84        FDRE                                         r  img_fifo_inst/inst/gen_fifo.xpm_fifo_axis_inst/gaxis_rst_sync.xpm_cdc_sync_rst_inst/syncstages_ff_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][27]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/tmp_img_data_reg[1][2][27]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.207ns  (logic 0.148ns (71.500%)  route 0.059ns (28.500%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X100Y58        FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][27]/C
+    SLICE_X100Y58        FDCE (Prop_fdce_C_Q)         0.148     0.148 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][27]/Q
+                         net (fo=1, routed)           0.059     0.207    pix_out_proc_inst/line_engine_inst/reconst_img_data[1][2]_7[27]
+    SLICE_X101Y58        FDCE                                         r  pix_out_proc_inst/line_engine_inst/tmp_img_data_reg[1][2][27]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[0][2][24]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/tmp_img_data_reg[0][2][24]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.213ns  (logic 0.164ns (76.958%)  route 0.049ns (23.042%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X92Y58         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[0][2][24]/C
+    SLICE_X92Y58         FDCE (Prop_fdce_C_Q)         0.164     0.164 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[0][2][24]/Q
+                         net (fo=1, routed)           0.049     0.213    pix_out_proc_inst/line_engine_inst/reconst_img_data[0][2]_6[24]
+    SLICE_X93Y58         FDCE                                         r  pix_out_proc_inst/line_engine_inst/tmp_img_data_reg[0][2][24]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/tmp_res_valid1_reg/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/tmp_res_valid2_reg/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.220ns  (logic 0.164ns (74.580%)  route 0.056ns (25.420%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X96Y46         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/tmp_res_valid1_reg/C
+    SLICE_X96Y46         FDCE (Prop_fdce_C_Q)         0.164     0.164 r  pix_out_proc_inst/line_engine_inst/tmp_res_valid1_reg/Q
+                         net (fo=1, routed)           0.056     0.220    pix_out_proc_inst/line_engine_inst/tmp_res_valid1
+    SLICE_X96Y46         FDCE                                         r  pix_out_proc_inst/line_engine_inst/tmp_res_valid2_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][16]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/tmp_img_data_reg[1][2][16]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.228ns  (logic 0.141ns (61.814%)  route 0.087ns (38.186%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X103Y48        FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][16]/C
+    SLICE_X103Y48        FDCE (Prop_fdce_C_Q)         0.141     0.141 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[1][2][16]/Q
+                         net (fo=1, routed)           0.087     0.228    pix_out_proc_inst/line_engine_inst/reconst_img_data[1][2]_7[16]
+    SLICE_X102Y48        FDCE                                         r  pix_out_proc_inst/line_engine_inst/tmp_img_data_reg[1][2][16]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[2][2][22]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/tmp_img_data_reg[2][2][22]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.228ns  (logic 0.141ns (61.814%)  route 0.087ns (38.186%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X95Y46         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[2][2][22]/C
+    SLICE_X95Y46         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  pix_out_proc_inst/line_engine_inst/reconst_img_inst/m_axis_data_reg[2][2][22]/Q
+                         net (fo=1, routed)           0.087     0.228    pix_out_proc_inst/line_engine_inst/reconst_img_data[2][2]_8[22]
+    SLICE_X94Y46         FDCE                                         r  pix_out_proc_inst/line_engine_inst/tmp_img_data_reg[2][2][22]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_krn_inst/m_axis_data_reg[0][2][22]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/tmp_krn_data_reg[0][2][22]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.241ns  (logic 0.141ns (58.505%)  route 0.100ns (41.495%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X97Y60         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/m_axis_data_reg[0][2][22]/C
+    SLICE_X97Y60         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/m_axis_data_reg[0][2][22]/Q
+                         net (fo=1, routed)           0.100     0.241    pix_out_proc_inst/line_engine_inst/reconst_krn_data[0][2]_9[22]
+    SLICE_X95Y59         FDCE                                         r  pix_out_proc_inst/line_engine_inst/tmp_krn_data_reg[0][2][22]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pix_out_proc_inst/line_engine_inst/reconst_krn_inst/m_axis_data_reg[1][2][21]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            pix_out_proc_inst/line_engine_inst/tmp_krn_data_reg[1][2][21]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.242ns  (logic 0.141ns (58.263%)  route 0.101ns (41.737%))
+  Logic Levels:           1  (FDCE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X99Y53         FDCE                         0.000     0.000 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/m_axis_data_reg[1][2][21]/C
+    SLICE_X99Y53         FDCE (Prop_fdce_C_Q)         0.141     0.141 r  pix_out_proc_inst/line_engine_inst/reconst_krn_inst/m_axis_data_reg[1][2][21]/Q
+                         net (fo=1, routed)           0.101     0.242    pix_out_proc_inst/line_engine_inst/reconst_krn_data[1][2]_10[21]
+    SLICE_X100Y52        FDCE                                         r  pix_out_proc_inst/line_engine_inst/tmp_krn_data_reg[1][2][21]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+

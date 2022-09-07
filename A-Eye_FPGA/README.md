@@ -35,7 +35,7 @@ Comment : *data* can be set before *valid* is high. But it's only when *valid* i
 *valid* has to stay high until *ready* goes high, if not, the valid data will not be transmitted to B.  
 ![AXI4-S protocol](./diagrams/out/archi_v2/AXI4-S.png)
 
-## Documentations v2-AXI4-S - Components  
+## Documentations v3-AXI4-S - Components  
 
 ### Multiadd  
 #### Principle  
